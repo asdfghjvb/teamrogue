@@ -10,6 +10,10 @@
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 
+# Ignore GitIgnore folder
+teamrogue/Assets/GitIgnore/
+teamrogue/Assets/GitIgnore.meta
+
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
