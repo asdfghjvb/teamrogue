@@ -76,12 +76,16 @@ public class Player : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist))
         {
+            IDamage dmg = hit.collider.GetComponent<IDamage>();
 
+            if (hit.transform != transform && dmg != null)
+            {
+                //Instantiate(cube, hit.point, Quaternion.identity);
+                dmg.takeDamage(shootDamage);
+            }
         }
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
     }
-
-
 }
 
