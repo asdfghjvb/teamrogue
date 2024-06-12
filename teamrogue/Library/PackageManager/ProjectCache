@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638538062852420245
-    m_Hash: 508031704
+      ticks: 638538116334428343
+    m_Hash: 2425166737
   m_LockFileStatus:
     m_FilePath: C:/Full Sail/Project and Portfolio/II/TeamRogue/teamrogue/teamrogue/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638538062852507897
-    m_Hash: 3084597752
+      ticks: 638538116334433499
+    m_Hash: 2637161442
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
