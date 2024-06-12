@@ -8,6 +8,12 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] Renderer model;
     [SerializeField] int HP;
 
+    [SerializeField] Transform shootPos;
+    [SerializeField] float shootRate;
+    [SerializeField] GameObject bullet;
+
+    bool isShooting;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +23,18 @@ public class EnemyAI : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
-        
+        if (!isShooting)
+        {
+            StartCoroutine(shoot());
+        }
+    }
+    IEnumerator shoot()
+    {
+        isShooting = true;
+        Instantiate(bullet, shootPos.position, transform.rotation);
+
+        yield return new WaitForSeconds(shootRate);
+        isShooting = false;
     }
 
     public void takeDamage(int amount)
