@@ -36,6 +36,8 @@ public class BoonManager : MonoBehaviour
         option1.text = randList[0].Item2;
         option2.text = randList[1].Item2;
         option3.text = randList[2].Item2;
+
+
     }
 
     // Update is called once per frame
@@ -55,29 +57,29 @@ public class BoonManager : MonoBehaviour
         switch (ID)
         {
             case 1:
-                Player.instance.fullHealth += 5;
-                Player.instance.health += 5;
+                GameManager.instance.playerScript.fullHealth += 5;
+                GameManager.instance.playerScript.health += 5;
                 break;
             case 2:
-                Player.instance.shootRate *= 0.75f;
+                GameManager.instance.playerScript.shootRate *= 0.75f;
                 break;
             case 3:
-                Player.instance.speed += 5;
+                GameManager.instance.playerScript.speed += 5;
                 break;
             case 4:
-                Player.instance.jumpMax += 1;
+                GameManager.instance.playerScript.jumpMax += 1;
                 break;
             case 5:
-                Player.instance.shootDamage += 3;
+                GameManager.instance.playerScript.shootDamage += 3;
                 break;
             case 6:
-                Player.instance.armorMod *= 0.9f;
+                GameManager.instance.playerScript.armorMod *= 0.9f;
                 break;
             case 7:
-                Player.instance.sprintMod *= 1.2f;
+                GameManager.instance.playerScript.sprintMod *= 1.2f;
                 break;
             case 8:
-                Player.instance.shootDist += 10;
+                GameManager.instance.playerScript.shootDist += 10;
                 break;
         }
     }
@@ -86,15 +88,18 @@ public class BoonManager : MonoBehaviour
     {
         ApplyBoon(randList[0].Item1);
         boonMenu.SetActive(false);
+        GameManager.instance.stateUnpaused();
     }
     public void boonOption2()
     {
         ApplyBoon(randList[1].Item1);
         boonMenu.SetActive(false);
+        GameManager.instance.stateUnpaused();
     }
     public void boonOption3()
     {
         ApplyBoon(randList[2].Item1);
         boonMenu.SetActive(false);
+        GameManager.instance.stateUnpaused();
     }
 }
