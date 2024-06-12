@@ -299,7 +299,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuActive: {fileID: 0}
   menuPause: {fileID: 1156609480}
-  player: {fileID: 1576293652}
+  menuWin: {fileID: 931491402}
+  menuLose: {fileID: 886217001}
+  menuBoon: {fileID: 1939642868}
+  enemyCountText: {fileID: 0}
+  player: {fileID: 0}
+  playerScript: {fileID: 0}
   isPaused: 0
 --- !u!4 &173086155
 Transform:
@@ -3333,7 +3338,7 @@ GameObject:
   - component: {fileID: 1576293653}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4351,7 +4356,7 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1863037799}
+  - {fileID: 1576293658}
   - {fileID: 705507995}
   - {fileID: 405827103}
-  - {fileID: 1576293658}
-  - {fileID: 1863037799}
