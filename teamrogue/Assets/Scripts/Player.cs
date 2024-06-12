@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamage
 {
     public static Player instance;
     [SerializeField] CharacterController playerController;
@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     {
         //instance = this;
         fullHealth = health;
+        updatePlayerUI();
     }
 
     // Update is called once per frame
@@ -87,6 +88,21 @@ public class Player : MonoBehaviour
         isShooting = false;
     }
 
+    void updatePlayerUI()
+    {
+        GameManager.instance.playerHealthBar.fillAmount = (float)health / fullHealth;
+    }
+
+    public void takeDamage(int amount)
+    {
+        health -= amount;
+        updatePlayerUI();
+
+        if (health <= 0)
+        {
+            GameManager.instance.youLose();
+        }
+    }
 
 }
 

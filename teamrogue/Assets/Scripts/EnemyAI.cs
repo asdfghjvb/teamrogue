@@ -20,7 +20,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameManager.instance.updateGoal(1);
     }
 
     // Update is called once per frame
@@ -49,6 +49,7 @@ public class EnemyAI : MonoBehaviour, IDamage
 
         if (HP <= 0)
         {
+            GameManager.instance.updateGoal(-1);
             Destroy(gameObject);
         }
     }
