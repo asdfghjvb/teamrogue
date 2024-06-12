@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1706.6667
     height: 976
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Project
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 127
+  controlID: 155
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 26
+  controlID: 18
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -426,7 +426,7 @@ MonoBehaviour:
     m_ControlHash: 1412526313
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 168.66656
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
@@ -775,9 +775,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.00018697977, y: 1.0160303, z: 5}
+    m_Target: {x: 3.1486197, y: 2.6000001, z: 21}
     speed: 2
-    m_Value: {x: -0.00018697977, y: 1.0160303, z: 5}
+    m_Value: {x: 3.1486197, y: 2.6000001, z: 21}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -827,9 +827,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0.11040895, y: 0.15439555, z: -0.017365424, w: 0.9816671}
   m_Size:
-    m_Target: 1.632035
+    m_Target: 1.2476289
     speed: 2
-    m_Value: 1.632035
+    m_Value: 1.2476289
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -989,9 +989,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 722efeff
-      m_LastClickedID: -119182
-      m_ExpandedIDs: 642ffeff0e9bfeff1a30fffff680000082820000
+      m_SelectedIDs: 280f0000
+      m_LastClickedID: 0
+      m_ExpandedIDs: 30fbffff385b0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1060,7 +1060,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/UnityStoreAssets/3D Characters Zombie Hospital Lowpoly Pack - Lite/Materials
+    - Assets/Scripts
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -1068,16 +1068,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/UnityStoreAssets/3D Characters Zombie Hospital Lowpoly Pack - Lite/Materials
+  - Assets/Scripts
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\gordo\Documents\GitHub\teamrogue\teamrogue
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: c0ba0000
-    m_LastClickedID: 47808
-    m_ExpandedIDs: 000000001a060000f0820000f2820000f482000048830000e2850000a2890000aa890000ae890000b2890000b6890000c6890000ca890000d2890000de8900002a8a00004a8a0000b8ba000000ca9a3bffffff7f
+    m_SelectedIDs: 7a5e0000
+    m_LastClickedID: 24186
+    m_ExpandedIDs: 00000000325e0000345e0000365e0000385e00003a5e00003c5e00003e5e0000405e0000805e0000a05e000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1105,7 +1105,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000001a060000f0820000f2820000f4820000
+    m_ExpandedIDs: 00000000325e0000345e0000365e0000385e00003a5e00003c5e00003e5e0000405e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
