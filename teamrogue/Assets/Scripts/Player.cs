@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamage
 {
     public static Player instance;
     [SerializeField] CharacterController playerController;
@@ -17,11 +17,19 @@ public class Player : MonoBehaviour
     [SerializeField] int jumpSpeed;
     [SerializeField] int gravity;
 
+    [SerializeField] int meleeDamage;
+    [SerializeField] float meleeRange;
+    [SerializeField] float meleeRate;
+    [SerializeField] float meleeCooldown;
+
+
     [SerializeField] public int shootDamage;
     [SerializeField] public float shootRate;
     [SerializeField] public int shootDist;
 
     bool isShooting;
+    bool isMeleeAttacking;
+    float lastMeleeTime;
     int jumpCount;
     public int fullHealth;
     Vector3 moveDir;
@@ -31,6 +39,7 @@ public class Player : MonoBehaviour
     {
         //instance = this;
         fullHealth = health;
+        updatePlayerUI();
     }
 
     // Update is called once per frame
@@ -39,9 +48,15 @@ public class Player : MonoBehaviour
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
         Movement();
         Sprint();
+        UpdateMeleeCooldownUI();
         if (Input.GetButton("Fire1") && !isShooting)
         {
             StartCoroutine(shoot());
+        }
+
+        if (Input.GetButtonDown("Fire2") && Time.time >= lastMeleeTime + meleeCooldown)
+        {
+            StartCoroutine(melee());
         }
     }
     void Movement()
@@ -87,6 +102,47 @@ public class Player : MonoBehaviour
         isShooting = false;
     }
 
+    IEnumerator melee() 
+    {
+        isMeleeAttacking = true;
+        lastMeleeTime = Time.time;
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position + transform.forward * meleeRange, meleeRange);
+        foreach (Collider hitCollider in hitColliders)
+        {
+            if (hitCollider.gameObject == gameObject)
+                continue;
+
+            IDamage dmg = hitCollider.GetComponent<IDamage>();
+            if (dmg != null)
+            {
+                dmg.takeDamage(meleeDamage);
+            }
+        }
+        yield return new WaitForSeconds(meleeRate);
+        isMeleeAttacking = false;
+    }
+
+    void UpdateMeleeCooldownUI()
+    {
+        float cooldownRemaining = Mathf.Clamp01((Time.time - lastMeleeTime) / meleeCooldown);
+        GameManager.instance.UpdateMeleeCooldownUI(cooldownRemaining);
+    }
+
+    void updatePlayerUI()
+    {
+        GameManager.instance.playerHealthBar.fillAmount = (float)health / fullHealth;
+    }
+
+    public void takeDamage(int amount)
+    {
+        health -= amount;
+        updatePlayerUI();
+
+        if (health <= 0)
+        {
+            GameManager.instance.youLose();
+        }
+    }
 
 }
 
