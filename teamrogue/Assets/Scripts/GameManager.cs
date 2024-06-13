@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject menuBoon;
 
     [SerializeField] TMP_Text enemyCountText;
+    [SerializeField] Image meleeCooldownUI;
 
     public Image playerHealthBar;
 
@@ -101,5 +102,13 @@ public class GameManager : MonoBehaviour
         statePaused();
         menuActive = menuBoon;
         menuActive.SetActive(isPaused);
+    }
+
+    public void UpdateMeleeCooldownUI(float cooldownRemaining)
+    {
+        if (meleeCooldownUI != null)
+        {
+            meleeCooldownUI.fillAmount = cooldownRemaining;
+        }
     }
 }
