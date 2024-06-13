@@ -291,7 +291,7 @@ MonoBehaviour:
   shootPos: {fileID: 255479155}
   agent: {fileID: 95113784}
   bullet: {fileID: 6073588209328858228, guid: a19faa504cf8fad44b87351e2628050a, type: 3}
-  HP: 15
+  HP: 8
   shootRate: 1
 --- !u!4 &95113787 stripped
 Transform:
@@ -2250,7 +2250,7 @@ MonoBehaviour:
   shootPos: {fileID: 1018785045}
   agent: {fileID: 720663493}
   bullet: {fileID: 6073588209328858228, guid: a19faa504cf8fad44b87351e2628050a, type: 3}
-  HP: 15
+  HP: 8
   shootRate: 1
 --- !u!4 &720663496 stripped
 Transform:
@@ -2467,63 +2467,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 779167670}
   m_CullTransparentMesh: 1
---- !u!1001 &884475946
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5921367157248738129, guid: f94c577fdd00e594abc50fdff8f3ff17, type: 3}
-      propertyPath: m_Name
-      value: (P) Characters_Zombie_Pacient_04
-      objectReference: {fileID: 0}
-    - target: {fileID: 6442184458774354411, guid: f94c577fdd00e594abc50fdff8f3ff17, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6442184458774354411, guid: f94c577fdd00e594abc50fdff8f3ff17, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6442184458774354411, guid: f94c577fdd00e594abc50fdff8f3ff17, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 5.0115857
-      objectReference: {fileID: 0}
-    - target: {fileID: 6442184458774354411, guid: f94c577fdd00e594abc50fdff8f3ff17, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6442184458774354411, guid: f94c577fdd00e594abc50fdff8f3ff17, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6442184458774354411, guid: f94c577fdd00e594abc50fdff8f3ff17, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6442184458774354411, guid: f94c577fdd00e594abc50fdff8f3ff17, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6442184458774354411, guid: f94c577fdd00e594abc50fdff8f3ff17, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6442184458774354411, guid: f94c577fdd00e594abc50fdff8f3ff17, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6442184458774354411, guid: f94c577fdd00e594abc50fdff8f3ff17, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f94c577fdd00e594abc50fdff8f3ff17, type: 3}
 --- !u!137 &894411424 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 137889828543149406, guid: c9951ca0f61167b4593ffe21b0a089c8, type: 3}
@@ -5259,7 +5202,7 @@ MonoBehaviour:
   shootPos: {fileID: 1085853947}
   agent: {fileID: 1954725350}
   bullet: {fileID: 6073588209328858228, guid: a19faa504cf8fad44b87351e2628050a, type: 3}
-  HP: 15
+  HP: 8
   shootRate: 1
 --- !u!4 &1954725353 stripped
 Transform:
@@ -5644,6 +5587,10 @@ PrefabInstance:
       propertyPath: playerHealthBar
       value: 
       objectReference: {fileID: 578878928}
+    - target: {fileID: 1500825981653993637, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1875137294113053640, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
       propertyPath: m_UiScaleMode
       value: 1
@@ -5868,7 +5815,6 @@ SceneRoots:
   - {fileID: 1371511690}
   - {fileID: 1390769407}
   - {fileID: 571874233}
-  - {fileID: 884475946}
   - {fileID: 1610637108}
   - {fileID: 1885208621}
   - {fileID: 1913854996}
