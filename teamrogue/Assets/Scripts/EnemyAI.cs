@@ -9,13 +9,13 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] Transform shootPos;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] GameObject bullet;
-
+    [SerializeField] Animator animator;
     [SerializeField] int HP;
     [SerializeField] float shootRate;
     
 
     bool isShooting;
-
+    Vector3 playerDir;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,12 +25,17 @@ public class EnemyAI : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
+        playerDir = GameManager.instance.player.transform.position - transform.position;
+        float agentSpeed = agent.velocity.normalized.magnitude;
+        animator.SetFloat("Speed", Mathf.Lerp(animator.GetFloat("Speed"), agentSpeed, Time.deltaTime));
+        if (agent.remainingDistance < agent.stoppingDistance)
+            {
+                faceTarget();
+            }
         agent.SetDestination(GameManager.instance.player.transform.position);
+        if (isShooting == false)
+                StartCoroutine(shoot());
         
-        if (!isShooting)
-        {
-            StartCoroutine(shoot());
-        }
     }
 
     IEnumerator shoot()
@@ -59,5 +64,10 @@ public class EnemyAI : MonoBehaviour, IDamage
         model.material.color = Color.red;
         yield return new WaitForSeconds(0.1f);
         model.material.color = Color.white;
+    }
+    void faceTarget()
+    {
+        Quaternion rot = Quaternion.LookRotation(playerDir);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime);
     }
 }
