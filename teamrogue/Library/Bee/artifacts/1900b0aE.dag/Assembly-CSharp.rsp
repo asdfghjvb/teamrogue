@@ -364,6 +364,7 @@
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/IDamage.cs"
 "Assets/Scripts/Player.cs"
+"Assets/Scripts/Shooter.cs"
 -langversion:9.0
 /deterministic
 /optimize+
