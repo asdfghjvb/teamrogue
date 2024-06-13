@@ -5,16 +5,26 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
+<<<<<<< HEAD
+      ticks: 638538675361000637
+    m_Hash: 2086951786
+=======
       ticks: 638538666156631051
     m_Hash: 2425166737
+>>>>>>> 9d99b8adde48a3596958af662b489ec4e7163cf2
   m_LockFileStatus:
     m_FilePath: C:/Users/gordo/Documents/GitHub/teamrogue/teamrogue/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
+<<<<<<< HEAD
+      ticks: 638538675361010581
+    m_Hash: 744252605
+=======
       ticks: 638538666156631051
     m_Hash: 2637161442
+>>>>>>> 9d99b8adde48a3596958af662b489ec4e7163cf2
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
