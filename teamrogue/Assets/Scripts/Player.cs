@@ -17,11 +17,19 @@ public class Player : MonoBehaviour, IDamage
     [SerializeField] int jumpSpeed;
     [SerializeField] int gravity;
 
+    [SerializeField] int meleeDamage;
+    [SerializeField] float meleeRange;
+    [SerializeField] float meleeRate;
+    [SerializeField] float meleeCooldown;
+
+
     [SerializeField] public int shootDamage;
     [SerializeField] public float shootRate;
     [SerializeField] public int shootDist;
 
     bool isShooting;
+    bool isMeleeAttacking;
+    float lastMeleeTime;
     int jumpCount;
     public int fullHealth;
     Vector3 moveDir;
@@ -40,9 +48,15 @@ public class Player : MonoBehaviour, IDamage
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
         Movement();
         Sprint();
+        UpdateMeleeCooldownUI();
         if (Input.GetButton("Fire1") && !isShooting)
         {
             StartCoroutine(shoot());
+        }
+
+        if (Input.GetButtonDown("Fire2") && Time.time >= lastMeleeTime + meleeCooldown)
+        {
+            StartCoroutine(melee());
         }
     }
     void Movement()
@@ -86,6 +100,32 @@ public class Player : MonoBehaviour, IDamage
         }
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
+    }
+
+    IEnumerator melee() 
+    {
+        isMeleeAttacking = true;
+        lastMeleeTime = Time.time;
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position + transform.forward * meleeRange, meleeRange);
+        foreach (Collider hitCollider in hitColliders)
+        {
+            if (hitCollider.gameObject == gameObject)
+                continue;
+
+            IDamage dmg = hitCollider.GetComponent<IDamage>();
+            if (dmg != null)
+            {
+                dmg.takeDamage(meleeDamage);
+            }
+        }
+        yield return new WaitForSeconds(meleeRate);
+        isMeleeAttacking = false;
+    }
+
+    void UpdateMeleeCooldownUI()
+    {
+        float cooldownRemaining = Mathf.Clamp01((Time.time - lastMeleeTime) / meleeCooldown);
+        GameManager.instance.UpdateMeleeCooldownUI(cooldownRemaining);
     }
 
     void updatePlayerUI()
