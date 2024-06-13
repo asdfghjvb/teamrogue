@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour, IDamage
 {
-
     [SerializeField] Renderer model;
     [SerializeField] Transform shootPos;
     [SerializeField] NavMeshAgent agent;
@@ -27,12 +26,13 @@ public class EnemyAI : MonoBehaviour, IDamage
     void Update()
     {
         agent.SetDestination(GameManager.instance.player.transform.position);
-
+        
         if (!isShooting)
         {
             StartCoroutine(shoot());
         }
     }
+
     IEnumerator shoot()
     {
         isShooting = true;
