@@ -57,6 +57,10 @@ MonoBehaviour:
   jumpMax: 2
   jumpSpeed: 8
   gravity: 30
+  meleeDamage: 10
+  meleeRange: 5
+  meleeRate: 1
+  meleeCooldown: 2
   shootDamage: 5
   shootRate: 1
   shootDist: 10
@@ -169,6 +173,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3562786646589071221}
+  - component: {fileID: 9203380228404185077}
   - component: {fileID: 773227678088760651}
   - component: {fileID: 5173282127121241812}
   m_Layer: 0
@@ -193,6 +198,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4214323867826671164}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9203380228404185077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4526845727168666183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e359fb58ecc2d774093a2d334d4d84bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sens: 800
+  lockVertMin: -80
+  lockVertMax: 80
+  invertY: 0
 --- !u!20 &773227678088760651
 Camera:
   m_ObjectHideFlags: 0
