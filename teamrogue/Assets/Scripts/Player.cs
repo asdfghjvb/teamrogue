@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour, IDamage
 {
-    public static Player instance;
+    //public static Player instance;
     [SerializeField] CharacterController playerController;
     [SerializeField] public int health;
     [SerializeField] public float speed;
@@ -54,7 +54,7 @@ public class Player : MonoBehaviour, IDamage
             StartCoroutine(shoot());
         }
 
-        if (Input.GetButtonDown("Fire2") && Time.time >= lastMeleeTime + meleeCooldown)
+        if (Input.GetButtonDown("Fire2") && !isMeleeAttacking && Time.time >= lastMeleeTime + meleeCooldown)
         {
             StartCoroutine(melee());
         }
