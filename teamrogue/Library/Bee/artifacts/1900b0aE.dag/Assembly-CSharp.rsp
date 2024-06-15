@@ -362,6 +362,7 @@
 "Assets/Scripts/CameraController.cs"
 "Assets/Scripts/EnemyAI.cs"
 "Assets/Scripts/GameManager.cs"
+"Assets/Scripts/HealthPack.cs"
 "Assets/Scripts/IDamage.cs"
 "Assets/Scripts/Player.cs"
 "Assets/Scripts/Shooter.cs"
