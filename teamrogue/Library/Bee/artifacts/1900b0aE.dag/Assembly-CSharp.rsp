@@ -366,6 +366,7 @@
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/HealthPack.cs"
 "Assets/Scripts/IDamage.cs"
+"Assets/Scripts/MeleeWeapon.cs"
 "Assets/Scripts/Player.cs"
 "Assets/Scripts/Shooter.cs"
 -langversion:9.0

@@ -64,6 +64,6 @@ public class EnemyAI : MonoBehaviour, IDamage
     void faceTarget()
     {
         Quaternion rot = Quaternion.LookRotation(playerDir);
-        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * 3);
     }
 }
