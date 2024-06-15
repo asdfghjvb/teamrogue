@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MeleeEnemy : EnemyAI
+public class MeleeEnemy : EnemyAI, IDamage
 {
     bool isAttacking = false;
 

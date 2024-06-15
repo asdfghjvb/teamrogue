@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangedEnemy : EnemyAI
+public class RangedEnemy : EnemyAI, IDamage
 {
     [SerializeField] GameObject bullet;
     [SerializeField] Transform shootPos;
