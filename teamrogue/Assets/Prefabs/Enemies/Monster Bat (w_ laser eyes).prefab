@@ -88,7 +88,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1625221395402176, guid: c9951ca0f61167b4593ffe21b0a089c8, type: 3}
       propertyPath: m_Name
-      value: Monster Bat (w_ laser eyes) Variant
+      value: Monster Bat (w_ laser eyes)
       objectReference: {fileID: 0}
     - target: {fileID: 1625221395402176, guid: c9951ca0f61167b4593ffe21b0a089c8, type: 3}
       propertyPath: m_IsActive
@@ -145,8 +145,8 @@ PrefabInstance:
       addedObject: {fileID: 6680915959688046160}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1625221395402176, guid: c9951ca0f61167b4593ffe21b0a089c8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8213247760853158566}
+      insertIndex: 1
+      addedObject: {fileID: -2407503825803540706}
     - targetCorrespondingSourceObject: {fileID: 1625221395402176, guid: c9951ca0f61167b4593ffe21b0a089c8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 17963841987196544}
@@ -172,7 +172,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1625221395402176, guid: c9951ca0f61167b4593ffe21b0a089c8, type: 3}
   m_PrefabInstance: {fileID: 2736859932953999696}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8213247760853158566
+--- !u!114 &-2407503825803540706
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,16 +181,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 2737768261772686480}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ba0800a9845ff3469bb8a197c44cd0b, type: 3}
+  m_Script: {fileID: 11500000, guid: fa0d6526e3f4c664d9b3c658b14892f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 2599321948409089038}
-  shootPos: {fileID: 6680915959688046160}
   agent: {fileID: 5703838189883637796}
-  bullet: {fileID: 6073588209328858228, guid: a19faa504cf8fad44b87351e2628050a, type: 3}
   animator: {fileID: 17963841987196544}
-  HP: 8
-  shootRate: 1
+  dropSpawn: {fileID: 2735307339152969320}
+  healthDrop: {fileID: 0}
+  HP: 10
+  attackRate: 1
+  bullet: {fileID: 6073588209328858228, guid: a19faa504cf8fad44b87351e2628050a, type: 3}
+  shootPos: {fileID: 6680915959688046160}
 --- !u!95 &17963841987196544
 Animator:
   serializedVersion: 5

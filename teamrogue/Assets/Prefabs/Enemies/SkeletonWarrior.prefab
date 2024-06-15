@@ -72,7 +72,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 126130302089793275, guid: 94025afe18059204e901d3bec7d70224, type: 3}
       propertyPath: m_Name
-      value: SkeletonWarrior Variant
+      value: SkeletonWarrior
       objectReference: {fileID: 0}
     - target: {fileID: 692451916635087095, guid: 94025afe18059204e901d3bec7d70224, type: 3}
       propertyPath: m_LocalRotation.w
@@ -116,15 +116,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 759923595828384833, guid: 94025afe18059204e901d3bec7d70224, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5
+      value: -6.8571663
       objectReference: {fileID: 0}
     - target: {fileID: 759923595828384833, guid: 94025afe18059204e901d3bec7d70224, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.00000047683716
       objectReference: {fileID: 0}
     - target: {fileID: 759923595828384833, guid: 94025afe18059204e901d3bec7d70224, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.184152
+      value: 16.208776
       objectReference: {fileID: 0}
     - target: {fileID: 759923595828384833, guid: 94025afe18059204e901d3bec7d70224, type: 3}
       propertyPath: m_LocalRotation.w
@@ -451,7 +451,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 126130302089793275, guid: 94025afe18059204e901d3bec7d70224, type: 3}
       insertIndex: 1
-      addedObject: {fileID: 1938791772192402557}
+      addedObject: {fileID: 5779329741962723954}
     - targetCorrespondingSourceObject: {fileID: 126130302089793275, guid: 94025afe18059204e901d3bec7d70224, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1768642230605276244}
@@ -484,7 +484,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 126130302089793275, guid: 94025afe18059204e901d3bec7d70224, type: 3}
   m_PrefabInstance: {fileID: 8830369340944339419}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1938791772192402557
+--- !u!114 &5779329741962723954
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -493,18 +493,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 8884437639860936480}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ba0800a9845ff3469bb8a197c44cd0b, type: 3}
+  m_Script: {fileID: 11500000, guid: 65403ab9caa424641ba1cbde6a015635, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 6464372731724738934}
-  shootPos: {fileID: 8070464115815286170}
-  dropSpawn: {fileID: 8070464115815286170}
   agent: {fileID: 1768642230605276244}
-  bullet: {fileID: 0}
-  healthDrop: {fileID: 0}
   animator: {fileID: 2801274763266809824}
+  dropSpawn: {fileID: 8070464115815286170}
+  healthDrop: {fileID: 0}
   HP: 10
-  shootRate: 1
+  attackRate: 1
 --- !u!195 &1768642230605276244
 NavMeshAgent:
   m_ObjectHideFlags: 0

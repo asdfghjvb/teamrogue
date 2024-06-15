@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using UnityEditor.Build;
+using UnityEditor;
 
 public class GameManager : MonoBehaviour
 {
