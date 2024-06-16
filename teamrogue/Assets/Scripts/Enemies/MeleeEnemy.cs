@@ -8,7 +8,6 @@ public class MeleeEnemy : EnemyAI, IDamage
 {
     bool isAttacking = false;
 
-
     // Update is called once per frame
     protected override void Update()
     {

@@ -13,6 +13,7 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     [SerializeField] protected int HP;
     [SerializeField] protected float attackRate;
+    [SerializeField] protected float deathAnimationDuration = 5.0f;
 
     Vector3 playerDir;
 
@@ -20,6 +21,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     protected virtual void Start()
     {
         GameManager.instance.updateGoal(1);
+        agent.SetDestination(GameManager.instance.player.transform.position); //keeps enemies from attacking on game start, even when out of range
     }
 
     // Update is called once per frame
@@ -49,10 +51,25 @@ public class EnemyAI : MonoBehaviour, IDamage
 
         if (HP <= 0)
         {
-            GameManager.instance.updateGoal(-1);
-            Destroy(gameObject);
-            Instantiate(healthDrop, dropSpawn.position, transform.rotation);
+           
+            Collider collider = GetComponent<Collider>();
+            collider.enabled = false; //disable collider
+            
+            enabled = false; //disable movement
+            
+            StartCoroutine(OnDeath());
         }
+    }
+
+    protected virtual IEnumerator OnDeath()
+    {
+        animator.SetTrigger("Death");
+        GameManager.instance.updateGoal(-1);
+
+        yield return new WaitForSeconds(deathAnimationDuration);
+
+        Destroy(gameObject);
+        Instantiate(healthDrop, dropSpawn.position, transform.rotation);
     }
 
     IEnumerator flashDamage()
