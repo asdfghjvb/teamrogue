@@ -227,6 +227,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &133267181 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3656440839388670749, guid: 71c8f272276916146a34b2fca2e71fc4, type: 3}
+  m_PrefabInstance: {fileID: 1248351698}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &159178188
 GameObject:
   m_ObjectHideFlags: 0
@@ -2512,7 +2517,19 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1414262856}
     m_Modifications:
+<<<<<<< Updated upstream
     - target: {fileID: -8679921383154817045, guid: 78d1a63580243484e96b64b94038a9ae, type: 3}
+=======
+    - target: {fileID: 4103486381608878155, guid: 71c8f272276916146a34b2fca2e71fc4, type: 3}
+      propertyPath: minion
+      value: 
+      objectReference: {fileID: 2139801592781606986, guid: eccf80b220e424c47ba65ae188b3eb26, type: 3}
+    - target: {fileID: 4103486381608878155, guid: 71c8f272276916146a34b2fca2e71fc4, type: 3}
+      propertyPath: dropSpawn
+      value: 
+      objectReference: {fileID: 133267181}
+    - target: {fileID: 5717293315098642665, guid: 71c8f272276916146a34b2fca2e71fc4, type: 3}
+>>>>>>> Stashed changes
       propertyPath: m_LocalPosition.x
       value: 0.073
       objectReference: {fileID: 0}
