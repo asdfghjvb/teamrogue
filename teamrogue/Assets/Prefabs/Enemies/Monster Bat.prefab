@@ -134,7 +134,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 111413649560378406, guid: c9951ca0f61167b4593ffe21b0a089c8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4085869397129016, guid: c9951ca0f61167b4593ffe21b0a089c8, type: 3}
@@ -145,7 +146,7 @@ PrefabInstance:
       addedObject: {fileID: 6680915959688046160}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1625221395402176, guid: c9951ca0f61167b4593ffe21b0a089c8, type: 3}
-      insertIndex: 1
+      insertIndex: -1
       addedObject: {fileID: -2407503825803540706}
     - targetCorrespondingSourceObject: {fileID: 1625221395402176, guid: c9951ca0f61167b4593ffe21b0a089c8, type: 3}
       insertIndex: -1
@@ -191,6 +192,7 @@ MonoBehaviour:
   healthDrop: {fileID: 3872918420654432094, guid: c9557f0f8539d1e4ab13af81eed49060, type: 3}
   HP: 10
   attackRate: 1
+  deathAnimationDuration: 0
   bullet: {fileID: 6073588209328858228, guid: a19faa504cf8fad44b87351e2628050a, type: 3}
   shootPos: {fileID: 6680915959688046160}
 --- !u!95 &17963841987196544
@@ -203,7 +205,7 @@ Animator:
   m_GameObject: {fileID: 2737768261772686480}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 389bf68e76b0b4a46a72c2d48aa1b9da, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d9d0f296b9b2b0b4fa48cef148a8ac46, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -230,7 +232,7 @@ NavMeshAgent:
   m_AngularSpeed: 120
   m_StoppingDistance: 5
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 1
   m_BaseOffset: 1
