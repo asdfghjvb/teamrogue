@@ -14,6 +14,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject menuBoon;
+    [SerializeField] GameObject chestMenu;
+
+    [SerializeField] GameObject rewardChest;
+    [SerializeField] public GameObject healButton;
+    [SerializeField] public GameObject boonButton;
+    [SerializeField] public GameObject door1;
+    [SerializeField] public GameObject door2;
 
     [SerializeField] TMP_Text enemyCountText;
     [SerializeField] Image meleeCooldownUI;
@@ -83,6 +90,7 @@ public class GameManager : MonoBehaviour
         if (enemyCount <= 0)
         {
             youWin();
+            rewardChest.SetActive(true);
         }
     }
     public void youWin()
@@ -103,7 +111,12 @@ public class GameManager : MonoBehaviour
         menuActive = menuBoon;
         menuActive.SetActive(isPaused);
     }
-
+    public void rewardMenu()
+    {
+        statePaused();
+        menuActive = chestMenu;
+        menuActive.SetActive(isPaused);
+    }
     public void UpdateMeleeCooldownUI(float cooldownRemaining)
     {
         if (meleeCooldownUI != null)

@@ -10,13 +10,15 @@ using TMPro;
 
 public class BoonManager : MonoBehaviour
 {
+    public static BoonManager instance;
+
     [SerializeField] GameObject boonMenu;
 
     [SerializeField] TMP_Text option1;
     [SerializeField] TMP_Text option2;
     [SerializeField] TMP_Text option3;
 
-    List<(int, string)> boonlist = new List<(int, string)>{
+    List<(int, string)> boonList = new List<(int, string)>{
         (1,"Increase Health"),
         (2,"Increase Fire Rate"),
         (3,"Increase Speed"),
@@ -24,20 +26,15 @@ public class BoonManager : MonoBehaviour
         (5,"Increase Damage"),
         (6,"Add Armor"),
         (7,"Increased Sprint"),
-        (8,"Increase Range") };
-    //(9,"Decrease Enemy Speed"),
-    //(10,"Decrease Enemy Health"),
-    List<(int, string)> randList;
+        (8,"Increase Range"),
+        (9,"Increase Melee Attack"),
+        (10,"Reduce Melee Cooldown"), };
 
     // Start is called before the first frame update
     void Start()
     {
-        randList = randomizeList(boonlist);
-        option1.text = randList[0].Item2;
-        option2.text = randList[1].Item2;
-        option3.text = randList[2].Item2;
-
-
+        instance = this;
+        randomizeList();
     }
 
     // Update is called once per frame
@@ -45,10 +42,13 @@ public class BoonManager : MonoBehaviour
     {
 
     }
-    List<(int, string)> randomizeList(List<(int, string)> list)
+    public void randomizeList()
     {
         System.Random rand = new System.Random();
-        return list.OrderBy(x => rand.Next()).ToList();
+        boonList.OrderBy(x => rand.Next()).ToList();
+        option1.text = boonList[0].Item2;
+        option2.text = boonList[1].Item2;
+        option3.text = boonList[2].Item2;
 
     }
 
@@ -81,24 +81,30 @@ public class BoonManager : MonoBehaviour
             case 8:
                 GameManager.instance.playerScript.shootDist += 10;
                 break;
+            case 9:
+                GameManager.instance.playerScript.meleeDamage += 3;
+                break;
+            case 10:
+                GameManager.instance.playerScript.meleeCooldown *= 0.8f;
+                break;
         }
     }
 
     public void boonOption1()
     {
-        ApplyBoon(randList[0].Item1);
+        ApplyBoon(boonList[0].Item1);
         boonMenu.SetActive(false);
         GameManager.instance.stateUnpaused();
     }
     public void boonOption2()
     {
-        ApplyBoon(randList[1].Item1);
+        ApplyBoon(boonList[1].Item1);
         boonMenu.SetActive(false);
         GameManager.instance.stateUnpaused();
     }
     public void boonOption3()
     {
-        ApplyBoon(randList[2].Item1);
+        ApplyBoon(boonList[2].Item1);
         boonMenu.SetActive(false);
         GameManager.instance.stateUnpaused();
     }

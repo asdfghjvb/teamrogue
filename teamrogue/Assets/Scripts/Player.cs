@@ -9,7 +9,7 @@ public class Player : MonoBehaviour, IDamage
 {
     //public static Player instance;
     [SerializeField] CharacterController playerController;
-    [SerializeField] public int health;
+    [SerializeField] public float health;
     [SerializeField] public float speed;
     [SerializeField] public float sprintMod;
     [SerializeField] public float armorMod;
@@ -17,10 +17,10 @@ public class Player : MonoBehaviour, IDamage
     [SerializeField] int jumpSpeed;
     [SerializeField] int gravity;
 
-    [SerializeField] int meleeDamage;
+    [SerializeField] public int meleeDamage;
     [SerializeField] float meleeRange;
     [SerializeField] float meleeRate;
-    [SerializeField] float meleeCooldown;
+    [SerializeField] public float meleeCooldown;
 
 
     [SerializeField] public int shootDamage;
@@ -31,7 +31,7 @@ public class Player : MonoBehaviour, IDamage
     bool isMeleeAttacking;
     float lastMeleeTime;
     int jumpCount;
-    public int fullHealth;
+    public float fullHealth;
     Vector3 moveDir;
     Vector3 playerVel;
     // Start is called before the first frame update
@@ -135,7 +135,7 @@ public class Player : MonoBehaviour, IDamage
 
     public void takeDamage(int amount)
     {
-        health -= amount;
+        health -= amount * armorMod;
         updatePlayerUI();
 
         if (health <= 0)

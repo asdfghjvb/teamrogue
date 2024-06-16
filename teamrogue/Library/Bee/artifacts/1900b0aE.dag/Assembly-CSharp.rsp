@@ -360,6 +360,7 @@
 "Assets/Scripts/Bullet.cs"
 "Assets/Scripts/ButtonFunctions.cs"
 "Assets/Scripts/CameraController.cs"
+"Assets/Scripts/Chest.cs"
 "Assets/Scripts/Enemies/EnemyAI.cs"
 "Assets/Scripts/Enemies/MeleeEnemy.cs"
 "Assets/Scripts/Enemies/RangedEnemy.cs"
