@@ -1748,10 +1748,14 @@ MonoBehaviour:
   animator: {fileID: 318366928405577132}
   dropSpawn: {fileID: 5717293315098642665}
   healthDrop: {fileID: 3872918420654432094, guid: c9557f0f8539d1e4ab13af81eed49060, type: 3}
-  HP: 30
+  HP: 50
   attackRate: 5
   bullet: {fileID: 6174925267386981003, guid: 64cabfcf81ad36540b68eef25ffbf846, type: 3}
   shootPos: {fileID: 7331182653645490619}
+  minion: {fileID: 8884437639860936480, guid: 7cc3bde90e7b27940b58621f203f0264, type: 3}
+  spawnRate: 10
+  spawnQuantity: 4
+  spawnRadius: 3
 --- !u!95 &318366928405577132
 Animator:
   serializedVersion: 5

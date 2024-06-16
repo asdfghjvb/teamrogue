@@ -4,6 +4,41 @@ using UnityEngine;
 
 public class LichKing : RangedEnemy
 {
+    [SerializeField] GameObject minion;
+
+    [SerializeField] int spawnRate;
+    [SerializeField] int spawnQuantity;
+    [SerializeField] int spawnRadius;
+
+    bool spawnCooldown;
+
+    protected override void Update()
+    {
+        base.Update();
+
+        if(!spawnCooldown)
+        {
+            StartCoroutine(spawnMinions());
+        }
+    }
+
+    IEnumerator spawnMinions()
+    {
+        spawnCooldown = true;
+
+        Quaternion rotation = transform.rotation;
+        for (int i = 0; i < spawnQuantity; i++)
+        {
+            Vector3 randomPosition = transform.position + Random.insideUnitSphere * spawnRadius;
+            randomPosition.y = transform.position.y;
+
+            Instantiate(minion, randomPosition, rotation);
+        }
+
+        yield return new WaitForSeconds(spawnRate);
+        spawnCooldown = false;
+    }
+
     public override IEnumerator shoot()
     {
         isShooting = true;

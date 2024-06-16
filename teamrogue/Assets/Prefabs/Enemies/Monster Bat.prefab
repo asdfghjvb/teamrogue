@@ -88,7 +88,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1625221395402176, guid: c9951ca0f61167b4593ffe21b0a089c8, type: 3}
       propertyPath: m_Name
-      value: Monster Bat (w_ laser eyes)
+      value: Monster Bat
       objectReference: {fileID: 0}
     - target: {fileID: 1625221395402176, guid: c9951ca0f61167b4593ffe21b0a089c8, type: 3}
       propertyPath: m_IsActive
@@ -96,31 +96,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4085869397129016, guid: c9951ca0f61167b4593ffe21b0a089c8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4085869397129016, guid: c9951ca0f61167b4593ffe21b0a089c8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.09
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4085869397129016, guid: c9951ca0f61167b4593ffe21b0a089c8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 21
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4085869397129016, guid: c9951ca0f61167b4593ffe21b0a089c8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.0000029802318
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4085869397129016, guid: c9951ca0f61167b4593ffe21b0a089c8, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4085869397129016, guid: c9951ca0f61167b4593ffe21b0a089c8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4085869397129016, guid: c9951ca0f61167b4593ffe21b0a089c8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4085869397129016, guid: c9951ca0f61167b4593ffe21b0a089c8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -128,7 +128,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4085869397129016, guid: c9951ca0f61167b4593ffe21b0a089c8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -180.00002
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4085869397129016, guid: c9951ca0f61167b4593ffe21b0a089c8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -188,7 +188,7 @@ MonoBehaviour:
   agent: {fileID: 5703838189883637796}
   animator: {fileID: 17963841987196544}
   dropSpawn: {fileID: 2735307339152969320}
-  healthDrop: {fileID: 0}
+  healthDrop: {fileID: 3872918420654432094, guid: c9557f0f8539d1e4ab13af81eed49060, type: 3}
   HP: 10
   attackRate: 1
   bullet: {fileID: 6073588209328858228, guid: a19faa504cf8fad44b87351e2628050a, type: 3}
