@@ -10,6 +10,8 @@ public class Bullet : MonoBehaviour
     [SerializeField] int speed;
     [SerializeField] int destroyTime;
 
+    [SerializeField] bool destroyOnInpact = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,9 @@ public class Bullet : MonoBehaviour
         if (dmg != null)
         {
             dmg.takeDamage(damage);
+
+            if (!destroyOnInpact) //check is here so it will still be destroyed when hitting structures
+                return;
         }
 
         Destroy(gameObject);

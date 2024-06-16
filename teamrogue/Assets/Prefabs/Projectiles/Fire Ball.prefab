@@ -14563,7 +14563,8 @@ MonoBehaviour:
   rb: {fileID: 9040726039410473948}
   damage: 10
   speed: 10
-  destroyTime: 3
+  destroyTime: 5
+  destroyOnInpact: 0
 --- !u!198 &92935831614833925
 ParticleSystem:
   m_ObjectHideFlags: 0

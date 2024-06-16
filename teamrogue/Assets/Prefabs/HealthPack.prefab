@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d965c8fd64a560b4b8d8d2ad797aeaf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healing: 5
-  destroyTime: 30
+  healing: 1
+  destroyTime: 10
 --- !u!33 &1029506238901544312
 MeshFilter:
   m_ObjectHideFlags: 0
