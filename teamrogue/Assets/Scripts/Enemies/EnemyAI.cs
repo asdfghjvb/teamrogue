@@ -17,13 +17,13 @@ public class EnemyAI : MonoBehaviour, IDamage
     Vector3 playerDir;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         GameManager.instance.updateGoal(1);
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         Movement();
     }

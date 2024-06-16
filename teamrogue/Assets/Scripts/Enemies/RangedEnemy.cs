@@ -4,37 +4,31 @@ using UnityEngine;
 
 public class RangedEnemy : EnemyAI, IDamage
 {
-    [SerializeField] GameObject bullet;
-    [SerializeField] Transform shootPos;
-    [SerializeField] bool spawner = false;
+    [SerializeField] protected GameObject bullet;
+    [SerializeField] protected Transform shootPos;
+    
 
-    bool isShooting;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        GameManager.instance.updateGoal(1);
-    }
+    protected bool isShooting;
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        Movement();
+        base.Update();
 
         if (isShooting == false)
             StartCoroutine(shoot());
     }
 
-   IEnumerator shoot()
-   {
-       isShooting = true;
-       Instantiate(bullet, shootPos.position, transform.rotation);
-       if (spawner)
-        {
-            GameManager.instance.updateGoal(1);
-        }
-       yield return new WaitForSeconds(attackRate);
-       isShooting = false;
-   }
+    public virtual IEnumerator shoot()
+    {
+        isShooting = true;
+
+        animator.SetTrigger("Shoot");
+        Instantiate(bullet, shootPos.position, transform.rotation);
+        
+        yield return new WaitForSeconds(attackRate);
+        
+        isShooting = false;
+    }
 
 }
