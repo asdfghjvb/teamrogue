@@ -54,6 +54,8 @@ public class EnemyAI : MonoBehaviour, IDamage
            
             Collider collider = GetComponent<Collider>();
             collider.enabled = false; //disable collider
+
+            agent.enabled = false; //disable nav mesh
             
             enabled = false; //disable movement
             
@@ -65,11 +67,11 @@ public class EnemyAI : MonoBehaviour, IDamage
     {
         animator.SetTrigger("Death");
         GameManager.instance.updateGoal(-1);
+        Instantiate(healthDrop, dropSpawn.position, transform.rotation);
 
         yield return new WaitForSeconds(deathAnimationDuration);
 
         Destroy(gameObject);
-        Instantiate(healthDrop, dropSpawn.position, transform.rotation);
     }
 
     IEnumerator flashDamage()
