@@ -371,6 +371,7 @@
 "Assets/Scripts/MeleeWeapon.cs"
 "Assets/Scripts/Player.cs"
 "Assets/Scripts/Shooter.cs"
+"Assets/Scripts/SpawnGate.cs"
 -langversion:9.0
 /deterministic
 /optimize+
