@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class RangedEnemy : EnemyAI, IDamage
 {
-    [SerializeField] protected GameObject bullet;
+    [Space(5)]
+    [Header("Ranged Weapon")]
+    
+    [Tooltip("The object that will be created when this enemy fires")]
+    [SerializeField] protected GameObject projectile;
+    
+    [Tooltip("The transform the projectile when be created at")]
     [SerializeField] protected Transform shootPos;
     
 
@@ -24,7 +30,7 @@ public class RangedEnemy : EnemyAI, IDamage
         isShooting = true;
 
         animator.SetTrigger("Shoot");
-        Instantiate(bullet, shootPos.position, transform.rotation);
+        Instantiate(projectile, shootPos.position, transform.rotation);
         
         yield return new WaitForSeconds(attackRate);
         

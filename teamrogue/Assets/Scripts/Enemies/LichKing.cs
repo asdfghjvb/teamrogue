@@ -4,10 +4,19 @@ using UnityEngine;
 
 public class LichKing : RangedEnemy
 {
+    [Space(5)]
+    [Header("Minion Spawning")]
+
+    [Tooltip("The enemy that will be summoned by the lich king")]
     [SerializeField] GameObject minion;
 
+    [Tooltip("How often the lich king will spawn more minions")]
     [SerializeField] int spawnRate;
+
+    [Tooltip("The amount of minions that will be spawned at once")]
     [SerializeField] int spawnQuantity;
+
+    [Tooltip("The radius around the lich king in which minions will be spawned")]
     [SerializeField] int spawnRadius;
 
     bool spawnCooldown;
@@ -44,7 +53,7 @@ public class LichKing : RangedEnemy
         isShooting = true;
 
         yield return StartCoroutine(playShootAnimation());
-        Instantiate(bullet, shootPos.position, transform.rotation);
+        Instantiate(projectile, shootPos.position, transform.rotation);
 
         yield return new WaitForSeconds(attackRate);
 

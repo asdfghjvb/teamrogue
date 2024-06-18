@@ -5,14 +5,21 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour, IDamage
 {
+    [Header("Components")]
     [SerializeField] protected Renderer model;
     [SerializeField] protected NavMeshAgent agent;
     [SerializeField] protected Animator animator;
     [SerializeField] protected Transform dropSpawn;
     [SerializeField] protected GameObject healthDrop;
+    [Space(5)]
 
+    [Header("Stats")]
     [SerializeField] protected int HP;
     [SerializeField] protected float attackRate;
+    [Space(5)]
+
+    [Header("Misc")]
+    [Tooltip("How long in seconds the body will last after the death animation before being destroyed")]
     [SerializeField] protected float deathAnimationDuration = 5.0f;
 
     Vector3 playerDir;

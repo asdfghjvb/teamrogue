@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpawnGate : MonoBehaviour
 {
+    [Tooltip("All enemies you want connected to the spawn gate should be dragged here")]
     [SerializeField] List<GameObject> Enemies;
 
     // Start is called before the first frame update
