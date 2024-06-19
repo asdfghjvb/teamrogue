@@ -9,8 +9,14 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] protected Renderer model;
     [SerializeField] protected NavMeshAgent agent;
     [SerializeField] protected Animator animator;
+    [Space(5)]
+
+    [Header("Health Drop")]
     [SerializeField] protected Transform dropSpawn;
     [SerializeField] protected GameObject healthDrop;
+
+    [Range(0,1)]
+    [SerializeField] protected float dropChance;
     [Space(5)]
 
     [Header("Stats")]
@@ -72,9 +78,17 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     protected virtual IEnumerator OnDeath()
     {
+        Collider collider = GetComponent<Collider>();
+        collider.enabled = false; //disable collider
+        agent.enabled = false; //disable nav mesh
+        enabled = false; //disable movement
+
         animator.SetTrigger("Death");
         GameManager.instance.updateGoal(-1);
-        Instantiate(healthDrop, dropSpawn.position, transform.rotation);
+
+        float checkSpawnChance = Random.value;
+        if(checkSpawnChance < dropChance)
+            Instantiate(healthDrop, dropSpawn.position, transform.rotation);
 
         yield return new WaitForSeconds(deathAnimationDuration);
 
