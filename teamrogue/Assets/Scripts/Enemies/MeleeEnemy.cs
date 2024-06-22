@@ -6,9 +6,19 @@ using UnityEngine.AI;
 
 public class MeleeEnemy : EnemyAI, IDamage
 {
+    [Space(5)]
+    [Header("Melee Weapon")]
+    [SerializeField] Collider weaponCol;
+
     bool isAttacking = false;
 
-    // Update is called once per frame
+    protected override void Start()
+    {
+        base.Start();
+
+        weaponCol.enabled = false;
+    }
+
     protected override void Update()
     {
         base.Update();
@@ -27,5 +37,15 @@ public class MeleeEnemy : EnemyAI, IDamage
         yield return new WaitForSeconds(attackRate);
 
         isAttacking = false;
+    }
+
+    public void WeaponColOn()
+    {
+        weaponCol.enabled = true;
+    }
+
+    public void WeaponColOff()
+    {
+        weaponCol.enabled = false;
     }
 }
