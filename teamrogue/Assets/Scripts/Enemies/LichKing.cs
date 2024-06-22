@@ -25,7 +25,7 @@ public class LichKing : RangedEnemy
     {
         base.Update();
 
-        if(!spawnCooldown)
+        if (!spawnCooldown)
         {
             StartCoroutine(spawnMinions());
         }
@@ -52,19 +52,14 @@ public class LichKing : RangedEnemy
     {
         isShooting = true;
 
-        yield return StartCoroutine(playShootAnimation());
-        Instantiate(projectile, shootPos.position, transform.rotation);
-
+        animator.SetTrigger("Shoot");
         yield return new WaitForSeconds(attackRate);
 
         isShooting = false;
     }
 
-   public IEnumerator playShootAnimation()
+    public void InstantiateFireBall()
     {
-        animator.SetTrigger("Shoot");
-        yield return new WaitForSeconds(0.47f);
-        //0.47 seconds seems to be a sweet spot where it hits a still player about 75% of the time
-        //Keep between 0.45 & 0.48 for best results 
+        Instantiate(projectile, shootPos.position, transform.rotation);
     }
 }

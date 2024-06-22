@@ -1754,9 +1754,9 @@ MonoBehaviour:
   deathAnimationDuration: 8
   projectile: {fileID: 6174925267386981003, guid: 64cabfcf81ad36540b68eef25ffbf846, type: 3}
   shootPos: {fileID: 7331182653645490619}
-  minion: {fileID: 6747941973928984536, guid: 57af10ffde2fb6048859c3fa215416b1, type: 3}
-  spawnRate: 8
-  spawnQuantity: 6
+  minion: {fileID: 7878885587272555556, guid: 7cc3bde90e7b27940b58621f203f0264, type: 3}
+  spawnRate: 10
+  spawnQuantity: 5
   spawnRadius: 5
 --- !u!95 &318366928405577132
 Animator:
