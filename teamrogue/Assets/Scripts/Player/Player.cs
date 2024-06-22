@@ -29,7 +29,7 @@ public class Player : MonoBehaviour, IDamage
     [SerializeField] GameObject bullet;
     [SerializeField] Transform shootPos;
     [SerializeField] GameObject staffModel;
-    [SerializeField] List<Staffs> staffList = new List<Staffs>();
+    [SerializeField] public List<Staffs> staffList = new List<Staffs>();
 
     int currentStaff;
     bool isShooting;
@@ -163,6 +163,8 @@ public class Player : MonoBehaviour, IDamage
     public void getStaff(Staffs staff)
     {
         staffList.Add(staff);
+        if (staffList.Count == 3 && GameManager.instance.boonCount >= 0)
+            GameManager.instance.beginDoorCol.enabled = true;
         currentStaff = staffList.Count - 1;
 
 

@@ -13,6 +13,7 @@ public class BoonManager : MonoBehaviour
     public static BoonManager instance;
 
     [SerializeField] GameObject boonMenu;
+    [SerializeField] GameObject boonCol;
 
     [SerializeField] TMP_Text option1;
     [SerializeField] TMP_Text option2;
@@ -107,5 +108,10 @@ public class BoonManager : MonoBehaviour
         ApplyBoon(boonList[2].Item1);
         boonMenu.SetActive(false);
         GameManager.instance.stateUnpaused();
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        GameManager.instance.boonSelection();
+        boonCol.SetActive(false);
     }
 }
