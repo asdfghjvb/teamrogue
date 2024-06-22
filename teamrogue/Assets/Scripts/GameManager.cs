@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
 
         if (enemyCount <= 0)
         {
-            youWin();
+            
             rewardChest.SetActive(true);
         }
     }

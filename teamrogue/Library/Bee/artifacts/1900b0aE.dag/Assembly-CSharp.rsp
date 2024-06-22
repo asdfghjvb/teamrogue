@@ -369,7 +369,10 @@
 "Assets/Scripts/HealthPack.cs"
 "Assets/Scripts/IDamage.cs"
 "Assets/Scripts/MeleeWeapon.cs"
-"Assets/Scripts/Player.cs"
+"Assets/Scripts/Player/Bullet Player.cs"
+"Assets/Scripts/Player/Player.cs"
+"Assets/Scripts/Player/StaffPickup.cs"
+"Assets/Scripts/Player/Staffs.cs"
 "Assets/Scripts/Shooter.cs"
 "Assets/Scripts/SpawnGate.cs"
 -langversion:9.0
