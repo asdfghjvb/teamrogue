@@ -138,8 +138,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 111413649560378406, guid: c9951ca0f61167b4593ffe21b0a089c8, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4085869397129016, guid: c9951ca0f61167b4593ffe21b0a089c8, type: 3}
@@ -193,7 +192,7 @@ MonoBehaviour:
   agent: {fileID: 5703838189883637796}
   animator: {fileID: 17963841987196544}
   dropSpawn: {fileID: 2735307339152969320}
-  healthDrop: {fileID: 3872918420654432094, guid: c9557f0f8539d1e4ab13af81eed49060, type: 3}
+  healthDrop: {fileID: 6769170450033730269, guid: bd4446a97bed5814a8766d63fc0ebca9, type: 3}
   dropChance: 0
   HP: 10
   attackRate: 1

@@ -555,8 +555,8 @@ MonoBehaviour:
   agent: {fileID: 1768642230605276244}
   animator: {fileID: 2801274763266809824}
   dropSpawn: {fileID: 8070464115815286170}
-  healthDrop: {fileID: 3872918420654432094, guid: c9557f0f8539d1e4ab13af81eed49060, type: 3}
-  dropChance: 0
+  healthDrop: {fileID: 6769170450033730269, guid: bd4446a97bed5814a8766d63fc0ebca9, type: 3}
+  dropChance: 0.5
   HP: 10
   attackRate: 1
   deathAnimationDuration: 5
