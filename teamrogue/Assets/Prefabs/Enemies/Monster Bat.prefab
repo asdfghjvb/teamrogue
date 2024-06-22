@@ -91,6 +91,10 @@ PrefabInstance:
       value: Monster Bat
       objectReference: {fileID: 0}
     - target: {fileID: 1625221395402176, guid: c9951ca0f61167b4593ffe21b0a089c8, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1625221395402176, guid: c9951ca0f61167b4593ffe21b0a089c8, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -190,10 +194,11 @@ MonoBehaviour:
   animator: {fileID: 17963841987196544}
   dropSpawn: {fileID: 2735307339152969320}
   healthDrop: {fileID: 3872918420654432094, guid: c9557f0f8539d1e4ab13af81eed49060, type: 3}
+  dropChance: 0
   HP: 10
   attackRate: 1
   deathAnimationDuration: 0
-  bullet: {fileID: 6073588209328858228, guid: a19faa504cf8fad44b87351e2628050a, type: 3}
+  projectile: {fileID: 0}
   shootPos: {fileID: 6680915959688046160}
 --- !u!95 &17963841987196544
 Animator:

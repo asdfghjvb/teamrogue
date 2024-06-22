@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SwordBroken
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af582b6dd7000b24ebc3d7d2a425cab9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -121,6 +125,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkeletonWarrior
       objectReference: {fileID: 0}
+    - target: {fileID: 126130302089793275, guid: 94025afe18059204e901d3bec7d70224, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 692451916635087095, guid: 94025afe18059204e901d3bec7d70224, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.939341
@@ -163,15 +171,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 759923595828384833, guid: 94025afe18059204e901d3bec7d70224, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.8982668
+      value: 4.0034256
       objectReference: {fileID: 0}
     - target: {fileID: 759923595828384833, guid: 94025afe18059204e901d3bec7d70224, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.0000019073486
       objectReference: {fileID: 0}
     - target: {fileID: 759923595828384833, guid: 94025afe18059204e901d3bec7d70224, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.775733
+      value: 65.13864
       objectReference: {fileID: 0}
     - target: {fileID: 759923595828384833, guid: 94025afe18059204e901d3bec7d70224, type: 3}
       propertyPath: m_LocalRotation.w
@@ -548,8 +556,10 @@ MonoBehaviour:
   animator: {fileID: 2801274763266809824}
   dropSpawn: {fileID: 8070464115815286170}
   healthDrop: {fileID: 3872918420654432094, guid: c9557f0f8539d1e4ab13af81eed49060, type: 3}
+  dropChance: 0
   HP: 10
   attackRate: 1
+  deathAnimationDuration: 5
 --- !u!195 &1768642230605276244
 NavMeshAgent:
   m_ObjectHideFlags: 0

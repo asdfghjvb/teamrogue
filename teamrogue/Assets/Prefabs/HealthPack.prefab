@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1029506238901544312}
   - component: {fileID: 8343470985657120463}
   - component: {fileID: 2812139827886552699}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HealthPack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,6 +49,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healing: 1
   destroyTime: 10
+  hoverHeight: 0
+  rotationSpeed: 0
 --- !u!33 &1029506238901544312
 MeshFilter:
   m_ObjectHideFlags: 0
