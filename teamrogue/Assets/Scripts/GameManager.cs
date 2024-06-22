@@ -19,8 +19,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject rewardChest;
     [SerializeField] public GameObject healButton;
     [SerializeField] public GameObject boonButton;
-    [SerializeField] public GameObject door1;
-    [SerializeField] public GameObject door2;
+
+    [SerializeField] public Collider beginDoorCol;
+    [SerializeField] public Collider room1DoorCol;
 
     [SerializeField] TMP_Text enemyCountText;
     [SerializeField] Image meleeCooldownUI;
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
 
     public bool isPaused;
     int enemyCount;
+    public int boonCount;
 
     // Start is called before the first frame update
     void Awake()
@@ -41,7 +43,6 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindWithTag("Player");
        
         playerScript = player.GetComponent<Player>();
-        boonSelection();
     }
 
     // Update is called once per frame
@@ -110,6 +111,10 @@ public class GameManager : MonoBehaviour
         statePaused();
         menuActive = menuBoon;
         menuActive.SetActive(isPaused);
+        boonCount++;
+        if (playerScript.staffList.Count == 3 && boonCount == 1)
+            beginDoorCol.enabled = true;
+
     }
     public void rewardMenu()
     {

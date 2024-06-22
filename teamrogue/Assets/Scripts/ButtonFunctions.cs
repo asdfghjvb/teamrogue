@@ -32,19 +32,15 @@ public class ButtonFunctions : MonoBehaviour
         else
             GameManager.instance.playerScript.health = GameManager.instance.playerScript.fullHealth;
         GameManager.instance.healButton.SetActive(false);
+        GameManager.instance.boonButton.SetActive(true);
     }
     public void boonReward()
     {
         BoonManager.instance.randomizeList();
         GameManager.instance.boonSelection();
-        GameManager.instance.boonButton.SetActive(false);
+        GameManager.instance.room1DoorCol.enabled = true;
     }
-    public void closeChest()
-    {
-        resume();
-        GameManager.instance.door1.transform.position = new Vector3(2, 0, 0);
-        GameManager.instance.door2.transform.position = new Vector3(-2, 0, 0);
-    }
-    
+
+
 
 }

@@ -29,7 +29,6 @@ public class RangedEnemy : EnemyAI, IDamage
     {
         isShooting = true;
 
-        animator.SetTrigger("Shoot");
         Instantiate(projectile, shootPos.position, transform.rotation);
         
         yield return new WaitForSeconds(attackRate);
