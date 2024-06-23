@@ -45,6 +45,9 @@ public class Player : MonoBehaviour, IDamage
     void Start()
     {
         //instance = this;
+        UnityEngine.Cursor.visible = false;
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+
         fullHealth = health;
         updatePlayerUI();
     }
@@ -197,6 +200,7 @@ public class Player : MonoBehaviour, IDamage
         shootDist = staffList[currentStaff].staffDistance;
         shootRate = staffList[currentStaff].staffSpeed;
         bullet = staffList[currentStaff].bullet;
+
         staffModel.GetComponent<MeshFilter>().sharedMesh = staffList[currentStaff].staffModel.GetComponent<MeshFilter>().sharedMesh;
         staffModel.GetComponent<MeshRenderer>().sharedMaterial = staffList[currentStaff].staffModel.GetComponent<MeshRenderer>().sharedMaterial;
     }

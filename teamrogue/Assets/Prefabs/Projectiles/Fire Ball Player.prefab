@@ -14659,7 +14659,7 @@ MonoBehaviour:
   damage: 5
   speed: 10
   destroyTime: 5
-  destroyOnInpact: 1
+  destroyOnInpact: 0
 --- !u!198 &92935831614833925
 ParticleSystem:
   m_ObjectHideFlags: 0

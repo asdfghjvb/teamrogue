@@ -162,7 +162,7 @@ MonoBehaviour:
   dropSpawn: {fileID: 1562819519624701888}
   healthDrop: {fileID: 6769170450033730269, guid: bd4446a97bed5814a8766d63fc0ebca9, type: 3}
   dropChance: 0.5
-  HP: 10
+  HP: 5
   attackRate: 1
   deathAnimationDuration: 0
   projectile: {fileID: 6073588209328858228, guid: a19faa504cf8fad44b87351e2628050a, type: 3}
