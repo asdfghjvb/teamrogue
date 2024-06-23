@@ -24,6 +24,7 @@ public class Door : MonoBehaviour
             door1.transform.position = new Vector3(.5f, 0, 0);
             door2.transform.position = new Vector3(-.5f, 0, 0);
         }
+        GameManager.instance.navMeshBakerScript.rebakeNavMesh();
 
     }
 }

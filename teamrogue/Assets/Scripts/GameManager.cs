@@ -35,6 +35,9 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public Player playerScript;
 
+    public GameObject plane;
+    public NavMeshBaker navMeshBakerScript;
+
     public bool isPaused;
     int enemyCount;
     public int boonCount;
@@ -44,8 +47,11 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         player = GameObject.FindWithTag("Player");
-       
         playerScript = player.GetComponent<Player>();
+
+        plane = GameObject.FindWithTag("Plane");
+        navMeshBakerScript = plane.GetComponent<NavMeshBaker>();
+
 
         foreach (Staffs staffs in allStaffs)
         {
