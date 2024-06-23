@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RangedEnemy : EnemyAI, IDamage
 {
+
     [Space(5)]
     [Header("Ranged Weapon")]
     
@@ -21,7 +22,7 @@ public class RangedEnemy : EnemyAI, IDamage
     {
         base.Update();
 
-        if (isShooting == false)
+        if (isShooting == false && playerInView())
             StartCoroutine(shoot());
     }
 

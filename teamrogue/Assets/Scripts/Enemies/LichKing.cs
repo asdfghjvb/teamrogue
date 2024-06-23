@@ -25,7 +25,7 @@ public class LichKing : RangedEnemy
     {
         base.Update();
 
-        if (!spawnCooldown)
+        if (!spawnCooldown && playerInView())
         {
             StartCoroutine(spawnMinions());
         }
