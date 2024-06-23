@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 057270d221f11a74aa1127022b29a8da, type: 3}
-  m_Name: Staff Lightning
+  m_Name: Staff Ice
   m_EditorClassIdentifier: 
-  staffModel: {fileID: 6759754029706040241, guid: 0ac02a3480fd1e74399e4bce194de9f4, type: 3}
-  staffDamage: 1
-  staffDistance: 75
-  staffSpeed: 0.1
-  bullet: {fileID: 3408414718127014836, guid: 6b071fcc878a3ff4db08269ae8a6686a, type: 3}
+  staffModel: {fileID: 3844808660582485764, guid: 4a094bd13a554ce429a71f8ade990f26, type: 3}
+  staffDamage: 5
+  staffDistance: 30
+  staffSpeed: 0.2
+  bullet: {fileID: 3874923388927500946, guid: 63eccd2910c842a42a68c76dc8dcc9b8, type: 3}
   hitEffect: {fileID: 0}

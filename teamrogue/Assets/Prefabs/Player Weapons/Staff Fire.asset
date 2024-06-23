@@ -15,6 +15,6 @@ MonoBehaviour:
   staffModel: {fileID: 2083943641721818151, guid: b9e9b9817b565da4c87dd7d4d36b234b, type: 3}
   staffDamage: 10
   staffDistance: 50
-  staffSpeed: 2
+  staffSpeed: 6
   bullet: {fileID: 6174925267386981003, guid: 64b94fc7344c3b84c99024b33f2ffaa4, type: 3}
   hitEffect: {fileID: 0}

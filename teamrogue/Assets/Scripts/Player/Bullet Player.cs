@@ -8,7 +8,7 @@ public class BulletPlayer : MonoBehaviour
 
     [SerializeField] int damage;
     [SerializeField] int speed;
-    [SerializeField] int destroyTime;
+    [SerializeField] float destroyTime;
 
     [SerializeField] bool destroyOnInpact = true;
 
