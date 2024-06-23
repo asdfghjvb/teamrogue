@@ -19,6 +19,10 @@ public class ButtonFunctions : MonoBehaviour
 
     public void quit()
     {
+        foreach(Staffs staff in GameManager.instance.playerScript.staffList)
+        {
+            staff.ResetStaffStats();
+        }
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else

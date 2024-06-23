@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEditor;
+using Unity.VisualScripting.Antlr3.Runtime.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,6 +27,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] TMP_Text enemyCountText;
     [SerializeField] Image meleeCooldownUI;
 
+    public List<Staffs> allStaffs = new List<Staffs>();
+
     public Image playerHealthBar;
 
 
@@ -43,6 +46,11 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindWithTag("Player");
        
         playerScript = player.GetComponent<Player>();
+
+        foreach (Staffs staffs in allStaffs)
+        {
+            staffs.InitializeStaffValues();
+        }
     }
 
     // Update is called once per frame
@@ -128,5 +136,54 @@ public class GameManager : MonoBehaviour
         {
             meleeCooldownUI.fillAmount = cooldownRemaining;
         }
+    }
+
+    public void applyBoon(int boonID)
+    {
+       
+        switch (boonID)
+        {
+            case 1:
+                GameManager.instance.playerScript.fullHealth += 5;
+                GameManager.instance.playerScript.health += 5;
+                break;
+            case 2:
+                foreach (Staffs staff in GameManager.instance.playerScript.staffList)
+                {
+                    staff.staffSpeed -= 0.75f;
+                }
+                break;
+            case 3:
+                GameManager.instance.playerScript.speed += 5;
+                break;
+            case 4:
+                GameManager.instance.playerScript.jumpMax += 1;
+                break;
+            case 5:
+                foreach (Staffs staff in GameManager.instance.playerScript.staffList)
+                {
+                    staff.staffDamage += 3;
+                }
+                break;
+            case 6:
+                GameManager.instance.playerScript.armorMod *= 0.9f;
+                break;
+            case 7:
+                GameManager.instance.playerScript.sprintMod *= 1.2f;
+                break;
+            case 8:
+                foreach (Staffs staff in GameManager.instance.playerScript.staffList)
+                {
+                   staff.staffDistance += 10;
+                }
+                break;
+            case 9:
+                GameManager.instance.playerScript.meleeDamage += 3;
+                break;
+            case 10:
+                GameManager.instance.playerScript.meleeCooldown *= 0.8f;
+                break;
+        }
+        
     }
 }
