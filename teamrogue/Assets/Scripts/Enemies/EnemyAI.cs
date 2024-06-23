@@ -9,6 +9,8 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] protected Renderer model;
     [SerializeField] protected NavMeshAgent agent;
     [SerializeField] protected Animator animator;
+    [SerializeField] Transform pov;
+    [SerializeField] int viewAngle;
     [Space(5)]
 
     [Header("Health Drop")]
@@ -28,13 +30,13 @@ public class EnemyAI : MonoBehaviour, IDamage
     [Tooltip("How long in seconds the body will last after the death animation before being destroyed")]
     [SerializeField] protected float deathAnimationDuration = 5.0f;
 
-    Vector3 playerDir;
+    Vector3 playerDirection;
+    float angleToPlayer;
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
         GameManager.instance.updateGoal(1);
-        agent.SetDestination(GameManager.instance.player.transform.position); //keeps enemies from attacking on game start, even when out of range
     }
 
     // Update is called once per frame
@@ -45,16 +47,10 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     public void Movement()
     {
-        playerDir = GameManager.instance.player.transform.position - transform.position;
+        playerDirection = GameManager.instance.player.transform.position - transform.position;
         float agentSpeed = agent.velocity.normalized.magnitude;
         animator.SetFloat("Speed", Mathf.Lerp(animator.GetFloat("Speed"), agentSpeed, Time.deltaTime));
 
-        if (agent.remainingDistance < agent.stoppingDistance)
-        {
-            faceTarget();
-        }
-
-        agent.SetDestination(GameManager.instance.player.transform.position);
     }
 
     public void takeDamage(int amount)
@@ -103,7 +99,27 @@ public class EnemyAI : MonoBehaviour, IDamage
     }
     void faceTarget()
     {
-        Quaternion rot = Quaternion.LookRotation(playerDir);
+        Quaternion rot = Quaternion.LookRotation(playerDirection);
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * 3);
+    }
+    public bool playerInView()
+    {
+        playerDirection = GameManager.instance.player.transform.position - transform.position;
+        angleToPlayer = Vector3.Angle(playerDirection, transform.forward);
+        RaycastHit hit;
+        if (Physics.Raycast(pov.position, playerDirection, out hit))
+        {
+            if (hit.collider.CompareTag("Player") && angleToPlayer <= viewAngle)
+            {
+                if (agent.remainingDistance < agent.stoppingDistance)
+                {
+                    faceTarget();
+                }
+
+                agent.SetDestination(GameManager.instance.player.transform.position);
+                return true;
+            }
+        }
+        return false;
     }
 }

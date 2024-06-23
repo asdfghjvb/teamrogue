@@ -662,6 +662,37 @@ Transform:
   - {fileID: 7157540957811463869}
   m_Father: {fileID: 5993895178906858869}
   m_LocalEulerAnglesHint: {x: 67.634, y: -145.156, z: -151.442}
+--- !u!1 &1607813956212364538
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 271058665904973942}
+  m_Layer: 7
+  m_Name: povPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &271058665904973942
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607813956212364538}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 1.638, z: 0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3426619728902693935}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1614290306926331056
 GameObject:
   m_ObjectHideFlags: 0
@@ -2617,6 +2648,7 @@ Transform:
   m_Children:
   - {fileID: 2080181519700512580}
   - {fileID: 6312371083440787230}
+  - {fileID: 271058665904973942}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 184.125, z: 0}
 --- !u!114 &6914128595905687285
@@ -2634,6 +2666,8 @@ MonoBehaviour:
   model: {fileID: 7274299613980925326}
   agent: {fileID: 8904966343889805748}
   animator: {fileID: 863545328823764714}
+  pov: {fileID: 271058665904973942}
+  viewAngle: 0
   dropSpawn: {fileID: 3426619728902693935}
   healthDrop: {fileID: 6769170450033730269, guid: bd4446a97bed5814a8766d63fc0ebca9, type: 3}
   dropChance: 0.5
@@ -2676,7 +2710,7 @@ NavMeshAgent:
   m_Acceleration: 32
   avoidancePriority: 50
   m_AngularSpeed: 300
-  m_StoppingDistance: 2
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1

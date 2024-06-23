@@ -8189,6 +8189,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 861340769}
   m_LocalEulerAnglesHint: {x: 0, y: 89.826, z: 0}
+--- !u!1001 &1382096740
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 975026479032028575, guid: b5e87a02f7960c44ab4849a55d1c90e1, type: 3}
+      propertyPath: m_Name
+      value: Monster Bat (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1562819519624701888, guid: b5e87a02f7960c44ab4849a55d1c90e1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -23.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1562819519624701888, guid: b5e87a02f7960c44ab4849a55d1c90e1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 1562819519624701888, guid: b5e87a02f7960c44ab4849a55d1c90e1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 16.646198
+      objectReference: {fileID: 0}
+    - target: {fileID: 1562819519624701888, guid: b5e87a02f7960c44ab4849a55d1c90e1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1562819519624701888, guid: b5e87a02f7960c44ab4849a55d1c90e1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1562819519624701888, guid: b5e87a02f7960c44ab4849a55d1c90e1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1562819519624701888, guid: b5e87a02f7960c44ab4849a55d1c90e1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1562819519624701888, guid: b5e87a02f7960c44ab4849a55d1c90e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1562819519624701888, guid: b5e87a02f7960c44ab4849a55d1c90e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 1562819519624701888, guid: b5e87a02f7960c44ab4849a55d1c90e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b5e87a02f7960c44ab4849a55d1c90e1, type: 3}
 --- !u!1 &1390769403
 GameObject:
   m_ObjectHideFlags: 0
@@ -8415,63 +8472,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &1421234127
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 975026479032028575, guid: b5e87a02f7960c44ab4849a55d1c90e1, type: 3}
-      propertyPath: m_Name
-      value: Monster Bat (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1562819519624701888, guid: b5e87a02f7960c44ab4849a55d1c90e1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -22.39
-      objectReference: {fileID: 0}
-    - target: {fileID: 1562819519624701888, guid: b5e87a02f7960c44ab4849a55d1c90e1, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 1562819519624701888, guid: b5e87a02f7960c44ab4849a55d1c90e1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 16.646198
-      objectReference: {fileID: 0}
-    - target: {fileID: 1562819519624701888, guid: b5e87a02f7960c44ab4849a55d1c90e1, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1562819519624701888, guid: b5e87a02f7960c44ab4849a55d1c90e1, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1562819519624701888, guid: b5e87a02f7960c44ab4849a55d1c90e1, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1562819519624701888, guid: b5e87a02f7960c44ab4849a55d1c90e1, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1562819519624701888, guid: b5e87a02f7960c44ab4849a55d1c90e1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1562819519624701888, guid: b5e87a02f7960c44ab4849a55d1c90e1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 1562819519624701888, guid: b5e87a02f7960c44ab4849a55d1c90e1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b5e87a02f7960c44ab4849a55d1c90e1, type: 3}
 --- !u!114 &1426224293 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2234753207600171527, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
@@ -10433,7 +10433,7 @@ SceneRoots:
   - {fileID: 6818682485027128625}
   - {fileID: 902624928}
   - {fileID: 1045427558}
-  - {fileID: 1421234127}
+  - {fileID: 1382096740}
   - {fileID: 1900979859}
   - {fileID: 925735691}
   - {fileID: 2140796691}
