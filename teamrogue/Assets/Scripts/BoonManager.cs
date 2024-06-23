@@ -13,11 +13,13 @@ public class BoonManager : MonoBehaviour
     public static BoonManager instance;
 
     [SerializeField] GameObject boonMenu;
-    [SerializeField] GameObject boonCol;
+    [SerializeField] Collider boonCol;
 
     [SerializeField] TMP_Text option1;
     [SerializeField] TMP_Text option2;
     [SerializeField] TMP_Text option3;
+
+    bool boonSelected = false;
 
     List<(int, string)> boonList = new List<(int, string)>{
         (1,"Increase Health"),
@@ -34,14 +36,18 @@ public class BoonManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        instance = this;
+        //instance = this;
         randomizeList();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (GameManager.instance.playerScript.staffList.Count > 0 && boonSelected == false)
+        {
+            boonCol.enabled = true;
+            boonSelected = true;
+        }
     }
     public void randomizeList()
     {
@@ -93,25 +99,34 @@ public class BoonManager : MonoBehaviour
 
     public void boonOption1()
     {
-        ApplyBoon(boonList[0].Item1);
+        GameManager.instance.applyBoon(boonList[0].Item1);
+        GameManager.instance.boonCount += 1;
         boonMenu.SetActive(false);
         GameManager.instance.stateUnpaused();
     }
     public void boonOption2()
     {
-        ApplyBoon(boonList[1].Item1);
+        GameManager.instance.applyBoon(boonList[1].Item1);
+        GameManager.instance.boonCount += 1;
         boonMenu.SetActive(false);
         GameManager.instance.stateUnpaused();
     }
     public void boonOption3()
     {
-        ApplyBoon(boonList[2].Item1);
+        GameManager.instance.applyBoon(boonList[2].Item1);
+        GameManager.instance.boonCount += 1;
         boonMenu.SetActive(false);
         GameManager.instance.stateUnpaused();
     }
     private void OnTriggerEnter(Collider other)
     {
-        GameManager.instance.boonSelection();
-        boonCol.SetActive(false);
+        if(GameManager.instance.boonCount < 1)
+        {
+            boonCol.enabled = false;
+            GameManager.instance.boonSelection();
+        }
+        
+        
+        
     }
 }

@@ -50,6 +50,8 @@ public class Player : MonoBehaviour, IDamage
 
         fullHealth = health;
         updatePlayerUI();
+
+        
     }
 
     // Update is called once per frame
@@ -182,16 +184,20 @@ public class Player : MonoBehaviour, IDamage
 
     void selectStaff()
     {
-        if (Input.GetAxis("Mouse ScrollWheel") > 0 && currentStaff < staffList.Count - 1)
+        if (!GameManager.instance.isPaused)
         {
-            currentStaff++;
-            changeStaff();
+            if (Input.GetAxis("Mouse ScrollWheel") > 0 && currentStaff < staffList.Count - 1)
+            {
+                currentStaff++;
+                changeStaff();
+            }
+            else if (Input.GetAxis("Mouse ScrollWheel") < 0 && currentStaff > 0)
+            {
+                currentStaff--;
+                changeStaff();
+            }
         }
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && currentStaff > 0)
-        {
-            currentStaff--;
-            changeStaff();
-        }
+        
     }
 
     void changeStaff()

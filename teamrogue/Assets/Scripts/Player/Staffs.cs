@@ -13,4 +13,22 @@ public class Staffs : ScriptableObject
     public GameObject bullet;
 
     public ParticleSystem hitEffect;
+
+    private int staffBaseDamage;
+    private int staffBaseDistance;
+    private float staffBaseSpeed;
+
+    public void InitializeStaffValues()
+    {
+        staffBaseDamage = staffDamage;
+        staffBaseDistance = staffDistance;
+        staffBaseSpeed = staffSpeed;
+    }
+
+    public void ResetStaffStats()
+    {
+        staffDamage = staffBaseDamage;
+        staffDistance = staffBaseDistance;
+        staffSpeed = staffBaseSpeed;
+    }
 }
