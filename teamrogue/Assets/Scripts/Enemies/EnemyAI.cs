@@ -17,7 +17,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] protected Transform dropSpawn;
     [SerializeField] protected GameObject healthDrop;
 
-    [Range(0,1)]
+    [Range(0, 1)]
     [SerializeField] protected float dropChance;
     [Space(5)]
 
@@ -42,7 +42,8 @@ public class EnemyAI : MonoBehaviour, IDamage
     // Update is called once per frame
     protected virtual void Update()
     {
-        Movement();
+        if (playerInView())
+            Movement();
     }
 
     public void Movement()
@@ -51,23 +52,22 @@ public class EnemyAI : MonoBehaviour, IDamage
         float agentSpeed = agent.velocity.normalized.magnitude;
         animator.SetFloat("Speed", Mathf.Lerp(animator.GetFloat("Speed"), agentSpeed, Time.deltaTime));
 
+        if (agent.remainingDistance < agent.stoppingDistance)
+        {
+            faceTarget();
+        }
+
+        agent.SetDestination(GameManager.instance.player.transform.position);
     }
 
     public void takeDamage(int amount)
     {
         HP -= amount;
         StartCoroutine(flashDamage());
+        Movement(); //if enemy takes dmg, move towards player
 
         if (HP <= 0)
         {
-           
-            Collider collider = GetComponent<Collider>();
-            collider.enabled = false; //disable collider
-
-            agent.enabled = false; //disable nav mesh
-            
-            enabled = false; //disable movement
-            
             StartCoroutine(OnDeath());
         }
     }
@@ -83,7 +83,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         GameManager.instance.updateGoal(-1);
 
         float checkSpawnChance = Random.value;
-        if(checkSpawnChance < dropChance)
+        if (checkSpawnChance < dropChance)
             Instantiate(healthDrop, dropSpawn.position, transform.rotation);
 
         yield return new WaitForSeconds(deathAnimationDuration);
@@ -97,26 +97,25 @@ public class EnemyAI : MonoBehaviour, IDamage
         yield return new WaitForSeconds(0.1f);
         model.material.color = Color.white;
     }
+
     void faceTarget()
     {
         Quaternion rot = Quaternion.LookRotation(playerDirection);
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * 3);
     }
+
     public bool playerInView()
     {
-        playerDirection = GameManager.instance.player.transform.position - transform.position;
+        playerDirection = (new Vector3(GameManager.instance.player.transform.position.x,
+                                       GameManager.instance.player.transform.position.y - 3,
+                                       GameManager.instance.player.transform.position.z) - transform.position);
         angleToPlayer = Vector3.Angle(playerDirection, transform.forward);
+
         RaycastHit hit;
         if (Physics.Raycast(pov.position, playerDirection, out hit))
         {
             if (hit.collider.CompareTag("Player") && angleToPlayer <= viewAngle)
             {
-                if (agent.remainingDistance < agent.stoppingDistance)
-                {
-                    faceTarget();
-                }
-
-                agent.SetDestination(GameManager.instance.player.transform.position);
                 return true;
             }
         }

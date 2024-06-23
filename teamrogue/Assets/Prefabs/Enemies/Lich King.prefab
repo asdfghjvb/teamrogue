@@ -1779,11 +1779,11 @@ MonoBehaviour:
   agent: {fileID: 8619387981339381779}
   animator: {fileID: 318366928405577132}
   pov: {fileID: 3534515843502142868}
-  viewAngle: 0
+  viewAngle: 180
   dropSpawn: {fileID: 5717293315098642665}
   healthDrop: {fileID: 6769170450033730269, guid: bd4446a97bed5814a8766d63fc0ebca9, type: 3}
   dropChance: 0.5
-  HP: 10
+  HP: 20
   attackRate: 5
   deathAnimationDuration: 8
   projectile: {fileID: 6174925267386981003, guid: 64cabfcf81ad36540b68eef25ffbf846, type: 3}
