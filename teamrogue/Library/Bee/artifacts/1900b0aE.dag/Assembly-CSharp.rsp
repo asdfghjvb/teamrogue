@@ -366,6 +366,7 @@
 "Assets/Scripts/Enemies/LichKing.cs"
 "Assets/Scripts/Enemies/MeleeEnemy.cs"
 "Assets/Scripts/Enemies/RangedEnemy.cs"
+"Assets/Scripts/Enemies/Wraith.cs"
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/HealthPack.cs"
 "Assets/Scripts/IDamage.cs"
