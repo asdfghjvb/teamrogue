@@ -28,7 +28,7 @@ public class Player : MonoBehaviour, IDamage
     [SerializeField] public int shootDist;
 
     //cleaning up the staff/boon clashes
-    public int innateShootDamage;
+    [SerializeField] public int innateShootDamage;
     public float innateShootRate;
     public int innateShootDist;
 
@@ -168,7 +168,7 @@ public class Player : MonoBehaviour, IDamage
 
         shootDamage = staff.staffDamage + innateShootDamage;
         shootDist = staff.staffDistance + innateShootDist;
-        shootRate = staff.staffSpeed + innateShootRate;
+        shootRate = staff.staffSpeed * innateShootRate;
         bullet = staff.bullet;
 
         staffModel.GetComponent<MeshFilter>().sharedMesh = staff.staffModel.GetComponent<MeshFilter>().sharedMesh;
@@ -197,7 +197,7 @@ public class Player : MonoBehaviour, IDamage
     {
         shootDamage = staffList[currentStaff].staffDamage + innateShootDamage;
         shootDist = staffList[currentStaff].staffDistance + innateShootDist;
-        shootRate = staffList[currentStaff].staffSpeed + innateShootRate;
+        shootRate = staffList[currentStaff].staffSpeed * innateShootRate;
         bullet = staffList[currentStaff].bullet;
 
         staffModel.GetComponent<MeshFilter>().sharedMesh = staffList[currentStaff].staffModel.GetComponent<MeshFilter>().sharedMesh;
