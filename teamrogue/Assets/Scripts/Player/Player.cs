@@ -26,6 +26,12 @@ public class Player : MonoBehaviour, IDamage
     [SerializeField] public int shootDamage;
     [SerializeField] public float shootRate;
     [SerializeField] public int shootDist;
+
+    //cleaning up the staff/boon clashes
+    public int innateShootDamage;
+    public float innateShootRate;
+    public int innateShootDist;
+
     [SerializeField] GameObject bullet;
     [SerializeField] Transform shootPos;
     [SerializeField] GameObject staffModel;
@@ -100,19 +106,6 @@ public class Player : MonoBehaviour, IDamage
 
     IEnumerator shoot()
     {
-        //isShooting = true;
-        //RaycastHit hit;
-        //if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist))
-        //{
-        //    IDamage dmg = hit.collider.GetComponent<IDamage>();
-
-        //    if (hit.transform != transform && dmg != null)
-        //    {
-        //        dmg.takeDamage(shootDamage);
-        //    }
-        //}
-        //yield return new WaitForSeconds(shootRate);
-        //isShooting = false;
         if (!GameManager.instance.isPaused)
         {
             isShooting = true;
@@ -169,13 +162,13 @@ public class Player : MonoBehaviour, IDamage
     {
         staffList.Add(staff);
         if (staffList.Count == 3 && GameManager.instance.boonCount >= 0)
-            GameManager.instance.door1Condition = true;
+            GameManager.instance.door1Col.enabled = true;
         currentStaff = staffList.Count - 1;
 
 
-        shootDamage = staff.staffDamage;
-        shootDist = staff.staffDistance;
-        shootRate = staff.staffSpeed;
+        shootDamage = staff.staffDamage + innateShootDamage;
+        shootDist = staff.staffDistance + innateShootDist;
+        shootRate = staff.staffSpeed + innateShootRate;
         bullet = staff.bullet;
 
         staffModel.GetComponent<MeshFilter>().sharedMesh = staff.staffModel.GetComponent<MeshFilter>().sharedMesh;
@@ -202,9 +195,9 @@ public class Player : MonoBehaviour, IDamage
 
     void changeStaff()
     {
-        shootDamage = staffList[currentStaff].staffDamage;
-        shootDist = staffList[currentStaff].staffDistance;
-        shootRate = staffList[currentStaff].staffSpeed;
+        shootDamage = staffList[currentStaff].staffDamage + innateShootDamage;
+        shootDist = staffList[currentStaff].staffDistance + innateShootDist;
+        shootRate = staffList[currentStaff].staffSpeed + innateShootRate;
         bullet = staffList[currentStaff].bullet;
 
         staffModel.GetComponent<MeshFilter>().sharedMesh = staffList[currentStaff].staffModel.GetComponent<MeshFilter>().sharedMesh;

@@ -40,9 +40,11 @@ public class ButtonFunctions : MonoBehaviour
     }
     public void boonReward()
     {
+        GameManager.instance.stateUnpaused();
         BoonManager.instance.randomizeList();
         GameManager.instance.boonSelection();
-        GameManager.instance.door2Condition = true;
+        GameManager.instance.door2Col.enabled = true;
+        GameManager.instance.rewardChest.SetActive(false);
     }
 
 

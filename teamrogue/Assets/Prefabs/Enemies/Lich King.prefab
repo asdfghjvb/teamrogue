@@ -1790,7 +1790,7 @@ MonoBehaviour:
   shootPos: {fileID: 7331182653645490619}
   minion: {fileID: 7878885587272555556, guid: 7cc3bde90e7b27940b58621f203f0264, type: 3}
   spawnRate: 10
-  spawnQuantity: 5
+  spawnQuantity: 3
   spawnRadius: 5
 --- !u!95 &318366928405577132
 Animator:

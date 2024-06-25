@@ -2671,7 +2671,7 @@ MonoBehaviour:
   dropSpawn: {fileID: 3426619728902693935}
   healthDrop: {fileID: 6769170450033730269, guid: bd4446a97bed5814a8766d63fc0ebca9, type: 3}
   dropChance: 0.5
-  HP: 3
+  HP: 10
   attackRate: 1
   deathAnimationDuration: 5
   weaponCol: {fileID: 2600022641414703949}
@@ -2710,7 +2710,7 @@ NavMeshAgent:
   m_Acceleration: 32
   avoidancePriority: 50
   m_AngularSpeed: 300
-  m_StoppingDistance: 1.5
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1

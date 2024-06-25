@@ -17,9 +17,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject menuBoon;
     [SerializeField] GameObject chestMenu;
 
-    [SerializeField] GameObject rewardChest;
+    [SerializeField] public GameObject rewardChest;
     [SerializeField] public GameObject healButton;
     [SerializeField] public GameObject boonButton;
+
+    [SerializeField] public Collider door1Col;
+    [SerializeField] public Collider door2Col;
 
 
     [SerializeField] TMP_Text enemyCountText;
@@ -37,8 +40,6 @@ public class GameManager : MonoBehaviour
     public NavMeshBaker navMeshBakerScript;
 
     public bool isPaused;
-    public bool door1Condition = false;
-    public bool door2Condition = false;
     int enemyCount;
     public int boonCount;
 
@@ -123,11 +124,12 @@ public class GameManager : MonoBehaviour
     public void boonSelection()
     {
         statePaused();
+        BoonManager.instance.randomizeList();
         menuActive = menuBoon;
         menuActive.SetActive(isPaused);
         boonCount++;
         if (playerScript.staffList.Count == 3 && boonCount == 1)
-            door1Condition = true;
+            door1Col.enabled = true;
 
     }
     public void rewardMenu()
@@ -144,52 +146,5 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void applyBoon(int boonID)
-    {
-       
-        switch (boonID)
-        {
-            case 1:
-                GameManager.instance.playerScript.fullHealth += 5;
-                GameManager.instance.playerScript.health += 5;
-                break;
-            case 2:
-                foreach (Staffs staff in GameManager.instance.playerScript.staffList)
-                {
-                    staff.staffSpeed -= 0.75f;
-                }
-                break;
-            case 3:
-                GameManager.instance.playerScript.speed += 5;
-                break;
-            case 4:
-                GameManager.instance.playerScript.jumpMax += 1;
-                break;
-            case 5:
-                foreach (Staffs staff in GameManager.instance.playerScript.staffList)
-                {
-                    staff.staffDamage += 3;
-                }
-                break;
-            case 6:
-                GameManager.instance.playerScript.armorMod *= 0.9f;
-                break;
-            case 7:
-                GameManager.instance.playerScript.sprintMod *= 1.2f;
-                break;
-            case 8:
-                foreach (Staffs staff in GameManager.instance.playerScript.staffList)
-                {
-                   staff.staffDistance += 10;
-                }
-                break;
-            case 9:
-                GameManager.instance.playerScript.meleeDamage += 3;
-                break;
-            case 10:
-                GameManager.instance.playerScript.meleeCooldown *= 0.8f;
-                break;
-        }
-        
-    }
+
 }

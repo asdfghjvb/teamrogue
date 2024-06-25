@@ -13,13 +13,14 @@ public class BoonManager : MonoBehaviour
     public static BoonManager instance;
 
     [SerializeField] GameObject boonMenu;
-    [SerializeField] Collider boonCol;
+    [SerializeField] GameObject startingBoon;
 
     [SerializeField] TMP_Text option1;
     [SerializeField] TMP_Text option2;
     [SerializeField] TMP_Text option3;
 
-    bool boonSelected = false;
+    List<(int, string)> newList;
+
 
     List<(int, string)> boonList = new List<(int, string)>{
         (1,"Increase Health"),
@@ -36,26 +37,21 @@ public class BoonManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //instance = this;
-        randomizeList();
+        instance = this;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.instance.playerScript.staffList.Count > 0 && boonSelected == false)
-        {
-            boonCol.enabled = true;
-            boonSelected = true;
-        }
+
     }
     public void randomizeList()
     {
         System.Random rand = new System.Random();
-        boonList.OrderBy(x => rand.Next()).ToList();
-        option1.text = boonList[0].Item2;
-        option2.text = boonList[1].Item2;
-        option3.text = boonList[2].Item2;
+        newList = boonList.OrderBy(x => rand.Next()).ToList();
+        option1.text = newList[0].Item2;
+        option2.text = newList[1].Item2;
+        option3.text = newList[2].Item2;
 
     }
 
@@ -68,7 +64,7 @@ public class BoonManager : MonoBehaviour
                 GameManager.instance.playerScript.health += 5;
                 break;
             case 2:
-                GameManager.instance.playerScript.shootRate *= 0.75f;
+                GameManager.instance.playerScript.innateShootRate *= 0.75f;
                 break;
             case 3:
                 GameManager.instance.playerScript.speed += 5;
@@ -77,7 +73,7 @@ public class BoonManager : MonoBehaviour
                 GameManager.instance.playerScript.jumpMax += 1;
                 break;
             case 5:
-                GameManager.instance.playerScript.shootDamage += 3;
+                GameManager.instance.playerScript.innateShootDamage += 3;
                 break;
             case 6:
                 GameManager.instance.playerScript.armorMod *= 0.9f;
@@ -86,7 +82,7 @@ public class BoonManager : MonoBehaviour
                 GameManager.instance.playerScript.sprintMod *= 1.2f;
                 break;
             case 8:
-                GameManager.instance.playerScript.shootDist += 10;
+                GameManager.instance.playerScript.innateShootDist += 10;
                 break;
             case 9:
                 GameManager.instance.playerScript.meleeDamage += 3;
@@ -99,31 +95,28 @@ public class BoonManager : MonoBehaviour
 
     public void boonOption1()
     {
-        GameManager.instance.applyBoon(boonList[0].Item1);
-        GameManager.instance.boonCount += 1;
+        ApplyBoon(newList[0].Item1);
         boonMenu.SetActive(false);
         GameManager.instance.stateUnpaused();
     }
     public void boonOption2()
     {
-        GameManager.instance.applyBoon(boonList[1].Item1);
-        GameManager.instance.boonCount += 1;
+        ApplyBoon(newList[1].Item1);
         boonMenu.SetActive(false);
         GameManager.instance.stateUnpaused();
     }
     public void boonOption3()
     {
-        GameManager.instance.applyBoon(boonList[2].Item1);
-        GameManager.instance.boonCount += 1;
+        ApplyBoon(newList[2].Item1);
         boonMenu.SetActive(false);
         GameManager.instance.stateUnpaused();
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(GameManager.instance.boonCount < 1)
+        if(GameManager.instance.boonCount < 1 && other.CompareTag("Player"))
         {
-            boonCol.enabled = false;
             GameManager.instance.boonSelection();
+            startingBoon.SetActive(false);
         }
         
         
