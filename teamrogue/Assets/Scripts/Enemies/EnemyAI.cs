@@ -42,8 +42,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     // Update is called once per frame
     protected virtual void Update()
     {
-        if (playerInView())
-            Movement();
+        Movement();
     }
 
     public void Movement()
@@ -57,7 +56,10 @@ public class EnemyAI : MonoBehaviour, IDamage
             faceTarget();
         }
 
-        agent.SetDestination(GameManager.instance.player.transform.position);
+        if(playerInView())
+        {
+            agent.SetDestination(GameManager.instance.player.transform.position);
+        }
     }
 
     public void takeDamage(int amount)
