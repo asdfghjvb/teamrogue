@@ -21,8 +21,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameObject healButton;
     [SerializeField] public GameObject boonButton;
 
-    [SerializeField] public Collider beginDoorCol;
-    [SerializeField] public Collider room1DoorCol;
 
     [SerializeField] TMP_Text enemyCountText;
     [SerializeField] Image meleeCooldownUI;
@@ -39,6 +37,8 @@ public class GameManager : MonoBehaviour
     public NavMeshBaker navMeshBakerScript;
 
     public bool isPaused;
+    public bool door1Condition = false;
+    public bool door2Condition = false;
     int enemyCount;
     public int boonCount;
 
@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviour
         menuActive.SetActive(isPaused);
         boonCount++;
         if (playerScript.staffList.Count == 3 && boonCount == 1)
-            beginDoorCol.enabled = true;
+            door1Condition = true;
 
     }
     public void rewardMenu()

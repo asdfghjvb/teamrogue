@@ -106,10 +106,11 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     public bool playerInView()
     {
-        playerDirection = (new Vector3(GameManager.instance.player.transform.position.x,
-                                       GameManager.instance.player.transform.position.y - 3,
-                                       GameManager.instance.player.transform.position.z) - transform.position);
+        playerDirection = GameManager.instance.player.transform.position - new Vector3(0,.5f,0) - pov.position;
         angleToPlayer = Vector3.Angle(playerDirection, transform.forward);
+
+        Debug.Log(angleToPlayer);
+        Debug.DrawRay(pov.position, playerDirection);
 
         RaycastHit hit;
         if (Physics.Raycast(pov.position, playerDirection, out hit))

@@ -42,7 +42,7 @@ public class ButtonFunctions : MonoBehaviour
     {
         BoonManager.instance.randomizeList();
         GameManager.instance.boonSelection();
-        GameManager.instance.room1DoorCol.enabled = true;
+        GameManager.instance.door2Condition = true;
     }
 
 

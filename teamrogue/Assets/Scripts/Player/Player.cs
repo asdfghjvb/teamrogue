@@ -169,7 +169,7 @@ public class Player : MonoBehaviour, IDamage
     {
         staffList.Add(staff);
         if (staffList.Count == 3 && GameManager.instance.boonCount >= 0)
-            GameManager.instance.beginDoorCol.enabled = true;
+            GameManager.instance.door1Condition = true;
         currentStaff = staffList.Count - 1;
 
 

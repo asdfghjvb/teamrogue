@@ -20,9 +20,9 @@ public class Door : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")){
+        if (other.CompareTag("Player") && GameManager.instance.door1Condition){
             door1.transform.position = new Vector3(.5f, 0, 0);
-            door2.transform.position = new Vector3(-.5f, 0, 0);
+            door2.transform.position = new Vector3(.5f, 0, 0);
         }
         GameManager.instance.navMeshBakerScript.rebakeNavMesh();
 
