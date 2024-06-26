@@ -272,8 +272,8 @@ MonoBehaviour:
     y: 0
     width: 383
     height: 939
-  m_MinSize: {x: 276, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -772,7 +772,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0.25832084, y: -0.09080755, z: 0.024418555, w: 0.96137995}
     speed: 2
-    m_Value: {x: -0.25832084, y: 0.09080755, z: -0.024418555, w: -0.96137995}
+    m_Value: {x: 0.25834367, y: -0.090815574, z: 0.024420712, w: 0.9614649}
   m_Size:
     m_Target: 5.293213
     speed: 2
@@ -1061,8 +1061,13 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
+<<<<<<< Updated upstream
       m_SelectedIDs: 
       m_LastClickedID: 0
+=======
+      m_SelectedIDs: e6f1ffff
+      m_LastClickedID: -3610
+>>>>>>> Stashed changes
       m_ExpandedIDs: 64faffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
