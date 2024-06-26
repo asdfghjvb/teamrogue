@@ -13,12 +13,14 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] int viewAngle;
     [Space(5)]
 
-    [Header("Health Drop")]
+    [Header("Drop Settings")]
     [SerializeField] protected Transform dropSpawn;
     [SerializeField] protected GameObject healthDrop;
-
+    [SerializeField] protected GameObject ammoDropPrefab;
     [Range(0, 1)]
-    [SerializeField] protected float dropChance;
+    [SerializeField] protected float healthDropChance;
+    [Range(0, 1)]
+    [SerializeField] protected float ammoDropChance;
     [Space(5)]
 
     [Header("Stats")]
@@ -33,13 +35,11 @@ public class EnemyAI : MonoBehaviour, IDamage
     Vector3 playerDirection;
     float angleToPlayer;
 
-    // Start is called before the first frame update
     protected virtual void Start()
     {
         GameManager.instance.updateGoal(1);
     }
 
-    // Update is called once per frame
     protected virtual void Update()
     {
         Movement();
@@ -56,7 +56,7 @@ public class EnemyAI : MonoBehaviour, IDamage
             faceTarget();
         }
 
-        if(playerInView())
+        if (playerInView())
         {
             agent.SetDestination(GameManager.instance.player.transform.position);
         }
@@ -66,7 +66,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     {
         HP -= amount;
         StartCoroutine(flashDamage());
-        Movement(); //if enemy takes dmg, move towards player
+        Movement();
 
         if (HP <= 0)
         {
@@ -77,16 +77,26 @@ public class EnemyAI : MonoBehaviour, IDamage
     protected virtual IEnumerator OnDeath()
     {
         Collider collider = GetComponent<Collider>();
-        collider.enabled = false; //disable collider
-        agent.enabled = false; //disable nav mesh
-        enabled = false; //disable movement
+        collider.enabled = false;
+        agent.enabled = false;
+        enabled = false;
 
         animator.SetTrigger("Death");
         GameManager.instance.updateGoal(-1);
 
-        float checkSpawnChance = Random.value;
-        if (checkSpawnChance < dropChance)
-            Instantiate(healthDrop, dropSpawn.position, transform.rotation);
+        // Spawn either health or ammo drop based on their respective chances
+        float dropRoll = Random.value;
+
+        if (dropRoll < healthDropChance)
+        {
+            Debug.Log("Dropping Health");
+            Instantiate(healthDrop, dropSpawn.position, Quaternion.identity);
+        }
+        else if (dropRoll < healthDropChance + ammoDropChance)
+        {
+            Debug.Log("Dropping Ammo");
+            Instantiate(ammoDropPrefab, dropSpawn.position, Quaternion.identity);
+        }
 
         yield return new WaitForSeconds(deathAnimationDuration);
 
@@ -108,7 +118,7 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     public bool playerInView()
     {
-        playerDirection = GameManager.instance.player.transform.position - new Vector3(0,.5f,0) - pov.position;
+        playerDirection = GameManager.instance.player.transform.position - new Vector3(0, .5f, 0) - pov.position;
         angleToPlayer = Vector3.Angle(playerDirection, transform.forward);
 
         RaycastHit hit;

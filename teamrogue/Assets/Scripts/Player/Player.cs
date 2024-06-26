@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
-
+using UnityEngine.UI;
+using TMPro;
 
 public class Player : MonoBehaviour, IDamage
 {
-    //public static Player instance;
     [SerializeField] CharacterController playerController;
     [SerializeField] public float health;
     [SerializeField] public float speed;
@@ -22,12 +21,10 @@ public class Player : MonoBehaviour, IDamage
     [SerializeField] float meleeRate;
     [SerializeField] public float meleeCooldown;
 
-
     [SerializeField] public int shootDamage;
     [SerializeField] public float shootRate;
     [SerializeField] public int shootDist;
 
-    //cleaning up the staff/boon clashes
     public int innateShootDamage;
     public float innateShootRate;
     public int innateShootDist;
@@ -37,37 +34,39 @@ public class Player : MonoBehaviour, IDamage
     [SerializeField] GameObject staffModel;
     [SerializeField] public List<Staffs> staffList = new List<Staffs>();
 
-    int currentStaff;
+    int currentStaffIndex = -1; // Inicializamos con -1 para indicar que no hay staff equipado al inicio
     bool isShooting;
     bool isMeleeAttacking;
     float lastMeleeTime;
     int jumpCount;
     public float fullHealth;
-   
 
     Vector3 moveDir;
     Vector3 playerVel;
-    // Start is called before the first frame update
+
+    [SerializeField] Image meleeCooldownUI;
+
     void Start()
     {
-        //instance = this;
-        UnityEngine.Cursor.visible = false;
-        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
 
         fullHealth = health;
         updatePlayerUI();
 
-        
+        if (staffList.Count > 0)
+        {
+            EquipStaff(0); // Equipar el primer staff por defecto
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
         Movement();
         Sprint();
         UpdateMeleeCooldownUI();
-        if (Input.GetButton("Fire1") && !isShooting && staffList.Count > 0)
+        if (Input.GetButton("Fire1") && !isShooting && GameManager.instance.HasAmmoInClip())
         {
             StartCoroutine(shoot());
         }
@@ -77,7 +76,13 @@ public class Player : MonoBehaviour, IDamage
         {
             StartCoroutine(melee());
         }
+
+        if (Input.GetButtonDown("Reload"))
+        {
+            GameManager.instance.Reload();
+        }
     }
+
     void Movement()
     {
         if (playerController.isGrounded)
@@ -96,6 +101,7 @@ public class Player : MonoBehaviour, IDamage
         playerVel.y -= gravity * Time.deltaTime;
         playerController.Move(playerVel * Time.deltaTime);
     }
+
     void Sprint()
     {
         if (Input.GetButtonDown("Sprint"))
@@ -106,17 +112,18 @@ public class Player : MonoBehaviour, IDamage
 
     IEnumerator shoot()
     {
-        if (!GameManager.instance.isPaused)
+        if (!GameManager.instance.isPaused && GameManager.instance.HasAmmoInClip())
         {
             isShooting = true;
             Instantiate(bullet, shootPos.position, shootPos.rotation);
+            GameManager.instance.UseAmmo();
 
             yield return new WaitForSeconds(shootRate);
             isShooting = false;
         }
     }
 
-    IEnumerator melee() 
+    IEnumerator melee()
     {
         isMeleeAttacking = true;
         lastMeleeTime = Time.time;
@@ -138,8 +145,11 @@ public class Player : MonoBehaviour, IDamage
 
     void UpdateMeleeCooldownUI()
     {
-        float cooldownRemaining = Mathf.Clamp01((Time.time - lastMeleeTime) / meleeCooldown);
-        GameManager.instance.UpdateMeleeCooldownUI(cooldownRemaining);
+        if (meleeCooldownUI != null)
+        {
+            float cooldownRemaining = Mathf.Clamp01((Time.time - lastMeleeTime) / meleeCooldown);
+            meleeCooldownUI.fillAmount = cooldownRemaining;
+        }
     }
 
     void updatePlayerUI()
@@ -163,45 +173,38 @@ public class Player : MonoBehaviour, IDamage
         staffList.Add(staff);
         if (staffList.Count == 3 && GameManager.instance.boonCount >= 0)
             GameManager.instance.door1Col.enabled = true;
-        currentStaff = staffList.Count - 1;
-
-
-        shootDamage = staff.staffDamage + innateShootDamage;
-        shootDist = staff.staffDistance + innateShootDist;
-        shootRate = staff.staffSpeed + innateShootRate;
-        bullet = staff.bullet;
-
-        staffModel.GetComponent<MeshFilter>().sharedMesh = staff.staffModel.GetComponent<MeshFilter>().sharedMesh;
-        staffModel.GetComponent<MeshRenderer>().sharedMaterial = staff.staffModel.GetComponent<MeshRenderer>().sharedMaterial;
+        EquipStaff(staffList.Count - 1);
     }
 
     void selectStaff()
     {
         if (!GameManager.instance.isPaused)
         {
-            if (Input.GetAxis("Mouse ScrollWheel") > 0 && currentStaff < staffList.Count - 1)
+            if (Input.GetAxis("Mouse ScrollWheel") > 0 && currentStaffIndex < staffList.Count - 1)
             {
-                currentStaff++;
-                changeStaff();
+                EquipStaff(currentStaffIndex + 1);
             }
-            else if (Input.GetAxis("Mouse ScrollWheel") < 0 && currentStaff > 0)
+            else if (Input.GetAxis("Mouse ScrollWheel") < 0 && currentStaffIndex > 0)
             {
-                currentStaff--;
-                changeStaff();
+                EquipStaff(currentStaffIndex - 1);
             }
         }
-        
     }
 
-    void changeStaff()
+    void EquipStaff(int index)
     {
-        shootDamage = staffList[currentStaff].staffDamage + innateShootDamage;
-        shootDist = staffList[currentStaff].staffDistance + innateShootDist;
-        shootRate = staffList[currentStaff].staffSpeed + innateShootRate;
-        bullet = staffList[currentStaff].bullet;
+        currentStaffIndex = index;
+        Staffs newStaff = staffList[index];
 
-        staffModel.GetComponent<MeshFilter>().sharedMesh = staffList[currentStaff].staffModel.GetComponent<MeshFilter>().sharedMesh;
-        staffModel.GetComponent<MeshRenderer>().sharedMaterial = staffList[currentStaff].staffModel.GetComponent<MeshRenderer>().sharedMaterial;
+        shootDamage = newStaff.staffDamage + innateShootDamage;
+        shootDist = newStaff.staffDistance + innateShootDist;
+        shootRate = newStaff.staffSpeed + innateShootRate;
+        bullet = newStaff.bullet;
+
+        staffModel.GetComponent<MeshFilter>().sharedMesh = newStaff.staffModel.GetComponent<MeshFilter>().sharedMesh;
+        staffModel.GetComponent<MeshRenderer>().sharedMaterial = newStaff.staffModel.GetComponent<MeshRenderer>().sharedMaterial;
+
+        GameManager.instance.SetCurrentStaff(newStaff);
+        GameManager.instance.UpdateAmmoUI(); // Asegurarnos de actualizar la UI después de cambiar el staff
     }
 }
-

@@ -18,3 +18,5 @@ MonoBehaviour:
   staffSpeed: 6
   bullet: {fileID: 6174925267386981003, guid: 64b94fc7344c3b84c99024b33f2ffaa4, type: 3}
   hitEffect: {fileID: 0}
+  maxAmmoInClip: 5
+  currentAmmoInClip: 5
