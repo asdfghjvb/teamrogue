@@ -43,8 +43,16 @@ public class ButtonFunctions : MonoBehaviour
         GameManager.instance.stateUnpaused();
         BoonManager.instance.randomizeList();
         GameManager.instance.boonSelection();
-        GameManager.instance.door2Col.enabled = true;
-        GameManager.instance.rewardChest.SetActive(false);
+        if (GameManager.instance.room1Clear)
+        {
+            GameManager.instance.door2Col.enabled = true;
+            GameManager.instance.rewardChest1.SetActive(false);
+        }
+        else if (GameManager.instance.room2Clear)
+        {
+            GameManager.instance.door3Col.enabled = true;
+            GameManager.instance.rewardChest2.SetActive(false);
+        }
     }
 
 

@@ -10,10 +10,11 @@ public class SpawnGate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        foreach(var enemy in Enemies)
-        { //deactivate all the enemies connected to the gate
-            enemy.SetActive(false); 
-        }
+        //foreach(var enemy in Enemies) 
+        //{ 
+        //    enemy.SetActive(false); 
+        //}
+        //just going to start with enemies inactive
     }
 
     // Update is called once per frame

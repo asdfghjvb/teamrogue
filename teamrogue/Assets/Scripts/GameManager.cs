@@ -17,12 +17,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject menuBoon;
     [SerializeField] GameObject chestMenu;
 
-    [SerializeField] public GameObject rewardChest;
+    [SerializeField] public GameObject rewardChest1;
+    [SerializeField] public GameObject rewardChest2;
     [SerializeField] public GameObject healButton;
     [SerializeField] public GameObject boonButton;
+    public bool room1Clear = false, room2Clear = false;
 
-    [SerializeField] public Collider door1Col;
-    [SerializeField] public Collider door2Col;
+    [SerializeField] public Collider door1Col, door2Col, door3Col;
 
 
     [SerializeField] TMP_Text enemyCountText;
@@ -105,8 +106,17 @@ public class GameManager : MonoBehaviour
 
         if (enemyCount <= 0)
         {
-            
-            rewardChest.SetActive(true);
+            rewardChest1.SetActive(true);
+            room1Clear = true;
+        }
+        else if (enemyCount <= 0 && room1Clear) 
+        {
+            rewardChest2.SetActive(true);
+            room2Clear = true;
+        }
+        else if (enemyCount <= 0 && room2Clear)
+        {
+            youWin();
         }
     }
     public void youWin()
