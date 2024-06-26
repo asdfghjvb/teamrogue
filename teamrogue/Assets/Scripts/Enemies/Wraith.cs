@@ -14,6 +14,9 @@ public class Wraith : MeleeEnemy, IDamage
     [Tooltip("The radius around the player in which the wraith with teleport")]
     [SerializeField] int teleportRadius;
 
+    [Tooltip("The particle effect left behind when teleport ability is used")]
+    [SerializeField] ParticleSystem teleportEffect;
+
     bool canTeleport = true;
 
     // Update is called once per frame
@@ -21,7 +24,7 @@ public class Wraith : MeleeEnemy, IDamage
     {
         base.Update();
 
-        if (canTeleport && agent.remainingDistance > agent.stoppingDistance)
+        if (canTeleport && agent.remainingDistance > agent.stoppingDistance && playerInView())
             StartCoroutine(Teleport());
     }
 
@@ -39,7 +42,16 @@ public class Wraith : MeleeEnemy, IDamage
         if (NavMesh.SamplePosition(randomDirection, out navHit, teleportRadius, NavMesh.AllAreas))
         {// if random pos is on nav mesh, teleport there. Other wise the teleport fails and nothing happens
             targetPos = navHit.position;
+
+            float destroyTime = teleportEffect.main.startLifetime.constantMax;
+
+            ParticleSystem effect1 = Instantiate(teleportEffect, transform.position, Quaternion.identity);
+            Destroy(effect1.gameObject, destroyTime);
+
             transform.position = targetPos;
+
+            ParticleSystem effect2 = Instantiate(teleportEffect, transform.position, Quaternion.identity);
+            Destroy(effect2.gameObject, destroyTime);
         }
 
         yield return new WaitForSeconds(teleportRate);
