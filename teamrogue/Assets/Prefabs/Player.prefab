@@ -103,6 +103,7 @@ MonoBehaviour:
   staffModel: {fileID: 8327735243043364126}
   staffList: []
   fullHealth: 20
+  meleeCooldownUI: {fileID: 0}
 --- !u!143 &1137285651123666733
 CharacterController:
   m_ObjectHideFlags: 0
