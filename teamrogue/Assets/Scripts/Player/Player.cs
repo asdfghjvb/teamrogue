@@ -25,6 +25,12 @@ public class Player : MonoBehaviour, IDamage
     [SerializeField] public float shootRate;
     [SerializeField] public int shootDist;
 
+    [SerializeField] AudioSource aud;
+    [SerializeField] AudioClip shootEffect;
+    [SerializeField] AudioClip meleeEffect;
+    [SerializeField] float shootVol;
+    [SerializeField] float meleeVol;
+
     public int innateShootDamage;
     public float innateShootRate;
     public int innateShootDist;
@@ -112,6 +118,7 @@ public class Player : MonoBehaviour, IDamage
         if (!GameManager.instance.isPaused && GameManager.instance.HasAmmoInClip())
         {
             isShooting = true;
+            aud.PlayOneShot(shootEffect, shootVol);
             Instantiate(bullet, shootPos.position, shootPos.rotation);
             GameManager.instance.UseAmmo();
 
@@ -123,6 +130,7 @@ public class Player : MonoBehaviour, IDamage
     IEnumerator melee()
     {
         isMeleeAttacking = true;
+        aud.PlayOneShot(meleeEffect, meleeVol);
         lastMeleeTime = Time.time;
         Collider[] hitColliders = Physics.OverlapSphere(transform.position + transform.forward * meleeRange, meleeRange);
         foreach (Collider hitCollider in hitColliders)
@@ -188,8 +196,10 @@ public class Player : MonoBehaviour, IDamage
 
         shootDamage = newStaff.staffDamage + innateShootDamage;
         shootDist = newStaff.staffDistance + innateShootDist;
-        shootRate = newStaff.staffSpeed + innateShootRate;
+        shootRate = newStaff.staffSpeed * innateShootRate;
         bullet = newStaff.bullet;
+        shootEffect = newStaff.staffShootEffect;
+        shootVol = newStaff.staffShootVol;
 
         staffModel.GetComponent<MeshFilter>().sharedMesh = newStaff.staffModel.GetComponent<MeshFilter>().sharedMesh;
         staffModel.GetComponent<MeshRenderer>().sharedMaterial = newStaff.staffModel.GetComponent<MeshRenderer>().sharedMaterial;

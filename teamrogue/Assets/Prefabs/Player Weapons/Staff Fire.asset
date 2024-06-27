@@ -15,8 +15,10 @@ MonoBehaviour:
   staffModel: {fileID: 2083943641721818151, guid: b9e9b9817b565da4c87dd7d4d36b234b, type: 3}
   staffDamage: 10
   staffDistance: 75
-  staffSpeed: 6
+  staffSpeed: 3
   bullet: {fileID: 6174925267386981003, guid: 64b94fc7344c3b84c99024b33f2ffaa4, type: 3}
   hitEffect: {fileID: 0}
+  staffShootEffect: {fileID: 8300000, guid: bee04da5422ff7d428b42c3a5a1152c0, type: 3}
+  staffShootVol: 0.5
   maxAmmoInClip: 5
   currentAmmoInClip: 5

@@ -58,4 +58,5 @@ public class Wraith : MeleeEnemy, IDamage
     
         canTeleport = true;
     }
+    
 }

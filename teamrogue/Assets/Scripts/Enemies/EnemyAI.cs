@@ -77,6 +77,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     protected virtual IEnumerator OnDeath()
     {
         Collider collider = GetComponent<Collider>();
+        
         collider.enabled = false;
         agent.enabled = false;
         enabled = false;

@@ -48,4 +48,34 @@ public class MeleeEnemy : EnemyAI, IDamage
     {
         weaponCol.enabled = false;
     }
+    protected override IEnumerator OnDeath()
+    {
+        Collider collider = GetComponent<Collider>();
+        WeaponColOff();
+        collider.enabled = false;
+        agent.enabled = false;
+        enabled = false;
+
+        animator.SetTrigger("Death");
+        GameManager.instance.updateGoal(-1);
+
+        // Spawn either health or ammo drop based on their respective chances
+        float dropRoll = Random.value;
+
+        if (dropRoll < healthDropChance)
+        {
+            Debug.Log("Dropping Health");
+            Instantiate(healthDrop, dropSpawn.position, Quaternion.identity);
+        }
+        else if (dropRoll < healthDropChance + ammoDropChance)
+        {
+            Debug.Log("Dropping Ammo");
+            Instantiate(ammoDropPrefab, dropSpawn.position, Quaternion.identity);
+        }
+
+        yield return new WaitForSeconds(deathAnimationDuration);
+
+        Destroy(gameObject);
+    }
+
 }

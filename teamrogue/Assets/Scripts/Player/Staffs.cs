@@ -12,6 +12,9 @@ public class Staffs : ScriptableObject
     public GameObject bullet;
     public ParticleSystem hitEffect;
 
+    public AudioClip staffShootEffect;
+    public float staffShootVol;
+
     [Range(1, 50)] public int maxAmmoInClip; // Máxima munición en el clip
     [HideInInspector] public int currentAmmoInClip; // Munición actual en el clip
 
