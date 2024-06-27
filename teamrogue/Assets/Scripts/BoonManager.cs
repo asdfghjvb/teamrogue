@@ -62,6 +62,7 @@ public class BoonManager : MonoBehaviour
             case 1:
                 GameManager.instance.playerScript.fullHealth += 5;
                 GameManager.instance.playerScript.health += 5;
+                
                 break;
             case 2:
                 GameManager.instance.playerScript.innateShootRate *= 0.75f;
@@ -91,6 +92,7 @@ public class BoonManager : MonoBehaviour
                 GameManager.instance.playerScript.meleeCooldown *= 0.8f;
                 break;
         }
+        GameManager.instance.playerScript.updatePlayerUI();
     }
 
     public void boonOption1()

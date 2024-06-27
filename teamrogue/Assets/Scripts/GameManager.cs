@@ -26,10 +26,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] public Collider door1Col, door2Col, door3Col;
 
     [Header("Ammo Settings")]
-    [SerializeField] int maxReserveAmmo = 30; // Munición máxima en reserva
-    [SerializeField] int currentReserveAmmo;
-    [SerializeField] float reloadTime = 2f;
-    bool isReloading = false;
+    //[SerializeField] int maxReserveAmmo = 30; // Munición máxima en reserva
+    //[SerializeField] int currentReserveAmmo;
+    //[SerializeField] float reloadTime = 2f;
+    //bool isReloading = false;
 
     [Header("UI Elements")]
     [SerializeField] TextMeshProUGUI ammoText;
@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     public List<Staffs> allStaffs = new List<Staffs>();
 
     public Image playerHealthBar;
+    public Image manaBar;
 
 
     public GameObject player;
@@ -69,7 +70,7 @@ public class GameManager : MonoBehaviour
         {
             staffs.InitializeStaffValues();
         }
-        currentReserveAmmo = maxReserveAmmo;
+        //currentReserveAmmo = maxReserveAmmo;
     }
 
     // Update is called once per frame
@@ -171,73 +172,80 @@ public class GameManager : MonoBehaviour
     {
         // Cambiar al nuevo staff
         currentStaff = staff;
-        UpdateAmmoUI(); // Asegurarnos de actualizar la UI cuando cambiamos el staff
+        //UpdateAmmoUI(); // Asegurarnos de actualizar la UI cuando cambiamos el staff
     }
 
-    public bool HasAmmoInClip()
-    {
-        return currentStaff != null && currentStaff.currentAmmoInClip > 0;
-    }
+    //public bool HasAmmoInClip()
+    //{
+    //    return currentStaff != null && currentStaff.currentAmmoInClip > 0;
+    //}
 
-    public void UseAmmo()
-    {
-        if (currentStaff != null && currentStaff.currentAmmoInClip > 0)
-        {
-            currentStaff.currentAmmoInClip--;
-            UpdateAmmoUI();
-        }
-    }
+    //public void UseAmmo()
+    //{
+    //    if (currentStaff != null && currentStaff.currentAmmoInClip > 0)
+    //    {
+    //        currentStaff.currentAmmoInClip--;
+    //        UpdateAmmoUI();
+    //    }
+    //}
 
-    public void Reload()
-    {
-        if (!isReloading && currentReserveAmmo > 0 && currentStaff != null)
-        {
-            StartCoroutine(ReloadCoroutine());
-        }
-    }
+    //public void Reload()
+    //{
+    //    if (!isReloading && currentReserveAmmo > 0 && currentStaff != null)
+    //    {
+    //        StartCoroutine(ReloadCoroutine());
+    //    }
+    //}
 
-    IEnumerator ReloadCoroutine()
-    {
-        isReloading = true;
-        yield return new WaitForSeconds(reloadTime);
-        int ammoToReload = currentStaff.maxAmmoInClip - currentStaff.currentAmmoInClip;
-        if (currentReserveAmmo >= ammoToReload)
-        {
-            currentStaff.currentAmmoInClip += ammoToReload;
-            currentReserveAmmo -= ammoToReload;
-        }
-        else
-        {
-            currentStaff.currentAmmoInClip += currentReserveAmmo;
-            currentReserveAmmo = 0;
-        }
-        isReloading = false;
-        UpdateAmmoUI();
-    }
+    //IEnumerator ReloadCoroutine()
+    //{
+    //    isReloading = true;
+    //    yield return new WaitForSeconds(reloadTime);
+    //    int ammoToReload = currentStaff.maxAmmoInClip - currentStaff.currentAmmoInClip;
+    //    if (currentReserveAmmo >= ammoToReload)
+    //    {
+    //        currentStaff.currentAmmoInClip += ammoToReload;
+    //        currentReserveAmmo -= ammoToReload;
+    //    }
+    //    else
+    //    {
+    //        currentStaff.currentAmmoInClip += currentReserveAmmo;
+    //        currentReserveAmmo = 0;
+    //    }
+    //    isReloading = false;
+    //    UpdateAmmoUI();
+    //}
 
-    public int GetCurrentAmmoInClip()
-    {
-        return currentStaff != null ? currentStaff.currentAmmoInClip : 0;
-    }
+    //public int GetCurrentAmmoInClip()
+    //{
+    //    return currentStaff != null ? currentStaff.currentAmmoInClip : 0;
+    //}
 
-    public int GetCurrentReserveAmmo()
-    {
-        return currentReserveAmmo;
-    }
+    //public int GetCurrentReserveAmmo()
+    //{
+    //    return currentReserveAmmo;
+    //}
 
     public void AddAmmo(int amount)
     {
-        currentReserveAmmo = Mathf.Min(currentReserveAmmo + amount, maxReserveAmmo);
-        UpdateAmmoUI();
+        //currentReserveAmmo = Mathf.Min(currentReserveAmmo + amount, maxReserveAmmo);
+        //UpdateAmmoUI();\
+        GameManager.instance.playerScript.mana += amount;
+        if(GameManager.instance.playerScript.mana > GameManager.instance.playerScript.fullMana)
+        {
+            GameManager.instance.playerScript.mana = GameManager.instance.playerScript.fullMana;
+        }
+        GameManager.instance.playerScript.updatePlayerUI();
+
     }
 
-    public void UpdateAmmoUI()
-    {
-        if (ammoText != null && currentStaff != null)
-        {
-            ammoText.text = $"{currentStaff.currentAmmoInClip}/{currentReserveAmmo}";
-        }
-    }
+    //public void UpdateAmmoUI()
+    //{
+    //    if (ammoText != null && currentStaff != null)
+    //    {
+    //        ammoText.text = $"{currentStaff.currentAmmoInClip}/{currentReserveAmmo}";
+    //    }
+    //}
 
 
 }
