@@ -44,8 +44,6 @@ public class Player : MonoBehaviour, IDamage
     Vector3 moveDir;
     Vector3 playerVel;
 
-    [SerializeField] Image meleeCooldownUI;
-
     void Start()
     {
         Cursor.visible = false;
@@ -65,7 +63,6 @@ public class Player : MonoBehaviour, IDamage
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
         Movement();
         Sprint();
-        UpdateMeleeCooldownUI();
         if (Input.GetButton("Fire1") && !isShooting && GameManager.instance.HasAmmoInClip())
         {
             StartCoroutine(shoot());
@@ -141,15 +138,8 @@ public class Player : MonoBehaviour, IDamage
         }
         yield return new WaitForSeconds(meleeRate);
         isMeleeAttacking = false;
-    }
 
-    void UpdateMeleeCooldownUI()
-    {
-        if (meleeCooldownUI != null)
-        {
-            float cooldownRemaining = Mathf.Clamp01((Time.time - lastMeleeTime) / meleeCooldown);
-            meleeCooldownUI.fillAmount = cooldownRemaining;
-        }
+        GameManager.instance.UpdateMeleeCooldownUI(meleeCooldown, lastMeleeTime); // Actualizar la UI desde GameManager
     }
 
     void updatePlayerUI()

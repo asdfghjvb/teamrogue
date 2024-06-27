@@ -33,11 +33,12 @@ public class GameManager : MonoBehaviour
 
     [Header("UI Elements")]
     [SerializeField] TextMeshProUGUI ammoText;
+    [SerializeField] Image meleeCooldownUI;
+    [SerializeField] TMP_Text enemyCountText;
 
     private Staffs currentStaff;
 
-    [SerializeField] TMP_Text enemyCountText;
-    [SerializeField] Image meleeCooldownUI;
+    
 
     public List<Staffs> allStaffs = new List<Staffs>();
 
@@ -236,6 +237,24 @@ public class GameManager : MonoBehaviour
         if (ammoText != null && currentStaff != null)
         {
             ammoText.text = $"{currentStaff.currentAmmoInClip}/{currentReserveAmmo}";
+        }
+    }
+
+    public void UpdateMeleeCooldownUI(float meleeCooldown, float lastMeleeTime)
+    {
+        StartCoroutine(MeleeCooldownCoroutine(meleeCooldown, lastMeleeTime));
+    }
+
+    IEnumerator MeleeCooldownCoroutine(float meleeCooldown, float lastMeleeTime)
+    {
+        while (Time.time < lastMeleeTime + meleeCooldown)
+        {
+            float cooldownRemaining = Mathf.Clamp01((Time.time - lastMeleeTime) / meleeCooldown);
+            if (meleeCooldownUI != null)
+            {
+                meleeCooldownUI.fillAmount = cooldownRemaining;
+            }
+            yield return null;
         }
     }
 
