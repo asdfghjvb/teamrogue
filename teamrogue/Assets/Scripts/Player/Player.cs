@@ -152,7 +152,7 @@ public class Player : MonoBehaviour, IDamage
         }
     }
 
-    void updatePlayerUI()
+    public void updatePlayerUI()
     {
         GameManager.instance.playerHealthBar.fillAmount = (float)health / fullHealth;
     }

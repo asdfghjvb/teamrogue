@@ -35,6 +35,7 @@ public class ButtonFunctions : MonoBehaviour
             GameManager.instance.playerScript.health += GameManager.instance.playerScript.fullHealth / 2;
         else
             GameManager.instance.playerScript.health = GameManager.instance.playerScript.fullHealth;
+        GameManager.instance.playerScript.updatePlayerUI();
         GameManager.instance.healButton.SetActive(false);
         GameManager.instance.boonButton.SetActive(true);
     }
