@@ -3314,8 +3314,8 @@ MonoBehaviour:
   currentReserveAmmo: 0
   reloadTime: 2
   ammoText: {fileID: 7570611879256505936}
+  meleeCooldownUI: {fileID: 4662598828837011360}
   enemyCountText: {fileID: 2068019925298543711}
-  meleeCooldownUI: {fileID: 3444075849697343887}
   allStaffs:
   - {fileID: 11400000, guid: 44827d6d5743ad64fb72bba7979c2a80, type: 2}
   - {fileID: 11400000, guid: 348d0d688ff32354f9852417027e3410, type: 2}
