@@ -119,11 +119,13 @@ public class GameManager : MonoBehaviour
         if (enemyCount <= 0)
         {
             rewardChest1.SetActive(true);
+            navMeshBakerScript.rebakeNavMesh();
             room1Clear = true;
         }
         else if (enemyCount <= 0 && room1Clear) 
         {
             rewardChest2.SetActive(true);
+            navMeshBakerScript.rebakeNavMesh();
             room2Clear = true;
         }
         else if (enemyCount <= 0 && room2Clear)
