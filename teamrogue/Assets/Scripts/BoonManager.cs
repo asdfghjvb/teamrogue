@@ -91,6 +91,7 @@ public class BoonManager : MonoBehaviour
                 GameManager.instance.playerScript.meleeCooldown *= 0.8f;
                 break;
         }
+        GameManager.instance.playerScript.updatePlayerUI();
     }
 
     public void boonOption1()

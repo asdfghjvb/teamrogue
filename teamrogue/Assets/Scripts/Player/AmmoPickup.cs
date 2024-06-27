@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AmmoPickup : MonoBehaviour
 {
-    [SerializeField] int ammoAmount = 10; // Cantidad de munición que se recoge
+    [SerializeField] int ammoAmount = 20; // Cantidad de munición que se recoge
 
     void OnTriggerEnter(Collider other)
     {

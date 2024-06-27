@@ -9,6 +9,7 @@ public class Player : MonoBehaviour, IDamage
 {
     [SerializeField] CharacterController playerController;
     [SerializeField] public float health;
+    [SerializeField] public float mana;
     [SerializeField] public float speed;
     [SerializeField] public float sprintMod;
     [SerializeField] public float armorMod;
@@ -24,6 +25,7 @@ public class Player : MonoBehaviour, IDamage
     [SerializeField] public int shootDamage;
     [SerializeField] public float shootRate;
     [SerializeField] public int shootDist;
+    [SerializeField] public int manaCost;
 
     public int innateShootDamage;
     public float innateShootRate;
@@ -35,14 +37,17 @@ public class Player : MonoBehaviour, IDamage
     [SerializeField] public List<Staffs> staffList = new List<Staffs>();
 
     int currentStaffIndex = -1; // Inicializamos con -1 para indicar que no hay staff equipado al inicio
-    bool isShooting;
+    bool isShooting = false;
     bool isMeleeAttacking;
     float lastMeleeTime;
     int jumpCount;
     public float fullHealth;
+    public float fullMana;
 
     Vector3 moveDir;
     Vector3 playerVel;
+
+    [SerializeField] Image meleeCooldownUI;
 
     void Start()
     {
@@ -50,6 +55,7 @@ public class Player : MonoBehaviour, IDamage
         Cursor.lockState = CursorLockMode.Locked;
 
         fullHealth = health;
+        fullMana = mana;
         updatePlayerUI();
 
         if (staffList.Count > 0)
@@ -63,7 +69,8 @@ public class Player : MonoBehaviour, IDamage
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
         Movement();
         Sprint();
-        if (Input.GetButton("Fire1") && !isShooting && GameManager.instance.HasAmmoInClip())
+        UpdateMeleeCooldownUI();
+        if (Input.GetButton("Fire1") && !isShooting && (mana - manaCost) > 0 && staffList.Count > 0)
         {
             StartCoroutine(shoot());
         }
@@ -74,10 +81,10 @@ public class Player : MonoBehaviour, IDamage
             StartCoroutine(melee());
         }
 
-        if (Input.GetButtonDown("Reload"))
-        {
-            GameManager.instance.Reload();
-        }
+        //if (Input.GetButtonDown("Reload"))
+        //{
+        //    GameManager.instance.Reload();
+        //}
     }
 
     void Movement()
@@ -109,12 +116,13 @@ public class Player : MonoBehaviour, IDamage
 
     IEnumerator shoot()
     {
-        if (!GameManager.instance.isPaused && GameManager.instance.HasAmmoInClip())
+        if (!GameManager.instance.isPaused && (mana - manaCost) > 0)
         {
             isShooting = true;
             Instantiate(bullet, shootPos.position, shootPos.rotation);
-            GameManager.instance.UseAmmo();
-
+            //GameManager.instance.UseAmmo();
+            mana -= manaCost;
+            updatePlayerUI();
             yield return new WaitForSeconds(shootRate);
             isShooting = false;
         }
@@ -138,13 +146,21 @@ public class Player : MonoBehaviour, IDamage
         }
         yield return new WaitForSeconds(meleeRate);
         isMeleeAttacking = false;
+    }
 
-        GameManager.instance.UpdateMeleeCooldownUI(meleeCooldown, lastMeleeTime); // Actualizar la UI desde GameManager
+    void UpdateMeleeCooldownUI()
+    {
+        if (meleeCooldownUI != null)
+        {
+            float cooldownRemaining = Mathf.Clamp01((Time.time - lastMeleeTime) / meleeCooldown);
+            meleeCooldownUI.fillAmount = cooldownRemaining;
+        }
     }
 
     public void updatePlayerUI()
     {
         GameManager.instance.playerHealthBar.fillAmount = (float)health / fullHealth;
+        GameManager.instance.manaBar.fillAmount = (float)mana / fullMana;
     }
 
     public void takeDamage(int amount)
@@ -189,12 +205,13 @@ public class Player : MonoBehaviour, IDamage
         shootDamage = newStaff.staffDamage + innateShootDamage;
         shootDist = newStaff.staffDistance + innateShootDist;
         shootRate = newStaff.staffSpeed + innateShootRate;
+        manaCost = newStaff.manaCost;
         bullet = newStaff.bullet;
 
         staffModel.GetComponent<MeshFilter>().sharedMesh = newStaff.staffModel.GetComponent<MeshFilter>().sharedMesh;
         staffModel.GetComponent<MeshRenderer>().sharedMaterial = newStaff.staffModel.GetComponent<MeshRenderer>().sharedMaterial;
 
         GameManager.instance.SetCurrentStaff(newStaff);
-        GameManager.instance.UpdateAmmoUI(); // Asegurarnos de actualizar la UI después de cambiar el staff
+        // GameManager.instance.UpdateAmmoUI(); // Asegurarnos de actualizar la UI después de cambiar el staff
     }
 }
