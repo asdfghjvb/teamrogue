@@ -25810,7 +25810,7 @@ PrefabInstance:
       objectReference: {fileID: 1576293663}
     - target: {fileID: 344136865255114001, guid: d553f9dcf1c99684e9ecd7f3aec2db1a, type: 3}
       propertyPath: meleeVol
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 344136865255114001, guid: d553f9dcf1c99684e9ecd7f3aec2db1a, type: 3}
       propertyPath: shootVol
@@ -25819,7 +25819,7 @@ PrefabInstance:
     - target: {fileID: 344136865255114001, guid: d553f9dcf1c99684e9ecd7f3aec2db1a, type: 3}
       propertyPath: meleeEffect
       value: 
-      objectReference: {fileID: 8300000, guid: cdba06a108525394590af4986a5f232c, type: 3}
+      objectReference: {fileID: 8300000, guid: 906ff1ab7dc533146b96a0b8700b1a61, type: 3}
     - target: {fileID: 344136865255114001, guid: d553f9dcf1c99684e9ecd7f3aec2db1a, type: 3}
       propertyPath: meleeCooldown
       value: 3
