@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class AmmoPickup : MonoBehaviour
 {
-    [SerializeField] int ammoAmount = 10; // Cantidad de munición que se recoge
+    [SerializeField] int manaAmount = 10;
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            GameManager.instance.AddAmmo(ammoAmount);
+            GameManager.instance.playerScript.mana += manaAmount;
+
+            if (GameManager.instance.playerScript.mana > GameManager.instance.playerScript.fullMana)
+            {
+                GameManager.instance.playerScript.mana = GameManager.instance.playerScript.fullMana;
+            }
             Destroy(gameObject);
+            GameManager.instance.playerScript.updatePlayerUI();
         }
     }
 }

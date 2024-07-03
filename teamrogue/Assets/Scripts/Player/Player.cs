@@ -9,6 +9,8 @@ public class Player : MonoBehaviour, IDamage
 {
     [SerializeField] CharacterController playerController;
     [SerializeField] public float health;
+    [SerializeField] public float mana;
+    [SerializeField] public float manaCost;
     [SerializeField] public float speed;
     [SerializeField] public float sprintMod;
     [SerializeField] public float armorMod;
@@ -46,6 +48,7 @@ public class Player : MonoBehaviour, IDamage
     float lastMeleeTime;
     int jumpCount;
     public float fullHealth;
+    public float fullMana;
 
     Vector3 moveDir;
     Vector3 playerVel;
@@ -56,6 +59,7 @@ public class Player : MonoBehaviour, IDamage
         Cursor.lockState = CursorLockMode.Locked;
 
         fullHealth = health;
+        fullMana = mana;
         updatePlayerUI();
 
         if (staffList.Count > 0)
@@ -69,9 +73,10 @@ public class Player : MonoBehaviour, IDamage
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
         Movement();
         Sprint();
-        if (Input.GetButton("Fire1") && !isShooting && GameManager.instance.HasAmmoInClip())
+        if (Input.GetButton("Fire1") && !isShooting && mana > manaCost && staffList.Count > 0)
         {
             StartCoroutine(shoot());
+            updatePlayerUI();
         }
         selectStaff();
 
@@ -80,10 +85,7 @@ public class Player : MonoBehaviour, IDamage
             StartCoroutine(melee());
         }
 
-        if (Input.GetButtonDown("Reload"))
-        {
-            GameManager.instance.Reload();
-        }
+        
     }
 
     void Movement()
@@ -115,12 +117,14 @@ public class Player : MonoBehaviour, IDamage
 
     IEnumerator shoot()
     {
-        if (!GameManager.instance.isPaused && GameManager.instance.HasAmmoInClip())
+        if (!GameManager.instance.isPaused)
         {
             isShooting = true;
+            mana -= manaCost;
+            
             aud.PlayOneShot(shootEffect, shootVol);
             Instantiate(bullet, shootPos.position, shootPos.rotation);
-            GameManager.instance.UseAmmo();
+            
 
             yield return new WaitForSeconds(shootRate);
             isShooting = false;
@@ -153,6 +157,7 @@ public class Player : MonoBehaviour, IDamage
     public void updatePlayerUI()
     {
         GameManager.instance.playerHealthBar.fillAmount = (float)health / fullHealth;
+        GameManager.instance.playerManaBar.fillAmount =(float)mana / fullMana;
     }
 
     public void takeDamage(int amount)
@@ -197,6 +202,7 @@ public class Player : MonoBehaviour, IDamage
         shootDamage = newStaff.staffDamage + innateShootDamage;
         shootDist = newStaff.staffDistance + innateShootDist;
         shootRate = newStaff.staffSpeed * innateShootRate;
+        manaCost = newStaff.staffManaCost;
         bullet = newStaff.bullet;
         shootEffect = newStaff.staffShootEffect;
         shootVol = newStaff.staffShootVol;
@@ -205,6 +211,6 @@ public class Player : MonoBehaviour, IDamage
         staffModel.GetComponent<MeshRenderer>().sharedMaterial = newStaff.staffModel.GetComponent<MeshRenderer>().sharedMaterial;
 
         GameManager.instance.SetCurrentStaff(newStaff);
-        GameManager.instance.UpdateAmmoUI(); // Asegurarnos de actualizar la UI después de cambiar el staff
+        
     }
 }

@@ -16,9 +16,8 @@ MonoBehaviour:
   staffDamage: 5
   staffDistance: 50
   staffSpeed: 2
+  staffManaCost: 5
   bullet: {fileID: 3874923388927500946, guid: 63eccd2910c842a42a68c76dc8dcc9b8, type: 3}
   hitEffect: {fileID: 0}
   staffShootEffect: {fileID: 8300000, guid: 275309e4486aa4d41bef3d3d347020c8, type: 3}
   staffShootVol: 0.5
-  maxAmmoInClip: 15
-  currentAmmoInClip: 15

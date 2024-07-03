@@ -398,7 +398,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 107,
       "PayloadLength": 51,
-      "PayloadDebugContentSnippet": "C:\\Users\\gordo\\Documents\\GitHu",
+      "PayloadDebugContentSnippet": "C:\\FullSail\\GDB229\\TeamRogueNe",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/UnityEngine.TestRunner.UnityAdditionalFile.txt"
@@ -424,7 +424,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 44847,
       "PayloadLength": 64,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\gordo\\Docum",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\FullSail\\GDB229\\T",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/UnityEngine.TestRunner.rsp2"
@@ -2486,7 +2486,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 52560,
       "PayloadLength": 51,
-      "PayloadDebugContentSnippet": "C:\\Users\\gordo\\Documents\\GitHu",
+      "PayloadDebugContentSnippet": "C:\\FullSail\\GDB229\\TeamRogueNe",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.UnityAdditionalFile.txt"
@@ -2512,7 +2512,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 91812,
       "PayloadLength": 64,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\gordo\\Docum",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\FullSail\\GDB229\\T",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.rsp2"
@@ -3169,7 +3169,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 100063,
       "PayloadLength": 51,
-      "PayloadDebugContentSnippet": "C:\\Users\\gordo\\Documents\\GitHu",
+      "PayloadDebugContentSnippet": "C:\\FullSail\\GDB229\\TeamRogueNe",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/UnityEditor.TestRunner.UnityAdditionalFile.txt"
@@ -3195,7 +3195,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 150863,
       "PayloadLength": 64,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\gordo\\Docum",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\FullSail\\GDB229\\T",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/UnityEditor.TestRunner.rsp2"
@@ -3863,7 +3863,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 158742,
       "PayloadLength": 51,
-      "PayloadDebugContentSnippet": "C:\\Users\\gordo\\Documents\\GitHu",
+      "PayloadDebugContentSnippet": "C:\\FullSail\\GDB229\\TeamRogueNe",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.UnityAdditionalFile.txt"
@@ -3889,7 +3889,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 195136,
       "PayloadLength": 64,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\gordo\\Docum",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\FullSail\\GDB229\\T",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.rsp2"
@@ -4463,7 +4463,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 203734,
       "PayloadLength": 51,
-      "PayloadDebugContentSnippet": "C:\\Users\\gordo\\Documents\\GitHu",
+      "PayloadDebugContentSnippet": "C:\\FullSail\\GDB229\\TeamRogueNe",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.AI.Navigation.Editor.ConversionSystem.UnityAdditionalFile.txt"
@@ -4489,7 +4489,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 238221,
       "PayloadLength": 64,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\gordo\\Docum",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\FullSail\\GDB229\\T",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.AI.Navigation.Editor.ConversionSystem.rsp2"
@@ -5021,7 +5021,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 246900,
       "PayloadLength": 51,
-      "PayloadDebugContentSnippet": "C:\\Users\\gordo\\Documents\\GitHu",
+      "PayloadDebugContentSnippet": "C:\\FullSail\\GDB229\\TeamRogueNe",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.AI.Navigation.UnityAdditionalFile.txt"
@@ -5047,7 +5047,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 279533,
       "PayloadLength": 64,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\gordo\\Docum",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\FullSail\\GDB229\\T",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.AI.Navigation.rsp2"
@@ -5542,7 +5542,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 287948,
       "PayloadLength": 51,
-      "PayloadDebugContentSnippet": "C:\\Users\\gordo\\Documents\\GitHu",
+      "PayloadDebugContentSnippet": "C:\\FullSail\\GDB229\\TeamRogueNe",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.EditorCoroutines.Editor.UnityAdditionalFile.txt"
@@ -5568,7 +5568,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 321826,
       "PayloadLength": 64,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\gordo\\Docum",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\FullSail\\GDB229\\T",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.EditorCoroutines.Editor.rsp2"
@@ -6077,7 +6077,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 330513,
       "PayloadLength": 51,
-      "PayloadDebugContentSnippet": "C:\\Users\\gordo\\Documents\\GitHu",
+      "PayloadDebugContentSnippet": "C:\\FullSail\\GDB229\\TeamRogueNe",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.Performance.Profile-Analyzer.Editor.UnityAdditionalFile.txt"
@@ -6103,7 +6103,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 367159,
       "PayloadLength": 64,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\gordo\\Docum",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\FullSail\\GDB229\\T",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.Performance.Profile-Analyzer.Editor.rsp2"
@@ -6641,7 +6641,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 375840,
       "PayloadLength": 51,
-      "PayloadDebugContentSnippet": "C:\\Users\\gordo\\Documents\\GitHu",
+      "PayloadDebugContentSnippet": "C:\\FullSail\\GDB229\\TeamRogueNe",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.PlasticSCM.Editor.UnityAdditionalFile.txt"
@@ -6667,7 +6667,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 440840,
       "PayloadLength": 64,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\gordo\\Docum",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\FullSail\\GDB229\\T",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.PlasticSCM.Editor.rsp2"
@@ -7461,7 +7461,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 449047,
       "PayloadLength": 51,
-      "PayloadDebugContentSnippet": "C:\\Users\\gordo\\Documents\\GitHu",
+      "PayloadDebugContentSnippet": "C:\\FullSail\\GDB229\\TeamRogueNe",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.Rider.Editor.UnityAdditionalFile.txt"
@@ -7487,7 +7487,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 485265,
       "PayloadLength": 64,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\gordo\\Docum",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\FullSail\\GDB229\\T",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.Rider.Editor.rsp2"
@@ -8012,7 +8012,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 493383,
       "PayloadLength": 51,
-      "PayloadDebugContentSnippet": "C:\\Users\\gordo\\Documents\\GitHu",
+      "PayloadDebugContentSnippet": "C:\\FullSail\\GDB229\\TeamRogueNe",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.Settings.Editor.UnityAdditionalFile.txt"
@@ -8038,7 +8038,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 527952,
       "PayloadLength": 64,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\gordo\\Docum",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\FullSail\\GDB229\\T",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.Settings.Editor.rsp2"
@@ -8556,7 +8556,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 536641,
       "PayloadLength": 51,
-      "PayloadDebugContentSnippet": "C:\\Users\\gordo\\Documents\\GitHu",
+      "PayloadDebugContentSnippet": "C:\\FullSail\\GDB229\\TeamRogueNe",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.UnityAdditionalFile.txt"
@@ -8582,7 +8582,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 572029,
       "PayloadLength": 64,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\gordo\\Docum",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\FullSail\\GDB229\\T",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.rsp2"
@@ -9102,7 +9102,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 580758,
       "PayloadLength": 51,
-      "PayloadDebugContentSnippet": "C:\\Users\\gordo\\Documents\\GitHu",
+      "PayloadDebugContentSnippet": "C:\\FullSail\\GDB229\\TeamRogueNe",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.UnityAdditionalFile.txt"
@@ -9128,7 +9128,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 614950,
       "PayloadLength": 64,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\gordo\\Docum",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\FullSail\\GDB229\\T",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.rsp2"
@@ -9637,7 +9637,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 623645,
       "PayloadLength": 51,
-      "PayloadDebugContentSnippet": "C:\\Users\\gordo\\Documents\\GitHu",
+      "PayloadDebugContentSnippet": "C:\\FullSail\\GDB229\\TeamRogueNe",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.TextMeshPro.UnityAdditionalFile.txt"
@@ -9663,7 +9663,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 661020,
       "PayloadLength": 64,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\gordo\\Docum",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\FullSail\\GDB229\\T",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.TextMeshPro.rsp2"
@@ -10212,7 +10212,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 669418,
       "PayloadLength": 51,
-      "PayloadDebugContentSnippet": "C:\\Users\\gordo\\Documents\\GitHu",
+      "PayloadDebugContentSnippet": "C:\\FullSail\\GDB229\\TeamRogueNe",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.Timeline.UnityAdditionalFile.txt"
@@ -10238,7 +10238,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 707856,
       "PayloadLength": 64,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\gordo\\Docum",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\FullSail\\GDB229\\T",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.Timeline.rsp2"
@@ -10801,7 +10801,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 716256,
       "PayloadLength": 51,
-      "PayloadDebugContentSnippet": "C:\\Users\\gordo\\Documents\\GitHu",
+      "PayloadDebugContentSnippet": "C:\\FullSail\\GDB229\\TeamRogueNe",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VSCode.Editor.UnityAdditionalFile.txt"
@@ -10827,7 +10827,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 750474,
       "PayloadLength": 64,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\gordo\\Docum",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\FullSail\\GDB229\\T",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VSCode.Editor.rsp2"
@@ -11340,7 +11340,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 759136,
       "PayloadLength": 51,
-      "PayloadDebugContentSnippet": "C:\\Users\\gordo\\Documents\\GitHu",
+      "PayloadDebugContentSnippet": "C:\\FullSail\\GDB229\\TeamRogueNe",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.Core.UnityAdditionalFile.txt"
@@ -11366,7 +11366,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 845093,
       "PayloadLength": 64,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\gordo\\Docum",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\FullSail\\GDB229\\T",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.Core.rsp2"
@@ -12285,7 +12285,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 853511,
       "PayloadLength": 51,
-      "PayloadDebugContentSnippet": "C:\\Users\\gordo\\Documents\\GitHu",
+      "PayloadDebugContentSnippet": "C:\\FullSail\\GDB229\\TeamRogueNe",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualStudio.Editor.UnityAdditionalFile.txt"
@@ -12311,7 +12311,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 890026,
       "PayloadLength": 64,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\gordo\\Docum",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\FullSail\\GDB229\\T",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualStudio.Editor.rsp2"
@@ -12841,7 +12841,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 898156,
       "PayloadLength": 51,
-      "PayloadDebugContentSnippet": "C:\\Users\\gordo\\Documents\\GitHu",
+      "PayloadDebugContentSnippet": "C:\\FullSail\\GDB229\\TeamRogueNe",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.AI.Navigation.Editor.UnityAdditionalFile.txt"
@@ -12867,7 +12867,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 932682,
       "PayloadLength": 64,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\gordo\\Docum",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\FullSail\\GDB229\\T",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.AI.Navigation.Editor.rsp2"
@@ -13426,7 +13426,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 941535,
       "PayloadLength": 51,
-      "PayloadDebugContentSnippet": "C:\\Users\\gordo\\Documents\\GitHu",
+      "PayloadDebugContentSnippet": "C:\\FullSail\\GDB229\\TeamRogueNe",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.CollabProxy.Editor.UnityAdditionalFile.txt"
@@ -13452,7 +13452,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 975200,
       "PayloadLength": 64,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\gordo\\Docum",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\FullSail\\GDB229\\T",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.CollabProxy.Editor.rsp2"
@@ -13980,7 +13980,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 983961,
       "PayloadLength": 51,
-      "PayloadDebugContentSnippet": "C:\\Users\\gordo\\Documents\\GitHu",
+      "PayloadDebugContentSnippet": "C:\\FullSail\\GDB229\\TeamRogueNe",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.TestTools.CodeCoverage.Editor.UnityAdditionalFile.txt"
@@ -14006,7 +14006,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1021851,
       "PayloadLength": 64,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\gordo\\Docum",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\FullSail\\GDB229\\T",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.TestTools.CodeCoverage.Editor.rsp2"
@@ -14606,7 +14606,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1030308,
       "PayloadLength": 51,
-      "PayloadDebugContentSnippet": "C:\\Users\\gordo\\Documents\\GitHu",
+      "PayloadDebugContentSnippet": "C:\\FullSail\\GDB229\\TeamRogueNe",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.TextMeshPro.Editor.UnityAdditionalFile.txt"
@@ -14632,7 +14632,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1068290,
       "PayloadLength": 64,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\gordo\\Docum",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\FullSail\\GDB229\\T",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.TextMeshPro.Editor.rsp2"
@@ -15207,7 +15207,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1077031,
       "PayloadLength": 51,
-      "PayloadDebugContentSnippet": "C:\\Users\\gordo\\Documents\\GitHu",
+      "PayloadDebugContentSnippet": "C:\\FullSail\\GDB229\\TeamRogueNe",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.Timeline.Editor.UnityAdditionalFile.txt"
@@ -15233,7 +15233,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1134622,
       "PayloadLength": 64,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\gordo\\Docum",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\FullSail\\GDB229\\T",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.Timeline.Editor.rsp2"
@@ -16032,7 +16032,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1143369,
       "PayloadLength": 51,
-      "PayloadDebugContentSnippet": "C:\\Users\\gordo\\Documents\\GitHu",
+      "PayloadDebugContentSnippet": "C:\\FullSail\\GDB229\\TeamRogueNe",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.Core.Editor.UnityAdditionalFile.txt"
@@ -16058,7 +16058,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1233452,
       "PayloadLength": 64,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\gordo\\Docum",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\FullSail\\GDB229\\T",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.Core.Editor.rsp2"
@@ -17055,7 +17055,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1242216,
       "PayloadLength": 51,
-      "PayloadDebugContentSnippet": "C:\\Users\\gordo\\Documents\\GitHu",
+      "PayloadDebugContentSnippet": "C:\\FullSail\\GDB229\\TeamRogueNe",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.Flow.UnityAdditionalFile.txt"
@@ -17081,7 +17081,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1323476,
       "PayloadLength": 64,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\gordo\\Docum",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\FullSail\\GDB229\\T",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.Flow.rsp2"
@@ -17977,7 +17977,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1331984,
       "PayloadLength": 51,
-      "PayloadDebugContentSnippet": "C:\\Users\\gordo\\Documents\\GitHu",
+      "PayloadDebugContentSnippet": "C:\\FullSail\\GDB229\\TeamRogueNe",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.AI.Navigation.Updater.UnityAdditionalFile.txt"
@@ -18003,7 +18003,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1366207,
       "PayloadLength": 64,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\gordo\\Docum",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\FullSail\\GDB229\\T",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.AI.Navigation.Updater.rsp2"
@@ -18543,7 +18543,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1375158,
       "PayloadLength": 51,
-      "PayloadDebugContentSnippet": "C:\\Users\\gordo\\Documents\\GitHu",
+      "PayloadDebugContentSnippet": "C:\\FullSail\\GDB229\\TeamRogueNe",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.Flow.Editor.UnityAdditionalFile.txt"
@@ -18569,7 +18569,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1429099,
       "PayloadLength": 64,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\gordo\\Docum",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\FullSail\\GDB229\\T",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.Flow.Editor.rsp2"
@@ -19291,7 +19291,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1438047,
       "PayloadLength": 51,
-      "PayloadDebugContentSnippet": "C:\\Users\\gordo\\Documents\\GitHu",
+      "PayloadDebugContentSnippet": "C:\\FullSail\\GDB229\\TeamRogueNe",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.State.UnityAdditionalFile.txt"
@@ -19317,7 +19317,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1473688,
       "PayloadLength": 64,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\gordo\\Docum",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\FullSail\\GDB229\\T",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.State.rsp2"
@@ -19846,7 +19846,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1482303,
       "PayloadLength": 51,
-      "PayloadDebugContentSnippet": "C:\\Users\\gordo\\Documents\\GitHu",
+      "PayloadDebugContentSnippet": "C:\\FullSail\\GDB229\\TeamRogueNe",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.SettingsProvider.Editor.UnityAdditionalFile.txt"
@@ -19872,7 +19872,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1517473,
       "PayloadLength": 64,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\gordo\\Docum",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\FullSail\\GDB229\\T",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.SettingsProvider.Editor.rsp2"
@@ -20443,7 +20443,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1526624,
       "PayloadLength": 51,
-      "PayloadDebugContentSnippet": "C:\\Users\\gordo\\Documents\\GitHu",
+      "PayloadDebugContentSnippet": "C:\\FullSail\\GDB229\\TeamRogueNe",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.State.Editor.UnityAdditionalFile.txt"
@@ -20469,7 +20469,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1568541,
       "PayloadLength": 64,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\gordo\\Docum",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\FullSail\\GDB229\\T",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.State.Editor.rsp2"
@@ -21062,7 +21062,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1577682,
       "PayloadLength": 51,
-      "PayloadDebugContentSnippet": "C:\\Users\\gordo\\Documents\\GitHu",
+      "PayloadDebugContentSnippet": "C:\\FullSail\\GDB229\\TeamRogueNe",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.Shared.Editor.UnityAdditionalFile.txt"
@@ -21088,7 +21088,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1611813,
       "PayloadLength": 64,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\gordo\\Docum",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\FullSail\\GDB229\\T",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.Shared.Editor.rsp2"
@@ -21636,7 +21636,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1621031,
       "PayloadLength": 51,
-      "PayloadDebugContentSnippet": "C:\\Users\\gordo\\Documents\\GitHu",
+      "PayloadDebugContentSnippet": "C:\\FullSail\\GDB229\\TeamRogueNe",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.UnityAdditionalFile.txt"
@@ -23403,7 +23403,7 @@
     {
       "Annotation": "BuildPlayerDataGenerator Library/BuildPlayerData/Editor/TypeDb-All.json",
       "DisplayName": "BuildPlayerDataGenerator TypeDb-All",
-      "Action": "\"C:/Program Files/Unity/Hub/Editor/2022.3.31f1/Editor/Data\\Tools\\netcorerun\\netcorerun.exe\" \"C:/Program Files/Unity/Hub/Editor/2022.3.31f1/Editor/Data/Tools/BuildPlayerDataGenerator/BuildPlayerDataGenerator.exe\" -a=\"C:\\Users\\gordo\\Documents\\GitHub\\teamrogue\\teamrogue\\Library\\ScriptAssemblies\\Assembly-CSharp.dll\" -a=\"C:\\Users\\gordo\\Documents\\GitHub\\teamrogue\\teamrogue\\Library\\ScriptAssemblies\\Unity.AI.Navigation.dll\" -a=\"C:\\Users\\gordo\\Documents\\GitHub\\teamrogue\\teamrogue\\Library\\ScriptAssemblies\\Unity.TextMeshPro.dll\" -a=\"C:\\Users\\gordo\\Documents\\GitHub\\teamrogue\\teamrogue\\Library\\ScriptAssemblies\\Unity.Timeline.dll\" -a=\"C:\\Users\\gordo\\Documents\\GitHub\\teamrogue\\teamrogue\\Library\\ScriptAssemblies\\Unity.VisualScripting.Core.dll\" -a=\"C:\\Users\\gordo\\Documents\\GitHub\\teamrogue\\teamrogue\\Library\\ScriptAssemblies\\Unity.VisualScripting.Flow.dll\" -a=\"C:\\Users\\gordo\\Documents\\GitHub\\teamrogue\\teamrogue\\Library\\ScriptAssemblies\\Unity.VisualScripting.State.dll\" -a=\"C:\\Users\\gordo\\Documents\\GitHub\\teamrogue\\teamrogue\\Library\\ScriptAssemblies\\UnityEngine.TestRunner.dll\" -a=\"C:\\Users\\gordo\\Documents\\GitHub\\teamrogue\\teamrogue\\Library\\ScriptAssemblies\\UnityEngine.UI.dll\" -a=\"C:\\Users\\gordo\\Documents\\GitHub\\teamrogue\\teamrogue\\Library\\PackageCache\\com.unity.ext.nunit@1.0.6\\net35\\unity-custom\\nunit.framework.dll\" -a=\"C:\\Users\\gordo\\Documents\\GitHub\\teamrogue\\teamrogue\\Library\\PackageCache\\com.unity.testtools.codecoverage@1.2.5\\lib\\ReportGenerator\\ReportGeneratorMerged.dll\" -a=\"C:\\Users\\gordo\\Documents\\GitHub\\teamrogue\\teamrogue\\Library\\PackageCache\\com.unity.visualscripting@1.9.4\\Runtime\\VisualScripting.Flow\\Dependencies\\NCalc\\Unity.VisualScripting.Antlr3.Runtime.dll\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.31f1\\Editor\\Data\\Managed\\UnityEngine\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.31f1\\Editor\\Data\\NetStandard\\compat\\2.1.0\\shims\\netfx\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.31f1\\Editor\\Data\\NetStandard\\compat\\2.1.0\\shims\\netstandard\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.31f1\\Editor\\Data\\NetStandard\\Extensions\\2.0.0\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.31f1\\Editor\\Data\\NetStandard\\ref\\2.1.0\" -s=\"C:\\Users\\gordo\\Documents\\GitHub\\teamrogue\\teamrogue\\Library\\ScriptAssemblies\" -s=\"C:\\Users\\gordo\\Documents\\GitHub\\teamrogue\\teamrogue\\Library\\PackageCache\\com.unity.ext.nunit@1.0.6\\net35\\unity-custom\" -s=\"C:\\Users\\gordo\\Documents\\GitHub\\teamrogue\\teamrogue\\Library\\PackageCache\\com.unity.testtools.codecoverage@1.2.5\\lib\\ReportGenerator\" -s=\"C:\\Users\\gordo\\Documents\\GitHub\\teamrogue\\teamrogue\\Library\\PackageCache\\com.unity.visualscripting@1.9.4\\Runtime\\VisualScripting.Flow\\Dependencies\\NCalc\" -o=\"Library/BuildPlayerData/Editor\" -rn=\"\" -tn=\"TypeDb-All.json\"",
+      "Action": "\"C:/Program Files/Unity/Hub/Editor/2022.3.31f1/Editor/Data\\Tools\\netcorerun\\netcorerun.exe\" \"C:/Program Files/Unity/Hub/Editor/2022.3.31f1/Editor/Data/Tools/BuildPlayerDataGenerator/BuildPlayerDataGenerator.exe\" -a=\"C:\\FullSail\\GDB229\\TeamRogueNew\\teamrogue\\teamrogue\\Library\\ScriptAssemblies\\Assembly-CSharp.dll\" -a=\"C:\\FullSail\\GDB229\\TeamRogueNew\\teamrogue\\teamrogue\\Library\\ScriptAssemblies\\Unity.AI.Navigation.dll\" -a=\"C:\\FullSail\\GDB229\\TeamRogueNew\\teamrogue\\teamrogue\\Library\\ScriptAssemblies\\Unity.TextMeshPro.dll\" -a=\"C:\\FullSail\\GDB229\\TeamRogueNew\\teamrogue\\teamrogue\\Library\\ScriptAssemblies\\Unity.Timeline.dll\" -a=\"C:\\FullSail\\GDB229\\TeamRogueNew\\teamrogue\\teamrogue\\Library\\ScriptAssemblies\\Unity.VisualScripting.Core.dll\" -a=\"C:\\FullSail\\GDB229\\TeamRogueNew\\teamrogue\\teamrogue\\Library\\ScriptAssemblies\\Unity.VisualScripting.Flow.dll\" -a=\"C:\\FullSail\\GDB229\\TeamRogueNew\\teamrogue\\teamrogue\\Library\\ScriptAssemblies\\Unity.VisualScripting.State.dll\" -a=\"C:\\FullSail\\GDB229\\TeamRogueNew\\teamrogue\\teamrogue\\Library\\ScriptAssemblies\\UnityEngine.TestRunner.dll\" -a=\"C:\\FullSail\\GDB229\\TeamRogueNew\\teamrogue\\teamrogue\\Library\\ScriptAssemblies\\UnityEngine.UI.dll\" -a=\"C:\\FullSail\\GDB229\\TeamRogueNew\\teamrogue\\teamrogue\\Library\\PackageCache\\com.unity.ext.nunit@1.0.6\\net35\\unity-custom\\nunit.framework.dll\" -a=\"C:\\FullSail\\GDB229\\TeamRogueNew\\teamrogue\\teamrogue\\Library\\PackageCache\\com.unity.testtools.codecoverage@1.2.5\\lib\\ReportGenerator\\ReportGeneratorMerged.dll\" -a=\"C:\\FullSail\\GDB229\\TeamRogueNew\\teamrogue\\teamrogue\\Library\\PackageCache\\com.unity.visualscripting@1.9.4\\Runtime\\VisualScripting.Flow\\Dependencies\\NCalc\\Unity.VisualScripting.Antlr3.Runtime.dll\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.31f1\\Editor\\Data\\Managed\\UnityEngine\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.31f1\\Editor\\Data\\NetStandard\\compat\\2.1.0\\shims\\netfx\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.31f1\\Editor\\Data\\NetStandard\\compat\\2.1.0\\shims\\netstandard\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.31f1\\Editor\\Data\\NetStandard\\Extensions\\2.0.0\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.31f1\\Editor\\Data\\NetStandard\\ref\\2.1.0\" -s=\"C:\\FullSail\\GDB229\\TeamRogueNew\\teamrogue\\teamrogue\\Library\\ScriptAssemblies\" -s=\"C:\\FullSail\\GDB229\\TeamRogueNew\\teamrogue\\teamrogue\\Library\\PackageCache\\com.unity.ext.nunit@1.0.6\\net35\\unity-custom\" -s=\"C:\\FullSail\\GDB229\\TeamRogueNew\\teamrogue\\teamrogue\\Library\\PackageCache\\com.unity.testtools.codecoverage@1.2.5\\lib\\ReportGenerator\" -s=\"C:\\FullSail\\GDB229\\TeamRogueNew\\teamrogue\\teamrogue\\Library\\PackageCache\\com.unity.visualscripting@1.9.4\\Runtime\\VisualScripting.Flow\\Dependencies\\NCalc\" -o=\"Library/BuildPlayerData/Editor\" -rn=\"\" -tn=\"TypeDb-All.json\"",
       "Inputs": [
         "C:/Program Files/Unity/Hub/Editor/2022.3.31f1/Editor/Data/Tools/netcorerun/netcorerun.exe",
         "C:/Program Files/Unity/Hub/Editor/2022.3.31f1/Editor/Data/Tools/BuildPlayerDataGenerator/BuildPlayerDataGenerator.exe",
@@ -23703,6 +23703,6 @@
   "SharedResources": [],
   "Scanners": [],
   "Identifier": "Library/Bee/1900b0aE.dag.json",
-  "PayloadsFile": "C:/Users/gordo/Documents/GitHub/teamrogue/teamrogue/Library/Bee/1900b0aE.dag.payloads",
+  "PayloadsFile": "C:/FullSail/GDB229/TeamRogueNew/teamrogue/teamrogue/Library/Bee/1900b0aE.dag.payloads",
   "RelativePathToRoot": "../.."
 }
