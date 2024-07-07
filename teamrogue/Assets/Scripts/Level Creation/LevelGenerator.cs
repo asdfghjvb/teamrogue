@@ -20,11 +20,24 @@ public class LevelGenerator : MonoBehaviour
 
     public class Room
     {
-        public RectInt roomBoarder;
+        public RectInt rect;
 
         public Room(Vector2Int pos, Vector2Int size)
         {
-            roomBoarder = new RectInt(pos, size);
+            rect = new RectInt(pos, size);
+        }
+
+        public bool Intersects(in Room other)
+        {
+            if(rect.xMax > other.rect.xMin
+                && other.rect.xMax > rect.xMin
+                && rect.yMax > other.rect.yMin
+                && other.rect.yMax > rect.yMin)
+            {
+                return true;
+            }
+            else
+                return false;
         }
     }
 
@@ -40,7 +53,7 @@ public class LevelGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 
     private void OnDrawGizmos()
@@ -64,7 +77,6 @@ public class LevelGenerator : MonoBehaviour
 
     private void GenerateRooms()
     {
-        Debug.Log("Generating rooms...");
         rooms = new List<Room>();
 
         //Create random rooms
@@ -83,46 +95,90 @@ public class LevelGenerator : MonoBehaviour
             rooms.Add(temp);
         }
 
-        /*
-        //Place rooms. this is the debug version
-        foreach(Room room in rooms)
-        {
-            Vector3 roomCenter = new Vector3(room.roomBoarder.x + room.roomBoarder.width / 2f, 0f, room.roomBoarder.y + room.roomBoarder.height / 2f);
-
-            // Instantiate roomBuilder (colored cube)
-            GameObject newRoomBuilder = Instantiate(roomBuilder, roomCenter, Quaternion.identity);
-
-            // Adjust scale to match room size
-            newRoomBuilder.transform.localScale = new Vector3(room.roomBoarder.width, 1f, room.roomBoarder.height);
-        }
-        */
+        SeperateRooms(); //if any rooms overlap, attemp to seperate
+        PlaceRooms(); //Once rooms are seperated, place them
+        
     }
 
     private void SeperateRooms()
     {
+        int maxAttempts = 30;
         int attempt = 0;
+        bool areIntersects = false;
 
-        while (attempt <= 3)
+        List<Room> invalidRooms = new List<Room>();
+
+        while (attempt <= maxAttempts)
         {
             foreach (Room room in rooms)
             {
                 foreach (Room other in rooms)
                 {
-                    if (room.roomBoarder.Overlaps(other.roomBoarder) && attempt < 3)
-                    {// if there is overlap, the rooms will push away from eachother
-                        Vector2 otherDirTemp = room.roomBoarder.center - other.roomBoarder.center;
-                        otherDirTemp.Normalize();
-                        Vector2Int otherDir = new Vector2Int(Mathf.RoundToInt(otherDirTemp.x), Mathf.RoundToInt(otherDirTemp.y));
-                        Vector2Int pushDir = new Vector2Int(-otherDir.x, -otherDir.y);
-                    }
-                    else if (room.roomBoarder.Overlaps(other.roomBoarder) && attempt >= 3)
-                    {
+                    if (room == other)
+                        continue;
 
+                    if (room.Intersects(other) 
+                        && attempt < maxAttempts)
+                    {
+                        PushRooms(room, other);
+                        areIntersects = true;
+                    }
+                    else if (room.Intersects(other) && attempt >= maxAttempts)
+                    {
+                        if(!invalidRooms.Contains(room) && !invalidRooms.Contains(other))
+                            invalidRooms.Add(other);
                     }
                 }
             }
 
+            if (areIntersects == false)
+                break; 
+            else
+                areIntersects = false;
+            
             ++attempt;
+        }
+
+        foreach (Room room in invalidRooms)
+        {
+            rooms.Remove(room);
+        }
+    }
+
+    private void PushRooms(Room room, Room other)
+    {
+        // Calculate direction from other room to room
+        Vector2 direction = (room.rect.center - other.rect.center).normalized;
+
+        Vector2Int roomPushDir = new Vector2Int(Mathf.RoundToInt(direction.x), Mathf.RoundToInt(direction.y));
+        Vector2Int otherPushDir = -roomPushDir; // Opposite direction as "other"
+
+        Vector2Int newRoomPos = room.rect.position + roomPushDir;
+        Vector2Int newOtherPos = other.rect.position + otherPushDir;
+
+        //if new pos is still within bounds, push the room
+        if (newRoomPos.x >= 0 && newRoomPos.x <= levelSize.x - room.rect.width
+            && newRoomPos.y >= 0 && newRoomPos.y <= levelSize.y - room.rect.height)
+        {
+            room.rect.position = newRoomPos;
+        }
+
+        if (newOtherPos.x >= 0 && newOtherPos.x <= levelSize.x - other.rect.width
+            && newOtherPos.y >= 0 && newOtherPos.y <= levelSize.y - other.rect.height)
+        {
+            other.rect.position = newOtherPos;
+        }
+    }
+
+    private void PlaceRooms()
+    {
+        foreach (Room room in rooms)
+        {
+            Vector3 roomCenter = new Vector3(room.rect.x + room.rect.width / 2f, 0f, room.rect.y + room.rect.height / 2f);
+
+            GameObject newRoomBuilder = Instantiate(roomBuilder, roomCenter, Quaternion.identity);
+
+            newRoomBuilder.transform.localScale = new Vector3(room.rect.width, 1f, room.rect.height);
         }
     }
 }
