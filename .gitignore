@@ -2,9 +2,12 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
+# For some reason when obj was ignored it just added obj/debug to git so now both
+# are ignored
 teamrogue/[Ll]ibrary/
 teamrogue/[Tt]emp/
 teamrogue/[Oo]bj/
+teamrogue/[Oo]bj/[Dd]ebug/
 teamrogue/[Bb]uild/
 teamrogue/[Bb]uilds/
 teamrogue/[Ll]ogs/
