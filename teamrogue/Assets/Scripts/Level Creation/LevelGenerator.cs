@@ -12,10 +12,16 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] Vector2Int minRoomSize;
     [SerializeField] Vector2Int maxRoomSize;
 
+    [Tooltip("The maximum amount of times the program will try to seperate overlapping rooms before removing them")]
+    [SerializeField] int maxSeperationTries = 10;
+    [Tooltip("The minimum amount of space between each room")]
+    [SerializeField] int roomSpacer = 5;
+
     [Header("Debug")]
     [SerializeField] GameObject roomBuilder;
     [SerializeField] int seed;
 
+    Vector3Int generatorOrgin;
     private List<Room> rooms;
 
     public class Room
@@ -27,12 +33,12 @@ public class LevelGenerator : MonoBehaviour
             rect = new RectInt(pos, size);
         }
 
-        public bool Intersects(in Room other)
+        public bool Intersects(in Room other, int bufferAmount = 0)
         {
-            if(rect.xMax > other.rect.xMin
-                && other.rect.xMax > rect.xMin
-                && rect.yMax > other.rect.yMin
-                && other.rect.yMax > rect.yMin)
+            if(rect.xMax + bufferAmount > other.rect.xMin - bufferAmount
+                && other.rect.xMax + bufferAmount > rect.xMin - bufferAmount
+                && rect.yMax + bufferAmount > other.rect.yMin - bufferAmount
+                && other.rect.yMax + bufferAmount > rect.yMin - bufferAmount)
             {
                 return true;
             }
@@ -46,6 +52,10 @@ public class LevelGenerator : MonoBehaviour
     void Start()
     {
         Random.InitState(seed);
+
+        //Sets the transform to the closest int value. this makes a grid system much simpler 
+        generatorOrgin = new Vector3Int(Mathf.CeilToInt(transform.position.x), Mathf.CeilToInt(transform.position.y), Mathf.CeilToInt(transform.position.z));
+        transform.position = generatorOrgin;
 
         GenerateRooms();
     }
@@ -64,10 +74,10 @@ public class LevelGenerator : MonoBehaviour
        
         Gizmos.color = Color.black;
 
-        Vector3 bottomLeft = new Vector3(transform.position.x, 0, transform.position.z);
-        Vector3 bottomRight = new Vector3(transform.position.x + levelSize.x, 0, transform.position.z);
-        Vector3 topLeft = new Vector3(transform.position.x, 0, transform.position.z + levelSize.y);
-        Vector3 topRight = new Vector3(transform.position.x + levelSize.x, 0, transform.position.z + levelSize.y);
+        Vector3 bottomLeft = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        Vector3 bottomRight = new Vector3(transform.position.x + levelSize.x, transform.position.y, transform.position.z);
+        Vector3 topLeft = new Vector3(transform.position.x, transform.position.y, transform.position.z + levelSize.y);
+        Vector3 topRight = new Vector3(transform.position.x + levelSize.x, transform.position.y, transform.position.z + levelSize.y);
 
         Gizmos.DrawLine(bottomLeft, bottomRight);
         Gizmos.DrawLine(bottomRight, topRight);
@@ -85,10 +95,10 @@ public class LevelGenerator : MonoBehaviour
             Vector2Int size = new Vector2Int(Random.Range(minRoomSize.x, maxRoomSize.x + 1), Random.Range(minRoomSize.y, maxRoomSize.y + 1));
 
             // max pos uses the size of the room to ensure that it doesnt spawn partially out of bounds
-            int maxXPos = levelSize.x - size.x;
-            int maxYPos = levelSize.y - size.y;
+            int maxXPos = (generatorOrgin.x + levelSize.x) - size.x;
+            int maxYPos = (generatorOrgin.z + levelSize.y) - size.y;
 
-            Vector2Int pos = new Vector2Int(Random.Range(0, maxXPos + 1), Random.Range(0, maxYPos + 1));
+            Vector2Int pos = new Vector2Int(Random.Range(generatorOrgin.x, maxXPos + 1), Random.Range(generatorOrgin.z, maxYPos + 1));
 
             Room temp = new(pos, size);
 
@@ -102,7 +112,7 @@ public class LevelGenerator : MonoBehaviour
 
     private void SeperateRooms()
     {
-        int maxAttempts = 30;
+        int maxAttempts = maxSeperationTries; //doesnt need to be it's own var, i think it's just more readable
         int attempt = 0;
         bool areIntersects = false;
 
@@ -117,13 +127,13 @@ public class LevelGenerator : MonoBehaviour
                     if (room == other)
                         continue;
 
-                    if (room.Intersects(other) 
+                    if (room.Intersects(other, roomSpacer) 
                         && attempt < maxAttempts)
                     {
                         PushRooms(room, other);
                         areIntersects = true;
                     }
-                    else if (room.Intersects(other) && attempt >= maxAttempts)
+                    else if (room.Intersects(other, roomSpacer) && attempt >= maxAttempts)
                     {
                         if(!invalidRooms.Contains(room) && !invalidRooms.Contains(other))
                             invalidRooms.Add(other);
@@ -157,14 +167,18 @@ public class LevelGenerator : MonoBehaviour
         Vector2Int newOtherPos = other.rect.position + otherPushDir;
 
         //if new pos is still within bounds, push the room
-        if (newRoomPos.x >= 0 && newRoomPos.x <= levelSize.x - room.rect.width
-            && newRoomPos.y >= 0 && newRoomPos.y <= levelSize.y - room.rect.height)
+        if (newRoomPos.x >= generatorOrgin.x 
+            && newRoomPos.x <= (generatorOrgin.x + levelSize.x) - room.rect.width
+            && newRoomPos.y >= generatorOrgin.z
+            && newRoomPos.y <= (generatorOrgin.z + levelSize.y) - room.rect.height)
         {
             room.rect.position = newRoomPos;
         }
 
-        if (newOtherPos.x >= 0 && newOtherPos.x <= levelSize.x - other.rect.width
-            && newOtherPos.y >= 0 && newOtherPos.y <= levelSize.y - other.rect.height)
+        if (newOtherPos.x >= generatorOrgin.x
+            && newOtherPos.x <= (generatorOrgin.x + levelSize.x) - other.rect.width
+            && newOtherPos.y >= generatorOrgin.z
+            && newOtherPos.y <= (generatorOrgin.z + levelSize.y) - other.rect.height)
         {
             other.rect.position = newOtherPos;
         }
