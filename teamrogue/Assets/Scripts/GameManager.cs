@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject menuBoon;
     [SerializeField] GameObject chestMenu;
 
+    [SerializeField] public GameObject inputHint;
+
     [SerializeField] public GameObject rewardChest1;
     [SerializeField] public GameObject rewardChest2;
     [SerializeField] public GameObject healButton;

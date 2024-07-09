@@ -213,4 +213,20 @@ public class Player : MonoBehaviour, IDamage
         GameManager.instance.SetCurrentStaff(newStaff);
         
     }
+    void objectView()
+    {
+        float viewingRange = 3f;
+        RaycastHit hit;
+        if(Physics.Raycast(transform.position, transform.forward, out hit, viewingRange))
+        {
+            if (hit.collider.CompareTag("Trophy"))
+            {
+                GameManager.instance.inputHint.SetActive(true);
+            }
+            else
+            {
+                GameManager.instance.inputHint.SetActive(false);
+            }
+        }
+    }
 }
