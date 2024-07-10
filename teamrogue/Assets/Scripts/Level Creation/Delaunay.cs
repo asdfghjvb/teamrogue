@@ -58,7 +58,30 @@ public class Delaunay
 
         public override int GetHashCode()
         {
-            return A.GetHashCode() + B.GetHashCode() - A.GetHashCode() * B.GetHashCode();
+            unchecked
+            {
+                unchecked
+                {
+                    int hash = 53;
+
+                    /*Gets the lower hash value and adds it to the hash first. This ensures 
+                    that the Edges containing the same two points but in different vars will
+                    still have the same hash, since they are effectivly the same edge*/
+
+                    Vector2 smaller = A;
+                    Vector2 larger = B;
+                    if (B.GetHashCode() < A.GetHashCode())
+                    {
+                        smaller = B;
+                        larger = A;
+                    }
+
+                    hash = hash * 17 + smaller.GetHashCode();
+                    hash = hash * 17 + larger.GetHashCode();
+
+                    return hash;
+                }
+            }
         }
 
         public bool ContainsVertex(Vector2 vertex)
@@ -93,6 +116,53 @@ public class Delaunay
 
             center = new Vector2(centerX, centerY);
             radius = Vector2.Distance(center, p1);
+        }
+
+        public static bool operator==(CircumCircle cir1, CircumCircle cir2)
+        {
+            //uses a "basically equal" with epsilon
+            const float epsilon = 0.001f;
+            if (Mathf.Abs(cir1.center.x - cir2.center.x) < epsilon &&
+                Mathf.Abs(cir1.center.y - cir2.center.y) < epsilon &&
+                Mathf.Abs(cir1.radius - cir2.radius) < epsilon)
+                return true;
+            else
+                return false;
+        }
+
+        public static bool operator !=(CircumCircle cir1, CircumCircle cir2)
+        {
+            const float epsilon = 0.001f;
+            if (Mathf.Abs(cir1.center.x - cir2.center.x) < epsilon &&
+                Mathf.Abs(cir1.center.y - cir2.center.y) < epsilon &&
+                Mathf.Abs(cir1.radius - cir2.radius) < epsilon)
+                return false;
+            else
+                return true;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is not CircumCircle)
+                return false;
+
+            CircumCircle other = (CircumCircle)obj;
+            if (this == other)
+                return true;
+            else
+                return false;
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 61;
+                hash = hash * 11 + center.GetHashCode();
+                hash = hash * 11 + radius.GetHashCode();
+
+                return hash;
+            }
         }
 
         public bool Contains(Vector2 p)
@@ -145,6 +215,59 @@ public class Delaunay
             CA = new Edge(c, ab.A);
 
             circumCircle = new CircumCircle(ab.A, ab.B, c);
+        }
+
+        public static bool operator==(Triangle tri1, Triangle tri2)
+        {
+            if ((tri1.AB == tri2.AB || tri1.AB == tri2.BC || tri1.AB == tri2.CA) &&
+                (tri1.BC == tri2.AB || tri1.BC == tri2.BC || tri1.BC == tri2.CA) &&
+                (tri1.CA == tri2.AB || tri1.CA == tri2.BC || tri1.CA == tri2.CA))
+                return true;
+            else
+                return false;
+        }
+
+        public static bool operator !=(Triangle tri1, Triangle tri2)
+        {
+            if ((tri1.AB == tri2.AB || tri1.AB == tri2.BC || tri1.AB == tri2.CA) &&
+                (tri1.BC == tri2.AB || tri1.BC == tri2.BC || tri1.BC == tri2.CA) &&
+                (tri1.CA == tri2.AB || tri1.CA == tri2.BC || tri1.CA == tri2.CA))
+                return false;
+            else
+                return true;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is not Triangle)
+                return false;
+
+            Triangle other = (Triangle)obj;
+            if (this == other)
+                return true;
+            else
+                return false;
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int hashAB = AB.GetHashCode();
+                int hashBC = BC.GetHashCode();
+                int hashCA = CA.GetHashCode();
+
+                int[] hashes = { hashAB, hashBC, hashCA };
+                Array.Sort(hashes);
+
+                int hash = 43;
+                foreach(int num in hashes)
+                {
+                    hash = hash * 59 + num;
+                }
+
+                return hash;
+            }
         }
 
         public HashSet<Edge> SharedEdges(Triangle other)
@@ -221,14 +344,14 @@ public class Delaunay
 
         Debug.Log("Amount of triangles before entering loop: " + triangles.Count);
 
-        foreach(Vector2 point in points)
+        foreach (Vector2 point in points)
         {
             HashSet<Triangle> newTriangles = new();
             List<Triangle> badTriangles = new();
 
-            /* Find bad triangles */ 
+            /* Find bad triangles */
 
-            foreach(Triangle triangle in triangles)
+            foreach (Triangle triangle in triangles)
             {
                 if (triangle.circumCircle.Contains(point))
                 {
@@ -247,10 +370,10 @@ public class Delaunay
 
             HashSet<Vector2> badTriangleVertices = new();
 
-            foreach(Triangle triangle in badTriangles)
+            foreach (Triangle triangle in badTriangles)
             {
                 List<Vector2> vertices = triangle.GetVertices();
-                foreach(Vector2 vertex in vertices)
+                foreach (Vector2 vertex in vertices)
                 {
                     badTriangleVertices.Add(vertex);
                 }
@@ -261,7 +384,7 @@ public class Delaunay
             List<Vector2> badTriangleVerticesList = new List<Vector2>(badTriangleVertices);
             for (int i = 0; i < badTriangleVertices.Count; i++)
             {
-                for(int j = i + 1; j < badTriangleVertices.Count; j++)
+                for (int j = i + 1; j < badTriangleVertices.Count; j++)
                 {
                     newTriangles.Add(new Triangle(point, badTriangleVerticesList[i], badTriangleVerticesList[j]));
                 }
@@ -271,7 +394,7 @@ public class Delaunay
 
             triangles.UnionWith(newTriangles);
 
-            Debug.Log("Point: " + point + ", Bad Triangles: " + badTriangles.Count + ", New triangles: " + newTriangles.Count + "\nTotal triangles: " + triangles.Count);
+            //Debug.Log("Point: " + point + ", Bad Triangles: " + badTriangles.Count + ", New triangles: " + newTriangles.Count + "\nTotal triangles: " + triangles.Count);
 
         }
 
@@ -280,9 +403,9 @@ public class Delaunay
         List<Vector2> superVertices = superTriangle.GetVertices();
         List<Triangle> superTriangleConnections = new();
 
-        foreach(Triangle triangle in triangles)
+        foreach (Triangle triangle in triangles)
         {
-            foreach(Vector2 vertex in superVertices)
+            foreach (Vector2 vertex in superVertices)
             {
                 if (triangle.ContainsVertex(vertex))
                 {
@@ -291,12 +414,18 @@ public class Delaunay
             }
         }
 
-        foreach(Triangle triangle in superTriangleConnections)
+        foreach (Triangle triangle in superTriangleConnections)
         {
             triangles.Remove(triangle);
         }
 
-        Debug.Log("After removing super triangle connections: " + triangles.Count);
+        //Debug Code
+        foreach (Triangle triangle in triangles)
+        {
+            Debug.Log("Center: " + triangle.circumCircle.center + " Radius: " + triangle.circumCircle.radius);
+        }
+
+        //Debug.Log("After removing super triangle connections: " + triangles.Count);
     }
 
     private Triangle CreateSuperTriangle(Vector2 areaSize, Vector2 areaOrigin)
