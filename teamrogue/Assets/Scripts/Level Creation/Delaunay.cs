@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using UnityEngine;
 
-public class Delaunay : MonoBehaviour
+public class Delaunay
 {
     public HashSet<Triangle> triangles { get; private set; }
 
@@ -19,6 +22,56 @@ public class Delaunay : MonoBehaviour
         {
             A = a;
             B = b;
+        }
+
+        public static bool operator ==(Edge edge1, Edge edge2)
+        {
+            if (edge1.A == edge2.A && edge1.B == edge2.B)
+                return true;
+            else if (edge1.A == edge2.B && edge1.B == edge2.A)
+                return true;
+            else
+                return false;
+        }
+
+        public static bool operator !=(Edge edge1, Edge edge2)
+        {
+            if (edge1.A == edge2.A && edge1.B == edge2.B)
+                return false;
+            else if (edge1.A == edge2.B && edge1.B == edge2.A)
+                return false;
+            else
+                return true;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is not Edge)
+                return false;
+
+            Edge other = (Edge)obj;
+            if (this == other)
+                return true;
+            else
+                return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return A.GetHashCode() + B.GetHashCode() - A.GetHashCode() * B.GetHashCode();
+        }
+
+        public bool ContainsVertex(Vector2 vertex)
+        {
+            if (A == vertex || B == vertex)
+                return true;
+            else
+                return false;
+        }
+
+        public void DebugDrawEdge()
+        {
+            Debug.DrawLine(new Vector3(A.x, 0, A.y), new Vector3(B.x, 0, B.y));
         }
     }
 
@@ -109,6 +162,53 @@ public class Delaunay : MonoBehaviour
 
             return sharedEdges;
         }
+
+        public bool ContainsVertex(Vector2 vertex)
+        {
+            if (AB.ContainsVertex(vertex) || BC.ContainsVertex(vertex) || CA.ContainsVertex(vertex))
+                return true;
+            else
+                return false;
+        }
+
+        public bool HasEdge(Edge edge)
+        {
+            if (AB == edge || BC == edge || CA == edge)
+                return true;
+            else
+                return false;
+        }
+
+        public List<Vector2> GetVertices()
+        {
+            List<Vector2> vertices = new()
+            {
+                AB.A,
+                AB.B,
+                CA.A
+            };
+
+            return vertices;
+        }
+
+        public List<Edge> GetEdges()
+        {
+            List<Edge> edges = new()
+            {
+                AB,
+                BC,
+                CA
+            };
+
+            return edges;
+        }
+
+        public void DebugDrawTriangle()
+        {
+            AB.DebugDrawEdge();
+            BC.DebugDrawEdge();
+            CA.DebugDrawEdge();
+        }
     }
 
     public Delaunay(List<Vector2> points, Vector2 areaSize, Vector3 graphOrigin)
@@ -119,61 +219,107 @@ public class Delaunay : MonoBehaviour
         Triangle superTriangle = CreateSuperTriangle(areaSize, new Vector2(origin.x, origin.z));
         triangles.Add(superTriangle);
 
+        Debug.Log("Amount of triangles before entering loop: " + triangles.Count);
+
         foreach(Vector2 point in points)
         {
             HashSet<Triangle> newTriangles = new();
             List<Triangle> badTriangles = new();
 
-            foreach(Triangle tri in triangles)
+            /* Find bad triangles */ 
+
+            foreach(Triangle triangle in triangles)
             {
-                if (tri.circumCircle.Contains(point))
+                if (triangle.circumCircle.Contains(point))
                 {
-                    badTriangles.Add(tri);
-
-                    HashSet<Edge> polygonalHoleEdges = new();
-
-                    foreach (Triangle potNeighbor in triangles)
-                    {
-                        HashSet<Edge> sharedEdges = tri.SharedEdges(potNeighbor);
-                        polygonalHoleEdges.UnionWith(sharedEdges);
-                    }
-
-                    foreach (Edge edge in polygonalHoleEdges)
-                    {
-                        newTriangles.Add(new Triangle(edge, point));
-                    }
+                    badTriangles.Add(triangle);
                 }
             }
 
-            foreach(Triangle triangle in badTriangles)
+            /* Remove bad triangles */
+
+            foreach (Triangle triangle in badTriangles)
             {
                 triangles.Remove(triangle);
             }
+
+            /* Find polygonal hole */
+
+            HashSet<Vector2> badTriangleVertices = new();
+
+            foreach(Triangle triangle in badTriangles)
+            {
+                List<Vector2> vertices = triangle.GetVertices();
+                foreach(Vector2 vertex in vertices)
+                {
+                    badTriangleVertices.Add(vertex);
+                }
+            }
+
+            /* Connect point to polgonal hole */
+
+            List<Vector2> badTriangleVerticesList = new List<Vector2>(badTriangleVertices);
+            for (int i = 0; i < badTriangleVertices.Count; i++)
+            {
+                for(int j = i + 1; j < badTriangleVertices.Count; j++)
+                {
+                    newTriangles.Add(new Triangle(point, badTriangleVerticesList[i], badTriangleVerticesList[j]));
+                }
+            }
+
+            /* Add new triagles to the main triangle list */
+
             triangles.UnionWith(newTriangles);
+
+            Debug.Log("Point: " + point + ", Bad Triangles: " + badTriangles.Count + ", New triangles: " + newTriangles.Count + "\nTotal triangles: " + triangles.Count);
+
         }
+
+        /* Remove the super triangle */
+
+        List<Vector2> superVertices = superTriangle.GetVertices();
+        List<Triangle> superTriangleConnections = new();
 
         foreach(Triangle triangle in triangles)
         {
-            //remove connections formed with super triangle
+            foreach(Vector2 vertex in superVertices)
+            {
+                if (triangle.ContainsVertex(vertex))
+                {
+                    superTriangleConnections.Add(triangle);
+                }
+            }
         }
+
+        foreach(Triangle triangle in superTriangleConnections)
+        {
+            triangles.Remove(triangle);
+        }
+
+        Debug.Log("After removing super triangle connections: " + triangles.Count);
     }
 
     private Triangle CreateSuperTriangle(Vector2 areaSize, Vector2 areaOrigin)
     {
-        const float scaler = 2.5f; //Increase half diagonal by this amount to ensure large enough super triangle. 2 should work fine but for future proofing it's a var
+        const float scaler = 2; //Increase half diagonal by this amount to ensure large enough super triangle. 2 should work fine but for future proofing it's a var
         Vector2 areaCenter = new Vector2(areaOrigin.x + (areaSize.x / 2f), areaOrigin.y + (areaSize.y / 2f));
-        float halfDiagonal = Mathf.Sqrt((areaSize.x * areaSize.x) + (areaSize.y * areaSize.y)) / 2; // (sqrt of (W^2 + H^2)) / 2. basically the radius of a rect
 
-        float size = halfDiagonal * scaler;
-
-        Vector2 v1 = new Vector2(areaCenter.x, areaCenter.y + size); 
-        Vector2 v2 = new Vector2(areaCenter.x - size,areaCenter.y - size); 
-        Vector2 v3 = new Vector2(areaCenter.x + size, areaCenter.y - size);
+        Vector2 v1 = new Vector2(areaCenter.x, areaOrigin.y + (areaSize.y * scaler)); 
+        Vector2 v2 = new Vector2(areaOrigin.x - (areaSize.x * scaler), areaOrigin.y); 
+        Vector2 v3 = new Vector2(areaOrigin.x + areaSize.x + (areaSize.x * scaler), areaOrigin.y);
 
         Debug.DrawLine(new Vector3(v1.x, origin.y, v1.y), new Vector3(v2.x, origin.y, v2.y), Color.green, 1000f);
         Debug.DrawLine(new Vector3(v2.x, origin.y, v2.y), new Vector3(v3.x, origin.y, v3.y), Color.green, 1000f);
         Debug.DrawLine(new Vector3(v3.x, origin.y, v3.y), new Vector3(v1.x, origin.y, v1.y), Color.green, 1000f);
 
         return new Triangle(v1, v2, v3);
+    }
+
+    public void DebugDrawDelauny()
+    {
+       foreach(Triangle tri in triangles)
+        {
+            tri.DebugDrawTriangle();
+        }
     }
 }

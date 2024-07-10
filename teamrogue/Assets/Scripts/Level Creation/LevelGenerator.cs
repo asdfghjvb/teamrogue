@@ -13,7 +13,7 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] Vector2Int maxRoomSize;
 
     [Tooltip("The maximum amount of times the program will try to seperate overlapping rooms before removing them")]
-    [SerializeField] int maxSeperationTries = 10;
+    [SerializeField] int maxSeperationTries = 30;
     [Tooltip("The minimum amount of space between each room")]
     [SerializeField] int roomSpacer = 5;
 
@@ -23,6 +23,9 @@ public class LevelGenerator : MonoBehaviour
 
     Vector3Int generatorOrgin;
     private List<Room> rooms;
+
+    //debug code
+    Delaunay triangulation;
 
     public class Room
     {
@@ -63,7 +66,7 @@ public class LevelGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        triangulation.DebugDrawDelauny();
     }
 
     private void OnDrawGizmos()
@@ -205,6 +208,6 @@ public class LevelGenerator : MonoBehaviour
             roomCenters.Add(room.rect.center);
         }
 
-        Delaunay triangulation = new Delaunay(roomCenters, levelSize, generatorOrgin);
+        triangulation = new Delaunay(roomCenters, levelSize, generatorOrgin);
     }
 }
