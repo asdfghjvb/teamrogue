@@ -23,11 +23,8 @@ public class ButtonFunctions : MonoBehaviour
         {
             staff.ResetStaffStats();
         }
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
+
+        SceneManager.LoadScene("Main Menu");
     }
     public void healReward()
     {

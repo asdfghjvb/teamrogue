@@ -12,12 +12,14 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
 
+    [Header("Menus")]
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject menuBoon;
     [SerializeField] GameObject chestMenu;
+    [SerializeField] GameObject menuSettings;
 
     [SerializeField] public GameObject inputHint;
 
@@ -161,6 +163,13 @@ public class GameManager : MonoBehaviour
     {
         statePaused();
         menuActive = chestMenu;
+        menuActive.SetActive(isPaused);
+    }
+
+    public void settingsMenu()
+    {
+        statePaused();
+        menuActive = menuSettings;
         menuActive.SetActive(isPaused);
     }
     public void UpdateMeleeCooldownUI(float cooldownRemaining)
