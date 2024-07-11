@@ -31,7 +31,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] public Collider door1Col, door2Col, door3Col;
 
-   
+    [Header("Player Settings")]
+    public float sensitivity = 0.5f;
+    public bool invertY = false;
 
     [Header("UI Elements")]
   
@@ -52,6 +54,7 @@ public class GameManager : MonoBehaviour
     public Player playerScript;
 
     public BoonManager boonManager;
+    public cameraController cameraController;
 
     public GameObject plane;
     public NavMeshBaker navMeshBakerScript;
@@ -71,11 +74,15 @@ public class GameManager : MonoBehaviour
         navMeshBakerScript = plane.GetComponent<NavMeshBaker>();
 
         boonManager = GetComponent<BoonManager>();
-
+        cameraController = GetComponent<cameraController>();
         foreach (Staffs staffs in allStaffs)
         {
             staffs.InitializeStaffValues();
         }
+
+        //get settings from settings menu to use in game
+        sensitivity = PlayerPrefs.GetFloat("sensValue", 0.5f);
+        invertY = PlayerPrefs.GetInt("invertY", 0) == 1;
        
     }
 
@@ -171,9 +178,9 @@ public class GameManager : MonoBehaviour
 
     public void settingsMenu()
     {
-        statePaused();
+       
         menuActive = menuSettings;
-        menuActive.SetActive(isPaused);
+        menuActive.SetActive(true);
     }
     public void UpdateMeleeCooldownUI(float cooldownRemaining)
     {
