@@ -215,22 +215,22 @@ public class Player : MonoBehaviour, IDamage
         GameManager.instance.SetCurrentStaff(newStaff);
         
     }
-    public bool objectView()
+    public TrophyData objectView()
     {
         float viewingRange = 3f;
         RaycastHit hit;
-        if(Physics.Raycast(transform.position, transform.forward, out hit, viewingRange))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, viewingRange))
         {
             if (hit.collider.CompareTag("Trophy"))
             {
                 GameManager.instance.inputHint.SetActive(true);
-                return true;
+                return hit.collider.GetComponent<TrophyData>();
             }
             else
             {
                 GameManager.instance.inputHint.SetActive(false);
             }
         }
-        return false;
+        return null;
     }
 }
