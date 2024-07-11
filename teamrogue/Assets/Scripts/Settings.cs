@@ -33,17 +33,13 @@ public class Settings : MonoBehaviour
         //initialize sliders to default or saved values
         musicSlider.value = PlayerPrefs.GetFloat("musicVolume", 0.75f);
         sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume", 0.75f);
-        sensSlider.value = GameManager.instance.sensitivity;
-        invertToggle.isOn = GameManager.instance.invertY;
+        sensSlider.value = PlayerPrefs.GetFloat("sensValue", 1.0f);
+        invertToggle.isOn = PlayerPrefs.GetInt("invertY", 0) == 1;
         //set the initial values
         SetMusicVol(musicSlider.value);
         SetSFXVol(sfxSlider.value);
         SetSens(sensSlider.value);
-        if (invertToggle.isOn)
-        {
-            invertToggle.isOn = false;
-        }
-        //toggleY(invertToggle.isOn);
+        toggleY(invertToggle.isOn);
         //listen for slider changes
         musicSlider.onValueChanged.AddListener(SetMusicVol);
         sfxSlider.onValueChanged.AddListener(SetSFXVol);
@@ -73,8 +69,8 @@ public class Settings : MonoBehaviour
 
     public void toggleY(bool isOn)
     {
-        GameManager.instance.invertY = !GameManager.instance.invertY;
-        PlayerPrefs.SetInt("invertY", invertToggle ? 1 : 0);
+        GameManager.instance.invertY = isOn;
+        PlayerPrefs.SetInt("invertY", isOn ? 1 : 0);
     }
     
     //close settings menu and return to main menu
