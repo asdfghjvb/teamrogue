@@ -10,7 +10,7 @@ using TMPro;
 
 public class BoonManager : MonoBehaviour
 {
-    public static BoonManager instance;
+    
 
     [SerializeField] GameObject boonMenu;
     [SerializeField] GameObject startingBoon;
@@ -37,7 +37,7 @@ public class BoonManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        instance = this;
+        
     }
 
     // Update is called once per frame

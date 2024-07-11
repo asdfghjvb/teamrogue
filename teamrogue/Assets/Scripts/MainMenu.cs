@@ -5,40 +5,51 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public AudioSource audioSource;
+    public AudioClip buttonClick;
+
+    private void Start()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void newGame()
     {
+        playClickSound(); 
         SceneManager.LoadScene("SampleScene");
     }
 
     public void loadGame()
     {
+        playClickSound();
         //will load like new game until save system is set up
         SceneManager.LoadScene("SampleScene");
     }
 
     public void settings()
     {
+        playClickSound();
         GameManager.instance.settingsMenu();
     }
 
     public void quitGame()
     {
+        StartCoroutine(clickDelay());
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
         Application.Quit();
 #endif
+    }
+
+    public void playClickSound()
+    {
+        audioSource.PlayOneShot(buttonClick);
+    }
+
+    IEnumerator clickDelay()
+    {playClickSound();
+        yield return new WaitForSeconds(0.1f);
+
     }
 }
