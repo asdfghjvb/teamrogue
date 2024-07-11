@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -180,7 +183,9 @@ public class LevelGenerator : MonoBehaviour
         transform.position = generatorOrgin;
 
         GenerateRooms();
-        CreatePossibleConnections();
+        
+        List<Line> possibleConnections= CreatePossibleConnections();
+        List<Line> mst = MST(possibleConnections);
     }
 
     // Update is called once per frame
@@ -309,17 +314,68 @@ public class LevelGenerator : MonoBehaviour
 
     private void PlaceRooms()
     {
+        //foreach (Room room in rooms)
+        //{
+        //    Vector3 roomCenter = new Vector3(room.rect.x + room.rect.width / 2f, generatorOrgin.y, room.rect.y + room.rect.height / 2f);
+
+        //    GameObject newRoomBuilder = Instantiate(roomBuilder, roomCenter, Quaternion.identity);
+
+        //    newRoomBuilder.transform.localScale = new Vector3(room.rect.width, 1f, room.rect.height);
+        //}
+        // Create a parent GameObject to hold all instantiated roomBuilders
+        GameObject parentObject = new GameObject("Room");
+
+        // List to hold all individual meshes
+        List<MeshFilter> meshes = new List<MeshFilter>();
+
         foreach (Room room in rooms)
         {
-            Vector3 roomCenter = new Vector3(room.rect.x + room.rect.width / 2f, generatorOrgin.y, room.rect.y + room.rect.height / 2f);
+            // Iterate through every grid point within the room's bounds
+            for (int x = room.rect.x; x < room.rect.x + room.rect.width; x++)
+            {
+                for (int y = room.rect.y; y < room.rect.y + room.rect.height; y++)
+                {
+                    Vector3 position = new Vector3(x + 0.5f, generatorOrgin.y, y + 0.5f); // Offset by 0.5 to center the object
 
-            GameObject newRoomBuilder = Instantiate(roomBuilder, roomCenter, Quaternion.identity);
+                    // Instantiate the roomBuilder prefab at the calculated position under the parent object
+                    GameObject newRoomBuilder = Instantiate(roomBuilder, position, Quaternion.identity, parentObject.transform);
 
-            newRoomBuilder.transform.localScale = new Vector3(room.rect.width, 1f, room.rect.height);
+                    // Optionally, rotate the object around the X-axis by 270 degrees
+                    newRoomBuilder.transform.rotation = Quaternion.Euler(270f, 0f, 0f);
+
+                    // Get the MeshFilter component of the instantiated roomBuilder
+                    MeshFilter meshFilter = newRoomBuilder.GetComponent<MeshFilter>();
+                    if (meshFilter != null && meshFilter.sharedMesh != null)
+                    {
+                        meshes.Add(meshFilter);
+                    }
+                }
+            }
         }
+
+        // Create a combined mesh from all individual meshes
+        CombineInstance[] combine = new CombineInstance[meshes.Count];
+        for (int i = 0; i < meshes.Count; i++)
+        {
+            combine[i].mesh = meshes[i].sharedMesh;
+            combine[i].transform = meshes[i].transform.localToWorldMatrix;
+        }
+
+        // Create a new GameObject to hold the combined mesh
+        GameObject combinedObject = new GameObject("CombinedMesh");
+        combinedObject.transform.parent = parentObject.transform;
+
+        // Add a MeshFilter and MeshCollider to the combinedObject
+        MeshFilter combinedMeshFilter = combinedObject.AddComponent<MeshFilter>();
+        combinedMeshFilter.mesh = new Mesh();
+        combinedMeshFilter.mesh.CombineMeshes(combine);
+
+        MeshCollider meshCollider = combinedObject.AddComponent<MeshCollider>();
+        meshCollider.sharedMesh = combinedMeshFilter.mesh;
+
     }
 
-    private void CreatePossibleConnections()
+    private List<Line> CreatePossibleConnections()
     {
         List<Vector2> points = new();
         foreach(Room room in rooms)
@@ -374,7 +430,7 @@ public class LevelGenerator : MonoBehaviour
 
         } while (intersectionFound);
 
-        /* Next it need to check if any of the lines are running thru rooms*/
+        /* Next it needs to check if any of the lines are running thru rooms*/
 
         foreach (Line line in lineList)
         {
@@ -409,8 +465,69 @@ public class LevelGenerator : MonoBehaviour
 
         foreach (Line line in lineList)
         {
-            Debug.DrawLine(new Vector3(line.start.x, generatorOrgin.y, line.start.y), new Vector3(line.end.x, generatorOrgin.y, line.end.y), Color.green, 1000f);
+            Debug.DrawLine(new Vector3(line.start.x, generatorOrgin.y, line.start.y), new Vector3(line.end.x, generatorOrgin.y, line.end.y), Color.grey, 1000f);
         }
+
+        return lineList;
     }
 
+    public List<Line> MST(List<Line> graph)
+    {
+        /* Intialize */
+
+        HashSet<Line> MST = new();
+        HashSet<Vector2> vertices = new();
+
+        Vector2 starter = graph[0].start;
+        vertices.Add(starter);
+
+        //list of all the lines that could be added sorted by weight (using length for weight)
+        var potentialEdges = new SortedSet<Line>(Comparer<Line>.Create((line1, line2) =>
+        {
+            return line1.length.CompareTo(line2.length);
+        }));
+
+        foreach(Line line in graph)
+        {
+            if (line.start == starter || line.end == starter)
+                potentialEdges.Add(line);
+        }
+
+        /* Main Loop */
+
+        while(true)
+        {
+            Line minWeightLine = potentialEdges.Min;
+
+            MST.Add(minWeightLine);
+            Debug.DrawLine(new Vector3(minWeightLine.start.x, generatorOrgin.y, minWeightLine.start.y), 
+                new Vector3(minWeightLine.end.x, generatorOrgin.y, minWeightLine.end.y), Color.green, 1000f);
+
+            vertices.Add(minWeightLine.start);
+            vertices.Add(minWeightLine.end);
+
+            potentialEdges.Clear(); //Clear and create new list with new data
+            foreach(Line line in graph)
+            {
+                int counter = 0;
+                foreach(Vector2 vertex in vertices)
+                {// if a line contains exactly 1 vertex, add it to potential
+
+                    if (line.start == vertex || line.end == vertex)
+                        counter++;
+
+                    if (counter > 1)
+                        continue;
+                }
+
+                if(counter == 1)
+                    potentialEdges.Add(line);
+            }
+
+            if (potentialEdges.Count <= 0)
+                break;
+        }
+
+        return MST.ToList();
+    }
 }
