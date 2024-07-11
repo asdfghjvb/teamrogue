@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
@@ -47,6 +48,127 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
+    public class Line
+    {
+        public Vector2 start;
+        public Vector2 end;
+
+        public float length;
+
+        public Line(Vector2 _start, Vector2 _end)
+        {
+            start = _start;
+            end = _end;
+
+            length = Vector2.Distance(start, end);
+        }
+
+        public static bool operator==(Line line1, Line line2)
+        {
+            if ((line1.start == line2.start && line1.end == line2.end) ||
+                (line1.start == line2.end && line1.end == line2.start))
+                return true;
+            else
+                return false;
+        }
+
+        public static bool operator !=(Line line1, Line line2)
+        {
+            if ((line1.start == line2.start && line1.end == line2.end) ||
+                (line1.start == line2.end && line1.end == line2.start))
+                return false;
+            else
+                return true;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is not Line)
+                return false;
+
+            Line other = (Line)obj;
+
+            if (this == other)
+                return true;
+            else
+                return false;
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 17;
+
+                int smaller = start.GetHashCode();
+                int larger = end.GetHashCode();
+
+                if(smaller > larger)
+                {
+                    smaller = end.GetHashCode();
+                    larger = start.GetHashCode();
+                }
+
+                hash = 17 * hash + smaller;
+                hash = 17 * hash + larger;
+
+                return hash;
+            }
+        }
+
+        public bool Intersects(Line other)
+        {
+            if (start.Equals(other.start) || start.Equals(other.end) || end.Equals(other.start) || end.Equals(other.end))
+            {
+                return false;
+            }
+
+            int o1 = Orientation(start, end, other.start);
+            int o2 = Orientation(start, end, other.end);
+            int o3 = Orientation(other.start, other.end, start);
+            int o4 = Orientation(other.start, other.end, end);
+
+            if (o1 != o2 && o3 != o4)
+                return true;
+            
+            if (o1 == 0 && OnSegment(start, other.start, end)) 
+                return true;
+            
+            if (o2 == 0 && OnSegment(start, other.end, end)) 
+                return true;
+
+            if (o3 == 0 && OnSegment(other.start, start, other.end))
+                return true;
+
+            if (o4 == 0 && OnSegment(other.start, end, other.end)) 
+                return true;
+
+            return false;
+        }
+
+        private bool OnSegment(Vector2 p, Vector2 q, Vector2 r)
+        {
+            if (q.x <= Mathf.Max(p.x, r.x) && q.x >= Mathf.Min(p.x, r.x) &&
+                q.y <= Mathf.Max(p.y, r.y) && q.y >= Mathf.Min(p.y, r.y))
+                return true;
+            
+            return false;
+        }
+
+        private int Orientation(Vector2 p, Vector2 q, Vector2 r)
+        {
+            float val = (q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y);
+
+            if (Mathf.Approximately(val, 0)) 
+                return 0;
+
+            if (val > 0)
+                return 1;
+            else
+                return 2;
+        }
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +180,7 @@ public class LevelGenerator : MonoBehaviour
         transform.position = generatorOrgin;
 
         GenerateRooms();
+        CreatePossibleConnections();
     }
 
     // Update is called once per frame
@@ -68,7 +191,8 @@ public class LevelGenerator : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        /*Creates a gizmo in the scene view to visualize where the level will be built
+         /*
+          Creates a gizmo in the scene view to visualize where the level will be built
           Step 1, draw the outer boader
          */
        
@@ -194,4 +318,99 @@ public class LevelGenerator : MonoBehaviour
             newRoomBuilder.transform.localScale = new Vector3(room.rect.width, 1f, room.rect.height);
         }
     }
+
+    private void CreatePossibleConnections()
+    {
+        List<Vector2> points = new();
+        foreach(Room room in rooms)
+        {
+            points.Add(room.rect.center);
+        }
+
+        HashSet<Line> lines = new();
+        for(int i = 0; i < points.Count; i++)
+        {
+            for(int j = i + 1; j < points.Count; j++)
+            {
+                lines.Add(new Line(points[i], points[j]));
+            }
+        }
+
+        List<Line> lineList = new List<Line>(lines);
+        HashSet<Line> badLines = new();
+
+        bool intersectionFound;
+        do
+        {
+            intersectionFound = false;
+
+            for (int i = 0; i < lineList.Count; i++)
+            {
+                for (int j = i + 1; j < lineList.Count; j++)
+                {
+                    if (lineList[i].Intersects(lineList[j]))
+                    {
+                        intersectionFound = true;
+
+                        //remove the longer line so hallways are shorter on average
+                        if (lineList[i].length > lineList[j].length)
+                        {
+                            badLines.Add(lineList[i]);
+                        }
+                        else
+                        {
+                            badLines.Add(lineList[j]);
+                        }
+                    }
+                }
+            }
+
+            foreach (Line line in badLines)
+            {
+                lineList.Remove(line);
+            }
+
+            badLines.Clear();
+
+        } while (intersectionFound);
+
+        /* Next it need to check if any of the lines are running thru rooms*/
+
+        foreach (Line line in lineList)
+        {
+            foreach(Room room in rooms)
+            {
+                //Exclude rooms that are the start or end point of the line
+                if (room.rect.center == line.start || room.rect.center == line.end)
+                    continue;
+
+                Vector2 BL = new Vector2(room.rect.xMin, room.rect.yMin);
+                Vector2 BR = new Vector2(room.rect.xMax, room.rect.yMin);
+                Vector2 TL = new Vector2(room.rect.xMin, room.rect.yMax);
+                Vector2 TR = new Vector2(room.rect.xMax, room.rect.yMax);
+
+                Line leftEdge = new Line(BL, TL);
+                Line rightEdge = new Line(BR, TR);
+                Line bottomEdge = new Line(BL, BR);
+                Line topEdge = new Line(TL, TR);
+
+                if (line.Intersects(leftEdge)
+                    || line.Intersects(rightEdge)
+                    || line.Intersects(bottomEdge)
+                    || line.Intersects(topEdge))
+                    badLines.Add(line);
+            }
+        }
+
+        foreach (Line line in badLines)
+        {
+            lineList.Remove(line);
+        }
+
+        foreach (Line line in lineList)
+        {
+            Debug.DrawLine(new Vector3(line.start.x, generatorOrgin.y, line.start.y), new Vector3(line.end.x, generatorOrgin.y, line.end.y), Color.green, 1000f);
+        }
+    }
+
 }
