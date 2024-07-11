@@ -70,21 +70,23 @@ public class Player : MonoBehaviour, IDamage
 
     void Update()
     {
-        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
-        Movement();
-        Sprint();
-        if (Input.GetButton("Fire1") && !isShooting && mana > manaCost && staffList.Count > 0)
+        if (!GameManager.instance.isPaused)
         {
-            StartCoroutine(shoot());
-            updatePlayerUI();
-        }
-        selectStaff();
+            Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
+            Movement();
+            Sprint();
+            if (Input.GetButton("Fire1") && !isShooting && mana > manaCost && staffList.Count > 0)
+            {
+                StartCoroutine(shoot());
+                updatePlayerUI();
+            }
+            selectStaff();
 
-        if (Input.GetButtonDown("Fire2") && !isMeleeAttacking && Time.time >= lastMeleeTime + meleeCooldown)
-        {
-            StartCoroutine(melee());
+            if (Input.GetButtonDown("Fire2") && !isMeleeAttacking && Time.time >= lastMeleeTime + meleeCooldown)
+            {
+                StartCoroutine(melee());
+            }
         }
-
         
     }
 
@@ -213,7 +215,7 @@ public class Player : MonoBehaviour, IDamage
         GameManager.instance.SetCurrentStaff(newStaff);
         
     }
-    void objectView()
+    public bool objectView()
     {
         float viewingRange = 3f;
         RaycastHit hit;
@@ -222,11 +224,13 @@ public class Player : MonoBehaviour, IDamage
             if (hit.collider.CompareTag("Trophy"))
             {
                 GameManager.instance.inputHint.SetActive(true);
+                return true;
             }
             else
             {
                 GameManager.instance.inputHint.SetActive(false);
             }
         }
+        return false;
     }
 }
