@@ -24,9 +24,6 @@ public class LevelGenerator : MonoBehaviour
     Vector3Int generatorOrgin;
     private List<Room> rooms;
 
-    //debug code
-    Delaunay triangulation;
-
     public class Room
     {
         public RectInt rect;
@@ -66,7 +63,7 @@ public class LevelGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        triangulation.DebugDrawDelauny();
+        
     }
 
     private void OnDrawGizmos()
@@ -110,7 +107,6 @@ public class LevelGenerator : MonoBehaviour
 
         SeperateRooms(); //if any rooms overlap, attemp to seperate
         PlaceRooms(); //Once rooms are seperated, place them
-        Triangulate();
     }
 
     private void SeperateRooms()
@@ -197,17 +193,5 @@ public class LevelGenerator : MonoBehaviour
 
             newRoomBuilder.transform.localScale = new Vector3(room.rect.width, 1f, room.rect.height);
         }
-    }
-
-    private void Triangulate()
-    {
-        List<Vector2> roomCenters = new List<Vector2>();
-
-        foreach(Room room in rooms)
-        {
-            roomCenters.Add(room.rect.center);
-        }
-
-        triangulation = new Delaunay(roomCenters, levelSize, generatorOrgin);
     }
 }
