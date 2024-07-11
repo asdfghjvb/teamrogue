@@ -51,6 +51,8 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public Player playerScript;
 
+    public BoonManager boonManager;
+
     public GameObject plane;
     public NavMeshBaker navMeshBakerScript;
 
@@ -68,6 +70,7 @@ public class GameManager : MonoBehaviour
         plane = GameObject.FindWithTag("Plane");
         navMeshBakerScript = plane.GetComponent<NavMeshBaker>();
 
+        boonManager = GetComponent<BoonManager>();
 
         foreach (Staffs staffs in allStaffs)
         {
@@ -151,7 +154,7 @@ public class GameManager : MonoBehaviour
     public void boonSelection()
     {
         statePaused();
-        BoonManager.instance.randomizeList();
+        boonManager.randomizeList();
         menuActive = menuBoon;
         menuActive.SetActive(isPaused);
         boonCount++;
