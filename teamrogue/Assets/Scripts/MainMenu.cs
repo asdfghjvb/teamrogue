@@ -5,8 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] GameObject menuSettings;
+    [SerializeField] GameObject menuButtons;
     public AudioSource audioSource;
     public AudioClip buttonClick;
+   
 
     private void Start()
     {
@@ -28,8 +31,17 @@ public class MainMenu : MonoBehaviour
 
     public void settings()
     {
+        //close main menu and open settings
+        StartCoroutine(OpenSettingsDelay());
+        
+    }
+
+    private IEnumerator OpenSettingsDelay()
+    {
         playClickSound();
-        GameManager.instance.settingsMenu();
+        yield return new WaitForSeconds(0.1f);
+        menuSettings.SetActive(true);
+        menuButtons.SetActive(false);
     }
 
     public void quitGame()
