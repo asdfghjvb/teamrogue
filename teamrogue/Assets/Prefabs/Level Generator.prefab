@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2677353984481627313
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6243726874628050506}
+  - component: {fileID: 2271455056812713875}
+  m_Layer: 0
+  m_Name: Level Generator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6243726874628050506
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2677353984481627313}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2271455056812713875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2677353984481627313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9027f5100b3808440ae3748a00776a5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelSize: {x: 150, y: 150}
+  maxRoomQuantity: 12
+  minRoomSize: {x: 8, y: 8}
+  maxRoomSize: {x: 20, y: 20}
+  maxSeperationTries: 5
+  roomSpacer: 5
+  extraHallSpawnChance: 0.15
+  floors:
+  - {fileID: 7786834797176686046, guid: 02690ecf1a03b274aa89b6b5ab22e1a1, type: 3}
+  - {fileID: 1753780157062862154, guid: dbc03e09b7cb6c445bc139fdf4485434, type: 3}
+  - {fileID: 647125889335725604, guid: b465e5daaf375f74590c0bcaf9239f77, type: 3}
+  - {fileID: 6713216763841184114, guid: b08f11e5a04db804f99c8de637d9ab50, type: 3}
+  - {fileID: 820475830022656810, guid: c5ee64857d7d88344bef35375f20d5a1, type: 3}
+  - {fileID: 6601348092362153188, guid: 6fa936adac6424e469d0d5bde13a10e7, type: 3}
+  - {fileID: 7126052724600383399, guid: 0b8ce77eec77c12478b9f6a98e4a650a, type: 3}
+  - {fileID: 7978591694076811745, guid: 4ce183937151e2544aedf111d835c467, type: 3}
+  roomBuilder: {fileID: 6990510333050736647, guid: f05c30770cd1c074ca9f67b03fb52861, type: 3}
+  seed: 100
+  generatorOrgin: {x: 0, y: 0, z: 0}
