@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.VisualScripting;
+//using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.XR;
 
@@ -17,9 +18,13 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] Vector2Int maxRoomSize;
 
     [Tooltip("The maximum amount of times the program will try to seperate overlapping rooms before removing them")]
-    [SerializeField] int maxSeperationTries = 30;
+    [SerializeField] int maxSeperationTries = 15;
     [Tooltip("The minimum amount of space between each room")]
     [SerializeField] int roomSpacer = 5;
+    
+    [Tooltip("The chance that each non essential connection becomes a hallway")]
+    [Range(0, 1)]
+    [SerializeField] float extraHallSpawnChance = 0.15f;
 
     [Header("Debug")]
     [SerializeField] GameObject roomBuilder;
@@ -194,9 +199,15 @@ public class LevelGenerator : MonoBehaviour
 
         aStar = new PathBuilder(generatorOrgin, levelSize, rooms);
         
-        
         List<Line> possibleConnections= CreatePossibleConnections();
         List<Line> mst = MST(possibleConnections);
+        List<Line> hallways = AddExtraHallways(possibleConnections, mst);
+
+        foreach(Line path in hallways)
+        {
+            aStar.FindPath(new Vector3(path.start.x, generatorOrgin.y, path.start.y),
+                new Vector3(path.end.x, generatorOrgin.y, path.end.y));
+        }
     }
 
     // Update is called once per frame
@@ -494,5 +505,23 @@ public class LevelGenerator : MonoBehaviour
         }
 
         return MST.ToList();
+    }
+
+    List<Line> AddExtraHallways(List<Line> allPossibleConnections, List<Line> requiredConnections)
+    {
+        HashSet<Line> hallways = new HashSet<Line>(requiredConnections);
+
+        foreach(Line connection in allPossibleConnections)
+        {
+            if (hallways.Contains(connection))
+                continue;
+
+            float rand = Random.Range(0f, 1f);
+
+            if (rand <= extraHallSpawnChance)
+                hallways.Add(connection);
+        }
+
+        return new List<Line>(hallways);
     }
 }
