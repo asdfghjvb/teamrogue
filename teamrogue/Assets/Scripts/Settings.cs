@@ -9,7 +9,6 @@ public class Settings : MonoBehaviour
     [SerializeField] GameObject menuButtons;
     [SerializeField] GameObject menuSettings;
     //list of current settings to adjust
-    public Dropdown resDropdown;
     public Slider musicSlider;
     public Slider sfxSlider;
     public Slider sensSlider;
@@ -24,8 +23,7 @@ public class Settings : MonoBehaviour
 
 
 
-    //array of different resolutions to swap to
-    private Resolution[] resolutions;
+   
     
     // Start is called before the first frame update
     void Start()
