@@ -12,12 +12,16 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
 
-    [SerializeField] GameObject menuActive;
+    [Header("Menus")]
+    [SerializeField] public GameObject menuActive;
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject menuBoon;
     [SerializeField] GameObject chestMenu;
+    [SerializeField] GameObject menuSettings;
+
+    [SerializeField] public GameObject inputHint;
 
     [SerializeField] public GameObject rewardChest1;
     [SerializeField] public GameObject rewardChest2;
@@ -27,12 +31,23 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] public Collider door1Col, door2Col, door3Col;
 
-   
+    [Header("Player Settings")]
+    public float sensitivity = 0.5f;
+    public bool invertY = false;
 
     [Header("UI Elements")]
   
     [SerializeField] Image meleeCooldownUI;
     [SerializeField] TMP_Text enemyCountText;
+
+    [Header("Trophies")]
+    [SerializeField] public GameObject gold;
+    [SerializeField] public GameObject silver1;
+    [SerializeField] public GameObject silver2;
+    [SerializeField] public GameObject bronze1;
+    [SerializeField] public GameObject bronze2;
+    [SerializeField] public GameObject bronze3;
+    [SerializeField] public GameObject bronze4;
 
     public Staffs currentStaff;
 
@@ -46,6 +61,9 @@ public class GameManager : MonoBehaviour
 
     public GameObject player;
     public Player playerScript;
+
+    public BoonManager boonManager;
+    public cameraController cameraController;
 
     public GameObject plane;
     public NavMeshBaker navMeshBakerScript;
@@ -64,11 +82,16 @@ public class GameManager : MonoBehaviour
         plane = GameObject.FindWithTag("Plane");
         navMeshBakerScript = plane.GetComponent<NavMeshBaker>();
 
-
+        boonManager = GetComponent<BoonManager>();
+        cameraController = GetComponent<cameraController>();
         foreach (Staffs staffs in allStaffs)
         {
             staffs.InitializeStaffValues();
         }
+
+        //get settings from settings menu to use in game
+        sensitivity = PlayerPrefs.GetFloat("sensValue", 0.5f);
+        invertY = PlayerPrefs.GetInt("invertY", 0) == 1;
        
     }
 
@@ -140,14 +163,15 @@ public class GameManager : MonoBehaviour
     }
     public void youLose()
     {
-        statePaused();
         menuActive = menuLose;
-        menuActive.SetActive(isPaused);
+        menuActive.SetActive(true);
+        statePaused();
+       
     }
     public void boonSelection()
     {
         statePaused();
-        BoonManager.instance.randomizeList();
+        boonManager.randomizeList();
         menuActive = menuBoon;
         menuActive.SetActive(isPaused);
         boonCount++;
@@ -160,6 +184,13 @@ public class GameManager : MonoBehaviour
         statePaused();
         menuActive = chestMenu;
         menuActive.SetActive(isPaused);
+    }
+
+    public void settingsMenu()
+    {
+       
+        menuActive = menuSettings;
+        menuActive.SetActive(true);
     }
     public void UpdateMeleeCooldownUI(float cooldownRemaining)
     {
