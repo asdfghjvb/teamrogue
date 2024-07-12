@@ -28,8 +28,16 @@ public class ButtonFunctions : MonoBehaviour
         {
             staff.ResetStaffStats();
         }
-        playClickSound();
+        StartCoroutine(clickDelay());
         SceneManager.LoadScene("Main Menu");
+    }
+
+    IEnumerator clickDelay()
+    {
+        playClickSound();
+        yield return new WaitForSeconds(0.5f);
+        
+
     }
     public void healReward()
     {

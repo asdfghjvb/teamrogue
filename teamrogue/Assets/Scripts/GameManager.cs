@@ -163,9 +163,10 @@ public class GameManager : MonoBehaviour
     }
     public void youLose()
     {
-        statePaused();
         menuActive = menuLose;
-        menuActive.SetActive(isPaused);
+        menuActive.SetActive(true);
+        statePaused();
+       
     }
     public void boonSelection()
     {

@@ -14,37 +14,50 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+
+        menuButtons.SetActive(true);
+        menuSettings.SetActive(false);
+      
     }
 
-    public void newGame()
+    public void NewGame()
     {
         playClickSound(); 
         SceneManager.LoadScene("SampleScene");
     }
 
-    public void loadGame()
+    public void LoadGame()
     {
         playClickSound();
         //will load like new game until save system is set up
         SceneManager.LoadScene("SampleScene");
     }
 
-    public void settings()
+    public void Settings()
     {
         //close main menu and open settings
         StartCoroutine(OpenSettingsDelay());
-        
+
+        //if (menuSettings.activeInHierarchy)
+        //{
+        //    Debug.LogWarning("Menu did not open");
+        //}
+       //playClickSound();
+       // yield return new WaitForSeconds(0.1f);
+        menuSettings.SetActive(true);
+        menuButtons.SetActive(false);
+
     }
 
     private IEnumerator OpenSettingsDelay()
     {
         playClickSound();
-        yield return new WaitForSeconds(0.1f);
-        menuSettings.SetActive(true);
-        menuButtons.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+        //menuSettings.SetActive(true);
+        //menuButtons.SetActive(false);
     }
 
-    public void quitGame()
+    public void QuitGame()
     {
         StartCoroutine(clickDelay());
 #if UNITY_EDITOR
@@ -60,8 +73,9 @@ public class MainMenu : MonoBehaviour
     }
 
     IEnumerator clickDelay()
-    {playClickSound();
-        yield return new WaitForSeconds(0.1f);
+    {
+        playClickSound();
+        yield return new WaitForSeconds(1f);
 
     }
 }

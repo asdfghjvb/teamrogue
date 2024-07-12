@@ -13,7 +13,7 @@ public class cameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        invertY = GameManager.instance.invertY;
     }
 
     // Update is called once per frame
