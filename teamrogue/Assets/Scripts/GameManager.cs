@@ -40,6 +40,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] Image meleeCooldownUI;
     [SerializeField] TMP_Text enemyCountText;
 
+    [Header("Trophies")]
+    [SerializeField] public GameObject gold;
+    [SerializeField] public GameObject silver1;
+    [SerializeField] public GameObject silver2;
+    [SerializeField] public GameObject bronze1;
+    [SerializeField] public GameObject bronze2;
+    [SerializeField] public GameObject bronze3;
+    [SerializeField] public GameObject bronze4;
+
     public Staffs currentStaff;
 
     

@@ -2,19 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Trophy : MonoBehaviour
 {
     [SerializeField] GameObject trophyMenu;
     [SerializeField] TMP_Text trophyName;
     [SerializeField] TMP_Text trophyDescription;
-    [SerializeField] Image menuBox;
+    [SerializeField] UnityEngine.UI.Image menuBox;
 
     
     void Update()
     {
-        TrophyData data = GameManager.instance.playerScript.objectView();
+        TrophyData data = (TrophyData)GameManager.instance.playerScript.objectView();
         if (Input.GetButtonDown("e") && data != null)
         {
             GameManager.instance.statePaused();

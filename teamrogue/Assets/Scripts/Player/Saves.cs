@@ -17,13 +17,14 @@ public class Saves : ScriptableObject
     [SerializeField] private int shootRange;
     [SerializeField] private float meleeCooldown;
 
-    [Header("Options")]
-    //options will go here
-    bool placeholder1;
-
     [Header("Achievements")]
-    //achievement bools will go here
-    bool placeholder2;
+    public bool bronzeAch1;
+    public bool bronzeAch2;
+    public bool bronzeAch3;
+    public bool bronzeAch4;
+    public bool silverAch1;
+    public bool silverAch2;
+    public bool goldAch;
 
     public void save()
     {
@@ -37,6 +38,14 @@ public class Saves : ScriptableObject
         shootDamage = GameManager.instance.playerScript.innateShootDamage;
         shootRate = GameManager.instance.playerScript.innateShootRate;
         shootRange = GameManager.instance.playerScript.innateShootDist;
+
+        goldAch = GameManager.instance.gold.activeSelf;
+        silverAch1 = GameManager.instance.silver1.activeSelf;
+        silverAch2 = GameManager.instance.silver2.activeSelf;
+        bronzeAch1 = GameManager.instance.bronze1.activeSelf;
+        bronzeAch2 = GameManager.instance.bronze2.activeSelf;
+        bronzeAch3 = GameManager.instance.bronze3.activeSelf;
+        bronzeAch4 = GameManager.instance.bronze4.activeSelf;
     }
     public void load()
     {
@@ -49,6 +58,14 @@ public class Saves : ScriptableObject
         GameManager.instance.playerScript.innateShootDamage = shootDamage;
         GameManager.instance.playerScript.innateShootDist = shootRange;
         GameManager.instance.playerScript.innateShootRate = shootRate;
+
+        GameManager.instance.gold.SetActive(goldAch);
+        GameManager.instance.silver1.SetActive(silverAch1);
+        GameManager.instance.silver2.SetActive(silverAch2);
+        GameManager.instance.bronze1.SetActive(bronzeAch1);
+        GameManager.instance.bronze2.SetActive(bronzeAch2);
+        GameManager.instance.bronze3.SetActive(bronzeAch3);
+        GameManager.instance.bronze4.SetActive(bronzeAch4);
 
     }
 
