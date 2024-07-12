@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Plane
   - Trophy
+  - Anvil
   layers:
   - Default
   - TransparentFX
