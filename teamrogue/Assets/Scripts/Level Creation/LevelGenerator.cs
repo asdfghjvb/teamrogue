@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.VisualScripting;
+//using UnityEditor.MemoryProfiler;
+
 //using UnityEditor.VersionControl;
 using UnityEngine;
+using UnityEngine.UIElements;
 using UnityEngine.XR;
 
 public class LevelGenerator : MonoBehaviour
 {
     [Header("Level")]
-    [SerializeField] Vector2Int levelSize;
+    [SerializeField] public Vector2Int levelSize;
 
     [Header("Rooms")]
     [SerializeField] int maxRoomQuantity;
@@ -26,15 +29,21 @@ public class LevelGenerator : MonoBehaviour
     [Range(0, 1)]
     [SerializeField] float extraHallSpawnChance = 0.15f;
 
+    [Header("Assets")]
+    [SerializeField] public GameObject[] floors;
+
     [Header("Debug")]
     [SerializeField] GameObject roomBuilder;
     [SerializeField] int seed;
 
-    Vector3Int generatorOrgin;
-    private List<Room> rooms;
+    [HideInInspector]
+    public Vector3Int generatorOrgin;
+
+    [HideInInspector]
+    public List<Room> rooms;
 
     //debug code
-    PathBuilder aStar;
+    PathBuilder pathFinder;
 
     public class Room
     {
@@ -197,23 +206,27 @@ public class LevelGenerator : MonoBehaviour
 
         GenerateRooms();
 
-        aStar = new PathBuilder(generatorOrgin, levelSize, rooms);
+        pathFinder = new PathBuilder(this);
         
         List<Line> possibleConnections= CreatePossibleConnections();
         List<Line> mst = MST(possibleConnections);
-        List<Line> hallways = AddExtraHallways(possibleConnections, mst);
+        List<Line> connections = AddExtraHallways(possibleConnections, mst);
 
-        foreach(Line path in hallways)
+        List<List<PathBuilder.Node>> paths = new();
+
+        foreach (Line connection in connections)
         {
-            aStar.FindPath(new Vector3(path.start.x, generatorOrgin.y, path.start.y),
-                new Vector3(path.end.x, generatorOrgin.y, path.end.y));
+            paths.Add(pathFinder.FindPath(new Vector3(connection.start.x, generatorOrgin.y, connection.start.y),
+            new Vector3(connection.end.x, generatorOrgin.y, connection.end.y)));
         }
+
+        BuildHallways(paths);
     }
 
     // Update is called once per frame
     void Update()
     {
-        aStar.grid.DebugDrawGrid();
+        pathFinder.grid.DebugDrawGrid();
     }
 
     private void OnDrawGizmos()
@@ -256,8 +269,8 @@ public class LevelGenerator : MonoBehaviour
             rooms.Add(temp);
         }
 
-        SeperateRooms(); //if any rooms overlap, attemp to seperate
-        PlaceRooms(); //Once rooms are seperated, place them
+        SeperateRooms(); //if any rooms overlap, attempt to seperate
+        //PlaceRooms(); debug code
     }
 
     private void SeperateRooms()
@@ -338,11 +351,44 @@ public class LevelGenerator : MonoBehaviour
     {
         foreach (Room room in rooms)
         {
-            Vector3 roomCenter = new Vector3(room.rect.x + room.rect.width / 2f, generatorOrgin.y ,room.rect.y + room.rect.height / 2f);
+            Vector3 roomCenter = new Vector3(room.rect.x + room.rect.width / 2f, generatorOrgin.y, room.rect.y + room.rect.height / 2f);
 
             GameObject newRoomBuilder = Instantiate(roomBuilder, roomCenter, Quaternion.identity);
 
             newRoomBuilder.transform.localScale = new Vector3(room.rect.width, 1f, room.rect.height);
+        }
+    }
+
+    void BuildHallways(List<List<PathBuilder.Node>> paths)
+    {
+        float nodeSize = PathBuilder.nodeHalfDiagonal * 2;
+
+        GameObject floorsParent = new GameObject("Floors");
+
+        for (int x = 0; x < pathFinder.grid.nodeCountX; x++)
+        {
+            for (int y = 0; y < pathFinder.grid.nodeCountY; y++)
+            {
+                PathBuilder.Node node = pathFinder.grid.nodes[x,y];
+
+                if (node.type == PathBuilder.NodeType.empty)
+                    continue;
+
+                int floorObjectIndex = UnityEngine.Random.Range(0, floors.Length); //Range function max is exclusive, therefore already size - 1
+                GameObject floorPrefab = floors[floorObjectIndex];
+
+                Renderer renderer = floorPrefab.GetComponent<Renderer>();
+
+                Vector3 prefabSize = renderer.bounds.size;
+                Vector3 offset = new Vector3(nodeSize / 2f, 0, -(nodeSize / 2f));
+                Vector3 scaler = new Vector3(nodeSize / prefabSize.x, 2f, nodeSize / prefabSize.z);
+
+                GameObject floorTile = Instantiate(floorPrefab, node.pos + offset, floorPrefab.transform.rotation);
+                floorTile.transform.localScale = Vector3.Scale(floorTile.transform.localScale, scaler);
+                floorTile.transform.position = node.pos + offset;
+
+                floorTile.transform.SetParent(floorsParent.transform);
+            }
         }
     }
 
@@ -509,6 +555,9 @@ public class LevelGenerator : MonoBehaviour
 
     List<Line> AddExtraHallways(List<Line> allPossibleConnections, List<Line> requiredConnections)
     {
+        if (extraHallSpawnChance == 0)
+            return requiredConnections;
+
         HashSet<Line> hallways = new HashSet<Line>(requiredConnections);
 
         foreach(Line connection in allPossibleConnections)

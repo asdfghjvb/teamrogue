@@ -1,16 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using UnityEngine;
 
 public class PathBuilder
 {
-    const float nodeHalfDiagonal = 0.5f;
+    public const float nodeHalfDiagonal = 1f;
 
-    //These outline the cost of searching different conditions
-    const int diagonalSearchCost = 14;
+    /* These outline the cost of searching different conditions */
+    const int diagonalSearchCost = 50; //The hallways look better if diagonal movements are heavily discourged
     const int orthogonalSearchCost = 10;
-    const float preExistingHallwayDiscount = 0.8f; //normalized percentage (ex 50% == .5)
+
+    //modifiers to encourage certain behaviors, such as moving around something or thru something else
+    const float hallwayModifier = 0.5f; 
+    const float roomModifier = 1.2f;
+
+    LevelGenerator level;
 
     List<LevelGenerator.Room> rooms;
     Vector3 gridOrigin;
@@ -56,14 +63,14 @@ public class PathBuilder
 
     public class Grid
     {
-        Node[,] nodes;
+        public Node[,] nodes;
 
         List<LevelGenerator.Room> rooms;
 
         Vector3 origin;
         Vector2 size;
 
-        int nodeCountX, nodeCountY;
+        public int nodeCountX, nodeCountY;
 
         public Grid(Vector3 _gridOrigin, Vector2 _size, List<LevelGenerator.Room> _rooms)
         {
@@ -92,7 +99,7 @@ public class PathBuilder
 
                     foreach(LevelGenerator.Room room in rooms)
                     {//check if node is inside a room
-                        if (room.rect.Contains(new Vector2Int(Mathf.FloorToInt(x), Mathf.FloorToInt(y))))
+                        if (room.rect.Contains(new Vector2Int(Mathf.FloorToInt(worldPos.x), Mathf.FloorToInt(worldPos.z))))
                             temp.type = NodeType.room;
                     }
 
@@ -207,17 +214,26 @@ public class PathBuilder
         }
     }
 
-    public PathBuilder(Vector3 _gridOrigin, Vector2 _areaSize, List<LevelGenerator.Room> _rooms)
+    public PathBuilder(LevelGenerator gen)
     {
-        gridOrigin = _gridOrigin;
-        areaSize = _areaSize;
-        rooms = _rooms;
+        level = gen;
+        gridOrigin = level.generatorOrgin;
+        areaSize = level.levelSize;
+        rooms = level.rooms;
 
-        grid = new Grid(_gridOrigin, _areaSize, _rooms);
+        grid = new Grid(gridOrigin, areaSize, rooms);
     }
 
-    public void FindPath(Vector3 startPos, Vector3 endPos)
+    public List<Node> FindPath(Vector3 startPos, Vector3 endPos)
     {
+        /*
+             TODO:
+           -Mark the corners of each room as un travelable
+         
+        */
+
+        List<Node> path = new();
+
         Node startNode = grid.FindNode(startPos);
         Node endNode = grid.FindNode(endPos);
 
@@ -242,7 +258,8 @@ public class PathBuilder
 
             if (temp == endNode)
             {
-                Retrace(startNode, endNode);
+               path = Retrace(startNode, endNode);
+               return path;
             }
 
             foreach(Node node in grid.GetNeighbors(temp))
@@ -250,10 +267,14 @@ public class PathBuilder
                 if (closed.Contains(node))
                     continue;
 
-                //if (node.type == NodeType.room)
-                //    continue;
-
                 int newMovementCost = temp.gCost + grid.GetDistance(temp, node);
+
+                //Apply modifiers
+                if (node.type == NodeType.room)
+                    newMovementCost = (int)(newMovementCost * roomModifier);
+
+                else if (node.type == NodeType.hallway)
+                    newMovementCost = (int)(newMovementCost * hallwayModifier);
 
                 if(newMovementCost < node.gCost || !open.Contains(node))
                 {
@@ -266,9 +287,11 @@ public class PathBuilder
                 }
             }
         }
+
+        return path; //this should never actually trigger, just clears the error
     }
 
-    void Retrace(Node startNode, Node endNode)
+    List<Node> Retrace(Node startNode, Node endNode)
     {
         List<Node> path = new();
         Node temp = endNode;
@@ -295,5 +318,6 @@ public class PathBuilder
         }
 
         path.Reverse();
+        return path;
     }
 }
