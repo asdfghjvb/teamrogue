@@ -33,10 +33,20 @@ public class PathBuilder
         door
     }
 
+    public enum NodeSpawnType
+    {
+        active,
+        inactive,
+        player,
+        boss
+    }
+
     public class Node
     {
         public Vector3 pos;
+       
         public NodeType type { get; set; }
+        public NodeSpawnType spawnType { get; set; }
 
         public Vector2Int cordinates;
 
@@ -53,10 +63,11 @@ public class PathBuilder
             }
         }
 
-        public Node(Vector3 _pos, Vector2Int _cordinates, NodeType _type = NodeType.empty)
+        public Node(Vector3 _pos, Vector2Int _cordinates, NodeType _type = NodeType.empty, NodeSpawnType _spawnType = NodeSpawnType.inactive)
         {
             pos = _pos;
             type = _type;
+            spawnType = _spawnType;
             cordinates = _cordinates;
         }
     }
@@ -102,7 +113,11 @@ public class PathBuilder
                     {//check if node is inside a room
 
                         if (room.rect.Contains(new Vector2Int(Mathf.FloorToInt(worldPos.x), Mathf.FloorToInt(worldPos.z))))
+                        {
+                            room.nodes.Add(temp);
                             temp.type = NodeType.room;
+                            temp.spawnType = NodeSpawnType.active;
+                        }
                     }
 
                     grid[x, y] = temp;
@@ -171,8 +186,11 @@ public class PathBuilder
                 return diagonalSearchCost * distX + orthogonalSearchCost * (distY - distX);
         }
 
-        public void DebugDrawGrid()
+        public void DebugDrawGrid(int gridNumber)
         {
+            if (gridNumber != 1 && gridNumber != 2)
+                return;
+
             int nodeCountX = nodes.GetLength(0);
             int nodeCountY = nodes.GetLength(1);
 
@@ -184,20 +202,42 @@ public class PathBuilder
                     Vector3 worldPos = node.pos;
                     UnityEngine.Color color = UnityEngine.Color.white;
 
-                    switch (node.type)
+                    if (gridNumber == 1)
                     {
-                        case NodeType.empty:
-                            color = UnityEngine.Color.white;
-                            break;
-                        case NodeType.room:
-                            color = UnityEngine.Color.red;
-                            break;
-                        case NodeType.hallway:
-                            color = UnityEngine.Color.blue;
-                            break;
-                        case NodeType.door:
-                            color = UnityEngine.Color.green;
-                            break;
+                        switch (node.type)
+                        {
+                            case NodeType.empty:
+                                color = UnityEngine.Color.white;
+                                break;
+                            case NodeType.room:
+                                color = UnityEngine.Color.red;
+                                break;
+                            case NodeType.hallway:
+                                color = UnityEngine.Color.blue;
+                                break;
+                            case NodeType.door:
+                                color = UnityEngine.Color.green;
+                                break;
+                        }
+                    }
+
+                    if (gridNumber == 2)
+                    {
+                        switch (node.spawnType)
+                        {
+                            case NodeSpawnType.inactive:
+                                color = UnityEngine.Color.red;
+                                break;
+                            case NodeSpawnType.active:
+                                color = UnityEngine.Color.green;
+                                break;
+                            case NodeSpawnType.player:
+                                color = UnityEngine.Color.blue;
+                                break;
+                            case NodeSpawnType.boss:
+                                color = UnityEngine.Color.blue;
+                                break;
+                        }
                     }
 
                     // Calculate the corners of the square
@@ -297,7 +337,10 @@ public class PathBuilder
             foreach (Node neighbor in grid.GetNeighbors(node))
             {
                 if (neighbor.type == NodeType.empty)
+                {
                     neighbor.type = NodeType.hallway;
+                    neighbor.spawnType = NodeSpawnType.active;
+                }
             }
         }
     }
@@ -315,6 +358,8 @@ public class PathBuilder
             {
                 temp.type = NodeType.hallway;
                 temp.parent.type = NodeType.door;
+
+                temp.spawnType = NodeSpawnType.active;
             }
             else if (temp.type == NodeType.room && temp.parent.type == NodeType.empty)
             {
@@ -323,6 +368,7 @@ public class PathBuilder
             else if (temp.type == NodeType.empty)
             {
                 temp.type = NodeType.hallway;
+                temp.spawnType = NodeSpawnType.active;
             }
 
             temp = temp.parent;
