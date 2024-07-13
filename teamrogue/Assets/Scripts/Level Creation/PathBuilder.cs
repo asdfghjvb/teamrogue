@@ -10,12 +10,12 @@ public class PathBuilder
     public const float nodeHalfDiagonal = 1f;
 
     /* These outline the cost of searching different conditions */
-    const int diagonalSearchCost = 50; //The hallways look better if diagonal movements are heavily discourged
+    const int diagonalSearchCost = 60; //The hallways look better if diagonal movements are heavily discourged
     const int orthogonalSearchCost = 10;
 
     //modifiers to encourage certain behaviors, such as moving around something or thru something else
-    const float hallwayModifier = 0.5f; 
-    const float roomModifier = 1.2f;
+    const float hallwayModifier = 0.2f; 
+    const float roomModifier = 1.15f;
 
     LevelGenerator level;
 
@@ -93,12 +93,14 @@ public class PathBuilder
             {
                 for (int y = 0; y < nodeCountY; y++)
                 {
-                    Vector3 worldPos = origin + Vector3.right * (x * nodeSize + nodeHalfDiagonal) + Vector3.forward * (y * nodeSize + nodeHalfDiagonal);
+                    //Vector3 worldPos = origin + Vector3.right * (x * nodeSize + nodeHalfDiagonal) + Vector3.forward * (y * nodeSize + nodeHalfDiagonal);
+                    Vector3 worldPos = origin + new Vector3(x * nodeSize + nodeHalfDiagonal, origin.y, y * nodeSize + nodeHalfDiagonal);
 
                     Node temp = new Node(worldPos, new Vector2Int(x,y));
 
                     foreach(LevelGenerator.Room room in rooms)
                     {//check if node is inside a room
+
                         if (room.rect.Contains(new Vector2Int(Mathf.FloorToInt(worldPos.x), Mathf.FloorToInt(worldPos.z))))
                             temp.type = NodeType.room;
                     }
@@ -226,12 +228,6 @@ public class PathBuilder
 
     public List<Node> FindPath(Vector3 startPos, Vector3 endPos)
     {
-        /*
-             TODO:
-           -Mark the corners of each room as un travelable
-         
-        */
-
         List<Node> path = new();
 
         Node startNode = grid.FindNode(startPos);
@@ -271,12 +267,15 @@ public class PathBuilder
 
                 //Apply modifiers
                 if (node.type == NodeType.room)
+                {
                     newMovementCost = (int)(newMovementCost * roomModifier);
-
+                }
                 else if (node.type == NodeType.hallway)
+                {
                     newMovementCost = (int)(newMovementCost * hallwayModifier);
+                }
 
-                if(newMovementCost < node.gCost || !open.Contains(node))
+                if (newMovementCost < node.gCost || !open.Contains(node))
                 {
                     node.gCost = newMovementCost;
                     node.hCost = grid.GetDistance(node, endNode);
@@ -289,6 +288,18 @@ public class PathBuilder
         }
 
         return path; //this should never actually trigger, just clears the error
+    }
+
+    public void ExpandHallway(List<Node> path)
+    {
+        foreach (Node node in path)
+        {
+            foreach (Node neighbor in grid.GetNeighbors(node))
+            {
+                if (neighbor.type == NodeType.empty)
+                    neighbor.type = NodeType.hallway;
+            }
+        }
     }
 
     List<Node> Retrace(Node startNode, Node endNode)

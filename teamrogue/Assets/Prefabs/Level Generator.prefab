@@ -48,9 +48,9 @@ MonoBehaviour:
   maxRoomQuantity: 12
   minRoomSize: {x: 8, y: 8}
   maxRoomSize: {x: 20, y: 20}
-  maxSeperationTries: 5
+  maxSeperationTries: 30
   roomSpacer: 5
-  extraHallSpawnChance: 0.15
+  extraHallSpawnChance: 0.2
   floors:
   - {fileID: 7786834797176686046, guid: 02690ecf1a03b274aa89b6b5ab22e1a1, type: 3}
   - {fileID: 1753780157062862154, guid: dbc03e09b7cb6c445bc139fdf4485434, type: 3}
@@ -60,6 +60,9 @@ MonoBehaviour:
   - {fileID: 6601348092362153188, guid: 6fa936adac6424e469d0d5bde13a10e7, type: 3}
   - {fileID: 7126052724600383399, guid: 0b8ce77eec77c12478b9f6a98e4a650a, type: 3}
   - {fileID: 7978591694076811745, guid: 4ce183937151e2544aedf111d835c467, type: 3}
+  walls: []
+  doorways: []
   roomBuilder: {fileID: 6990510333050736647, guid: f05c30770cd1c074ca9f67b03fb52861, type: 3}
+  showGrid: 1
   seed: 100
   generatorOrgin: {x: 0, y: 0, z: 0}

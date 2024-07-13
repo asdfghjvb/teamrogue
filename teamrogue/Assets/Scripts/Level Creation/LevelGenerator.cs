@@ -4,7 +4,6 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.VisualScripting;
 //using UnityEditor.MemoryProfiler;
-
 //using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -21,19 +20,24 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] Vector2Int maxRoomSize;
 
     [Tooltip("The maximum amount of times the program will try to seperate overlapping rooms before removing them")]
-    [SerializeField] int maxSeperationTries = 15;
+    [SerializeField] int maxSeperationTries = 30;
     [Tooltip("The minimum amount of space between each room")]
     [SerializeField] int roomSpacer = 5;
-    
+
     [Tooltip("The chance that each non essential connection becomes a hallway")]
     [Range(0, 1)]
     [SerializeField] float extraHallSpawnChance = 0.15f;
 
     [Header("Assets")]
     [SerializeField] public GameObject[] floors;
+    [SerializeField] public GameObject[] walls;
+    [SerializeField] public GameObject[] doorways;
+
+    [Header("Enemies")]
+    [SerializeField] public GameObject[] lowLvlEnemies;
 
     [Header("Debug")]
-    [SerializeField] GameObject roomBuilder;
+    [SerializeField] bool showGrid;
     [SerializeField] int seed;
 
     [HideInInspector]
@@ -56,7 +60,7 @@ public class LevelGenerator : MonoBehaviour
 
         public bool Intersects(in Room other, int bufferAmount = 0)
         {
-            if(rect.xMax + bufferAmount > other.rect.xMin - bufferAmount
+            if (rect.xMax + bufferAmount > other.rect.xMin - bufferAmount
                 && other.rect.xMax + bufferAmount > rect.xMin - bufferAmount
                 && rect.yMax + bufferAmount > other.rect.yMin - bufferAmount
                 && other.rect.yMax + bufferAmount > rect.yMin - bufferAmount)
@@ -88,7 +92,7 @@ public class LevelGenerator : MonoBehaviour
             length = Vector2.Distance(start, end);
         }
 
-        public static bool operator==(Line line1, Line line2)
+        public static bool operator ==(Line line1, Line line2)
         {
             if ((line1.start == line2.start && line1.end == line2.end) ||
                 (line1.start == line2.end && line1.end == line2.start))
@@ -128,7 +132,7 @@ public class LevelGenerator : MonoBehaviour
                 int smaller = start.GetHashCode();
                 int larger = end.GetHashCode();
 
-                if(smaller > larger)
+                if (smaller > larger)
                 {
                     smaller = end.GetHashCode();
                     larger = start.GetHashCode();
@@ -155,17 +159,17 @@ public class LevelGenerator : MonoBehaviour
 
             if (o1 != o2 && o3 != o4)
                 return true;
-            
-            if (o1 == 0 && OnSegment(start, other.start, end)) 
+
+            if (o1 == 0 && OnSegment(start, other.start, end))
                 return true;
-            
-            if (o2 == 0 && OnSegment(start, other.end, end)) 
+
+            if (o2 == 0 && OnSegment(start, other.end, end))
                 return true;
 
             if (o3 == 0 && OnSegment(other.start, start, other.end))
                 return true;
 
-            if (o4 == 0 && OnSegment(other.start, end, other.end)) 
+            if (o4 == 0 && OnSegment(other.start, end, other.end))
                 return true;
 
             return false;
@@ -176,7 +180,7 @@ public class LevelGenerator : MonoBehaviour
             if (q.x <= Mathf.Max(p.x, r.x) && q.x >= Mathf.Min(p.x, r.x) &&
                 q.y <= Mathf.Max(p.y, r.y) && q.y >= Mathf.Min(p.y, r.y))
                 return true;
-            
+
             return false;
         }
 
@@ -184,7 +188,7 @@ public class LevelGenerator : MonoBehaviour
         {
             float val = (q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y);
 
-            if (Mathf.Approximately(val, 0)) 
+            if (Mathf.Approximately(val, 0))
                 return 0;
 
             if (val > 0)
@@ -207,8 +211,8 @@ public class LevelGenerator : MonoBehaviour
         GenerateRooms();
 
         pathFinder = new PathBuilder(this);
-        
-        List<Line> possibleConnections= CreatePossibleConnections();
+
+        List<Line> possibleConnections = CreatePossibleConnections();
         List<Line> mst = MST(possibleConnections);
         List<Line> connections = AddExtraHallways(possibleConnections, mst);
 
@@ -219,23 +223,28 @@ public class LevelGenerator : MonoBehaviour
             paths.Add(pathFinder.FindPath(new Vector3(connection.start.x, generatorOrgin.y, connection.start.y),
             new Vector3(connection.end.x, generatorOrgin.y, connection.end.y)));
         }
+        foreach(List<PathBuilder.Node> path in paths)
+        {
+            pathFinder.ExpandHallway(path);
+        }
 
-        BuildHallways(paths);
+        BuildStructures();
     }
 
     // Update is called once per frame
     void Update()
     {
-        pathFinder.grid.DebugDrawGrid();
+        if(showGrid)
+            pathFinder.grid.DebugDrawGrid();
     }
 
     private void OnDrawGizmos()
     {
-         /*
-          Creates a gizmo in the scene view to visualize where the level will be built
-          Step 1, draw the outer boader
-         */
-       
+        /*
+         Creates a gizmo in the scene view to visualize where the level will be built
+         Step 1, draw the outer boader
+        */
+
         Gizmos.color = Color.black;
 
         Vector3 bottomLeft = new Vector3(transform.position.x, transform.position.y, transform.position.z);
@@ -270,7 +279,6 @@ public class LevelGenerator : MonoBehaviour
         }
 
         SeperateRooms(); //if any rooms overlap, attempt to seperate
-        //PlaceRooms(); debug code
     }
 
     private void SeperateRooms()
@@ -290,7 +298,7 @@ public class LevelGenerator : MonoBehaviour
                     if (room == other)
                         continue;
 
-                    if (room.Intersects(other, roomSpacer) 
+                    if (room.Intersects(other, roomSpacer)
                         && attempt < maxAttempts)
                     {
                         PushRooms(room, other);
@@ -298,17 +306,17 @@ public class LevelGenerator : MonoBehaviour
                     }
                     else if (room.Intersects(other, roomSpacer) && attempt >= maxAttempts)
                     {
-                        if(!invalidRooms.Contains(room) && !invalidRooms.Contains(other))
+                        if (!invalidRooms.Contains(room) && !invalidRooms.Contains(other))
                             invalidRooms.Add(other);
                     }
                 }
             }
 
             if (areIntersects == false)
-                break; 
+                break;
             else
                 areIntersects = false;
-            
+
             ++attempt;
         }
 
@@ -330,7 +338,7 @@ public class LevelGenerator : MonoBehaviour
         Vector2Int newOtherPos = other.rect.position + otherPushDir;
 
         //if new pos is still within bounds, push the room
-        if (newRoomPos.x >= generatorOrgin.x 
+        if (newRoomPos.x >= generatorOrgin.x
             && newRoomPos.x <= (generatorOrgin.x + levelSize.x) - room.rect.width
             && newRoomPos.y >= generatorOrgin.z
             && newRoomPos.y <= (generatorOrgin.z + levelSize.y) - room.rect.height)
@@ -347,48 +355,226 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
-    private void PlaceRooms()
+    void BuildStructures()
     {
-        foreach (Room room in rooms)
-        {
-            Vector3 roomCenter = new Vector3(room.rect.x + room.rect.width / 2f, generatorOrgin.y, room.rect.y + room.rect.height / 2f);
-
-            GameObject newRoomBuilder = Instantiate(roomBuilder, roomCenter, Quaternion.identity);
-
-            newRoomBuilder.transform.localScale = new Vector3(room.rect.width, 1f, room.rect.height);
-        }
-    }
-
-    void BuildHallways(List<List<PathBuilder.Node>> paths)
-    {
-        float nodeSize = PathBuilder.nodeHalfDiagonal * 2;
+        GameObject structures = new GameObject("Structure");
+        Rigidbody structuresRB = structures.AddComponent<Rigidbody>();
+        structuresRB.useGravity = false;
+        structuresRB.isKinematic = true;
 
         GameObject floorsParent = new GameObject("Floors");
+        GameObject wallsParent = new GameObject("Walls");
+        GameObject doorwaysParent = new GameObject("Doorways");
+
+        floorsParent.transform.SetParent(structures.transform, true);
+        wallsParent.transform.SetParent(structures.transform, true);
+        doorwaysParent.transform.SetParent(structures.transform, true);
 
         for (int x = 0; x < pathFinder.grid.nodeCountX; x++)
         {
             for (int y = 0; y < pathFinder.grid.nodeCountY; y++)
             {
-                PathBuilder.Node node = pathFinder.grid.nodes[x,y];
+                PathBuilder.Node node = pathFinder.grid.nodes[x, y];
 
                 if (node.type == PathBuilder.NodeType.empty)
                     continue;
 
-                int floorObjectIndex = UnityEngine.Random.Range(0, floors.Length); //Range function max is exclusive, therefore already size - 1
-                GameObject floorPrefab = floors[floorObjectIndex];
+            /* Build Floors */
+                BuildFloor(node, floorsParent);
 
-                Renderer renderer = floorPrefab.GetComponent<Renderer>();
+            /* Build Walls */
+                BuildWalls(node, wallsParent);
 
-                Vector3 prefabSize = renderer.bounds.size;
-                Vector3 offset = new Vector3(nodeSize / 2f, 0, -(nodeSize / 2f));
-                Vector3 scaler = new Vector3(nodeSize / prefabSize.x, 2f, nodeSize / prefabSize.z);
-
-                GameObject floorTile = Instantiate(floorPrefab, node.pos + offset, floorPrefab.transform.rotation);
-                floorTile.transform.localScale = Vector3.Scale(floorTile.transform.localScale, scaler);
-                floorTile.transform.position = node.pos + offset;
-
-                floorTile.transform.SetParent(floorsParent.transform);
+            /* Build Door (if applicable) */
+                if (node.type == PathBuilder.NodeType.door)
+                    BuildDoorWay(node, wallsParent, doorwaysParent);
             }
+        }
+    }
+
+    void BuildDoorWay(PathBuilder.Node node, GameObject wallParent = null, GameObject doorParent = null)
+    {
+        const float wallCoverageOfNode = 0.15f;
+        float nodeSize = PathBuilder.nodeHalfDiagonal * 2;
+        bool builtDoor = false;
+
+        for (int x = -1; x <= 1; x++)
+        {
+            for (int y = -1; y <= 1; y++)
+            {
+                if ((x == 0 && y == 0) || (x != 0 && y != 0))
+                    continue; //Skips diagonals and itself
+                if (!pathFinder.grid.Contains(new Vector2Int(node.cordinates.x + x, node.cordinates.y + y)))
+                    continue;
+
+                PathBuilder.Node neighbor = pathFinder.grid.nodes[node.cordinates.x + x, node.cordinates.y + y];
+
+                if (neighbor.type == PathBuilder.NodeType.hallway && !builtDoor)
+                {//builds a door
+                    GameObject doorObject;
+                    int doorObjectIndex = UnityEngine.Random.Range(0, doorways.Length); //Range function max is exclusive, therefore already size - 1
+                    GameObject doorPrefab = doorways[doorObjectIndex];
+                    Renderer renderer = doorPrefab.GetComponent<Renderer>();
+
+                    Vector3 prefabSize = renderer.bounds.size;
+                    Vector3 scaler = new Vector3(nodeSize / prefabSize.x, (nodeSize * wallCoverageOfNode) / prefabSize.z, (2 * nodeSize) / prefabSize.y);
+                    Vector3 offset = new Vector3(0, 0, 0);
+                    Quaternion rotation = Quaternion.identity;
+
+                    if (x == -1 && y == 0) // left neighbor
+                    {
+                        offset = new Vector3(-(nodeSize / 2), nodeSize / 2, 0);
+                        rotation = Quaternion.Euler(-90, -90, 0);
+                    }
+                    else if (x == 1 && y == 0) // right neighbor
+                    {
+                        offset = new Vector3(nodeSize / 2, nodeSize / 2, 0);
+                        rotation = Quaternion.Euler(-90, 90, 0);
+                    }
+                    else if (x == 0 && y == -1) // bottom neighbor
+                    {
+                        offset = new Vector3(0, nodeSize / 2, -(nodeSize / 2));
+                        rotation = Quaternion.Euler(-90, 180, 0);
+                    }
+                    else if (x == 0 && y == 1) // top neighbor
+                    {
+                        offset = new Vector3(0, nodeSize / 2, nodeSize / 2);
+                        rotation = Quaternion.Euler(-90, 0, 0);
+                    }
+
+                    doorObject = Instantiate(doorPrefab, node.pos + offset, rotation);
+                    doorObject.transform.localScale = Vector3.Scale(doorObject.transform.localScale, scaler);
+                    doorObject.transform.position = node.pos + offset;
+
+                    builtDoor = true;
+
+                    if (doorParent != null)
+                        doorObject.transform.SetParent(doorParent.transform, true);
+                }
+                else if (builtDoor && (neighbor.type == PathBuilder.NodeType.hallway || neighbor.type == PathBuilder.NodeType.empty))
+                {//builds a wall
+                    int wallObjectIndex = UnityEngine.Random.Range(0, walls.Length); //Range function max is exclusive, therefore already size - 1
+                    GameObject wallPrefab = walls[wallObjectIndex];
+                    Renderer renderer = wallPrefab.GetComponent<Renderer>();
+
+                    Vector3 prefabSize = renderer.bounds.size;
+                    Vector3 offset = new();
+                    Vector3 scaler = new Vector3(nodeSize / prefabSize.x, (nodeSize * wallCoverageOfNode) / prefabSize.z, (2 * nodeSize) / prefabSize.y); //the scale axis for y & z are fliped on these models
+                    Quaternion rotation = Quaternion.identity;
+
+                    if (x == -1 && y == 0) // left neighbor
+                    {
+                        offset = new Vector3(-(nodeSize / 2), 0, -(nodeSize / 2));
+                        rotation = Quaternion.Euler(-90, 90, 0);
+                    }
+                    else if (x == 1 && y == 0) // right neighbor
+                    {
+                        offset = new Vector3(nodeSize / 2, 0, -(nodeSize / 2));
+                        rotation = Quaternion.Euler(-90, 90, 0);
+                    }
+                    else if (x == 0 && y == -1) // bottom neighbor
+                    {
+                        offset = new Vector3(nodeSize / 2, 0, -(nodeSize / 2));
+                        rotation = Quaternion.Euler(-90, 0, 0);
+                    }
+                    else if (x == 0 && y == 1) // top neighbor
+                    {
+                        offset = new Vector3(nodeSize / 2, 0, nodeSize / 2);
+                        rotation = Quaternion.Euler(-90, 0, 0);
+                    }
+
+                    GameObject wallObject = Instantiate(wallPrefab, node.pos, rotation);
+                    wallObject.transform.localScale = Vector3.Scale(wallObject.transform.localScale, scaler);
+                    wallObject.transform.position = node.pos + offset;
+
+                    if (wallParent != null)
+                        wallObject.transform.SetParent(wallParent.transform, true);
+                }
+            }
+        }
+    }
+
+    void BuildFloor(PathBuilder.Node node, GameObject parent)
+    {
+        float nodeSize = PathBuilder.nodeHalfDiagonal * 2;
+
+        int floorObjectIndex = UnityEngine.Random.Range(0, floors.Length); //Range function max is exclusive, therefore already size - 1
+        GameObject floorPrefab = floors[floorObjectIndex];
+        Renderer renderer = floorPrefab.GetComponent<Renderer>();
+
+        Vector3 prefabSize = renderer.bounds.size;
+        Vector3 offset = new Vector3(nodeSize / 2f, 0, -(nodeSize / 2f));
+        Vector3 scaler = new Vector3(nodeSize / prefabSize.x, 2f, nodeSize / prefabSize.z);
+
+        GameObject floorTile = Instantiate(floorPrefab, node.pos + offset, floorPrefab.transform.rotation);
+        floorTile.transform.localScale = Vector3.Scale(floorTile.transform.localScale, scaler);
+        floorTile.transform.position = node.pos + offset;
+
+        if (parent != null)
+            floorTile.transform.SetParent(parent.transform, true);
+    }
+
+    void BuildWalls(PathBuilder.Node node, GameObject parent)
+    {
+        const float wallCoverageOfNode = 0.15f; //what percent of the node is covered by a wall
+        float nodeSize = PathBuilder.nodeHalfDiagonal * 2;
+
+        for (int x = -1; x <= 1; x++)
+        {
+            for (int y = -1; y <= 1; y++)
+            {
+                if ((x == 0 && y == 0) || (x != 0 && y!= 0))
+                    continue; //Skips diagonals and itself
+
+                PathBuilder.Node neighbor;
+
+                if (!pathFinder.grid.Contains(new Vector2Int(node.cordinates.x + x, node.cordinates.y + y)))
+                    neighbor = null;
+                else
+                    neighbor = pathFinder.grid.nodes[node.cordinates.x + x, node.cordinates.y + y];
+
+                if (neighbor == null 
+                    || (node.type == PathBuilder.NodeType.room && neighbor.type == PathBuilder.NodeType.hallway) 
+                    || neighbor.type == PathBuilder.NodeType.empty)
+                {
+                    int wallObjectIndex = UnityEngine.Random.Range(0, walls.Length); //Range function max is exclusive, therefore already size - 1
+                    GameObject wallPrefab = walls[wallObjectIndex];
+                    Renderer renderer = wallPrefab.GetComponent<Renderer>();
+
+                    Vector3 prefabSize = renderer.bounds.size;
+                    Vector3 offset = new();
+                    Vector3 scaler = new Vector3(nodeSize / prefabSize.x, (nodeSize * wallCoverageOfNode) / prefabSize.z, (2 * nodeSize) / prefabSize.y); //the scale axis for y & z are fliped on these models
+                    Quaternion rotation = Quaternion.identity;
+
+                    if (x == -1 && y == 0) // left neighbor
+                    {
+                        offset = new Vector3(-(nodeSize / 2), 0, -(nodeSize / 2));
+                        rotation = Quaternion.Euler(-90, 90, 0); 
+                    }
+                    else if (x == 1 && y == 0) // right neighbor
+                    {
+                        offset = new Vector3(nodeSize / 2, 0, -(nodeSize / 2));
+                        rotation = Quaternion.Euler(-90, 90, 0);
+                    }
+                    else if (x == 0 && y == -1) // bottom neighbor
+                    {
+                        offset = new Vector3(nodeSize / 2, 0, -(nodeSize / 2));
+                        rotation = Quaternion.Euler(-90, 0, 0);
+                    }
+                    else if (x == 0 && y == 1) // top neighbor
+                    {
+                        offset = new Vector3(nodeSize / 2, 0, nodeSize / 2);
+                        rotation = Quaternion.Euler(-90, 0, 0);
+                    }
+
+                    GameObject wallObject = Instantiate(wallPrefab, node.pos, rotation);
+                    wallObject.transform.localScale = Vector3.Scale(wallObject.transform.localScale, scaler);
+                    wallObject.transform.position = node.pos + offset;
+
+                    if (parent != null)
+                        wallObject.transform.SetParent(parent.transform, true);
+                }
+            } 
         }
     }
 
