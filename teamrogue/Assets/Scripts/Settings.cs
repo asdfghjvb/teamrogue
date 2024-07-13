@@ -19,7 +19,8 @@ public class Settings : MonoBehaviour
     public MainMenu menu;
     public GameObject musicSource;
     public GameObject sfxSource;
-    public cameraController cameraCont;
+    public AudioSource previewSource;
+    public AudioClip sfxPreview;
 
 
 
@@ -56,6 +57,7 @@ public class Settings : MonoBehaviour
         //set the volume in the mixer and save it as player preference
         audioMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("sfxVolume", volume);
+        previewSource.PlayOneShot(sfxPreview);
     }
 
     public void SetSens(float sens)
