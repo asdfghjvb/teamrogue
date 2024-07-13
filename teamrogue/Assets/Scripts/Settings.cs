@@ -8,6 +8,7 @@ public class Settings : MonoBehaviour
 {
     [SerializeField] GameObject menuButtons;
     [SerializeField] GameObject menuSettings;
+    [SerializeField] GameObject menuSaves;
     //list of current settings to adjust
     public Slider musicSlider;
     public Slider sfxSlider;
@@ -80,6 +81,20 @@ public class Settings : MonoBehaviour
         menuSettings.SetActive(false);
         menuButtons.SetActive(true);
         menu.playClickSound();
+    }
+
+    public void OpenSaveMenu()
+    {
+        GameManager.instance.saveMenuActive = true;
+        GameManager.instance.menuActive.SetActive(false);
+        menuSaves.SetActive(true);
+    }
+    public void SaveMenuReturnButton()
+    {
+        GameManager.instance.saveMenuActive = false;
+        menuSaves.SetActive(false);
+        GameManager.instance.menuActive.SetActive(true);
+
     }
    
 }

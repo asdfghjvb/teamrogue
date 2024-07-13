@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour
     public NavMeshBaker navMeshBakerScript;
 
     public bool isPaused;
+    public bool saveMenuActive = false;
     int enemyCount;
     public int boonCount;
 
@@ -76,7 +77,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-        player = GameObject.FindWithTag("Player");
+        //player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<Player>();
 
         plane = GameObject.FindWithTag("Plane");
@@ -107,7 +108,7 @@ public class GameManager : MonoBehaviour
                 menuActive.SetActive(isPaused);
             }
 
-            else if (menuActive == menuPause)
+            else if (menuActive == menuPause && !saveMenuActive)
             {
                 stateUnpaused();
 
