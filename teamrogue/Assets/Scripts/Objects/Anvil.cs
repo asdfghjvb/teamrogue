@@ -14,7 +14,7 @@ public class Anvil : MonoBehaviour
     void Update()
     {
         UpgradeScriptOb data = (UpgradeScriptOb)GameManager.instance.playerScript.objectView();
-        if (Input.GetButtonDown("e") && data != null)
+        if (Input.GetButtonDown("Interact") && data != null)
         {
             GameManager.instance.statePaused();
             GameManager.instance.menuActive = upgradeUI;

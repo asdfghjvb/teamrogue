@@ -14,7 +14,7 @@ public class Trophy : MonoBehaviour
     void Update()
     {
         TrophyData data = (TrophyData)GameManager.instance.playerScript.objectView();
-        if (Input.GetButtonDown("e") && data != null)
+        if (Input.GetButtonDown("Interact") && data != null)
         {
             GameManager.instance.statePaused();
             GameManager.instance.menuActive = trophyMenu;
