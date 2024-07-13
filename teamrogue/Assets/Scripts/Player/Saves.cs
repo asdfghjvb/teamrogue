@@ -68,5 +68,26 @@ public class Saves : ScriptableObject
         GameManager.instance.bronze4.SetActive(bronzeAch4);
 
     }
+    public void ClearSaveFile()
+    {
+        health = 0;
+        speed = 0;
+        sprintMod = 0;
+        armorMod = 0;
+        jumpMax = 0; 
+        meleeDamage = 0;
+        shootDamage = 0;
+        shootRate = 0;
+        shootRange = 0;
+        meleeCooldown = 0;
+
+        bronzeAch1 = false;
+        bronzeAch2 = false;
+        bronzeAch3 = false;
+        bronzeAch4 = false;
+        silverAch1 = false;
+        silverAch2 = false;
+        goldAch = false;
+}
 
 }

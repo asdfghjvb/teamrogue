@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] GameObject menuSettings;
+    [SerializeField] GameObject menuSaves;
     [SerializeField] GameObject menuButtons;
     public AudioSource audioSource;
     public AudioClip buttonClick;
@@ -28,9 +29,10 @@ public class MainMenu : MonoBehaviour
 
     public void LoadGame()
     {
-        playClickSound();
-        //will load like new game until save system is set up
-        SceneManager.LoadScene("SampleScene");
+        StartCoroutine(OpenSettingsDelay());
+
+        menuSaves.SetActive(true);
+        menuButtons.SetActive(false);
     }
 
     public void Settings()
