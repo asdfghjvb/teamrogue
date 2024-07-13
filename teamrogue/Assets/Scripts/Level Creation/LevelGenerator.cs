@@ -53,7 +53,7 @@ public class LevelGenerator : MonoBehaviour
 
     [Header("Debug")]
     [SerializeField] int gridNumber;
-    [SerializeField] int seed;
+    [SerializeField] public static int seed;
 
     [HideInInspector]
     public Vector3Int generatorOrgin;

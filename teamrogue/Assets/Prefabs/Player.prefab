@@ -83,7 +83,7 @@ MonoBehaviour:
   playerController: {fileID: 1137285651123666733}
   health: 20
   mana: 0
-  manaCost: 10
+  manaCost: 5
   speed: 8
   sprintMod: 2
   armorMod: 1
@@ -94,24 +94,29 @@ MonoBehaviour:
   meleeRange: 5
   meleeRate: 1
   meleeCooldown: 2
-  shootDamage: 10
-  shootRate: 3
-  shootDist: 75
+  shootDamage: 5
+  shootRate: 2
+  shootDist: 50
   aud: {fileID: 0}
-  shootEffect: {fileID: 8300000, guid: bee04da5422ff7d428b42c3a5a1152c0, type: 3}
+  shootEffect: {fileID: 8300000, guid: 275309e4486aa4d41bef3d3d347020c8, type: 3}
   meleeEffect: {fileID: 0}
   shootVol: 0.5
   meleeVol: 0
   innateShootDamage: 0
   innateShootRate: 1
   innateShootDist: 0
-  bullet: {fileID: 6174925267386981003, guid: 64b94fc7344c3b84c99024b33f2ffaa4, type: 3}
+  bullet: {fileID: 3874923388927500946, guid: 63eccd2910c842a42a68c76dc8dcc9b8, type: 3}
   shootPos: {fileID: 7204752389964481461}
   staffModel: {fileID: 8327735243043364126}
   staffList:
   - {fileID: 11400000, guid: 348d0d688ff32354f9852417027e3410, type: 2}
   - {fileID: 11400000, guid: 1fc7fbbff6a93a348b0737545f86a176, type: 2}
   - {fileID: 11400000, guid: 44827d6d5743ad64fb72bba7979c2a80, type: 2}
+  - {fileID: 11400000, guid: 348d0d688ff32354f9852417027e3410, type: 2}
+  - {fileID: 11400000, guid: 348d0d688ff32354f9852417027e3410, type: 2}
+  - {fileID: 11400000, guid: 1fc7fbbff6a93a348b0737545f86a176, type: 2}
+  - {fileID: 11400000, guid: 348d0d688ff32354f9852417027e3410, type: 2}
+  - {fileID: 11400000, guid: 348d0d688ff32354f9852417027e3410, type: 2}
   fullHealth: 20
   fullMana: 0
 --- !u!143 &1137285651123666733
@@ -334,7 +339,7 @@ PrefabInstance:
     - target: {fileID: 570650672050793970, guid: b9e9b9817b565da4c87dd7d4d36b234b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: f755d89eefba43d4e9ffcf8de0926ef4, type: 2}
+      objectReference: {fileID: 2100000, guid: cc9d508b1dff9b349a9ef8c0ebb61452, type: 2}
     - target: {fileID: 1702491638107149981, guid: b9e9b9817b565da4c87dd7d4d36b234b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.31
@@ -386,7 +391,7 @@ PrefabInstance:
     - target: {fileID: 2310254845463632184, guid: b9e9b9817b565da4c87dd7d4d36b234b, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 8092327190978466179, guid: ed131d73eb72abe4b8f101dd0e896ad8, type: 3}
+      objectReference: {fileID: -214712698244285501, guid: 2c29329954ba7184c91f1dec6854d90f, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
