@@ -22,7 +22,7 @@ public class MainMenu : MonoBehaviour
 
     public void NewGame()
     {
-        playClickSound(); 
+        StartCoroutine(clickDelay());
         SceneManager.LoadScene("SampleScene");
     }
 
@@ -38,12 +38,6 @@ public class MainMenu : MonoBehaviour
         //close main menu and open settings
         StartCoroutine(OpenSettingsDelay());
 
-        //if (menuSettings.activeInHierarchy)
-        //{
-        //    Debug.LogWarning("Menu did not open");
-        //}
-       //playClickSound();
-       // yield return new WaitForSeconds(0.1f);
         menuSettings.SetActive(true);
         menuButtons.SetActive(false);
 
@@ -59,7 +53,7 @@ public class MainMenu : MonoBehaviour
 
     public void QuitGame()
     {
-        StartCoroutine(clickDelay());
+        StartCoroutine(clickDelayAndQuit());
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
@@ -74,8 +68,13 @@ public class MainMenu : MonoBehaviour
 
     IEnumerator clickDelay()
     {
-        playClickSound();
+      
         yield return new WaitForSeconds(1f);
 
+    }
+    IEnumerator clickDelayAndQuit()
+    {
+
+        yield return new WaitForSeconds(.2f);
     }
 }

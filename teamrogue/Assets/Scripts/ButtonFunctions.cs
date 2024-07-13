@@ -9,6 +9,7 @@ public class ButtonFunctions : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip buttonClick;
 
+
     public void resume()
     {
         GameManager.instance.stateUnpaused();
@@ -35,10 +36,11 @@ public class ButtonFunctions : MonoBehaviour
     IEnumerator clickDelay()
     {
         playClickSound();
-        yield return new WaitForSeconds(0.5f);
-        
-
+        yield return new WaitForSeconds(.1f);
+      
     }
+   
+    
     public void healReward()
     {
         playClickSound();
@@ -81,7 +83,7 @@ public class ButtonFunctions : MonoBehaviour
     IEnumerator restartDelay()
     {
         playClickSound();
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.3f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     }
