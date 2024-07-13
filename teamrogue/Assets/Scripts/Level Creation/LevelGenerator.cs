@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Unity.AI.Navigation;
 using Unity.VisualScripting;
 //using UnityEditor.MemoryProfiler;
 //using UnityEditor.VersionControl;
@@ -34,6 +35,7 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] public GameObject[] doorways;
 
     [Header("Enemies")]
+    [SerializeField] public NavMeshSurface navMeshSurface;
     [SerializeField] public GameObject[] lowLvlEnemies;
 
     [Header("Debug")]
@@ -46,7 +48,6 @@ public class LevelGenerator : MonoBehaviour
     [HideInInspector]
     public List<Room> rooms;
 
-    //debug code
     PathBuilder pathFinder;
 
     public class Room
@@ -229,6 +230,7 @@ public class LevelGenerator : MonoBehaviour
         }
 
         BuildStructures();
+        navMeshSurface.BuildNavMesh();
     }
 
     // Update is called once per frame
