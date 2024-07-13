@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Unity.AI.Navigation;
 using Unity.VisualScripting;
 //using UnityEditor.MemoryProfiler;
 //using UnityEditor.VersionControl;
@@ -12,6 +13,7 @@ using UnityEngine.XR;
 public class LevelGenerator : MonoBehaviour
 {
     [Header("Level")]
+    [SerializeField] GameObject player;
     [SerializeField] public Vector2Int levelSize;
 
     [Header("Rooms")]
@@ -34,10 +36,23 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] public GameObject[] doorways;
 
     [Header("Enemies")]
+    [SerializeField] public NavMeshSurface navMeshSurface;
+    
+    [Space(2)]
+    
     [SerializeField] public GameObject[] lowLvlEnemies;
+    [Tooltip("The chance that each walkable tile will spawn a low level enemy")]
+    [Range(0, 1)]
+    [SerializeField] float lowLvlSpawnChance;
+
+    [SerializeField] public GameObject[] midLvlEnemies;
+    [Tooltip("The chance that each walkable tile will spawn a mid level enemy")]
+    [Range(0, 1)]
+    [SerializeField] float midLvlSpawnChance;
+
 
     [Header("Debug")]
-    [SerializeField] bool showGrid;
+    [SerializeField] int gridNumber;
     [SerializeField] int seed;
 
     [HideInInspector]
@@ -46,16 +61,17 @@ public class LevelGenerator : MonoBehaviour
     [HideInInspector]
     public List<Room> rooms;
 
-    //debug code
     PathBuilder pathFinder;
 
     public class Room
     {
         public RectInt rect;
+        public List<PathBuilder.Node> nodes;
 
         public Room(Vector2Int pos, Vector2Int size)
         {
             rect = new RectInt(pos, size);
+            nodes = new();
         }
 
         public bool Intersects(in Room other, int bufferAmount = 0)
@@ -223,19 +239,27 @@ public class LevelGenerator : MonoBehaviour
             paths.Add(pathFinder.FindPath(new Vector3(connection.start.x, generatorOrgin.y, connection.start.y),
             new Vector3(connection.end.x, generatorOrgin.y, connection.end.y)));
         }
-        foreach(List<PathBuilder.Node> path in paths)
+        foreach (List<PathBuilder.Node> path in paths)
         {
             pathFinder.ExpandHallway(path);
         }
 
         BuildStructures();
+        navMeshSurface.BuildNavMesh();
+
+        /* Decorate Dungeon */
+
+        /* Populate the dungeon */
+        GameObject entitiesParentObject = new GameObject("Entities");
+
+        SetSpawnPositions();
+        SpawnEntities(entitiesParentObject);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(showGrid)
-            pathFinder.grid.DebugDrawGrid();
+        pathFinder.grid.DebugDrawGrid(gridNumber);
     }
 
     private void OnDrawGizmos()
@@ -256,6 +280,128 @@ public class LevelGenerator : MonoBehaviour
         Gizmos.DrawLine(bottomRight, topRight);
         Gizmos.DrawLine(topRight, topLeft);
         Gizmos.DrawLine(topLeft, bottomLeft);
+    }
+
+    void SetSpawnPositions(bool setBossRoomInactive = true, bool setPlayerSpawnRoomInactive = true)
+    {
+        /* find the biggest and smallest rooms to be the player and boss rooms */
+
+        Room biggest = rooms[0];
+        Room smallest = rooms[0];
+
+        foreach (Room room in rooms)
+        {
+            if(room.nodes.Count > biggest.nodes.Count)
+            {
+                biggest = room;
+            }
+            
+            if(room.nodes.Count < smallest.nodes.Count)
+            {
+                smallest = room;
+            }
+        }
+
+        /* Pick a random node in each room to be the spawn point */
+        int playerSpawnIndex = Random.Range(0, smallest.nodes.Count);
+        int bossSpawnIndex = Random.Range(0, biggest.nodes.Count);
+
+        if(setPlayerSpawnRoomInactive)
+            for(int i = 0; i < smallest.nodes.Count; i++)
+            {
+                if (i == playerSpawnIndex)
+                    smallest.nodes[i].spawnType = PathBuilder.NodeSpawnType.player;
+                else
+                    smallest.nodes[i].spawnType = PathBuilder.NodeSpawnType.inactive;
+            }
+        else
+            smallest.nodes[playerSpawnIndex].spawnType = PathBuilder.NodeSpawnType.player;
+
+        if (setBossRoomInactive)
+            for (int i = 0; i < biggest.nodes.Count; i++)
+            {
+                if (i == bossSpawnIndex)
+                    biggest.nodes[i].spawnType = PathBuilder.NodeSpawnType.boss;
+                else
+                    biggest.nodes[i].spawnType = PathBuilder.NodeSpawnType.inactive;
+            }
+        else
+            biggest.nodes[bossSpawnIndex].spawnType = PathBuilder.NodeSpawnType.boss;
+    }
+
+    GameObject SpawnEntities(GameObject parent = null)
+    {
+        GameObject lowLvlParentObj = new GameObject("Low Lvl Enemies");
+        GameObject midLvlParentObj = new GameObject("Mid Lvl Enemies");
+
+        for (int x = 0; x < pathFinder.grid.nodeCountX; x++)
+        {
+            for (int y = 0; y < pathFinder.grid.nodeCountY; y++)
+            {
+                PathBuilder.Node node = pathFinder.grid.nodes[x, y];
+
+                if (node.spawnType == PathBuilder.NodeSpawnType.active)
+                {
+                    SpawnEnemyMidLvl(node, midLvlParentObj);
+                    SpawnEnemyLowLvl(node, lowLvlParentObj);
+                }
+
+                if (node.spawnType == PathBuilder.NodeSpawnType.player)
+                    Instantiate(player, new Vector3(node.pos.x, node.pos.y + (PathBuilder.nodeHalfDiagonal * 2), node.pos.z), Quaternion.identity);
+            }
+        }
+
+        if (parent != null)
+        {
+            lowLvlParentObj.transform.SetParent(parent.transform);
+            midLvlParentObj.transform.SetParent(parent.transform);
+        }
+
+        return lowLvlParentObj;
+    }
+
+    GameObject SpawnEnemyLowLvl(PathBuilder.Node node, GameObject patrolParent)
+    {
+        if (node.spawnType != PathBuilder.NodeSpawnType.active)
+            return null;
+
+        float spawnAttempt = UnityEngine.Random.Range(0f, 1.0f);
+
+        if (spawnAttempt <= lowLvlSpawnChance)
+        {
+            int enemyIndex = UnityEngine.Random.Range(0, lowLvlEnemies.Length);
+
+            GameObject baddie = Instantiate(lowLvlEnemies[enemyIndex], node.pos, Quaternion.identity);
+            node.spawnType = PathBuilder.NodeSpawnType.inactive;
+
+            baddie.transform.SetParent(patrolParent.transform);
+
+            return baddie;
+        }
+
+        return null;
+    }
+
+    GameObject SpawnEnemyMidLvl(PathBuilder.Node node, GameObject patrolParent)
+    {
+        if (node.spawnType != PathBuilder.NodeSpawnType.active)
+            return null;
+
+        float spawnAttempt = UnityEngine.Random.Range(0f, 1.0f);
+
+        if (spawnAttempt <= midLvlSpawnChance)
+        {
+            int enemyIndex = UnityEngine.Random.Range(0, midLvlEnemies.Length);
+
+            GameObject baddie = Instantiate(midLvlEnemies[enemyIndex], node.pos, Quaternion.identity);
+            node.spawnType = PathBuilder.NodeSpawnType.inactive;
+
+            baddie.transform.SetParent(patrolParent.transform);
+
+            return baddie;
+        }
+
+        return null;
     }
 
     private void GenerateRooms()

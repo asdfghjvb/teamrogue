@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6243726874628050506}
   - component: {fileID: 2271455056812713875}
+  - component: {fileID: 8970831050489812271}
   m_Layer: 0
   m_Name: Level Generator
   m_TagString: Untagged
@@ -44,13 +45,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9027f5100b3808440ae3748a00776a5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelSize: {x: 150, y: 150}
+  player: {fileID: 718157165217108821, guid: d553f9dcf1c99684e9ecd7f3aec2db1a, type: 3}
+  levelSize: {x: 100, y: 100}
   maxRoomQuantity: 12
   minRoomSize: {x: 8, y: 8}
   maxRoomSize: {x: 20, y: 20}
   maxSeperationTries: 30
   roomSpacer: 5
-  extraHallSpawnChance: 0.2
+  extraHallSpawnChance: 0.25
   floors:
   - {fileID: 7786834797176686046, guid: 02690ecf1a03b274aa89b6b5ab22e1a1, type: 3}
   - {fileID: 1753780157062862154, guid: dbc03e09b7cb6c445bc139fdf4485434, type: 3}
@@ -60,9 +62,52 @@ MonoBehaviour:
   - {fileID: 6601348092362153188, guid: 6fa936adac6424e469d0d5bde13a10e7, type: 3}
   - {fileID: 7126052724600383399, guid: 0b8ce77eec77c12478b9f6a98e4a650a, type: 3}
   - {fileID: 7978591694076811745, guid: 4ce183937151e2544aedf111d835c467, type: 3}
-  walls: []
-  doorways: []
-  roomBuilder: {fileID: 6990510333050736647, guid: f05c30770cd1c074ca9f67b03fb52861, type: 3}
-  showGrid: 1
-  seed: 100
+  walls:
+  - {fileID: 3342620475182698, guid: d8b0d02a897497a4c81644c5f8f776c4, type: 3}
+  - {fileID: 155228565050598673, guid: d69d18b63c4ec7f4a955034e7047c28d, type: 3}
+  - {fileID: 7966642409592466314, guid: 3b34349e95ef722408e8488085679f86, type: 3}
+  - {fileID: 8946525484832862018, guid: ab47d264a11880f45a4f94c776de8ffe, type: 3}
+  doorways:
+  - {fileID: 4867977872260033304, guid: 14838c8a0129a234397af47d409fc152, type: 3}
+  navMeshSurface: {fileID: 8970831050489812271}
+  lowLvlEnemies:
+  - {fileID: 7878885587272555556, guid: 7cc3bde90e7b27940b58621f203f0264, type: 3}
+  - {fileID: 975026479032028575, guid: b5e87a02f7960c44ab4849a55d1c90e1, type: 3}
+  lowLvlSpawnChance: 0.08
+  midLvlEnemies:
+  - {fileID: 7698635971105565560, guid: 0564231e27478954187beee3910c3510, type: 3}
+  midLvlSpawnChance: 0.01
+  gridNumber: 0
+  seed: -1034
   generatorOrgin: {x: 0, y: 0, z: 0}
+--- !u!114 &8970831050489812271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2677353984481627313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 1
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 1
+  m_VoxelSize: 0.1
+  m_MinRegionArea: 0
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
