@@ -99,7 +99,7 @@ MonoBehaviour:
   shootDist: 75
   aud: {fileID: 0}
   shootEffect: {fileID: 8300000, guid: bee04da5422ff7d428b42c3a5a1152c0, type: 3}
-  meleeEffect: {fileID: 0}
+  meleeEffect: {fileID: 8300000, guid: 906ff1ab7dc533146b96a0b8700b1a61, type: 3}
   shootVol: 0.5
   meleeVol: 0
   innateShootDamage: 0

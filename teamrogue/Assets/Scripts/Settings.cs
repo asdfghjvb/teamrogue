@@ -42,7 +42,7 @@ public class Settings : MonoBehaviour
         toggleY(invertToggle.isOn);
         //listen for slider changes
         musicSlider.onValueChanged.AddListener(SetMusicVol);
-        sfxSlider.onValueChanged.AddListener(SetSFXVol);
+        sfxSlider.onValueChanged.AddListener(SetSFXVolWithPreview);
         sensSlider.onValueChanged.AddListener(SetSens);
         invertToggle.onValueChanged.AddListener(toggleY);
     }
@@ -58,9 +58,15 @@ public class Settings : MonoBehaviour
         //set the volume in the mixer and save it as player preference
         audioMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("sfxVolume", volume);
+        
+    }
+    public void SetSFXVolWithPreview(float volume)
+    {
+        //set the volume in the mixer and save it as player preference
+        audioMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
+        PlayerPrefs.SetFloat("sfxVolume", volume);
         previewSource.PlayOneShot(sfxPreview);
     }
-
     public void SetSens(float sens)
     {
         GameManager.instance.sensitivity = sens;
@@ -91,8 +97,9 @@ public class Settings : MonoBehaviour
     }
     public void SaveMenuReturnButton()
     {
-        GameManager.instance.saveMenuActive = false;
         menuSaves.SetActive(false);
+        GameManager.instance.saveMenuActive = false;
+        
         GameManager.instance.menuActive.SetActive(true);
 
     }

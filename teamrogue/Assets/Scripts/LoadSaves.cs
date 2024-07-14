@@ -14,9 +14,10 @@ public class LoadSaves : MonoBehaviour
 
     public void LoadSave()
     {
+        Debug.Log("Before Load");
         saveFile.load();
         Debug.Log("save loaded");
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Hub");
     }
 
     public void ClearSave()

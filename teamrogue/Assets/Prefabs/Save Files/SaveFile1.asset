@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4df1c05dc16e19342956323424672bb8, type: 3}
   m_Name: SaveFile1
   m_EditorClassIdentifier: 
-  health: 1000
-  speed: 50
-  sprintMod: 5
-  armorMod: 60
-  jumpMax: 20
-  meleeDamage: 80
-  shootDamage: 16
-  shootRate: 50
+  health: 100
+  speed: 100
+  sprintMod: 100
+  armorMod: 100
+  jumpMax: 100
+  meleeDamage: 100
+  shootDamage: 100
+  shootRate: 100
   shootRange: 100
-  meleeCooldown: 1
+  meleeCooldown: 100
   bronzeAch1: 0
   bronzeAch2: 0
   bronzeAch3: 0
