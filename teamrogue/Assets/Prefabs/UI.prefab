@@ -4595,7 +4595,7 @@ RectTransform:
   m_GameObject: {fileID: 2252998828825005009}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7177717744726508602}
@@ -8616,9 +8616,6 @@ MonoBehaviour:
   boonButton: {fileID: 884978891421474455}
   room1Clear: 0
   room2Clear: 0
-  door1Col: {fileID: 0}
-  door2Col: {fileID: 0}
-  door3Col: {fileID: 0}
   sensitivity: 0.5
   invertY: 0
   meleeCooldownUI: {fileID: 4662598828837011360}
@@ -8641,9 +8638,9 @@ MonoBehaviour:
   playerScript: {fileID: 0}
   boonManager: {fileID: 0}
   cameraController: {fileID: 0}
-  plane: {fileID: 0}
-  navMeshBakerScript: {fileID: 0}
+  seed: 0
   isPaused: 0
+  saveMenuActive: 0
   boonCount: 0
 --- !u!114 &1424397666552049461
 MonoBehaviour:
@@ -12033,7 +12030,6 @@ GameObject:
   - component: {fileID: 4258405755309317946}
   - component: {fileID: 7734324337551867506}
   - component: {fileID: 4693031748569506195}
-  - component: {fileID: 4707213192090500077}
   m_Layer: 5
   m_Name: TrophyMenu
   m_TagString: Untagged
@@ -12101,22 +12097,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4707213192090500077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6874976309063077953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bc22cbf9d333654482abe94fe612f81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trophyMenu: {fileID: 6874976309063077953}
-  trophyName: {fileID: 7483324313284280993}
-  trophyDescription: {fileID: 9088837432490849381}
-  menuBox: {fileID: 4693031748569506195}
 --- !u!1 &6885489327688075378
 GameObject:
   m_ObjectHideFlags: 0

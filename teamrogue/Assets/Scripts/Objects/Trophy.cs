@@ -10,18 +10,20 @@ public class Trophy : MonoBehaviour
     [SerializeField] TMP_Text trophyDescription;
     [SerializeField] UnityEngine.UI.Image menuBox;
 
+    TrophyData trophyInfo;
     
     void Update()
     {
-        TrophyData data = (TrophyData)GameManager.instance.playerScript.objectView();
-        if (Input.GetButtonDown("Interact") && data != null)
+        ScriptableObject data = GameManager.instance.playerScript.objectView();
+        if (Input.GetKey("e") && data != null && data is TrophyData && !GameManager.instance.isPaused)
         {
             GameManager.instance.statePaused();
             GameManager.instance.menuActive = trophyMenu;
             GameManager.instance.menuActive.SetActive(GameManager.instance.isPaused);
-            trophyName.text = data.trophyName;
-            trophyDescription.text = data.trophyDescription;
-            menuBox.color = data.color;
+            trophyInfo = (TrophyData)data;
+            trophyName.text = trophyInfo.trophyName;
+            trophyDescription.text = trophyInfo.trophyDescription;
+            menuBox.color = trophyInfo.color;
         }
     }
 }

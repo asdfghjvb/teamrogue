@@ -7,20 +7,23 @@ public class Anvil : MonoBehaviour
 {
     [SerializeField] GameObject upgradeUI;
     [SerializeField] TMP_Text title;
-    [SerializeField] UpgradeScriptOb menu;
+    [SerializeField] public UpgradeScriptOb menu;
     [SerializeField] UnityEngine.UI.Image menuBox;
+
+    UpgradeScriptOb anvilData;
 
     // Update is called once per frame
     void Update()
     {
-        UpgradeScriptOb data = (UpgradeScriptOb)GameManager.instance.playerScript.objectView();
-        if (Input.GetButtonDown("Interact") && data != null)
+        ScriptableObject data = GameManager.instance.playerScript.objectView();
+        if (Input.GetKey("e") && data != null && data is UpgradeScriptOb && !GameManager.instance.isPaused)
         {
             GameManager.instance.statePaused();
             GameManager.instance.menuActive = upgradeUI;
             GameManager.instance.menuActive.SetActive(GameManager.instance.isPaused);
-            title.text = data.title;
-            menuBox.color = data.color;
+            anvilData = (UpgradeScriptOb)data;
+            title.text = anvilData.title;
+            menuBox.color = anvilData.color;
         }
     }
 }
