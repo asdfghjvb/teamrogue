@@ -250,6 +250,11 @@ public class Player : MonoBehaviour, IDamage
                 GameManager.instance.inputHint.SetActive(true);
                 return hit.collider.GetComponent<Anvil>().menu;
             }
+            else if (hit.collider.CompareTag("Sign"))
+            {
+                GameManager.instance.inputHint.SetActive(true);
+                return hit.collider.GetComponent<SignPost>().signScript;
+            }
             else
             {
                 GameManager.instance.inputHint.SetActive(false);

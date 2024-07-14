@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Trophy : MonoBehaviour
 {
-    [SerializeField] GameObject trophyMenu;
     [SerializeField] TMP_Text trophyName;
     [SerializeField] TMP_Text trophyDescription;
     [SerializeField] UnityEngine.UI.Image menuBox;
@@ -18,7 +17,7 @@ public class Trophy : MonoBehaviour
         if (Input.GetKey("e") && data != null && data is TrophyData && !GameManager.instance.isPaused)
         {
             GameManager.instance.statePaused();
-            GameManager.instance.menuActive = trophyMenu;
+            GameManager.instance.menuActive = GameManager.instance.trophyMenu;
             GameManager.instance.menuActive.SetActive(GameManager.instance.isPaused);
             trophyInfo = (TrophyData)data;
             trophyName.text = trophyInfo.trophyName;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [CreateAssetMenu]
 public class Saves : ScriptableObject
@@ -66,6 +67,8 @@ public class Saves : ScriptableObject
         GameManager.instance.bronze2.SetActive(bronzeAch2);
         GameManager.instance.bronze3.SetActive(bronzeAch3);
         GameManager.instance.bronze4.SetActive(bronzeAch4);
+
+        SceneManager.LoadScene("Hub");
 
     }
     public void ClearSaveFile()

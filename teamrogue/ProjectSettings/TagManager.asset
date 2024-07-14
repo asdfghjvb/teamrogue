@@ -8,6 +8,7 @@ TagManager:
   - Trophy
   - Anvil
   - SFX Audio Source
+  - Sign
   layers:
   - Default
   - TransparentFX

@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject menuBoon;
     [SerializeField] GameObject chestMenu;
     [SerializeField] GameObject menuSettings;
+    [SerializeField] public GameObject upgradeUI;
+    [SerializeField] public GameObject signUI;
+    [SerializeField] public GameObject trophyMenu;
 
     [SerializeField] public GameObject inputHint;
 
@@ -110,7 +113,7 @@ public class GameManager : MonoBehaviour
                 menuActive.SetActive(isPaused);
             }
 
-            else if (menuActive == menuPause && !saveMenuActive)
+            else if (menuActive == menuPause || menuActive == menuSettings || menuActive == signUI || menuActive == upgradeUI || menuActive == trophyMenu && !saveMenuActive)
             {
                 stateUnpaused();
             }
