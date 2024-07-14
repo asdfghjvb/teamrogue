@@ -364,17 +364,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1592624102 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4617709558637229584, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
-  m_PrefabInstance: {fileID: 1732630719}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99dccaaa7ae5b8d4e8a06fa38e1afa40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1673667515
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,49 +540,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 426645675039085907, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
-      propertyPath: menu
-      value: 
-      objectReference: {fileID: 163223938}
-    - target: {fileID: 426645675039085907, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
-      propertyPath: sfxSource
-      value: 
-      objectReference: {fileID: 1757470937}
-    - target: {fileID: 426645675039085907, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
-      propertyPath: menuButtons
-      value: 
-      objectReference: {fileID: 163223932}
-    - target: {fileID: 426645675039085907, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
-      propertyPath: musicSource
-      value: 
-      objectReference: {fileID: 217790094}
-    - target: {fileID: 426645675039085907, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
-      propertyPath: previewSource
-      value: 
-      objectReference: {fileID: 1757470938}
     - target: {fileID: 502074285968201060, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1739546356}
     - target: {fileID: 502074285968201060, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
-      propertyPath: menuPause
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 502074285968201060, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
       propertyPath: playerScript
       value: 
       objectReference: {fileID: 1739546361}
-    - target: {fileID: 870704552983924351, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1250104655834063945, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1266774029}
-    - target: {fileID: 1250104655834063945, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: playClickSound
+    - target: {fileID: 519345331236945725, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -48
       objectReference: {fileID: 0}
     - target: {fileID: 1416080015076992726, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -619,14 +576,6 @@ PrefabInstance:
       propertyPath: previewSource
       value: 
       objectReference: {fileID: 1757470938}
-    - target: {fileID: 1456481739824306549, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1266774029}
-    - target: {fileID: 1456481739824306549, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: playClickSound
-      objectReference: {fileID: 0}
     - target: {fileID: 1942185198404580810, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -715,10 +664,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2705167727852878351, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 2575361223397594551, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
+      propertyPath: saveFile
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f3db33f228ed154a9a7ea4249e1a4b7, type: 2}
     - target: {fileID: 3017691478760648635, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
       propertyPath: audioSource
       value: 
@@ -747,26 +696,18 @@ PrefabInstance:
       propertyPath: previewSource
       value: 
       objectReference: {fileID: 1757470938}
-    - target: {fileID: 5012950390404510731, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
+    - target: {fileID: 4405720157610791284, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1266774029}
-    - target: {fileID: 5012950390404510731, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 1592624102}
-    - target: {fileID: 5012950390404510731, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: playClickSound
-      objectReference: {fileID: 0}
-    - target: {fileID: 5012950390404510731, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: LoadSave
       objectReference: {fileID: 0}
     - target: {fileID: 5434498660250907091, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1757470940}
+    - target: {fileID: 6542361919459928613, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6610873299096336934, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -779,30 +720,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1757470940}
-    - target: {fileID: 7462484389492658005, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
-      propertyPath: menu
-      value: 
-      objectReference: {fileID: 163223938}
-    - target: {fileID: 7462484389492658005, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7462484389492658005, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
-      propertyPath: sfxSource
-      value: 
-      objectReference: {fileID: 1757470937}
-    - target: {fileID: 7462484389492658005, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
-      propertyPath: menuButtons
-      value: 
-      objectReference: {fileID: 163223932}
-    - target: {fileID: 7462484389492658005, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
-      propertyPath: musicSource
-      value: 
-      objectReference: {fileID: 217790094}
-    - target: {fileID: 7462484389492658005, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
-      propertyPath: previewSource
-      value: 
-      objectReference: {fileID: 1757470938}
     - target: {fileID: 7538670291419842673, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -811,8 +728,7 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1757470940}
-    m_RemovedComponents:
-    - {fileID: 7462484389492658005, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
