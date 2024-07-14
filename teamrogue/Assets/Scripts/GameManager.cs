@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
     public Player playerScript;
 
     public BoonManager boonManager;
+    public UpgradeManager upgradeManager;
     public cameraController cameraController;
 
     public int seed;
@@ -89,6 +90,7 @@ public class GameManager : MonoBehaviour
             playerScript = player.GetComponent<Player>();
 
         boonManager = GetComponent<BoonManager>();
+        upgradeManager = GetComponent<UpgradeManager>();
         cameraController = GetComponent<cameraController>();
         foreach (Staffs staffs in allStaffs)
         {
