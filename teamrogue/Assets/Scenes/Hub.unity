@@ -853,10 +853,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2914936459588825770, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3017691478760648635, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
       propertyPath: audioSource
       value: 
@@ -963,7 +959,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4496846534573564487, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
-      insertIndex: -1
+      insertIndex: 5
       addedObject: {fileID: 1901027584}
   m_SourcePrefab: {fileID: 100100000, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
 --- !u!114 &219375916 stripped
