@@ -25,6 +25,10 @@ public class BulletPlayer : MonoBehaviour
     {
         IDamage dmg = other.GetComponent<IDamage>();
 
+        if (dmg == null) //for enemies with multiple colliders
+            dmg = other.GetComponentInParent<IDamage>();
+        
+
         if (dmg != null)
         {
             dmg.takeDamage(damage);
