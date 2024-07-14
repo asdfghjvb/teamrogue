@@ -81,8 +81,6 @@ public class GameManager : MonoBehaviour
         seed = (int)DateTime.Now.Ticks;
         UnityEngine.Random.InitState(seed);
 
-        Debug.Log(seed);
-
         player = GameObject.FindWithTag("Player");
         if(player!= null)
             playerScript = player.GetComponent<Player>();
