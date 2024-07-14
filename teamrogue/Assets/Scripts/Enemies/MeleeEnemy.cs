@@ -8,9 +8,9 @@ public class MeleeEnemy : EnemyAI, IDamage
 {
     [Space(5)]
     [Header("Melee Weapon")]
-    [SerializeField] Collider weaponCol;
+    [SerializeField] protected Collider weaponCol;
 
-    bool isAttacking = false;
+    protected bool isAttacking = false;
 
     protected override void Start()
     {
@@ -23,16 +23,21 @@ public class MeleeEnemy : EnemyAI, IDamage
     {
         base.Update();
 
-        if(agent.remainingDistance <= agent.stoppingDistance && !isAttacking && playerInView())
+        //if(agent.remainingDistance <= agent.stoppingDistance && !isAttacking && playerInView())
+        //{
+        //    StartCoroutine(melee());
+        //}
+
+        if (agent.remainingDistance <= agent.stoppingDistance && !isAttacking)
         {
             StartCoroutine(melee());
         }
     }
 
-    IEnumerator melee()
+    protected virtual IEnumerator melee()
     {
         isAttacking = true;
-       
+
         animator.SetTrigger("Melee");
         yield return new WaitForSeconds(attackRate);
 
