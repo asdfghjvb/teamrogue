@@ -77,8 +77,10 @@ MonoBehaviour:
   midLvlEnemies:
   - {fileID: 7698635971105565560, guid: 0564231e27478954187beee3910c3510, type: 3}
   midLvlSpawnChance: 0.01
+  bosses:
+  - {fileID: 5810740335334662195, guid: a776e3e527d16ed469367295671a0c6f, type: 3}
+  - {fileID: 5921435172011970883, guid: 71c8f272276916146a34b2fca2e71fc4, type: 3}
   gridNumber: 0
-  seed: -1034
   generatorOrgin: {x: 0, y: 0, z: 0}
 --- !u!114 &8970831050489812271
 MonoBehaviour:

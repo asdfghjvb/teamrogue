@@ -50,6 +50,8 @@ public class LevelGenerator : MonoBehaviour
     [Range(0, 1)]
     [SerializeField] float midLvlSpawnChance;
 
+    [SerializeField] public GameObject[] bosses;
+
 
     [Header("Debug")]
     [SerializeField] int gridNumber;
@@ -348,6 +350,9 @@ public class LevelGenerator : MonoBehaviour
 
                 if (node.spawnType == PathBuilder.NodeSpawnType.player)
                     Instantiate(player, new Vector3(node.pos.x, node.pos.y + (PathBuilder.nodeHalfDiagonal * 2), node.pos.z), Quaternion.identity);
+
+                if (node.spawnType == PathBuilder.NodeSpawnType.boss)
+                    SpawnBoss(node, parent);
             }
         }
 
@@ -358,6 +363,18 @@ public class LevelGenerator : MonoBehaviour
         }
 
         return lowLvlParentObj;
+    }
+
+    GameObject SpawnBoss(PathBuilder.Node node, GameObject parent = null)
+    {
+        int bossIndex = UnityEngine.Random.Range(0, bosses.Length);
+
+        GameObject boss = Instantiate(bosses[bossIndex], node.pos, Quaternion.identity);
+
+        if (parent != null)
+            boss.transform.SetParent(parent.transform);
+
+        return boss;
     }
 
     GameObject SpawnEnemyLowLvl(PathBuilder.Node node, GameObject patrolParent)
