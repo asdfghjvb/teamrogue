@@ -22,8 +22,8 @@ public class Anvil : MonoBehaviour
             GameManager.instance.menuActive = upgradeUI;
             GameManager.instance.menuActive.SetActive(GameManager.instance.isPaused);
             anvilData = (UpgradeScriptOb)data;
-            title.text = anvilData.title;
-            menuBox.color = anvilData.color;
+            //title.text = anvilData.title;
+            //menuBox.color = anvilData.color;
         }
     }
 }
