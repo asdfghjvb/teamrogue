@@ -82,7 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 1137285651123666733}
   health: 20
-  mana: 0
+  mana: 20
   manaCost: 10
   speed: 8
   sprintMod: 2
@@ -101,7 +101,7 @@ MonoBehaviour:
   shootEffect: {fileID: 8300000, guid: bee04da5422ff7d428b42c3a5a1152c0, type: 3}
   meleeEffect: {fileID: 8300000, guid: 906ff1ab7dc533146b96a0b8700b1a61, type: 3}
   shootVol: 0.5
-  meleeVol: 0
+  meleeVol: 0.5
   innateShootDamage: 0
   innateShootRate: 1
   innateShootDist: 0

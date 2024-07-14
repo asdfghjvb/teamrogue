@@ -9474,6 +9474,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Background SFX
       objectReference: {fileID: 0}
+    - target: {fileID: 8279057274385984272, guid: 9ea5bc0d0820abf4da3a9d8be2571751, type: 3}
+      propertyPath: m_TagString
+      value: SFX Audio Source
+      objectReference: {fileID: 0}
     - target: {fileID: 8451958053258993963, guid: 9ea5bc0d0820abf4da3a9d8be2571751, type: 3}
       propertyPath: m_LocalPosition.x
       value: 959.7014

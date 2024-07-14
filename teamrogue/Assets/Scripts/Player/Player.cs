@@ -58,6 +58,16 @@ public class Player : MonoBehaviour, IDamage
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
+        GameObject sfxAudioSource = GameObject.FindWithTag("SFX Audio Source");
+        if(sfxAudioSource != null)
+            aud = sfxAudioSource.GetComponent<AudioSource>();
+
+        if (GameManager.instance.playerScript == null || GameManager.instance.player == null)
+        {//bc the gm is made before the player, the player does not exist yet in dungeons
+            GameManager.instance.playerScript = this;
+            GameManager.instance.player = gameObject;
+        }
+
         fullHealth = health;
         fullMana = mana;
         updatePlayerUI();

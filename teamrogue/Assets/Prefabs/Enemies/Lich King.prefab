@@ -1783,8 +1783,8 @@ MonoBehaviour:
   dropSpawn: {fileID: 5717293315098642665}
   healthDrop: {fileID: 6769170450033730269, guid: bd4446a97bed5814a8766d63fc0ebca9, type: 3}
   ammoDropPrefab: {fileID: 6769170450033730269, guid: a8ce90dd81c610c46b6c41b2f1caf3e5, type: 3}
-  healthDropChance: 0
-  ammoDropChance: 0
+  healthDropChance: 0.5
+  ammoDropChance: 0.5
   HP: 20
   attackRate: 5
   deathAnimationDuration: 8
