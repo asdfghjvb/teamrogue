@@ -53,7 +53,6 @@ public class LevelGenerator : MonoBehaviour
 
     [Header("Debug")]
     [SerializeField] int gridNumber;
-    [SerializeField] public static int seed;
 
     [HideInInspector]
     public Vector3Int generatorOrgin;
@@ -218,7 +217,7 @@ public class LevelGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Random.InitState(seed);
+        UnityEngine.Random.InitState(GameManager.instance.seed);
 
         GameManager.instance.player = player;
 
@@ -261,7 +260,7 @@ public class LevelGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        pathFinder.grid.DebugDrawGrid(gridNumber);
+        //pathFinder.grid.DebugDrawGrid(gridNumber);
     }
 
     private void OnDrawGizmos()

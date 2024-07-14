@@ -79,12 +79,15 @@ public class Player : MonoBehaviour, IDamage
             {
                 StartCoroutine(shoot());
                 updatePlayerUI();
+
+                GameManager.instance.ModifySeed(17);
             }
             selectStaff();
 
             if (Input.GetButtonDown("Fire2") && !isMeleeAttacking && Time.time >= lastMeleeTime + meleeCooldown)
             {
                 StartCoroutine(melee());
+                GameManager.instance.ModifySeed(41);
             }
         }
         
@@ -104,6 +107,7 @@ public class Player : MonoBehaviour, IDamage
         {
             jumpCount++;
             playerVel.y = jumpSpeed;
+            GameManager.instance.ModifySeed(71);
         }
         playerVel.y -= gravity * Time.deltaTime;
         playerController.Move(playerVel * Time.deltaTime);
@@ -112,7 +116,10 @@ public class Player : MonoBehaviour, IDamage
     void Sprint()
     {
         if (Input.GetButtonDown("Sprint"))
+        {
             speed *= sprintMod;
+            GameManager.instance.ModifySeed(59);
+        }
         else if (Input.GetButtonUp("Sprint"))
             speed /= sprintMod;
     }
@@ -176,8 +183,8 @@ public class Player : MonoBehaviour, IDamage
     public void getStaff(Staffs staff)
     {
         staffList.Add(staff);
-        if (staffList.Count == 3 && GameManager.instance.boonCount >= 0)
-            GameManager.instance.door1Col.enabled = true;
+        //if (staffList.Count == 3 && GameManager.instance.boonCount >= 0)
+        //    GameManager.instance.door1Col.enabled = true;
         EquipStaff(staffList.Count - 1);
     }
 
@@ -188,10 +195,12 @@ public class Player : MonoBehaviour, IDamage
             if (Input.GetAxis("Mouse ScrollWheel") > 0 && currentStaffIndex < staffList.Count - 1)
             {
                 EquipStaff(currentStaffIndex + 1);
+                GameManager.instance.ModifySeed(2);
             }
             else if (Input.GetAxis("Mouse ScrollWheel") < 0 && currentStaffIndex > 0)
             {
                 EquipStaff(currentStaffIndex - 1);
+                GameManager.instance.ModifySeed(3);
             }
         }
     }

@@ -10,6 +10,5 @@ public class LoadDungeon : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         SceneManager.LoadScene("Dungeon");
-        LevelGenerator.seed = RandomNumberGenerator.GetInt32(100000000);
     }
 }

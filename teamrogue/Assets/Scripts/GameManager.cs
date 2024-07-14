@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEditor;
 using Unity.VisualScripting.Antlr3.Runtime.Collections;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -29,7 +30,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameObject boonButton;
     public bool room1Clear = false, room2Clear = false;
 
-    [SerializeField] public Collider door1Col, door2Col, door3Col;
+    //[SerializeField] public Collider door1Col, door2Col, door3Col;
 
     [Header("Player Settings")]
     public float sensitivity = 0.5f;
@@ -65,6 +66,8 @@ public class GameManager : MonoBehaviour
     public BoonManager boonManager;
     public cameraController cameraController;
 
+    public int seed;
+
     public bool isPaused;
     public bool saveMenuActive = false;
     int enemyCount;
@@ -74,6 +77,11 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
+
+        seed = (int)DateTime.Now.Ticks;
+        UnityEngine.Random.InitState(seed);
+
+        Debug.Log(seed);
 
         player = GameObject.FindWithTag("Player");
         if(player!= null)
@@ -168,8 +176,8 @@ public class GameManager : MonoBehaviour
         menuActive = menuBoon;
         menuActive.SetActive(isPaused);
         boonCount++;
-        if (playerScript.staffList.Count == 3 && boonCount == 1)
-            door1Col.enabled = true;
+        //if (playerScript.staffList.Count == 3 && boonCount == 1)
+        //    door1Col.enabled = true;
 
     }
     public void rewardMenu()
@@ -218,5 +226,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ModifySeed(int multiplier)
+    {
+        unchecked
+        {
+            seed *= multiplier;
+        }
+    }
 
 }
