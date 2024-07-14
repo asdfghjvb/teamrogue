@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class TrophyObject : MonoBehaviour
 {
-    [SerializeField] TrophyData trophy;
+    [SerializeField] public TrophyData trophy;
 }
