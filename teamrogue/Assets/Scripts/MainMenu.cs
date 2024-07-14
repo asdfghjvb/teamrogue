@@ -24,7 +24,7 @@ public class MainMenu : MonoBehaviour
     public void NewGame()
     {
         StartCoroutine(clickDelay());
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Hub");
     }
 
     public void LoadGame()
