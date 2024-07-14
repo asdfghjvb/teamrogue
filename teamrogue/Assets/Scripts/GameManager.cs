@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEditor;
 using Unity.VisualScripting.Antlr3.Runtime.Collections;
 using System;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -46,12 +47,20 @@ public class GameManager : MonoBehaviour
 
     [Header("Trophies")]
     [SerializeField] public GameObject gold;
+    public bool goldEarned;
     [SerializeField] public GameObject silver1;
+    public bool silver1Earned;
     [SerializeField] public GameObject silver2;
+    public bool silver2Earned;
     [SerializeField] public GameObject bronze1;
+    public bool bronze1Earned;
     [SerializeField] public GameObject bronze2;
+    public bool bronze2Earned;
     [SerializeField] public GameObject bronze3;
+    public bool bronze3Earned;
     [SerializeField] public GameObject bronze4;
+    public bool bronze4Earned;
+
 
     public Staffs currentStaff;
 
@@ -81,6 +90,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
+        //DontDestroyOnLoad(gameObject);
 
         seed = (int)DateTime.Now.Ticks;
         UnityEngine.Random.InitState(seed);
@@ -103,6 +113,16 @@ public class GameManager : MonoBehaviour
        
     }
 
+    private void Start()
+    {
+        if (IsInScene("Hub"))
+        {
+            if (goldEarned && silver1Earned && silver2Earned && bronze1Earned && bronze2Earned && bronze3Earned && bronze4Earned)
+            {
+                StartCoroutine(winMenuDelay());
+            }
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -120,6 +140,8 @@ public class GameManager : MonoBehaviour
                 stateUnpaused();
             }
         }
+
+      
     }
 
     public void statePaused()
@@ -161,9 +183,16 @@ public class GameManager : MonoBehaviour
     }
     public void youWin()
     {
+        
         statePaused();
         menuActive = menuWin;
         menuActive.SetActive(isPaused);
+    }
+
+    IEnumerator winMenuDelay()
+    {
+        yield return new WaitForSeconds(0.1f);
+        youWin();
     }
     public void youLose()
     {
@@ -237,4 +266,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public bool IsInScene(string sceneName)
+    {
+        return SceneManager.GetActiveScene().name == sceneName;
+    }
 }

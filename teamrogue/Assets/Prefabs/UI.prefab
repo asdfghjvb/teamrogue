@@ -646,7 +646,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3017691478760648635}
         m_TargetAssemblyTypeName: ButtonFunctions, Assembly-CSharp
         m_MethodName: playClickSound
         m_Mode: 1
@@ -4785,7 +4785,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3017691478760648635}
         m_TargetAssemblyTypeName: ButtonFunctions, Assembly-CSharp
         m_MethodName: playClickSound
         m_Mode: 1
@@ -6593,7 +6593,6 @@ GameObject:
   - component: {fileID: 2106860097304165208}
   - component: {fileID: 3965606992191865952}
   - component: {fileID: 990427595637954290}
-  - component: {fileID: 7462484389492658005}
   m_Layer: 5
   m_Name: Save Select Menu
   m_TagString: Untagged
@@ -6663,31 +6662,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7462484389492658005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3441425808498583876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f9d0461588fb9e45a7e665af7c31c4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menuButtons: {fileID: 0}
-  menuSettings: {fileID: 3441425808498583876}
-  menuSaves: {fileID: 0}
-  musicSlider: {fileID: 0}
-  sfxSlider: {fileID: 0}
-  sensSlider: {fileID: 0}
-  invertToggle: {fileID: 0}
-  audioMixer: {fileID: 24100000, guid: 544c99b05842fe24c80fa211cd3d2110, type: 2}
-  menu: {fileID: 0}
-  musicSource: {fileID: 0}
-  sfxSource: {fileID: 0}
-  previewSource: {fileID: 0}
-  sfxPreview: {fileID: 8300000, guid: de466075ca26c924d977840daec3543b, type: 3}
 --- !u!1 &3574343677455432159
 GameObject:
   m_ObjectHideFlags: 0
@@ -7019,7 +6993,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3017691478760648635}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ButtonFunctions, Assembly-CSharp
         m_MethodName: playClickSound
         m_Mode: 1
@@ -8812,6 +8786,7 @@ GameObject:
   - component: {fileID: 3017691478760648635}
   - component: {fileID: 8521855938797696674}
   - component: {fileID: 6806245683284811113}
+  - component: {fileID: 2575361223397594551}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -8847,7 +8822,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuActive: {fileID: 0}
-  menuPause: {fileID: 2705167727852878351}
+  menuPause: {fileID: 0}
   menuWin: {fileID: 6542361919459928613}
   menuLose: {fileID: 1500825981653993637}
   menuBoon: {fileID: 722659142892381842}
@@ -8867,13 +8842,20 @@ MonoBehaviour:
   invertY: 0
   meleeCooldownUI: {fileID: 4662598828837011360}
   enemyCountText: {fileID: 2068019925298543711}
-  gold: {fileID: 0}
-  silver1: {fileID: 0}
-  silver2: {fileID: 0}
-  bronze1: {fileID: 0}
-  bronze2: {fileID: 0}
-  bronze3: {fileID: 0}
-  bronze4: {fileID: 0}
+  gold: {fileID: 1754884877244078809, guid: d1d132be5392f0f4589e95058f8c9ee8, type: 3}
+  goldEarned: 0
+  silver1: {fileID: 6901200191903761399, guid: 8597000dafc9d6c4ebf5afedd76fca9e, type: 3}
+  silver1Earned: 0
+  silver2: {fileID: 4112245497577615831, guid: 50386ff301739c94d9839bab5f144fdd, type: 3}
+  silver2Earned: 0
+  bronze1: {fileID: 5657203537707896367, guid: a1c13de5aaf189d41928f507a0b7d386, type: 3}
+  bronze1Earned: 0
+  bronze2: {fileID: 2068496934395958748, guid: 3e9b0f1318679094981357759f15b174, type: 3}
+  bronze2Earned: 0
+  bronze3: {fileID: 7335724114544953815, guid: 06856f70f341ee343a9541d712f57dd0, type: 3}
+  bronze3Earned: 0
+  bronze4: {fileID: 7840973318835850626, guid: 48a8827756dd258468201b463de55710, type: 3}
+  bronze4Earned: 0
   currentStaff: {fileID: 0}
   allStaffs:
   - {fileID: 11400000, guid: 44827d6d5743ad64fb72bba7979c2a80, type: 2}
@@ -8881,9 +8863,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1fc7fbbff6a93a348b0737545f86a176, type: 2}
   playerHealthBar: {fileID: 8684377991976454447}
   playerManaBar: {fileID: 7860306948872742896}
-  player: {fileID: 718157165217108821, guid: d553f9dcf1c99684e9ecd7f3aec2db1a, type: 3}
+  player: {fileID: 0}
   playerScript: {fileID: 0}
   boonManager: {fileID: 0}
+  upgradeManager: {fileID: 0}
   cameraController: {fileID: 0}
   seed: 0
   isPaused: 0
@@ -8960,6 +8943,19 @@ MonoBehaviour:
   trophyName: {fileID: 7483324313284280993}
   trophyDescription: {fileID: 9088837432490849381}
   menuBox: {fileID: 4693031748569506195}
+--- !u!114 &2575361223397594551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4496846534573564487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99dccaaa7ae5b8d4e8a06fa38e1afa40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveFile: {fileID: 0}
 --- !u!1 &4522576698955641748
 GameObject:
   m_ObjectHideFlags: 0
@@ -9908,7 +9904,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5834283754448225291
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11890,7 +11886,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7462484389492658005}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Settings, Assembly-CSharp
         m_MethodName: ReturnButton
         m_Mode: 1
@@ -12807,7 +12803,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3017691478760648635}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ButtonFunctions, Assembly-CSharp
         m_MethodName: playClickSound
         m_Mode: 1
@@ -13477,7 +13473,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3017691478760648635}
         m_TargetAssemblyTypeName: ButtonFunctions, Assembly-CSharp
         m_MethodName: playClickSound
         m_Mode: 1
@@ -13698,7 +13694,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3017691478760648635}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ButtonFunctions, Assembly-CSharp
         m_MethodName: playClickSound
         m_Mode: 1
@@ -14174,7 +14170,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3017691478760648635}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ButtonFunctions, Assembly-CSharp
         m_MethodName: playClickSound
         m_Mode: 1
@@ -14588,7 +14584,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3017691478760648635}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ButtonFunctions, Assembly-CSharp
         m_MethodName: playClickSound
         m_Mode: 1
@@ -14734,7 +14730,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3017691478760648635}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ButtonFunctions, Assembly-CSharp
         m_MethodName: playClickSound
         m_Mode: 1

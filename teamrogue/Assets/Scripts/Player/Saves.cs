@@ -61,15 +61,38 @@ public class Saves : ScriptableObject
         GameManager.instance.playerScript.innateShootRate = shootRate;
 
         GameManager.instance.gold.SetActive(goldAch);
+        GameManager.instance.goldEarned = goldAch;
         GameManager.instance.silver1.SetActive(silverAch1);
+        GameManager.instance.silver1Earned =silverAch1;
         GameManager.instance.silver2.SetActive(silverAch2);
+        GameManager.instance.silver2Earned = silverAch2;
         GameManager.instance.bronze1.SetActive(bronzeAch1);
+        GameManager.instance.bronze1Earned = bronzeAch1;
         GameManager.instance.bronze2.SetActive(bronzeAch2);
+        GameManager.instance.bronze2Earned = bronzeAch2;
         GameManager.instance.bronze3.SetActive(bronzeAch3);
+        GameManager.instance.bronze3Earned = bronzeAch3;
         GameManager.instance.bronze4.SetActive(bronzeAch4);
+        GameManager.instance.bronze4Earned = bronzeAch4;
 
         SceneManager.LoadScene("Hub");
 
+    }
+
+    public void Start()
+    {
+        Debug.Log("start called");
+        if (GameManager.instance.IsInScene("Hub"))
+        {
+            GameManager.instance.goldEarned = goldAch;
+            GameManager.instance.silver1Earned = silverAch1;
+            GameManager.instance.silver2Earned = silverAch2;
+            GameManager.instance.bronze1Earned = bronzeAch1;
+            GameManager.instance.bronze2Earned = bronzeAch2;
+            GameManager.instance.bronze3Earned = bronzeAch3;
+            GameManager.instance.bronze4Earned = bronzeAch4;
+        }
+        
     }
     public void ClearSaveFile()
     {
