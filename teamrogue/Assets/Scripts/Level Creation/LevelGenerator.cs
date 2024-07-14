@@ -218,7 +218,6 @@ public class LevelGenerator : MonoBehaviour
     void Start()
     {
         UnityEngine.Random.InitState(GameManager.instance.seed);
-
         GameManager.instance.player = player;
 
         //Sets the transform to the closest int value. this makes a grid system much simpler 
