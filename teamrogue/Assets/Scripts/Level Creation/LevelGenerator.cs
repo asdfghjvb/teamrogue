@@ -220,6 +220,8 @@ public class LevelGenerator : MonoBehaviour
     {
         Random.InitState(seed);
 
+        GameManager.instance.player = player;
+
         //Sets the transform to the closest int value. this makes a grid system much simpler 
         generatorOrgin = new Vector3Int(Mathf.CeilToInt(transform.position.x), Mathf.CeilToInt(transform.position.y), Mathf.CeilToInt(transform.position.z));
         transform.position = generatorOrgin;

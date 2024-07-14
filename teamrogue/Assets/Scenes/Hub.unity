@@ -653,6 +653,18 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1424397666552049461, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
+      propertyPath: sfxSource
+      value: 
+      objectReference: {fileID: 1478656036}
+    - target: {fileID: 1424397666552049461, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
+      propertyPath: musicSource
+      value: 
+      objectReference: {fileID: 534837884}
+    - target: {fileID: 1424397666552049461, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
+      propertyPath: previewSource
+      value: 
+      objectReference: {fileID: 2072929996}
     - target: {fileID: 1564535972060698941, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2100,6 +2112,11 @@ Transform:
   - {fileID: 7398517021350737280}
   m_Father: {fileID: 455560482}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &534837884 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8279057274385984272, guid: 9ea5bc0d0820abf4da3a9d8be2571751, type: 3}
+  m_PrefabInstance: {fileID: 962384549}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &549590558
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5993,6 +6010,11 @@ Transform:
   - {fileID: 764809234}
   m_Father: {fileID: 455560482}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1478656036 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8279057274385984272, guid: 9ea5bc0d0820abf4da3a9d8be2571751, type: 3}
+  m_PrefabInstance: {fileID: 2072929995}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1480987452
 PrefabInstance:
   m_ObjectHideFlags: 0

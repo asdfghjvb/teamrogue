@@ -14,7 +14,7 @@ public class Door : MonoBehaviour
         if (other.CompareTag("Player")){
             door1.transform.position = new Vector3(Mathf.Lerp(door1.transform.position.x, door1.transform.position.x - 3, openDuration), door1.transform.position.y, door1.transform.position.z);
             door2.transform.position = new Vector3(Mathf.Lerp(door2.transform.position.x, door2.transform.position.x + 6, openDuration), door2.transform.position.y, door2.transform.position.z);
-            GameManager.instance.navMeshBakerScript.rebakeNavMesh();
+            //GameManager.instance.navMeshBakerScript.rebakeNavMesh();
             gameObject.SetActive(false);
         }
 

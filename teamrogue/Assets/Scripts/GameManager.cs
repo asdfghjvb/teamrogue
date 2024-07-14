@@ -65,9 +65,6 @@ public class GameManager : MonoBehaviour
     public BoonManager boonManager;
     public cameraController cameraController;
 
-    public GameObject plane;
-    public NavMeshBaker navMeshBakerScript;
-
     public bool isPaused;
     public bool saveMenuActive = false;
     int enemyCount;
@@ -77,11 +74,10 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-        //player = GameObject.FindWithTag("Player");
-        playerScript = player.GetComponent<Player>();
 
-        plane = GameObject.FindWithTag("Plane");
-        navMeshBakerScript = plane.GetComponent<NavMeshBaker>();
+        player = GameObject.FindWithTag("Player");
+        if(player!= null)
+            playerScript = player.GetComponent<Player>();
 
         boonManager = GetComponent<BoonManager>();
         cameraController = GetComponent<cameraController>();
@@ -111,9 +107,7 @@ public class GameManager : MonoBehaviour
             else if (menuActive == menuPause && !saveMenuActive)
             {
                 stateUnpaused();
-
             }
-            
         }
     }
 
@@ -142,13 +136,11 @@ public class GameManager : MonoBehaviour
         if (enemyCount <= 0)
         {
             rewardChest1.SetActive(true);
-            navMeshBakerScript.rebakeNavMesh();
             room1Clear = true;
         }
         else if (enemyCount <= 0 && room1Clear) 
         {
             rewardChest2.SetActive(true);
-            navMeshBakerScript.rebakeNavMesh();
             room2Clear = true;
         }
         else if (enemyCount <= 0 && room2Clear)
