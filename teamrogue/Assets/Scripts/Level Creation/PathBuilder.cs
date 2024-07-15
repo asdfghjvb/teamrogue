@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class PathBuilder
 {
-    public const float nodeHalfDiagonal = 1f;
+    public const float nodeHalfDiagonal = 1.5f;
 
     /* These outline the cost of searching different conditions */
     const int diagonalSearchCost = 60; //The hallways look better if diagonal movements are heavily discourged

@@ -261,7 +261,7 @@ public class LevelGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //pathFinder.grid.DebugDrawGrid(gridNumber);
+        pathFinder.grid.DebugDrawGrid(gridNumber);
     }
 
     private void OnDrawGizmos()
@@ -667,7 +667,7 @@ public class LevelGenerator : MonoBehaviour
 
         Vector3 prefabSize = renderer.bounds.size;
         Vector3 offset = new Vector3(nodeSize / 2f, 0, -(nodeSize / 2f));
-        Vector3 scaler = new Vector3(nodeSize / prefabSize.x, 2f, nodeSize / prefabSize.z);
+        Vector3 scaler = new Vector3(nodeSize / prefabSize.x, nodeSize / prefabSize.z, nodeSize / prefabSize.z);
 
         GameObject floorTile = Instantiate(floorPrefab, node.pos + offset, floorPrefab.transform.rotation);
         floorTile.transform.localScale = Vector3.Scale(floorTile.transform.localScale, scaler);

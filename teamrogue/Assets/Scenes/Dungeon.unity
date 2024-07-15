@@ -122,6 +122,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &77498509 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2705167727852878351, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
+  m_PrefabInstance: {fileID: 1500745208}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &540192180
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -152,15 +157,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
       propertyPath: minRoomSize.x
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
       propertyPath: minRoomSize.y
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
       propertyPath: maxRoomQuantity
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
       propertyPath: lowLvlSpawnChance
@@ -169,6 +174,10 @@ PrefabInstance:
     - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
       propertyPath: midLvlSpawnChance
       value: 0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
+      propertyPath: extraHallSpawnChance
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 2677353984481627313, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
       propertyPath: m_Name
@@ -408,6 +417,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 502074285968201060, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
+      propertyPath: menuPause
+      value: 
+      objectReference: {fileID: 77498509}
     - target: {fileID: 870704552983924351, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
       propertyPath: m_IsActive
       value: 0
