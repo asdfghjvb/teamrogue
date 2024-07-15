@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1d6f68b45a68ca46b45fd74cb236ef1, type: 3}
   m_Name: Upgrade UI Scriptable
   m_EditorClassIdentifier: 
-  title: 
-  color: {r: 0, g: 0, b: 0, a: 0}
+  title: Upgrades
+  color: {r: 0, g: 0, b: 0, a: 0.8627451}
