@@ -68,6 +68,7 @@ public class BoonManager : MonoBehaviour
                 break;
             case 3:
                 GameManager.instance.playerScript.speed += 5;
+                GameManager.instance.achievementManager.UpdateCount(2);
                 break;
             case 4:
                 GameManager.instance.playerScript.jumpMax += 1;
