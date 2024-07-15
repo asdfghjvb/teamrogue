@@ -698,6 +698,10 @@ PrefabInstance:
       propertyPath: silver2
       value: 
       objectReference: {fileID: 4112245497577615831, guid: 50386ff301739c94d9839bab5f144fdd, type: 3}
+    - target: {fileID: 502074285968201060, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
+      propertyPath: menuPause
+      value: 
+      objectReference: {fileID: 219375918}
     - target: {fileID: 1424397666552049461, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
       propertyPath: sfxSource
       value: 
@@ -809,7 +813,11 @@ PrefabInstance:
     - target: {fileID: 2575361223397594551, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
       propertyPath: saveFile
       value: 
-      objectReference: {fileID: 11400000, guid: 8f3db33f228ed154a9a7ea4249e1a4b7, type: 2}
+      objectReference: {fileID: 0}
+    - target: {fileID: 2575361223397594551, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
+      propertyPath: changingSave
+      value: 
+      objectReference: {fileID: 11400000, guid: 8e1b98a37eb73f3439af3aed7f22360c, type: 2}
     - target: {fileID: 2638105883623192450, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -877,6 +885,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &219375918 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2705167727852878351, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
+  m_PrefabInstance: {fileID: 219375915}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &232927208
 PrefabInstance:
   m_ObjectHideFlags: 0

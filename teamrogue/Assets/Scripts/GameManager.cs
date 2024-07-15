@@ -47,19 +47,19 @@ public class GameManager : MonoBehaviour
 
     [Header("Trophies")]
     [SerializeField] public GameObject gold;
-    public bool goldEarned;
+    public bool goldEarned = false;
     [SerializeField] public GameObject silver1;
-    public bool silver1Earned;
+    public bool silver1Earned = false;
     [SerializeField] public GameObject silver2;
-    public bool silver2Earned;
+    public bool silver2Earned = false;
     [SerializeField] public GameObject bronze1;
-    public bool bronze1Earned;
+    public bool bronze1Earned = false;
     [SerializeField] public GameObject bronze2;
-    public bool bronze2Earned;
+    public bool bronze2Earned = false;
     [SerializeField] public GameObject bronze3;
-    public bool bronze3Earned;
+    public bool bronze3Earned = false;
     [SerializeField] public GameObject bronze4;
-    public bool bronze4Earned;
+    public bool bronze4Earned = false;
 
 
     public Staffs currentStaff;
