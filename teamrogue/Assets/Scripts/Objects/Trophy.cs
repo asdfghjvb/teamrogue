@@ -13,16 +13,18 @@ public class Trophy : MonoBehaviour
     
     void Update()
     {
-        ScriptableObject data = GameManager.instance.playerScript.objectView();
-        if (Input.GetKey("e") && data != null && data is TrophyData && !GameManager.instance.isPaused)
-        {
-            GameManager.instance.statePaused();
-            GameManager.instance.menuActive = GameManager.instance.trophyMenu;
-            GameManager.instance.menuActive.SetActive(GameManager.instance.isPaused);
-            trophyInfo = (TrophyData)data;
-            trophyName.text = trophyInfo.trophyName;
-            trophyDescription.text = trophyInfo.trophyDescription;
-            menuBox.color = trophyInfo.color;
+        if (GameManager.instance.playerScript != null) { 
+            ScriptableObject data = GameManager.instance.playerScript.objectView();
+            if (Input.GetKey("e") && data != null && data is TrophyData && !GameManager.instance.isPaused)
+            {
+                GameManager.instance.statePaused();
+                GameManager.instance.menuActive = GameManager.instance.trophyMenu;
+                GameManager.instance.menuActive.SetActive(GameManager.instance.isPaused);
+                trophyInfo = (TrophyData)data;
+                trophyName.text = trophyInfo.trophyName;
+                trophyDescription.text = trophyInfo.trophyDescription;
+                menuBox.color = trophyInfo.color;
+            }
         }
     }
 }

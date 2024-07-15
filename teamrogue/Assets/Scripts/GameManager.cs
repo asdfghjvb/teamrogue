@@ -119,11 +119,17 @@ public class GameManager : MonoBehaviour
     {
         if (IsInScene("Hub"))
         {
+            Time.timeScale = 1.0f;
             if (goldEarned && silver1Earned && silver2Earned && bronze1Earned && bronze2Earned && bronze3Earned && bronze4Earned)
             {
                 StartCoroutine(winMenuDelay());
             }
         }
+        //if (IsInScene("Dungeon"))
+        //{
+        //    Time.timeScale = 1f;
+        //    boonSelection();
+        //}
     }
     // Update is called once per frame
     void Update()

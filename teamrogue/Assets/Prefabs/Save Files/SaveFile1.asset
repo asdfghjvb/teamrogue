@@ -22,10 +22,10 @@ MonoBehaviour:
   shootRate: 100
   shootRange: 100
   meleeCooldown: 100
-  bronzeAch1: 1
-  bronzeAch2: 1
-  bronzeAch3: 1
-  bronzeAch4: 1
-  silverAch1: 1
-  silverAch2: 1
-  goldAch: 1
+  bronzeAch1: 0
+  bronzeAch2: 0
+  bronzeAch3: 0
+  bronzeAch4: 0
+  silverAch1: 0
+  silverAch2: 0
+  goldAch: 0

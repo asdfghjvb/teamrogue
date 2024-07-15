@@ -7,6 +7,7 @@ public class Chest : MonoBehaviour, IDamage
     public void takeDamage(int amount)
     {
         GameManager.instance.rewardMenu();
+        Destroy(gameObject);
     }
 
 

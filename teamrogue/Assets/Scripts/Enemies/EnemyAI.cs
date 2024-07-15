@@ -17,10 +17,13 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] protected Transform dropSpawn;
     [SerializeField] protected GameObject healthDrop;
     [SerializeField] protected GameObject ammoDropPrefab;
+    [SerializeField] GameObject chest;
     [Range(0, 1)]
     [SerializeField] protected float healthDropChance;
     [Range(0, 1)]
     [SerializeField] protected float ammoDropChance;
+    [Range(0, 1)]
+    [SerializeField] protected float chestDropChance;
     [Space(5)]
 
     [Header("Stats")]
@@ -86,7 +89,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         GameManager.instance.updateGoal(-1);
 
         // Spawn either health or ammo drop based on their respective chances
-        float dropRoll = Random.value;
+        float dropRoll = Random.Range(0.0f,1.0f);
 
         if (dropRoll < healthDropChance)
         {
@@ -97,6 +100,11 @@ public class EnemyAI : MonoBehaviour, IDamage
         {
             Debug.Log("Dropping Ammo");
             Instantiate(ammoDropPrefab, dropSpawn.position, Quaternion.identity);
+        }
+        else if (dropRoll <= healthDropChance + ammoDropChance + chestDropChance)
+        {
+            Debug.Log("Chest Reward");
+            Instantiate(chest, dropSpawn.position, Quaternion.identity);
         }
 
         yield return new WaitForSeconds(deathAnimationDuration);

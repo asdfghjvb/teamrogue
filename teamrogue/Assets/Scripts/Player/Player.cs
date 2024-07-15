@@ -236,9 +236,8 @@ public class Player : MonoBehaviour, IDamage
     }
     public ScriptableObject objectView()
     {
-        float viewingRange = 10f;
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, viewingRange))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit))
         {
             if (hit.collider.CompareTag("Trophy"))
             {

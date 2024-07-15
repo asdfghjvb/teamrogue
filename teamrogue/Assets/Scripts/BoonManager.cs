@@ -10,7 +10,7 @@ using TMPro;
 
 public class BoonManager : MonoBehaviour
 {
-    
+
 
     [SerializeField] GameObject boonMenu;
     [SerializeField] GameObject startingBoon;
@@ -35,16 +35,6 @@ public class BoonManager : MonoBehaviour
         (10,"Reduce Melee Cooldown"), };
 
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     public void randomizeList()
     {
         System.Random rand = new System.Random();
@@ -97,30 +87,28 @@ public class BoonManager : MonoBehaviour
     public void boonOption1()
     {
         ApplyBoon(newList[0].Item1);
-        boonMenu.SetActive(false);
         GameManager.instance.stateUnpaused();
     }
     public void boonOption2()
     {
         ApplyBoon(newList[1].Item1);
-        boonMenu.SetActive(false);
         GameManager.instance.stateUnpaused();
     }
     public void boonOption3()
     {
         ApplyBoon(newList[2].Item1);
-        boonMenu.SetActive(false);
+
         GameManager.instance.stateUnpaused();
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if(GameManager.instance.boonCount < 1 && other.CompareTag("Player"))
-        {
-            GameManager.instance.boonSelection();
-            startingBoon.SetActive(false);
-        }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if(GameManager.instance.boonCount < 1 && other.CompareTag("Player"))
+    //    {
+    //        GameManager.instance.boonSelection();
+    //        startingBoon.SetActive(false);
+    //    }
         
         
         
-    }
+    //}
 }
