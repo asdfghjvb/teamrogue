@@ -62,4 +62,10 @@ public class LichKing : RangedEnemy
     {
         Instantiate(projectile, shootPos.position, transform.rotation);
     }
+
+    protected override IEnumerator OnDeath()
+    {
+        GameManager.instance.achievementManager.UpdateCount(1);
+        return base.OnDeath();
+    }
 }

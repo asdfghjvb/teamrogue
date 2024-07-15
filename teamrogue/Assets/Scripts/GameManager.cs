@@ -77,6 +77,7 @@ public class GameManager : MonoBehaviour
 
     public BoonManager boonManager;
     public UpgradeManager upgradeManager;
+    public AchievementManager achievementManager;
     public cameraController cameraController;
 
     public int seed;
@@ -101,6 +102,7 @@ public class GameManager : MonoBehaviour
 
         boonManager = GetComponent<BoonManager>();
         upgradeManager = GetComponent<UpgradeManager>();
+        achievementManager = GetComponent<AchievementManager>();
         cameraController = GetComponent<cameraController>();
         foreach (Staffs staffs in allStaffs)
         {

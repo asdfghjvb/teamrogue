@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 075ed9a125417bb4fa396c9e438da620, type: 3}
   m_Name: Bronze trophy 1
   m_EditorClassIdentifier: 
-  trophyName: 
-  trophyDescription: 
-  color: {r: 0, g: 0, b: 0, a: 0}
+  trophyName: Hey, you. You're finally awake.
+  trophyDescription: Kill 10 enemies
+  color: {r: 0, g: 0, b: 0, a: 0.8627451}

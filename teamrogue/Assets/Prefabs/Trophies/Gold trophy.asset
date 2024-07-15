@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 075ed9a125417bb4fa396c9e438da620, type: 3}
   m_Name: Gold trophy
   m_EditorClassIdentifier: 
-  trophyName: 
-  trophyDescription: 
-  color: {r: 0, g: 0, b: 0, a: 0}
+  trophyName: Rise up, champions of the Light!
+  trophyDescription: Kill the Lich King
+  color: {r: 0, g: 0, b: 0, a: 0.8627451}

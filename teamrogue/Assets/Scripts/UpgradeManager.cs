@@ -131,6 +131,7 @@ public class UpgradeManager : MonoBehaviour
         // remove speedCost from currency
         GameManager.instance.playerScript.speed += speedUpgrade;
         UpdateCosts();
+        GameManager.instance.achievementManager.UpdateCount(2);
     }
     void UpgradeSprint()
     {

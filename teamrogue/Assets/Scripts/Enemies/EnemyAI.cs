@@ -102,6 +102,8 @@ public class EnemyAI : MonoBehaviour, IDamage
         yield return new WaitForSeconds(deathAnimationDuration);
 
         Destroy(gameObject);
+
+        GameManager.instance.achievementManager.UpdateCount(4);
     }
 
     IEnumerator flashDamage()
