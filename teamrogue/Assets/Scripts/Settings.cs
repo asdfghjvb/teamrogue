@@ -85,6 +85,7 @@ public class Settings : MonoBehaviour
     {
        
         menuSettings.SetActive(false);
+        menuSaves.SetActive(false);
         menuButtons.SetActive(true);
         menu.playClickSound();
     }
