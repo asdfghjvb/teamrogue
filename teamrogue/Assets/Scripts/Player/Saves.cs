@@ -7,16 +7,16 @@ using UnityEngine.SceneManagement;
 public class Saves : ScriptableObject
 {
     [Header("Player Stats")]
-    [SerializeField] private float health;
-    [SerializeField] private float speed;
-    [SerializeField] private float sprintMod;
-    [SerializeField] private float armorMod;
-    [SerializeField] private int jumpMax; // this may be modified to dodgeMax or dodgeDist in the future
-    [SerializeField] private int meleeDamage;
-    [SerializeField] private int shootDamage;
-    [SerializeField] private float shootRate;
-    [SerializeField] private int shootRange;
-    [SerializeField] private float meleeCooldown;
+    [SerializeField] public float health;
+    [SerializeField] public float speed;
+    [SerializeField] public float sprintMod;
+    [SerializeField] public float armorMod;
+    [SerializeField] public int jumpMax; // this may be modified to dodgeMax or dodgeDist in the future
+    [SerializeField] public int meleeDamage;
+    [SerializeField] public int shootDamage;
+    [SerializeField] public float shootRate;
+    [SerializeField] public int shootRange;
+    [SerializeField] public float meleeCooldown;
 
     [Header("Achievements")]
     public bool bronzeAch1;
