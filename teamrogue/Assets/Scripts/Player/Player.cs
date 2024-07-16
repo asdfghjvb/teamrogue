@@ -193,8 +193,6 @@ public class Player : MonoBehaviour, IDamage
     public void getStaff(Staffs staff)
     {
         staffList.Add(staff);
-        //if (staffList.Count == 3 && GameManager.instance.boonCount >= 0)
-        //    GameManager.instance.door1Col.enabled = true;
         EquipStaff(staffList.Count - 1);
     }
 
@@ -236,27 +234,30 @@ public class Player : MonoBehaviour, IDamage
     }
     public ScriptableObject objectView()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit))
+        if (GameManager.instance.IsInScene("Hub"))
         {
-            if (hit.collider.CompareTag("Trophy"))
+            RaycastHit hit;
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit))
             {
-                GameManager.instance.inputHint.SetActive(true);
-                return hit.collider.GetComponent<TrophyObject>().trophy;
-            }
-            else if (hit.collider.CompareTag("Anvil"))
-            {
-                GameManager.instance.inputHint.SetActive(true);
-                return hit.collider.GetComponent<Anvil>().menu;
-            }
-            else if (hit.collider.CompareTag("Sign"))
-            {
-                GameManager.instance.inputHint.SetActive(true);
-                return hit.collider.GetComponent<SignPost>().signScript;
-            }
-            else
-            {
-                GameManager.instance.inputHint.SetActive(false);
+                if (hit.collider.CompareTag("Trophy"))
+                {
+                    GameManager.instance.inputHint.SetActive(true);
+                    return hit.collider.GetComponent<TrophyObject>().trophy;
+                }
+                else if (hit.collider.CompareTag("Anvil"))
+                {
+                    GameManager.instance.inputHint.SetActive(true);
+                    return hit.collider.GetComponent<Anvil>().menu;
+                }
+                else if (hit.collider.CompareTag("Sign"))
+                {
+                    GameManager.instance.inputHint.SetActive(true);
+                    return hit.collider.GetComponent<SignPost>().signScript;
+                }
+                else
+                {
+                    GameManager.instance.inputHint.SetActive(false);
+                }
             }
         }
         return null;

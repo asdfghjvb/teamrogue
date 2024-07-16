@@ -609,6 +609,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 344136865255114001, guid: d553f9dcf1c99684e9ecd7f3aec2db1a, type: 3}
+      propertyPath: meleeRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 344136865255114001, guid: d553f9dcf1c99684e9ecd7f3aec2db1a, type: 3}
+      propertyPath: meleeEffect
+      value: 
+      objectReference: {fileID: 8300000, guid: 0914f0cd1bca5bc44ab6ca7663977adf, type: 3}
+    - target: {fileID: 344136865255114001, guid: d553f9dcf1c99684e9ecd7f3aec2db1a, type: 3}
+      propertyPath: meleeCooldown
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 718157165217108821, guid: d553f9dcf1c99684e9ecd7f3aec2db1a, type: 3}
       propertyPath: m_Name
       value: Player
@@ -917,12 +929,8 @@ MonoBehaviour:
   signUI: {fileID: 0}
   trophyMenu: {fileID: 0}
   inputHint: {fileID: 0}
-  rewardChest1: {fileID: 0}
-  rewardChest2: {fileID: 0}
   healButton: {fileID: 0}
   boonButton: {fileID: 0}
-  room1Clear: 0
-  room2Clear: 0
   sensitivity: 0.5
   invertY: 0
   meleeCooldownUI: {fileID: 0}

@@ -92,11 +92,11 @@ MonoBehaviour:
   gravity: 30
   meleeDamage: 5
   meleeRange: 5
-  meleeRate: 1
-  meleeCooldown: 2
+  meleeRate: 0.25
+  meleeCooldown: 0.5
   shootDamage: 10
-  shootRate: 3
-  shootDist: 75
+  shootRate: 0.5
+  shootDist: 15
   aud: {fileID: 0}
   shootEffect: {fileID: 8300000, guid: bee04da5422ff7d428b42c3a5a1152c0, type: 3}
   meleeEffect: {fileID: 8300000, guid: 906ff1ab7dc533146b96a0b8700b1a61, type: 3}
@@ -108,27 +108,7 @@ MonoBehaviour:
   bullet: {fileID: 6174925267386981003, guid: 64b94fc7344c3b84c99024b33f2ffaa4, type: 3}
   shootPos: {fileID: 7204752389964481461}
   staffModel: {fileID: 8327735243043364126}
-  staffList:
-  - {fileID: 11400000, guid: 348d0d688ff32354f9852417027e3410, type: 2}
-  - {fileID: 11400000, guid: 1fc7fbbff6a93a348b0737545f86a176, type: 2}
-  - {fileID: 11400000, guid: 44827d6d5743ad64fb72bba7979c2a80, type: 2}
-  - {fileID: 11400000, guid: 348d0d688ff32354f9852417027e3410, type: 2}
-  - {fileID: 11400000, guid: 348d0d688ff32354f9852417027e3410, type: 2}
-  - {fileID: 11400000, guid: 1fc7fbbff6a93a348b0737545f86a176, type: 2}
-  - {fileID: 11400000, guid: 348d0d688ff32354f9852417027e3410, type: 2}
-  - {fileID: 11400000, guid: 348d0d688ff32354f9852417027e3410, type: 2}
-  - {fileID: 11400000, guid: 44827d6d5743ad64fb72bba7979c2a80, type: 2}
-  - {fileID: 11400000, guid: 348d0d688ff32354f9852417027e3410, type: 2}
-  - {fileID: 11400000, guid: 1fc7fbbff6a93a348b0737545f86a176, type: 2}
-  - {fileID: 11400000, guid: 44827d6d5743ad64fb72bba7979c2a80, type: 2}
-  - {fileID: 11400000, guid: 348d0d688ff32354f9852417027e3410, type: 2}
-  - {fileID: 11400000, guid: 1fc7fbbff6a93a348b0737545f86a176, type: 2}
-  - {fileID: 11400000, guid: 44827d6d5743ad64fb72bba7979c2a80, type: 2}
-  - {fileID: 11400000, guid: 348d0d688ff32354f9852417027e3410, type: 2}
-  - {fileID: 11400000, guid: 1fc7fbbff6a93a348b0737545f86a176, type: 2}
-  - {fileID: 11400000, guid: 348d0d688ff32354f9852417027e3410, type: 2}
-  - {fileID: 11400000, guid: 44827d6d5743ad64fb72bba7979c2a80, type: 2}
-  - {fileID: 11400000, guid: 1fc7fbbff6a93a348b0737545f86a176, type: 2}
+  staffList: []
   fullHealth: 20
   fullMana: 0
 --- !u!143 &1137285651123666733
@@ -258,7 +238,7 @@ Transform:
   m_GameObject: {fileID: 4526845727168666183}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.033, z: -0.01}
+  m_LocalPosition: {x: 0, y: 1.033, z: 0.239}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

@@ -28,13 +28,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] public GameObject inputHint;
 
-    [SerializeField] public GameObject rewardChest1;
-    [SerializeField] public GameObject rewardChest2;
     [SerializeField] public GameObject healButton;
     [SerializeField] public GameObject boonButton;
-    public bool room1Clear = false, room2Clear = false;
-
-    //[SerializeField] public Collider door1Col, door2Col, door3Col;
 
     [Header("Player Settings")]
     public float sensitivity = 0.5f;
@@ -125,11 +120,11 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(winMenuDelay());
             }
         }
-        //if (IsInScene("Dungeon"))
-        //{
-        //    Time.timeScale = 1f;
-        //    boonSelection();
-        //}
+        if (IsInScene("Dungeon"))
+        {
+            Time.timeScale = 1.0f;
+            StartCoroutine(boonDelay());
+        }
     }
     // Update is called once per frame
     void Update()
@@ -173,21 +168,6 @@ public class GameManager : MonoBehaviour
     {
         enemyCount += amount;
         enemyCountText.text = enemyCount.ToString("F0");
-
-        if (enemyCount <= 0)
-        {
-            rewardChest1.SetActive(true);
-            room1Clear = true;
-        }
-        else if (enemyCount <= 0 && room1Clear) 
-        {
-            rewardChest2.SetActive(true);
-            room2Clear = true;
-        }
-        else if (enemyCount <= 0 && room2Clear)
-        {
-            youWin();
-        }
     }
     public void youWin()
     {
@@ -201,6 +181,11 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         youWin();
+    }
+    IEnumerator boonDelay()
+    {
+        yield return new WaitForSeconds(0.5f);
+        boonSelection();
     }
     public void youLose()
     {
@@ -216,8 +201,6 @@ public class GameManager : MonoBehaviour
         menuActive = menuBoon;
         menuActive.SetActive(isPaused);
         boonCount++;
-        //if (playerScript.staffList.Count == 3 && boonCount == 1)
-        //    door1Col.enabled = true;
 
     }
     public void rewardMenu()

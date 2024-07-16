@@ -2672,8 +2672,8 @@ MonoBehaviour:
   healthDrop: {fileID: 6769170450033730269, guid: bd4446a97bed5814a8766d63fc0ebca9, type: 3}
   ammoDropPrefab: {fileID: 6769170450033730269, guid: a8ce90dd81c610c46b6c41b2f1caf3e5, type: 3}
   chest: {fileID: 895108394997805709, guid: 7f7ccea920d25b8428b8501903b1d970, type: 3}
-  healthDropChance: 0.4
-  ammoDropChance: 0.5
+  healthDropChance: 0.6
+  ammoDropChance: 0.3
   chestDropChance: 0.1
   HP: 10
   attackRate: 1
