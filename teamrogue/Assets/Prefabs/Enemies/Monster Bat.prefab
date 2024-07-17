@@ -164,6 +164,7 @@ MonoBehaviour:
   dropSpawn: {fileID: 1562819519624701888}
   healthDrop: {fileID: 6769170450033730269, guid: bd4446a97bed5814a8766d63fc0ebca9, type: 3}
   ammoDropPrefab: {fileID: 6769170450033730269, guid: a8ce90dd81c610c46b6c41b2f1caf3e5, type: 3}
+  goldAmount: 1
   healthDropChance: 0.5
   ammoDropChance: 0.5
   HP: 5

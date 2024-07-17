@@ -272,4 +272,9 @@ public class GameManager : MonoBehaviour
     {
         return SceneManager.GetActiveScene().name == sceneName;
     }
+
+    public void UpdatePlayerCurrency(int amount)
+    {
+        playerScript.currentGold += amount;
+    }
 }

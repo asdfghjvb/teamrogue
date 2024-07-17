@@ -36,13 +36,14 @@ public class Player : MonoBehaviour, IDamage
     public int innateShootDamage;
     public float innateShootRate;
     public int innateShootDist;
+    public int currentGold;
 
     [SerializeField] GameObject bullet;
     [SerializeField] Transform shootPos;
     [SerializeField] GameObject staffModel;
     [SerializeField] public List<Staffs> staffList = new List<Staffs>();
 
-    int currentStaffIndex = -1; // Inicializamos con -1 para indicar que no hay staff equipado al inicio
+    int currentStaffIndex = -1; // Intialize to -1 to indicate that there is no staff equipped
     bool isShooting;
     bool isMeleeAttacking;
     float lastMeleeTime;

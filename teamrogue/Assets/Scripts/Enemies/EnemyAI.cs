@@ -17,6 +17,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] protected Transform dropSpawn;
     [SerializeField] protected GameObject healthDrop;
     [SerializeField] protected GameObject ammoDropPrefab;
+    [SerializeField] protected int goldAmount;
     [Range(0, 1)]
     [SerializeField] protected float healthDropChance;
     [Range(0, 1)]
@@ -84,18 +85,17 @@ public class EnemyAI : MonoBehaviour, IDamage
 
         animator.SetTrigger("Death");
         GameManager.instance.updateGoal(-1);
+        GameManager.instance.UpdatePlayerCurrency(goldAmount);
 
         // Spawn either health or ammo drop based on their respective chances
         float dropRoll = Random.value;
 
         if (dropRoll < healthDropChance)
         {
-            Debug.Log("Dropping Health");
             Instantiate(healthDrop, dropSpawn.position, Quaternion.identity);
         }
         else if (dropRoll < healthDropChance + ammoDropChance)
         {
-            Debug.Log("Dropping Ammo");
             Instantiate(ammoDropPrefab, dropSpawn.position, Quaternion.identity);
         }
 
