@@ -22,6 +22,7 @@ public class Player : MonoBehaviour, IDamage
     [SerializeField] float meleeRange;
     [SerializeField] float meleeRate;
     [SerializeField] public float meleeCooldown;
+    [SerializeField] public float knockbackForce;
 
     [SerializeField] public int shootDamage;
     [SerializeField] public float shootRate;
@@ -166,6 +167,8 @@ public class Player : MonoBehaviour, IDamage
             if (dmg != null)
             {
                 dmg.takeDamage(meleeDamage);
+                Vector3 knockbackDirection = (hitCollider.transform.position - transform.position).normalized;
+                dmg.knockback(knockbackDirection, knockbackForce);
             }
         }
         yield return new WaitForSeconds(meleeRate);
@@ -194,8 +197,6 @@ public class Player : MonoBehaviour, IDamage
     public void getStaff(Staffs staff)
     {
         staffList.Add(staff);
-        //if (staffList.Count == 3 && GameManager.instance.boonCount >= 0)
-        //    GameManager.instance.door1Col.enabled = true;
         EquipStaff(staffList.Count - 1);
     }
 
@@ -263,4 +264,9 @@ public class Player : MonoBehaviour, IDamage
         }
         return null;
     }
+    public void knockback(Vector3 dir, float force)
+    {
+
+    }
 }
+

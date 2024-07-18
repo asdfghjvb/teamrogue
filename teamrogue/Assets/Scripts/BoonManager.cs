@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.UIElements;
 using TMPro;
-
+using UnityEngine.SceneManagement;
 
 public class BoonManager : MonoBehaviour
 {
@@ -99,18 +99,33 @@ public class BoonManager : MonoBehaviour
         ApplyBoon(newList[0].Item1);
         boonMenu.SetActive(false);
         GameManager.instance.stateUnpaused();
+        if (LoadDungeon.initialBoon)
+        {
+            SceneManager.LoadScene("Dungeon");
+            LoadDungeon.initialBoon = false;
+        }
     }
     public void boonOption2()
     {
         ApplyBoon(newList[1].Item1);
         boonMenu.SetActive(false);
         GameManager.instance.stateUnpaused();
+        if (LoadDungeon.initialBoon)
+        {
+            SceneManager.LoadScene("Dungeon");
+            LoadDungeon.initialBoon = false;
+        }
     }
     public void boonOption3()
     {
         ApplyBoon(newList[2].Item1);
         boonMenu.SetActive(false);
         GameManager.instance.stateUnpaused();
+        if (LoadDungeon.initialBoon)
+        {
+            SceneManager.LoadScene("Dungeon");
+            LoadDungeon.initialBoon = false;
+        }
     }
     private void OnTriggerEnter(Collider other)
     {

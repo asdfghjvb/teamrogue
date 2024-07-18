@@ -17,11 +17,14 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] protected Transform dropSpawn;
     [SerializeField] protected GameObject healthDrop;
     [SerializeField] protected GameObject ammoDropPrefab;
+    [SerializeField] protected GameObject chest;
     [SerializeField] protected int goldAmount;
     [Range(0, 1)]
     [SerializeField] protected float healthDropChance;
     [Range(0, 1)]
     [SerializeField] protected float ammoDropChance;
+    [Range(0, 1)]
+    [SerializeField] protected float chestDropChance;
     [Space(5)]
 
     [Header("Stats")]
@@ -32,6 +35,9 @@ public class EnemyAI : MonoBehaviour, IDamage
     [Header("Misc")]
     [Tooltip("How long in seconds the body will last after the death animation before being destroyed")]
     [SerializeField] protected float deathAnimationDuration = 5.0f;
+    public Vector3 knockbackTarget;
+    private bool isKnockedback;
+    [SerializeField] float knockbackSpeed;
 
     Vector3 playerDirection;
     float angleToPlayer;
@@ -44,6 +50,14 @@ public class EnemyAI : MonoBehaviour, IDamage
     protected virtual void Update()
     {
         Movement();
+        if (isKnockedback)
+        {
+            transform.position = Vector3.Lerp(transform.position, knockbackTarget, Time.deltaTime * knockbackSpeed);
+            if (Vector3.Distance(transform.position, knockbackTarget) < 0.1f)
+            {
+                isKnockedback = false;
+            }
+        }
     }
 
     public void Movement()
@@ -88,7 +102,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         GameManager.instance.UpdatePlayerCurrency(goldAmount);
 
         // Spawn either health or ammo drop based on their respective chances
-        float dropRoll = Random.value;
+        float dropRoll = Random.Range(0f,1f);
 
         if (dropRoll < healthDropChance)
         {
@@ -97,6 +111,10 @@ public class EnemyAI : MonoBehaviour, IDamage
         else if (dropRoll < healthDropChance + ammoDropChance)
         {
             Instantiate(ammoDropPrefab, dropSpawn.position, Quaternion.identity);
+        }
+        else if (dropRoll <= healthDropChance + ammoDropChance + chestDropChance)
+        {
+            Instantiate(chest, dropSpawn.position, Quaternion.identity);
         }
 
         yield return new WaitForSeconds(deathAnimationDuration);
@@ -134,4 +152,10 @@ public class EnemyAI : MonoBehaviour, IDamage
         }
         return false;
     }
+    public void knockback(Vector3 direction, float force)
+    {
+        knockbackTarget = transform.position + direction * force;
+        isKnockedback = true;
+    }
+
 }

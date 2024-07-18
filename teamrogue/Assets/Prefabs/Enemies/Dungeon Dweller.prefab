@@ -2299,12 +2299,16 @@ MonoBehaviour:
   dropSpawn: {fileID: 5029602813892014349}
   healthDrop: {fileID: 6769170450033730269, guid: bd4446a97bed5814a8766d63fc0ebca9, type: 3}
   ammoDropPrefab: {fileID: 6769170450033730269, guid: a8ce90dd81c610c46b6c41b2f1caf3e5, type: 3}
+  chest: {fileID: 744211327745141471, guid: 78ed2cc2c750fc440abeef50c93f3919, type: 3}
   goldAmount: 10
-  healthDropChance: 1
+  healthDropChance: 0
   ammoDropChance: 0
+  chestDropChance: 1
   HP: 30
   attackRate: 2
   deathAnimationDuration: 15
+  knockbackTarget: {x: 0, y: 0, z: 0}
+  knockbackSpeed: 1
   weaponCol: {fileID: 6464161480235186299}
   hornAttackRate: 5
 --- !u!95 &3754832990439201250

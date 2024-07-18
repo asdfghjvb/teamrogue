@@ -17,8 +17,18 @@ public class ButtonFunctions : MonoBehaviour
 
     public void restart()
     {
+        GameManager.instance.playerScript.health = LoadDungeon.health;
+        GameManager.instance.playerScript.speed = LoadDungeon.speed;
+        GameManager.instance.playerScript.sprintMod = LoadDungeon.sprintMod;
+        GameManager.instance.playerScript.armorMod = LoadDungeon.armorMod;
+        GameManager.instance.playerScript.jumpMax = LoadDungeon.jumpMax;
+        GameManager.instance.playerScript.meleeDamage = LoadDungeon.meleeDamage;
+        GameManager.instance.playerScript.innateShootDamage = LoadDungeon.shootDamage;
+        GameManager.instance.playerScript.innateShootDist = LoadDungeon.shootRange;
+        GameManager.instance.playerScript.innateShootRate = LoadDungeon.shootRate;
         StartCoroutine(restartDelay());
         GameManager.instance.stateUnpaused();
+        GameManager.instance.boonSelection();
 
     }
   
@@ -31,7 +41,23 @@ public class ButtonFunctions : MonoBehaviour
             staff.ResetStaffStats();
         }
         StartCoroutine(clickDelay());
-        SceneManager.LoadScene("Main Menu");
+        if (GameManager.instance.IsInScene("Hub"))
+        {
+            SceneManager.LoadScene("Main Menu");
+        }
+        else if (GameManager.instance.IsInScene("Dungeon"))
+        {
+            GameManager.instance.playerScript.health = LoadDungeon.health;
+            GameManager.instance.playerScript.speed = LoadDungeon.speed;
+            GameManager.instance.playerScript.sprintMod = LoadDungeon.sprintMod;
+            GameManager.instance.playerScript.armorMod = LoadDungeon.armorMod;
+            GameManager.instance.playerScript.jumpMax = LoadDungeon.jumpMax;
+            GameManager.instance.playerScript.meleeDamage = LoadDungeon.meleeDamage;
+            GameManager.instance.playerScript.innateShootDamage = LoadDungeon.shootDamage;
+            GameManager.instance.playerScript.innateShootDist = LoadDungeon.shootRange;
+            GameManager.instance.playerScript.innateShootRate = LoadDungeon.shootRate;
+            SceneManager.LoadScene("Hub");
+        }
     }
 
     IEnumerator clickDelay()
@@ -64,16 +90,6 @@ public class ButtonFunctions : MonoBehaviour
         GameManager.instance.stateUnpaused();
         GameManager.instance.boonManager.randomizeList();
         GameManager.instance.boonSelection();
-        if (GameManager.instance.room1Clear)
-        {
-            //GameManager.instance.door2Col.enabled = true;
-            GameManager.instance.rewardChest1.SetActive(false);
-        }
-        else if (GameManager.instance.room2Clear)
-        {
-            //GameManager.instance.door3Col.enabled = true;
-            GameManager.instance.rewardChest2.SetActive(false);
-        }
     }
 
     public void playClickSound()

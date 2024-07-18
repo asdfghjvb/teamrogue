@@ -32,9 +32,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameObject rewardChest2;
     [SerializeField] public GameObject healButton;
     [SerializeField] public GameObject boonButton;
-    public bool room1Clear = false, room2Clear = false;
-
-    //[SerializeField] public Collider door1Col, door2Col, door3Col;
 
     [Header("Player Settings")]
     public float sensitivity = 0.5f;
@@ -168,20 +165,6 @@ public class GameManager : MonoBehaviour
         enemyCount += amount;
         enemyCountText.text = enemyCount.ToString("F0");
 
-        if (enemyCount <= 0)
-        {
-            rewardChest1.SetActive(true);
-            room1Clear = true;
-        }
-        else if (enemyCount <= 0 && room1Clear) 
-        {
-            rewardChest2.SetActive(true);
-            room2Clear = true;
-        }
-        else if (enemyCount <= 0 && room2Clear)
-        {
-            youWin();
-        }
     }
     public void youWin()
     {
@@ -210,9 +193,6 @@ public class GameManager : MonoBehaviour
         menuActive = menuBoon;
         menuActive.SetActive(isPaused);
         boonCount++;
-        //if (playerScript.staffList.Count == 3 && boonCount == 1)
-        //    door1Col.enabled = true;
-
     }
     public void rewardMenu()
     {

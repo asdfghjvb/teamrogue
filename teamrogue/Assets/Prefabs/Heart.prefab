@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d965c8fd64a560b4b8d8d2ad797aeaf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healing: 1
+  healing: 5
   destroyTime: 10
   hoverHeight: 1.2
   rotationSpeed: 1

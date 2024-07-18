@@ -51,7 +51,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4214323867826671164
 Transform:
   m_ObjectHideFlags: 0
@@ -94,6 +94,7 @@ MonoBehaviour:
   meleeRange: 5
   meleeRate: 1
   meleeCooldown: 2
+  knockbackForce: 2
   shootDamage: 10
   shootRate: 3
   shootDist: 75
@@ -105,6 +106,7 @@ MonoBehaviour:
   innateShootDamage: 0
   innateShootRate: 1
   innateShootDist: 0
+  currentGold: 0
   bullet: {fileID: 6174925267386981003, guid: 64b94fc7344c3b84c99024b33f2ffaa4, type: 3}
   shootPos: {fileID: 7204752389964481461}
   staffModel: {fileID: 8327735243043364126}

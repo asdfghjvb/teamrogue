@@ -11,7 +11,7 @@ public class Saves : ScriptableObject
     [SerializeField] public float speed;
     [SerializeField] public float sprintMod;
     [SerializeField] public float armorMod;
-    [SerializeField] public int jumpMax; // this may be modified to dodgeMax or dodgeDist in the future
+    [SerializeField] public int jumpMax; 
     [SerializeField] public int meleeDamage;
     [SerializeField] public int shootDamage;
     [SerializeField] public float shootRate;
