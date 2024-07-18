@@ -127,6 +127,10 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel"))
         {
+            if (IsInScene("Main Menu"))
+            {
+                return;
+            }
             if (menuActive == null)
             {
                 statePaused();
