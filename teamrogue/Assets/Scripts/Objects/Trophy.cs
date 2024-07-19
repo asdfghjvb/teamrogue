@@ -13,6 +13,7 @@ public class Trophy : MonoBehaviour
     
     void Update()
     {
+        /*
         ScriptableObject data = GameManager.instance.playerScript.objectView();
         if (Input.GetKey("e") && data != null && data is TrophyData && !GameManager.instance.isPaused)
         {
@@ -24,5 +25,6 @@ public class Trophy : MonoBehaviour
             trophyDescription.text = trophyInfo.trophyDescription;
             menuBox.color = trophyInfo.color;
         }
+        */
     }
 }

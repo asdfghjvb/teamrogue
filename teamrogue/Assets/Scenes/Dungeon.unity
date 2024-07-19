@@ -136,48 +136,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
-      propertyPath: seed
-      value: -1036
-      objectReference: {fileID: 0}
-    - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
-      propertyPath: levelSize.x
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
-      propertyPath: levelSize.y
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
-      propertyPath: maxRoomSize.x
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
-      propertyPath: maxRoomSize.y
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
-      propertyPath: minRoomSize.x
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
-      propertyPath: minRoomSize.y
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
-      propertyPath: maxRoomQuantity
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
-      propertyPath: lowLvlSpawnChance
-      value: 0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
-      propertyPath: midLvlSpawnChance
-      value: 0.005
-      objectReference: {fileID: 0}
-    - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
-      propertyPath: extraHallSpawnChance
-      value: 0.3
+      propertyPath: gridNumber
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2677353984481627313, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
       propertyPath: m_Name

@@ -9,6 +9,7 @@ TagManager:
   - Anvil
   - SFX Audio Source
   - Sign
+  - Door
   layers:
   - Default
   - TransparentFX

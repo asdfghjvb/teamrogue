@@ -1,22 +1,68 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Door : MonoBehaviour
 {
-    [SerializeField] GameObject door1;
-    [SerializeField] GameObject door2;
-    [SerializeField] float openDuration;
+    [SerializeField] Animator animator;
+    [SerializeField] NavMeshObstacle obstacle;
 
+    [SerializeField] Collider doorway;
+    [SerializeField] Collider doorSlab;
 
-    private void OnTriggerEnter(Collider other)
+    [Tooltip("How far away the player can be while still opening the door")]
+    [SerializeField] float usableDist = 5.0f;
+
+    [Tooltip("Time in seconds to wait before allowing another open/close action")]
+    [SerializeField] float cooldownTime = 1.0f;
+
+    public NavMeshSurface navMeshSurface;
+
+    bool isOpen = false;
+    private bool isCooldown = false;
+
+    void Update()
     {
-        if (other.CompareTag("Player")){
-            door1.transform.position = new Vector3(Mathf.Lerp(door1.transform.position.x, door1.transform.position.x - 3, openDuration), door1.transform.position.y, door1.transform.position.z);
-            door2.transform.position = new Vector3(Mathf.Lerp(door2.transform.position.x, door2.transform.position.x + 6, openDuration), door2.transform.position.y, door2.transform.position.z);
-            //GameManager.instance.navMeshBakerScript.rebakeNavMesh();
-            gameObject.SetActive(false);
-        }
+        if (isCooldown) return;
+        if (Camera.main == null)
+            return;
 
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, usableDist))
+        {
+            if (hit.collider.CompareTag("Door") && Input.GetKey("e") && (hit.collider == doorway || hit.collider == doorSlab))
+            {
+                if (isOpen)
+                {
+                    animator.SetTrigger("Close");
+                    doorway.enabled = true;
+                }
+                if (!isOpen)
+                {
+                    animator.SetTrigger("Open");
+                    doorway.enabled = false;
+                }
+
+                isOpen = !isOpen;
+                StartCoroutine(Cooldown());
+            }
+        }
+    }
+
+    IEnumerator Cooldown()
+    {
+        isCooldown = true;
+        yield return new WaitForSeconds(cooldownTime);
+
+        UpdateNavMesh();
+
+        isCooldown = false;
+    }
+
+    void UpdateNavMesh()
+    {
+        //navMeshSurface.UpdateNavMesh(navMeshSurface.navMeshData);
     }
 }

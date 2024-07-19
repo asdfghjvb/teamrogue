@@ -257,6 +257,11 @@ public class Player : MonoBehaviour, IDamage
                 GameManager.instance.inputHint.SetActive(true);
                 return hit.collider.GetComponent<SignPost>().signScript;
             }
+            else if (hit.collider.CompareTag("Door"))
+            {
+                GameManager.instance.inputHint.SetActive(true);
+                return null;
+            }
             else
             {
                 GameManager.instance.inputHint.SetActive(false);
