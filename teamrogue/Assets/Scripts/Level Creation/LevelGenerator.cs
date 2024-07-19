@@ -247,7 +247,6 @@ public class LevelGenerator : MonoBehaviour
         }
 
         BuildStructures();
-        navMeshSurface.BuildNavMesh();
 
         /* Decorate Dungeon */
 
@@ -547,8 +546,18 @@ public class LevelGenerator : MonoBehaviour
 
             /* Build Walls */
                 BuildWalls(node, wallsParent);
+            }
+        }
 
-            /* Build Door (if applicable) */
+        //Build the nav mesh before the doors are placed because the doors are dyamic
+        navMeshSurface.BuildNavMesh();
+
+        for (int x = 0; x < pathFinder.grid.nodeCountX; x++)
+        {
+            for (int y = 0; y < pathFinder.grid.nodeCountY; y++)
+            {
+                PathBuilder.Node node = pathFinder.grid.nodes[x, y];
+
                 if (node.type == PathBuilder.NodeType.door)
                     BuildDoorWay(node, wallsParent, doorwaysParent);
             }
@@ -608,6 +617,11 @@ public class LevelGenerator : MonoBehaviour
                     doorObject = Instantiate(doorPrefab, node.pos + offset, rotation);
                     doorObject.transform.localScale = Vector3.Scale(doorObject.transform.localScale, scaler);
                     doorObject.transform.position = node.pos + offset;
+
+                    Door doorScript = doorObject.GetComponent<Door>();
+                    if (doorScript != null)
+                        doorScript.navMeshSurface = navMeshSurface;
+                    
 
                     builtDoor = true;
 

@@ -1,32 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Door : MonoBehaviour
 {
     [SerializeField] Animator animator;
+    [SerializeField] NavMeshObstacle obstacle;
 
     [SerializeField] Collider doorway;
     [SerializeField] Collider doorSlab;
 
     [Tooltip("How far away the player can be while still opening the door")]
-    [SerializeField] float usableDist;
+    [SerializeField] float usableDist = 5.0f;
 
     [Tooltip("Time in seconds to wait before allowing another open/close action")]
     [SerializeField] float cooldownTime = 1.0f;
 
+    public NavMeshSurface navMeshSurface;
+
     bool isOpen = false;
     private bool isCooldown = false;
-
-    private void Start()
-    {
-        MeshFilter[] meshFilters = GetComponentsInChildren<MeshFilter>();
-
-        if(meshFilters.Length > 0)
-        {
-            CombineMeshFilters(meshFilters);
-        }
-    }
 
     void Update()
     {
@@ -37,7 +32,7 @@ public class Door : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, usableDist))
         {
-            if (hit.collider.CompareTag("Door") && Input.GetKey("e"))
+            if (hit.collider.CompareTag("Door") && Input.GetKey("e") && (hit.collider == doorway || hit.collider == doorSlab))
             {
                 if (isOpen)
                 {
@@ -56,40 +51,18 @@ public class Door : MonoBehaviour
         }
     }
 
-    public void CombineMeshFilters(MeshFilter[] meshFilters)
-    {
-        CombineInstance[] combine = new CombineInstance[meshFilters.Length];
-
-        for (int i = 0; i < meshFilters.Length; i++)
-        {
-            combine[i].mesh = meshFilters[i].sharedMesh;
-            combine[i].transform = meshFilters[i].transform.localToWorldMatrix;
-        }
-
-        Mesh combinedMesh = new Mesh();
-        combinedMesh.CombineMeshes(combine);
-
-        MeshFilter parentMeshFilter = gameObject.GetComponent<MeshFilter>();
-
-        if (parentMeshFilter == null)
-            parentMeshFilter = gameObject.AddComponent<MeshFilter>();
-
-        parentMeshFilter.mesh = combinedMesh;
-
-        //disable the child mesh filters cause weird visual bugs happen otherwise
-        for (int i = 0; i < meshFilters.Length; i++)
-        {
-            if (meshFilters[i].gameObject != gameObject)
-            {
-                meshFilters[i].gameObject.SetActive(false);
-            }
-        }
-    }
-
     IEnumerator Cooldown()
     {
         isCooldown = true;
         yield return new WaitForSeconds(cooldownTime);
+
+        UpdateNavMesh();
+
         isCooldown = false;
+    }
+
+    void UpdateNavMesh()
+    {
+        //navMeshSurface.UpdateNavMesh(navMeshSurface.navMeshData);
     }
 }

@@ -136,57 +136,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
-      propertyPath: seed
-      value: -1036
+      propertyPath: gridNumber
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
-      propertyPath: levelSize.x
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
-      propertyPath: levelSize.y
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
-      propertyPath: maxRoomSize.x
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
-      propertyPath: maxRoomSize.y
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
-      propertyPath: minRoomSize.x
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
-      propertyPath: minRoomSize.y
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
-      propertyPath: maxRoomQuantity
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
-      propertyPath: lowLvlSpawnChance
-      value: 0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
-      propertyPath: midLvlSpawnChance
-      value: 0.005
-      objectReference: {fileID: 0}
-    - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
-      propertyPath: doorways.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
-      propertyPath: extraHallSpawnChance
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
-      propertyPath: doorways.Array.data[1]
-      value: 
-      objectReference: {fileID: 7449630139864203904, guid: 3ae36677633a2c440b4d5c8e2c2e6fa2, type: 3}
     - target: {fileID: 2677353984481627313, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
       propertyPath: m_Name
       value: Level Generator
@@ -652,63 +604,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8279057274385984272, guid: 9ea5bc0d0820abf4da3a9d8be2571751, type: 3}
   m_PrefabInstance: {fileID: 1568280447}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &2161521651486085945
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1521438242650822788, guid: 3ae36677633a2c440b4d5c8e2c2e6fa2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1521438242650822788, guid: 3ae36677633a2c440b4d5c8e2c2e6fa2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 5.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 1521438242650822788, guid: 3ae36677633a2c440b4d5c8e2c2e6fa2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 9.68
-      objectReference: {fileID: 0}
-    - target: {fileID: 1521438242650822788, guid: 3ae36677633a2c440b4d5c8e2c2e6fa2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1521438242650822788, guid: 3ae36677633a2c440b4d5c8e2c2e6fa2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1521438242650822788, guid: 3ae36677633a2c440b4d5c8e2c2e6fa2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1521438242650822788, guid: 3ae36677633a2c440b4d5c8e2c2e6fa2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1521438242650822788, guid: 3ae36677633a2c440b4d5c8e2c2e6fa2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1521438242650822788, guid: 3ae36677633a2c440b4d5c8e2c2e6fa2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1521438242650822788, guid: 3ae36677633a2c440b4d5c8e2c2e6fa2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7449630139864203904, guid: 3ae36677633a2c440b4d5c8e2c2e6fa2, type: 3}
-      propertyPath: m_Name
-      value: Doorway
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 3ae36677633a2c440b4d5c8e2c2e6fa2, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -718,4 +613,3 @@ SceneRoots:
   - {fileID: 1131192811}
   - {fileID: 766951744}
   - {fileID: 540192180}
-  - {fileID: 2161521651486085945}
