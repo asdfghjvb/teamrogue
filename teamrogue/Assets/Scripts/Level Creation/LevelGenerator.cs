@@ -13,6 +13,7 @@ using UnityEngine.XR;
 public class LevelGenerator : MonoBehaviour
 {
     [Header("Level")]
+    [SerializeField] LightingManager lightingManager;
     [SerializeField] GameObject player;
     [SerializeField] public Vector2Int levelSize;
 
@@ -32,8 +33,14 @@ public class LevelGenerator : MonoBehaviour
 
     [Header("Assets")]
     [SerializeField] public GameObject[] floors;
-    [SerializeField] public GameObject[] walls;
+    [SerializeField] public GameObject[] walls_default;
+    [SerializeField] public GameObject[] walls_lit;
     [SerializeField] public GameObject[] doorways;
+
+    [Space(2)]
+    [Tooltip("The chance that any given wall will have a light source")]
+    [Range(0, 1)]
+    [SerializeField] float litWallChance;
 
     [Header("Enemies")]
     [SerializeField] public NavMeshSurface navMeshSurface;
@@ -630,8 +637,8 @@ public class LevelGenerator : MonoBehaviour
                 }
                 else if (builtDoor && (neighbor.type == PathBuilder.NodeType.hallway || neighbor.type == PathBuilder.NodeType.empty))
                 {//builds a wall
-                    int wallObjectIndex = UnityEngine.Random.Range(0, walls.Length); //Range function max is exclusive, therefore already size - 1
-                    GameObject wallPrefab = walls[wallObjectIndex];
+                    int wallObjectIndex = UnityEngine.Random.Range(0, walls_default.Length); //Range function max is exclusive, therefore already size - 1
+                    GameObject wallPrefab = walls_default[wallObjectIndex];
                     Renderer renderer = wallPrefab.GetComponent<Renderer>();
 
                     Vector3 prefabSize = renderer.bounds.size;
@@ -714,8 +721,31 @@ public class LevelGenerator : MonoBehaviour
                     || (node.type == PathBuilder.NodeType.room && neighbor.type == PathBuilder.NodeType.hallway) 
                     || neighbor.type == PathBuilder.NodeType.empty)
                 {
-                    int wallObjectIndex = UnityEngine.Random.Range(0, walls.Length); //Range function max is exclusive, therefore already size - 1
-                    GameObject wallPrefab = walls[wallObjectIndex];
+                    /* Decide if wall will have a torch */
+                    int wallObjectIndex;
+                    GameObject wallPrefab;
+                    float rollForLit = UnityEngine.Random.Range(0f, 1f);
+
+                    if(rollForLit <= litWallChance)
+                    {
+                        wallObjectIndex = UnityEngine.Random.Range(0, walls_lit.Length);
+                        wallPrefab = walls_lit[wallObjectIndex];
+
+                        //register torch with light manager
+                        foreach (Transform child in wallPrefab.transform)
+                        {
+                            if (child.CompareTag("Light Source"))
+                            {
+                                lightingManager.RegisterLightSource(child.gameObject);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        wallObjectIndex = UnityEngine.Random.Range(0, walls_default.Length);
+                        wallPrefab = walls_default[wallObjectIndex];
+                    }
+
                     Renderer renderer = wallPrefab.GetComponent<Renderer>();
 
                     Vector3 prefabSize = renderer.bounds.size;

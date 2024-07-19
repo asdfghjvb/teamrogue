@@ -139,6 +139,14 @@ PrefabInstance:
       propertyPath: gridNumber
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
+      propertyPath: doorways.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
+      propertyPath: doorways.Array.data[0]
+      value: 
+      objectReference: {fileID: 1367838670538786429, guid: 4d5d93bdc136f6d4aa3145f3e4bdc965, type: 3}
     - target: {fileID: 2677353984481627313, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
       propertyPath: m_Name
       value: Level Generator
