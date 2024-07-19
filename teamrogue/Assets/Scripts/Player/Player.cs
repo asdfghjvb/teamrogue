@@ -23,6 +23,7 @@ public class Player : MonoBehaviour, IDamage
     [SerializeField] float meleeRate;
     [SerializeField] public float meleeCooldown;
     [SerializeField] public float knockbackForce;
+    [SerializeField] public Animator staff;
 
     [SerializeField] public int shootDamage;
     [SerializeField] public float shootRate;
@@ -157,6 +158,7 @@ public class Player : MonoBehaviour, IDamage
         isMeleeAttacking = true;
         aud.PlayOneShot(meleeEffect, meleeVol);
         lastMeleeTime = Time.time;
+        staff.Play("Staffswing", 0, 0f);
         Collider[] hitColliders = Physics.OverlapSphere(transform.position + transform.forward * meleeRange, meleeRange);
         foreach (Collider hitCollider in hitColliders)
         {
@@ -173,7 +175,7 @@ public class Player : MonoBehaviour, IDamage
         }
         yield return new WaitForSeconds(meleeRate);
         isMeleeAttacking = false;
-
+        staff.Play("Idle", 0, 0f);
         GameManager.instance.UpdateMeleeCooldownUI(meleeCooldown, lastMeleeTime); // Actualizar la UI desde GameManager
     }
 
