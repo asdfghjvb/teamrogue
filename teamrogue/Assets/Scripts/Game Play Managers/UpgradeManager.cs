@@ -109,87 +109,104 @@ public class UpgradeManager : MonoBehaviour
 
     void UpgradeHealth()
     {
-        // if currency >= cost
-        healthCost *= costMod;
-        // remove healthCost from currency
-        GameManager.instance.playerScript.fullHealth += healthUpgrade;
-        GameManager.instance.playerScript.health += healthUpgrade;
-        UpdateCosts();
+        if (GameManager.instance.playerScript.currentGold >= healthCost)
+        {
+            GameManager.instance.playerScript.currentGold -= healthCost;
+            healthCost *= costMod;
+            GameManager.instance.playerScript.fullHealth += healthUpgrade;
+            GameManager.instance.playerScript.health += healthUpgrade;
+            UpdateCosts();
+        }
     }
     void UpgradeArmor()
     {
-        // if currency >= cost
-        armorCost *= costMod;
-        // remove armorCost from currency
-        GameManager.instance.playerScript.armorMod *= armorUpgrade;
-        UpdateCosts();
+        if (GameManager.instance.playerScript.currentGold >= armorCost)
+        {
+            GameManager.instance.playerScript.currentGold -= armorCost;
+            armorCost *= costMod;
+            GameManager.instance.playerScript.armorMod *= armorUpgrade;
+            UpdateCosts();
+        }
     }
     void UpgradeSpeed()
     {
-        // if currency >= cost
-        speedCost *= costMod;
-        // remove speedCost from currency
-        GameManager.instance.playerScript.speed += speedUpgrade;
-        UpdateCosts();
-        GameManager.instance.achievementManager.UpdateCount(2);
+        if (GameManager.instance.playerScript.currentGold >= speedCost)
+        {
+            GameManager.instance.playerScript.currentGold -= speedCost;
+            speedCost *= costMod;
+            GameManager.instance.playerScript.speed += speedUpgrade;
+            UpdateCosts();
+            GameManager.instance.achievementManager.UpdateCount(2);
+        }
     }
     void UpgradeSprint()
     {
-        // if currency >= cost
-        sprintCost *= costMod;
-        // remove sprintCost from currency
-        GameManager.instance.playerScript.sprintMod *= sprintUpgrade;
-        UpdateCosts();
+        if (GameManager.instance.playerScript.currentGold >= sprintCost)
+        {
+            GameManager.instance.playerScript.currentGold -= sprintCost;
+            sprintCost *= costMod;
+            GameManager.instance.playerScript.sprintMod *= sprintUpgrade;
+            UpdateCosts();
+        }
     }
     void UpgradeJump()
     {
-        // if currency >= cost
-        jumpCost *= costMod;
-        // remove jumpCost from currency
-        GameManager.instance.playerScript.jumpMax += jumpUpgrade;
-        UpdateCosts();
+        if (GameManager.instance.playerScript.currentGold >= jumpCost)
+        {
+            GameManager.instance.playerScript.currentGold -= jumpCost;
+            jumpCost *= costMod;
+            GameManager.instance.playerScript.jumpMax += jumpUpgrade;
+            UpdateCosts();
+        }
     }
     void UpgradeRange()
     {
-        if (GameManager.instance.playerScript.currentGold <= rangeCost)
+        if (GameManager.instance.playerScript.currentGold >= rangeCost)
         {
             GameManager.instance.playerScript.currentGold -= rangeCost;
             rangeCost *= costMod;
+            GameManager.instance.playerScript.innateShootDist += rangeUpgrade;
+            UpdateCosts();
         }
-
-        GameManager.instance.playerScript.innateShootDist += rangeUpgrade;
-        UpdateCosts();
     }
     void UpgradeShootDamage()
     {
-        // if currency >= cost
-        sDamageCost *= costMod;
-        // remove sDamageCost from currency
-        GameManager.instance.playerScript.jumpMax += sDamageUpgrade;
-        UpdateCosts();
+        if (GameManager.instance.playerScript.currentGold >= sDamageCost)
+        {
+            GameManager.instance.playerScript.currentGold -= sDamageCost;
+            sDamageCost *= costMod;
+            GameManager.instance.playerScript.jumpMax += sDamageUpgrade;
+            UpdateCosts();
+        }
     }
     void UpgradeShootRate()
     {
-        // if currency >= cost
-        sRateCost *= costMod;
-        // remove sRateCost from currency
-        GameManager.instance.playerScript.innateShootRate *= sRateUpgrade;
-        UpdateCosts();
+        if (GameManager.instance.playerScript.currentGold >= sRateCost)
+        {
+            GameManager.instance.playerScript.currentGold -= sRateCost;
+            sRateCost *= costMod;
+            GameManager.instance.playerScript.innateShootRate *= sRateUpgrade;
+            UpdateCosts();
+        }
     }
     void UpgradeMeleeDamage()
     {
-        // if currency >= cost
-        mDamageCost *= costMod;
-        // remove mDamageCost from currency
-        GameManager.instance.playerScript.meleeDamage += mDamageUpgrade;
-        UpdateCosts();
+        if (GameManager.instance.playerScript.currentGold >= mDamageCost)
+        {
+            GameManager.instance.playerScript.currentGold -= mDamageCost;
+            mDamageCost *= costMod;
+            GameManager.instance.playerScript.meleeDamage += mDamageUpgrade;
+            UpdateCosts();
+        }
     }
     void UpgradeMeleeRate()
     {
-        // if currency >= cost
-        mRateCost *= costMod;
-        // remove mRateCost from currency
-        GameManager.instance.playerScript.meleeCooldown *= mRateUpgrade;
-        UpdateCosts();
+        if (GameManager.instance.playerScript.currentGold >= mRateCost)
+        {
+            GameManager.instance.playerScript.currentGold -= mRateCost;
+            mRateCost *= costMod;
+            GameManager.instance.playerScript.meleeCooldown *= mRateUpgrade;
+            UpdateCosts();
+        }
     }
 }
