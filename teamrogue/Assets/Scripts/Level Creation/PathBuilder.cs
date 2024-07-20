@@ -38,7 +38,8 @@ public class PathBuilder
         active,
         inactive,
         player,
-        boss
+        boss,
+        exit
     }
 
     public class Node

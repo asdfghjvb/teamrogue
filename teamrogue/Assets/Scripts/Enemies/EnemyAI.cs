@@ -35,6 +35,10 @@ public class EnemyAI : MonoBehaviour, IDamage
     [Header("Misc")]
     [Tooltip("How long in seconds the body will last after the death animation before being destroyed")]
     [SerializeField] protected float deathAnimationDuration = 5.0f;
+    [Tooltip("Any objects that already exist in the scene that should become acive upon death")]
+    [SerializeField] List<GameObject> deathActivatedObjects;
+
+
     public Vector3 knockbackTarget;
     private bool isKnockedback;
     [SerializeField] float knockbackSpeed;
@@ -117,6 +121,8 @@ public class EnemyAI : MonoBehaviour, IDamage
             Instantiate(chest, dropSpawn.position, Quaternion.identity);
         }
 
+        ToggleDeathActivatedObjects(true);
+
         yield return new WaitForSeconds(deathAnimationDuration);
 
         Destroy(gameObject);
@@ -156,6 +162,22 @@ public class EnemyAI : MonoBehaviour, IDamage
     {
         knockbackTarget = transform.position + direction * force;
         isKnockedback = true;
+    }
+
+    public void ToggleDeathActivatedObjects(bool isActive)
+    {
+        if (deathActivatedObjects == null)
+            return;
+
+        foreach(GameObject obj in deathActivatedObjects)
+        {
+            obj.SetActive(isActive);
+        }
+    }
+
+    public void AddDeathActivatedObject(GameObject obj)
+    {
+        deathActivatedObjects.Add(obj);
     }
 
 }

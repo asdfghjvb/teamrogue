@@ -43,7 +43,6 @@ public class Portal : MonoBehaviour
 
         yield return new WaitForSeconds(teleportDelay);
 
-        //Destroy(effect);
         SceneManager.LoadScene("Hub");
 
         teleporting = false;

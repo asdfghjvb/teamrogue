@@ -32,6 +32,7 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] float extraHallSpawnChance = 0.15f;
 
     [Header("Assets")]
+    [SerializeField] public GameObject exitPortal;
     [SerializeField] public GameObject[] floors;
     [SerializeField] public GameObject[] walls_default;
     [SerializeField] public GameObject[] walls_lit;
@@ -262,7 +263,7 @@ public class LevelGenerator : MonoBehaviour
         /* Populate the dungeon */
         GameObject entitiesParentObject = new GameObject("Entities");
 
-        SetSpawnPositions();
+        SetSpecialSpawnPositions();
         SpawnEntities(entitiesParentObject);
     }
 
@@ -292,7 +293,7 @@ public class LevelGenerator : MonoBehaviour
         Gizmos.DrawLine(topLeft, bottomLeft);
     }
 
-    void SetSpawnPositions(bool setBossRoomInactive = true, bool setPlayerSpawnRoomInactive = true)
+    void SetSpecialSpawnPositions(bool setBossRoomInactive = true, bool setPlayerSpawnRoomInactive = true)
     {
         /* find the biggest and smallest rooms to be the player and boss rooms */
 
@@ -315,8 +316,12 @@ public class LevelGenerator : MonoBehaviour
         /* Pick a random node in each room to be the spawn point */
         int playerSpawnIndex = Random.Range(0, smallest.nodes.Count);
         int bossSpawnIndex = Random.Range(0, biggest.nodes.Count);
+        int exitPortalIndex = Random.Range(0, biggest.nodes.Count);
 
-        if(setPlayerSpawnRoomInactive)
+        while(bossSpawnIndex == exitPortalIndex)
+            exitPortalIndex = Random.Range(0, biggest.nodes.Count);
+
+        if (setPlayerSpawnRoomInactive)
             for(int i = 0; i < smallest.nodes.Count; i++)
             {
                 if (i == playerSpawnIndex)
@@ -332,6 +337,8 @@ public class LevelGenerator : MonoBehaviour
             {
                 if (i == bossSpawnIndex)
                     biggest.nodes[i].spawnType = PathBuilder.NodeSpawnType.boss;
+                else if(i == exitPortalIndex)
+                    biggest.nodes[i].spawnType = PathBuilder.NodeSpawnType.exit;
                 else
                     biggest.nodes[i].spawnType = PathBuilder.NodeSpawnType.inactive;
             }
@@ -343,6 +350,9 @@ public class LevelGenerator : MonoBehaviour
     {
         GameObject lowLvlParentObj = new GameObject("Low Lvl Enemies");
         GameObject midLvlParentObj = new GameObject("Mid Lvl Enemies");
+
+        GameObject bossInstance = null;
+        GameObject exitPortalInstance = null;
 
         for (int x = 0; x < pathFinder.grid.nodeCountX; x++)
         {
@@ -359,10 +369,17 @@ public class LevelGenerator : MonoBehaviour
                 if (node.spawnType == PathBuilder.NodeSpawnType.player)
                     Instantiate(player, new Vector3(node.pos.x, node.pos.y + (PathBuilder.nodeHalfDiagonal * 2), node.pos.z), Quaternion.identity);
 
+                if (node.spawnType == PathBuilder.NodeSpawnType.exit)
+                    exitPortalInstance = Instantiate(exitPortal, new Vector3(node.pos.x, node.pos.y + (PathBuilder.nodeHalfDiagonal * 2), node.pos.z), Quaternion.identity);
+
                 if (node.spawnType == PathBuilder.NodeSpawnType.boss)
-                    SpawnBoss(node, parent);
+                    bossInstance = SpawnBoss(node, parent);
             }
         }
+
+        EnemyAI bossAi = bossInstance.GetComponent<EnemyAI>();
+        bossAi.AddDeathActivatedObject(exitPortalInstance);
+        bossAi.ToggleDeathActivatedObjects(false);
 
         if (parent != null)
         {
