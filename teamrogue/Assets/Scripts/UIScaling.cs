@@ -10,9 +10,23 @@ public class UIScaling : MonoBehaviour
     public Image[] images;
     public Vector2 referenceResolution = new Vector2(1920, 1080);
 
+    private Dictionary<Button, Vector2> originalButtonSizes = new Dictionary<Button, Vector2>();
+    private Dictionary<Image, Vector2> originalImageSizes = new Dictionary<Image, Vector2>();
+
     void Start()
     {
-        //currentResolution = GetComponent<Resolution>();
+        // Store original sizes
+        foreach (Button button in buttons)
+        {
+            RectTransform rectTransform = button.GetComponent<RectTransform>();
+            originalButtonSizes[button] = rectTransform.sizeDelta;
+        }
+
+        foreach (Image image in images)
+        {
+            RectTransform rectTransform = image.GetComponent<RectTransform>();
+            originalImageSizes[image] = rectTransform.sizeDelta;
+        }
         ScaleButtons();
     }
 
@@ -25,12 +39,12 @@ public class UIScaling : MonoBehaviour
         foreach (Button button in buttons)
         {
             RectTransform rectTransform = button.GetComponent<RectTransform>();
-            rectTransform.sizeDelta *= scaleFactor;
+            rectTransform.sizeDelta = originalButtonSizes[button] / scaleFactor;
         }
         foreach (Image image in images)
         {
             RectTransform rectTransform2 = image.GetComponent<RectTransform>();
-            rectTransform2.sizeDelta *= scaleFactor;
+            rectTransform2.sizeDelta = originalImageSizes[image] / scaleFactor;
         }
     }
 }
