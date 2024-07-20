@@ -26,6 +26,8 @@ public class ButtonFunctions : MonoBehaviour
         GameManager.instance.playerScript.innateShootDamage = LoadDungeon.shootDamage;
         GameManager.instance.playerScript.innateShootDist = LoadDungeon.shootRange;
         GameManager.instance.playerScript.innateShootRate = LoadDungeon.shootRate;
+        GameManager.instance.playerScript.staffList = LoadDungeon.staffList;
+
         StartCoroutine(restartDelay());
         GameManager.instance.stateUnpaused();
         GameManager.instance.boonSelection();
@@ -56,6 +58,7 @@ public class ButtonFunctions : MonoBehaviour
             GameManager.instance.playerScript.innateShootDamage = LoadDungeon.shootDamage;
             GameManager.instance.playerScript.innateShootDist = LoadDungeon.shootRange;
             GameManager.instance.playerScript.innateShootRate = LoadDungeon.shootRate;
+            GameManager.instance.playerScript.staffList = LoadDungeon.staffList;
             SceneManager.LoadScene("Hub");
         }
     }

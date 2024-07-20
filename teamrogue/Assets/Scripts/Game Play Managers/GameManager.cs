@@ -58,6 +58,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameObject bronze4;
     public bool bronze4Earned = false;
 
+    [Header("Misc")]
+    [SerializeField] public UpgradeManager upgradeManager;
+
 
     public Staffs currentStaff;
 
@@ -73,7 +76,6 @@ public class GameManager : MonoBehaviour
     public Player playerScript;
 
     public BoonManager boonManager;
-    public UpgradeManager upgradeManager;
     public AchievementManager achievementManager;
     public cameraController cameraController;
 
@@ -99,7 +101,6 @@ public class GameManager : MonoBehaviour
             playerScript = player.GetComponent<Player>();
 
         boonManager = GetComponent<BoonManager>();
-        upgradeManager = GetComponent<UpgradeManager>();
         achievementManager = GetComponent<AchievementManager>();
         cameraController = GetComponent<cameraController>();
         foreach (Staffs staffs in allStaffs)

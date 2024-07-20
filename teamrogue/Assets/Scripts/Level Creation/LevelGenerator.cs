@@ -367,7 +367,13 @@ public class LevelGenerator : MonoBehaviour
                 }
 
                 if (node.spawnType == PathBuilder.NodeSpawnType.player)
-                    Instantiate(player, new Vector3(node.pos.x, node.pos.y + (PathBuilder.nodeHalfDiagonal * 2), node.pos.z), Quaternion.identity);
+                {
+                    GameObject _player = Instantiate(player, new Vector3(node.pos.x, node.pos.y + (PathBuilder.nodeHalfDiagonal * 2), node.pos.z), Quaternion.identity);
+                    Player playerScript = _player.GetComponent<Player>();
+
+                    //Get the weapons the player picked up in the hub
+                    playerScript.staffList = LoadDungeon.staffList;
+                }
 
                 if (node.spawnType == PathBuilder.NodeSpawnType.exit)
                     exitPortalInstance = Instantiate(exitPortal, new Vector3(node.pos.x, node.pos.y + (PathBuilder.nodeHalfDiagonal * 2), node.pos.z), Quaternion.identity);

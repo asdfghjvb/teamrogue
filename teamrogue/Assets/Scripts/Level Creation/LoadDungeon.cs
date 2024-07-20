@@ -19,10 +19,16 @@ public class LoadDungeon : MonoBehaviour
     public static float shootRate;
     public static int shootRange;
     public static float meleeCooldown;
+
+    public static List<Staffs> staffList;
+
     private void OnTriggerEnter(Collider other)
     {
         GameManager.instance.boonSelection();
         initialBoon = true;
+
+        //Save staff list to be moved over between scenes
+        staffList = GameManager.instance.playerScript.staffList;
 
         //save preboon values, reset in
         health = GameManager.instance.playerScript.health;

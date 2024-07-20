@@ -151,9 +151,12 @@ public class UpgradeManager : MonoBehaviour
     }
     void UpgradeRange()
     {
-        // if currency >= cost
-        rangeCost *= costMod;
-        // remove rangeCost from currency
+        if (GameManager.instance.playerScript.currentGold <= rangeCost)
+        {
+            GameManager.instance.playerScript.currentGold -= rangeCost;
+            rangeCost *= costMod;
+        }
+
         GameManager.instance.playerScript.innateShootDist += rangeUpgrade;
         UpdateCosts();
     }

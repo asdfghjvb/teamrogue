@@ -6172,7 +6172,7 @@ RectTransform:
   m_GameObject: {fileID: 2252998828825005009}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7177717744726508602}
@@ -6185,6 +6185,7 @@ RectTransform:
   - {fileID: 4648585921143672353}
   - {fileID: 4944624340254483922}
   - {fileID: 2106860097304165208}
+  - {fileID: 4031695197435369422}
   - {fileID: 7156225880176713811}
   - {fileID: 519345331236945725}
   - {fileID: 8395198794602119098}
@@ -8395,6 +8396,169 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &3338122270511096992
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2389922016928289066}
+  - component: {fileID: 5667619149428656006}
+  - component: {fileID: 9192104598413609143}
+  - component: {fileID: 6562759686639976058}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!224 &2389922016928289066
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3338122270511096992}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4031695197435369422}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5964075}
+  m_AnchorMax: {x: 0.5, y: 0.5964075}
+  m_AnchoredPosition: {x: -32.10338, y: -1261}
+  m_SizeDelta: {x: 690.0381, y: 1217.6252}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5667619149428656006
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3338122270511096992}
+  m_CullTransparentMesh: 1
+--- !u!114 &9192104598413609143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3338122270511096992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edaa97eefbd1a0b4480646fb9fa970c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuButtons: {fileID: 0}
+  credits: {fileID: 3813231345157388416}
+  scrollSpeed: 100
+--- !u!114 &6562759686639976058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3338122270511096992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: "Developers:\r\nJenna Blow\r\nJoshua Lindgren\r\nLogan Audrain\r\nMichael
+    Gordan\r\n\nMusic:\r\nSundown In Twang Town \u2013 Mr. Smith\r\nRumors of a Dungeon
+    \u2013 human gazpacho\r\nRevival \u2013 Audiorezout\r\n\nArt from Unity.com:\r\n3D
+    Characters Zombie Hospital \u2013 By CatBorg Studio \r\nMonster Bat \u2013 By
+    amusedART \r\nSimple Gems Ultimate Animated \u2013 By AurySky \r\nBlacksmith's
+    Tools \u2013 By Kristian Deleon \r\nStylized Weapons \u2013 By Blink \r\nFantasy
+    Monster(Wizard) \u2013 By TS WORK \r\nDragon for Boss Monster \u2013 By Dungeon
+    Mason \r\nStylized Low Poly Rocks \u2013 By  JustCreate \r\nSkeleton Animations
+    \u2013 By Kevin Iglesias \r\nLow Poly Dungeon \u2013 By Raphael Gon\xE7alves\r\nLow
+    Poly Dungeons Lite \u2013 By JustCreate \r\nMini Legion Rock Golem \u2013 By
+    Dungeon Mason \r\nFantasy spider \u2013 By Dante\u2019s anvil \r\nTonn RTS Units\u2014Undead
+    \u2013 By Polygon Blacksmith \r\nStylized Treasure Chest - by GamerTose \r\nTrophy
+    Cups/Chalices \u2013 By The Quantum Nexus\r\nLow Poly: Woods Lifestyle \u2013
+    By Rad-Coders\\\r\n\r\nAdditional Images Generated using DALL-E\r\n"
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 30
+  m_fontSizeBase: 30
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 1024
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 15
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: -29.532227, y: 0, z: -81.684814, w: -1.9996338}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &3399187534425078315
 GameObject:
   m_ObjectHideFlags: 0
@@ -10258,6 +10422,82 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &3813231345157388416
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4031695197435369422}
+  - component: {fileID: 4305470046503308402}
+  - component: {fileID: 296811141357239683}
+  m_Layer: 5
+  m_Name: Credits
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 0
+--- !u!224 &4031695197435369422
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3813231345157388416}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2389922016928289066}
+  m_Father: {fileID: 2412072283674533425}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 800, y: 1080}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &4305470046503308402
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3813231345157388416}
+  m_CullTransparentMesh: 1
+--- !u!114 &296811141357239683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3813231345157388416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.34117648, g: 0.30588236, b: 0.627451, a: 0.9098039}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &3905844259880503747
 GameObject:
   m_ObjectHideFlags: 0
@@ -11659,7 +11899,7 @@ GameObject:
   - component: {fileID: 8521855938797696674}
   - component: {fileID: 6806245683284811113}
   - component: {fileID: 2575361223397594551}
-  - component: {fileID: 5315145806512609660}
+  - component: {fileID: 4156273943418899814}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -11709,8 +11949,6 @@ MonoBehaviour:
   rewardChest2: {fileID: 0}
   healButton: {fileID: 3605329295053531673}
   boonButton: {fileID: 884978891421474455}
-  room1Clear: 0
-  room2Clear: 0
   sensitivity: 0.5
   invertY: 0
   meleeCooldownUI: {fileID: 4662598828837011360}
@@ -11729,6 +11967,7 @@ MonoBehaviour:
   bronze3Earned: 0
   bronze4: {fileID: 7840973318835850626, guid: 48a8827756dd258468201b463de55710, type: 3}
   bronze4Earned: 0
+  upgradeManager: {fileID: 2876391200065339166}
   currentStaff: {fileID: 0}
   allStaffs:
   - {fileID: 11400000, guid: 44827d6d5743ad64fb72bba7979c2a80, type: 2}
@@ -11739,7 +11978,6 @@ MonoBehaviour:
   player: {fileID: 0}
   playerScript: {fileID: 0}
   boonManager: {fileID: 0}
-  upgradeManager: {fileID: 0}
   achievementManager: {fileID: 0}
   cameraController: {fileID: 0}
   seed: 0
@@ -11761,6 +11999,8 @@ MonoBehaviour:
   menuButtons: {fileID: 0}
   menuSettings: {fileID: 5981769767370681155}
   menuSaves: {fileID: 870704552983924351}
+  menuSaveSelect: {fileID: 0}
+  credits: {fileID: 0}
   musicSlider: {fileID: 3275796168499881721}
   sfxSlider: {fileID: 977079480886377471}
   sensSlider: {fileID: 1828644379462893221}
@@ -11830,7 +12070,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   saveFile: {fileID: 0}
---- !u!114 &5315145806512609660
+  changingSave: {fileID: 0}
+--- !u!114 &4156273943418899814
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11839,41 +12080,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4496846534573564487}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b143c2f79ee8f0c4c877b03433780a36, type: 3}
+  m_Script: {fileID: 11500000, guid: 31f8d632083ccc24cad192ded5a153aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeMenu: {fileID: 2914936459588825770}
-  healthButton: {fileID: 0}
-  armorButton: {fileID: 0}
-  speedButton: {fileID: 0}
-  sprintButton: {fileID: 0}
-  jumpButton: {fileID: 0}
-  rangeButton: {fileID: 0}
-  sDamageButton: {fileID: 0}
-  sRateButton: {fileID: 0}
-  mDamageButton: {fileID: 0}
-  mRateButton: {fileID: 0}
-  healthUpgrade: 0
-  armorUpgrade: 0
-  speedUpgrade: 0
-  sprintUpgrade: 0
-  jumpUpgrade: 0
-  rangeUpgrade: 0
-  sDamageUpgrade: 0
-  sRateUpgrade: 0
-  mDamageUpgrade: 0
-  mRateUpgrade: 0
-  costMod: 0
-  healthCost: 0
-  armorCost: 0
-  speedCost: 0
-  sprintCost: 0
-  jumpCost: 0
-  rangeCost: 0
-  sDamageCost: 0
-  sRateCost: 0
-  mDamageCost: 0
-  mRateCost: 0
 --- !u!1 &4522576698955641748
 GameObject:
   m_ObjectHideFlags: 0
@@ -14865,6 +15074,8 @@ MonoBehaviour:
   menuButtons: {fileID: 0}
   menuSettings: {fileID: 5981769767370681155}
   menuSaves: {fileID: 0}
+  menuSaveSelect: {fileID: 0}
+  credits: {fileID: 0}
   musicSlider: {fileID: 3275796168499881721}
   sfxSlider: {fileID: 977079480886377471}
   sensSlider: {fileID: 1828644379462893221}
