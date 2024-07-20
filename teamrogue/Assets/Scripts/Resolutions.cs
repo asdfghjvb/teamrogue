@@ -8,12 +8,14 @@ public class Resolutions : MonoBehaviour
 {
 
     public TMP_Dropdown resolutionDrop;
-
+    public Resolution currentResolution;
+    
     private Resolution[] resolutions;
 
     // Start is called before the first frame update
     void Start()
     {
+        
         //get all full screen resolutions supported
         resolutions = Screen.resolutions;
         resolutionDrop.ClearOptions();
@@ -49,9 +51,10 @@ public class Resolutions : MonoBehaviour
     {
         //set the screen resolution from the current index
         Resolution resolution = resolutions[resolutionIndex];
+        currentResolution = resolution;
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
-    // Update is called once per frame
+    
   
 }
