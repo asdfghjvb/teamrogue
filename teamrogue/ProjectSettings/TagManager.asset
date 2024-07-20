@@ -11,6 +11,7 @@ TagManager:
   - Sign
   - Door
   - Light Source
+  - Portal
   layers:
   - Default
   - TransparentFX

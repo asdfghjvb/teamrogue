@@ -238,9 +238,8 @@ public class Player : MonoBehaviour, IDamage
         GameManager.instance.SetCurrentStaff(newStaff);
         
     }
-    public ScriptableObject objectView()
+    public ScriptableObject objectView(float viewingRange = 10f)
     {
-        float viewingRange = 10f;
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, viewingRange))
         {
@@ -260,6 +259,11 @@ public class Player : MonoBehaviour, IDamage
                 return hit.collider.GetComponent<SignPost>().signScript;
             }
             else if (hit.collider.CompareTag("Door"))
+            {
+                GameManager.instance.inputHint.SetActive(true);
+                return null;
+            }
+            else if (hit.collider.CompareTag("Portal"))
             {
                 GameManager.instance.inputHint.SetActive(true);
                 return null;
