@@ -15,7 +15,7 @@ public class LightingManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        lights = new List<GameObject>();
+        //lights = new List<GameObject>();
     }
 
     // Update is called once per frame
@@ -43,6 +43,9 @@ public class LightingManager : MonoBehaviour
 
     public void RegisterLightSource(GameObject light)
     {
+        if (lights == null)
+            lights = new List<GameObject>();
+
         lights.Add(light);
     }
 

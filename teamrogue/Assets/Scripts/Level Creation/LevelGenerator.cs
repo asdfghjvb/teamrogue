@@ -38,9 +38,11 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] public GameObject[] doorways;
 
     [Space(2)]
-    [Tooltip("The chance that any given wall will have a light source")]
+    [Tooltip("Aprox what percentage of walls that will have lights")]
     [Range(0, 1)]
-    [SerializeField] float litWallChance;
+    [SerializeField] float lightSpawnFreq;
+    [Tooltip("When checked, the light spawn frequency will be ignored and lights will instead spawn in a checkerboard pattern")]
+    [SerializeField] bool lightSpawnPatternCheckered;
 
     [Header("Enemies")]
     [SerializeField] public NavMeshSurface navMeshSurface;
@@ -703,6 +705,8 @@ public class LevelGenerator : MonoBehaviour
         const float wallCoverageOfNode = 0.15f; //what percent of the node is covered by a wall
         float nodeSize = PathBuilder.nodeHalfDiagonal * 2;
 
+        bool builtLight = false;
+
         for (int x = -1; x <= 1; x++)
         {
             for (int y = -1; y <= 1; y++)
@@ -721,24 +725,14 @@ public class LevelGenerator : MonoBehaviour
                     || (node.type == PathBuilder.NodeType.room && neighbor.type == PathBuilder.NodeType.hallway) 
                     || neighbor.type == PathBuilder.NodeType.empty)
                 {
-                    /* Decide if wall will have a torch */
                     int wallObjectIndex;
                     GameObject wallPrefab;
-                    float rollForLit = UnityEngine.Random.Range(0f, 1f);
 
-                    if(rollForLit <= litWallChance)
+                    if (NodeIsLit(node) && !builtLight)
                     {
+                        builtLight = true;
                         wallObjectIndex = UnityEngine.Random.Range(0, walls_lit.Length);
                         wallPrefab = walls_lit[wallObjectIndex];
-
-                        //register torch with light manager
-                        foreach (Transform child in wallPrefab.transform)
-                        {
-                            if (child.CompareTag("Light Source"))
-                            {
-                                lightingManager.RegisterLightSource(child.gameObject);
-                            }
-                        }
                     }
                     else
                     {
@@ -755,8 +749,8 @@ public class LevelGenerator : MonoBehaviour
 
                     if (x == -1 && y == 0) // left neighbor
                     {
-                        offset = new Vector3(-(nodeSize / 2), 0, -(nodeSize / 2));
-                        rotation = Quaternion.Euler(-90, 90, 0); 
+                        offset = new Vector3(-(nodeSize / 2), 0, (nodeSize / 2));
+                        rotation = Quaternion.Euler(-90, 270, 0); 
                     }
                     else if (x == 1 && y == 0) // right neighbor
                     {
@@ -765,8 +759,8 @@ public class LevelGenerator : MonoBehaviour
                     }
                     else if (x == 0 && y == -1) // bottom neighbor
                     {
-                        offset = new Vector3(nodeSize / 2, 0, -(nodeSize / 2));
-                        rotation = Quaternion.Euler(-90, 0, 0);
+                        offset = new Vector3(-(nodeSize / 2), 0, -(nodeSize / 2));
+                        rotation = Quaternion.Euler(-90, 180, 0);
                     }
                     else if (x == 0 && y == 1) // top neighbor
                     {
@@ -780,6 +774,16 @@ public class LevelGenerator : MonoBehaviour
 
                     if (parent != null)
                         wallObject.transform.SetParent(parent.transform, true);
+
+                    //register torch with light manager (if it has one)
+                    foreach (Transform child in wallObject.transform)
+                    {
+                        if (child.CompareTag("Light Source"))
+                        {
+
+                            lightingManager.RegisterLightSource(child.gameObject);
+                        }
+                    }
                 }
             } 
         }
@@ -965,5 +969,20 @@ public class LevelGenerator : MonoBehaviour
         }
 
         return new List<Line>(hallways);
+    }
+
+    bool NodeIsLit(PathBuilder.Node node)
+    {
+        if (lightSpawnPatternCheckered)
+        {
+            return (node.cordinates.x + node.cordinates.y) % 2 == 0;
+        }
+        else
+        {
+            int xInterval = Mathf.Max(1, Mathf.FloorToInt(pathFinder.grid.size.x / (lightSpawnFreq * pathFinder.grid.size.x)));
+            int yInterval = Mathf.Max(1, Mathf.FloorToInt(pathFinder.grid.size.y / (lightSpawnFreq * pathFinder.grid.size.y)));
+
+            return node.cordinates.x % xInterval == 0 && node.cordinates.y % yInterval == 0;
+        }
     }
 }
