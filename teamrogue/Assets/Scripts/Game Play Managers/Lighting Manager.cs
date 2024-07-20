@@ -10,6 +10,8 @@ public class LightingManager : MonoBehaviour
     [Tooltip("How often the player radius is checked for lights")]
     [SerializeField] float checkFrequency;
 
+    [SerializeField] float lightIntensity;
+
     bool cooldownActive = false;
 
     // Start is called before the first frame update
@@ -22,7 +24,7 @@ public class LightingManager : MonoBehaviour
     void Update()
     {
         if (!cooldownActive)
-            StartCoroutine(UpdateLightSources());
+            StartCoroutine(ActivateLightSources());
     }
 
     void CheckRadius()
@@ -49,7 +51,7 @@ public class LightingManager : MonoBehaviour
         lights.Add(light);
     }
 
-    IEnumerator UpdateLightSources()
+    IEnumerator ActivateLightSources()
     {
         cooldownActive = true;
 
@@ -57,5 +59,18 @@ public class LightingManager : MonoBehaviour
         yield return new WaitForSeconds(checkFrequency);
 
         cooldownActive = false;
+    }
+
+    public void UpdateLightSources()
+    {
+        foreach (GameObject light in lights)
+        {
+            Light lightComp = light.GetComponentInChildren<Light>();
+
+            if (lightComp != null)
+            {
+                lightComp.intensity = lightIntensity;
+            }
+        }
     }
 }

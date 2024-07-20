@@ -561,6 +561,9 @@ public class LevelGenerator : MonoBehaviour
         //Build the nav mesh before the doors are placed because the doors are dyamic
         navMeshSurface.BuildNavMesh();
 
+        //Updates all lights created to use special settings from light manager
+        lightingManager.UpdateLightSources();
+
         for (int x = 0; x < pathFinder.grid.nodeCountX; x++)
         {
             for (int y = 0; y < pathFinder.grid.nodeCountY; y++)

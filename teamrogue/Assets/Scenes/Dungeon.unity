@@ -136,16 +136,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1710169729903083899, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
-      propertyPath: checkFrequency
+      propertyPath: lightIntensity
       value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1710169729903083899, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
-      propertyPath: activationRadius
-      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
       propertyPath: gridNumber
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
       propertyPath: levelBrightness
