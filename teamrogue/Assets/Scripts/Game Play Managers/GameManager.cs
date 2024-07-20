@@ -90,6 +90,7 @@ public class GameManager : MonoBehaviour
         instance = this;
         //DontDestroyOnLoad(gameObject);
         Screen.SetResolution(1920, 1080, true);
+        Application.targetFrameRate = 30;
         seed = (int)DateTime.Now.Ticks;
         UnityEngine.Random.InitState(seed);
 
