@@ -135,9 +135,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1710169729903083899, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
+      propertyPath: checkFrequency
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1710169729903083899, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
+      propertyPath: activationRadius
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
       propertyPath: gridNumber
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
+      propertyPath: levelBrightness
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
+      propertyPath: doorways.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
+      propertyPath: doorways.Array.data[0]
+      value: 
+      objectReference: {fileID: 1367838670538786429, guid: 4d5d93bdc136f6d4aa3145f3e4bdc965, type: 3}
+    - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
+      propertyPath: lightSpawnPatternCheckered
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2677353984481627313, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
       propertyPath: m_Name

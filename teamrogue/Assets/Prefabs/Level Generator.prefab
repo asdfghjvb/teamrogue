@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6243726874628050506}
   - component: {fileID: 2271455056812713875}
+  - component: {fileID: 1710169729903083899}
   - component: {fileID: 8970831050489812271}
   m_Layer: 0
   m_Name: Level Generator
@@ -45,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9027f5100b3808440ae3748a00776a5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightingManager: {fileID: 1710169729903083899}
   player: {fileID: 718157165217108821, guid: d553f9dcf1c99684e9ecd7f3aec2db1a, type: 3}
   levelSize: {x: 150, y: 150}
   maxRoomQuantity: 16
@@ -62,13 +64,19 @@ MonoBehaviour:
   - {fileID: 6601348092362153188, guid: 6fa936adac6424e469d0d5bde13a10e7, type: 3}
   - {fileID: 7126052724600383399, guid: 0b8ce77eec77c12478b9f6a98e4a650a, type: 3}
   - {fileID: 7978591694076811745, guid: 4ce183937151e2544aedf111d835c467, type: 3}
-  walls:
+  walls_default:
   - {fileID: 3342620475182698, guid: d8b0d02a897497a4c81644c5f8f776c4, type: 3}
   - {fileID: 155228565050598673, guid: d69d18b63c4ec7f4a955034e7047c28d, type: 3}
   - {fileID: 7966642409592466314, guid: 3b34349e95ef722408e8488085679f86, type: 3}
   - {fileID: 8946525484832862018, guid: ab47d264a11880f45a4f94c776de8ffe, type: 3}
+  walls_lit:
+  - {fileID: 5021752000340001149, guid: 7b52c5262e211064c9e05016278f78f6, type: 3}
+  - {fileID: 5712991526747086938, guid: 2cbe4aef5fc7416428caa847e512f539, type: 3}
+  - {fileID: 8303772675305361625, guid: 1b85ba650bf8f7b42b7226387b95c8a1, type: 3}
+  - {fileID: 3741669423679522456, guid: 2520466a7deee304fb3972397dd71042, type: 3}
   doorways:
   - {fileID: 1367838670538786429, guid: 4d5d93bdc136f6d4aa3145f3e4bdc965, type: 3}
+  levelBrightness: 0.333
   navMeshSurface: {fileID: 8970831050489812271}
   lowLvlEnemies:
   - {fileID: 7878885587272555556, guid: 7cc3bde90e7b27940b58621f203f0264, type: 3}
@@ -80,8 +88,23 @@ MonoBehaviour:
   bosses:
   - {fileID: 5810740335334662195, guid: a776e3e527d16ed469367295671a0c6f, type: 3}
   - {fileID: 5921435172011970883, guid: 71c8f272276916146a34b2fca2e71fc4, type: 3}
-  gridNumber: 2
+  gridNumber: 0
   generatorOrgin: {x: 0, y: 0, z: 0}
+--- !u!114 &1710169729903083899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2677353984481627313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da528e1b33176c84b8f50c0bb6f21acd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lights: []
+  activationRadius: 40
+  checkFrequency: 2
 --- !u!114 &8970831050489812271
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -79,7 +79,7 @@ public class PathBuilder
         List<LevelGenerator.Room> rooms;
 
         Vector3 origin;
-        Vector2 size;
+        public Vector2 size;
 
         public int nodeCountX, nodeCountY;
 

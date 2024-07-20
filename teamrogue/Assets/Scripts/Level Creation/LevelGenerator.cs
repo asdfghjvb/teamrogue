@@ -13,6 +13,7 @@ using UnityEngine.XR;
 public class LevelGenerator : MonoBehaviour
 {
     [Header("Level")]
+    [SerializeField] LightingManager lightingManager;
     [SerializeField] GameObject player;
     [SerializeField] public Vector2Int levelSize;
 
@@ -32,8 +33,16 @@ public class LevelGenerator : MonoBehaviour
 
     [Header("Assets")]
     [SerializeField] public GameObject[] floors;
-    [SerializeField] public GameObject[] walls;
+    [SerializeField] public GameObject[] walls_default;
+    [SerializeField] public GameObject[] walls_lit;
     [SerializeField] public GameObject[] doorways;
+
+    [Space(2)]
+    [Tooltip("Aprox what percentage of walls that will have lights")]
+    [Range(0, 1)]
+    [SerializeField] float lightSpawnFreq;
+    [Tooltip("When checked, the light spawn frequency will be ignored and lights will instead spawn in a checkerboard pattern")]
+    [SerializeField] bool lightSpawnPatternCheckered;
 
     [Header("Enemies")]
     [SerializeField] public NavMeshSurface navMeshSurface;
@@ -630,8 +639,8 @@ public class LevelGenerator : MonoBehaviour
                 }
                 else if (builtDoor && (neighbor.type == PathBuilder.NodeType.hallway || neighbor.type == PathBuilder.NodeType.empty))
                 {//builds a wall
-                    int wallObjectIndex = UnityEngine.Random.Range(0, walls.Length); //Range function max is exclusive, therefore already size - 1
-                    GameObject wallPrefab = walls[wallObjectIndex];
+                    int wallObjectIndex = UnityEngine.Random.Range(0, walls_default.Length); //Range function max is exclusive, therefore already size - 1
+                    GameObject wallPrefab = walls_default[wallObjectIndex];
                     Renderer renderer = wallPrefab.GetComponent<Renderer>();
 
                     Vector3 prefabSize = renderer.bounds.size;
@@ -696,6 +705,8 @@ public class LevelGenerator : MonoBehaviour
         const float wallCoverageOfNode = 0.15f; //what percent of the node is covered by a wall
         float nodeSize = PathBuilder.nodeHalfDiagonal * 2;
 
+        bool builtLight = false;
+
         for (int x = -1; x <= 1; x++)
         {
             for (int y = -1; y <= 1; y++)
@@ -714,8 +725,21 @@ public class LevelGenerator : MonoBehaviour
                     || (node.type == PathBuilder.NodeType.room && neighbor.type == PathBuilder.NodeType.hallway) 
                     || neighbor.type == PathBuilder.NodeType.empty)
                 {
-                    int wallObjectIndex = UnityEngine.Random.Range(0, walls.Length); //Range function max is exclusive, therefore already size - 1
-                    GameObject wallPrefab = walls[wallObjectIndex];
+                    int wallObjectIndex;
+                    GameObject wallPrefab;
+
+                    if (NodeIsLit(node) && !builtLight)
+                    {
+                        builtLight = true;
+                        wallObjectIndex = UnityEngine.Random.Range(0, walls_lit.Length);
+                        wallPrefab = walls_lit[wallObjectIndex];
+                    }
+                    else
+                    {
+                        wallObjectIndex = UnityEngine.Random.Range(0, walls_default.Length);
+                        wallPrefab = walls_default[wallObjectIndex];
+                    }
+
                     Renderer renderer = wallPrefab.GetComponent<Renderer>();
 
                     Vector3 prefabSize = renderer.bounds.size;
@@ -725,8 +749,8 @@ public class LevelGenerator : MonoBehaviour
 
                     if (x == -1 && y == 0) // left neighbor
                     {
-                        offset = new Vector3(-(nodeSize / 2), 0, -(nodeSize / 2));
-                        rotation = Quaternion.Euler(-90, 90, 0); 
+                        offset = new Vector3(-(nodeSize / 2), 0, (nodeSize / 2));
+                        rotation = Quaternion.Euler(-90, 270, 0); 
                     }
                     else if (x == 1 && y == 0) // right neighbor
                     {
@@ -735,8 +759,8 @@ public class LevelGenerator : MonoBehaviour
                     }
                     else if (x == 0 && y == -1) // bottom neighbor
                     {
-                        offset = new Vector3(nodeSize / 2, 0, -(nodeSize / 2));
-                        rotation = Quaternion.Euler(-90, 0, 0);
+                        offset = new Vector3(-(nodeSize / 2), 0, -(nodeSize / 2));
+                        rotation = Quaternion.Euler(-90, 180, 0);
                     }
                     else if (x == 0 && y == 1) // top neighbor
                     {
@@ -750,6 +774,16 @@ public class LevelGenerator : MonoBehaviour
 
                     if (parent != null)
                         wallObject.transform.SetParent(parent.transform, true);
+
+                    //register torch with light manager (if it has one)
+                    foreach (Transform child in wallObject.transform)
+                    {
+                        if (child.CompareTag("Light Source"))
+                        {
+
+                            lightingManager.RegisterLightSource(child.gameObject);
+                        }
+                    }
                 }
             } 
         }
@@ -935,5 +969,20 @@ public class LevelGenerator : MonoBehaviour
         }
 
         return new List<Line>(hallways);
+    }
+
+    bool NodeIsLit(PathBuilder.Node node)
+    {
+        if (lightSpawnPatternCheckered)
+        {
+            return (node.cordinates.x + node.cordinates.y) % 2 == 0;
+        }
+        else
+        {
+            int xInterval = Mathf.Max(1, Mathf.FloorToInt(pathFinder.grid.size.x / (lightSpawnFreq * pathFinder.grid.size.x)));
+            int yInterval = Mathf.Max(1, Mathf.FloorToInt(pathFinder.grid.size.y / (lightSpawnFreq * pathFinder.grid.size.y)));
+
+            return node.cordinates.x % xInterval == 0 && node.cordinates.y % yInterval == 0;
+        }
     }
 }
