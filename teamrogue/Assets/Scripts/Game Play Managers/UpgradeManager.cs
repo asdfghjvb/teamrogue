@@ -18,6 +18,8 @@ public class UpgradeManager : MonoBehaviour
     [SerializeField] TMP_Text mDamageButton;
     [SerializeField] TMP_Text mRateButton;
 
+    [SerializeField] TMP_Text goldCount;
+
     [SerializeField] float healthUpgrade;
     [SerializeField] float armorUpgrade;
     [SerializeField] float speedUpgrade;
@@ -66,6 +68,8 @@ public class UpgradeManager : MonoBehaviour
         sRateButton.SetText(sRateCost.ToString());
         mDamageButton.SetText(mDamageCost.ToString());
         mRateButton.SetText(mRateCost.ToString());
+
+        goldCount.SetText(GameManager.instance.playerScript.currentGold.ToString());
     }
 
     public void Upgrade(int ID)
@@ -105,6 +109,7 @@ public class UpgradeManager : MonoBehaviour
                 UpgradeMeleeRate();
                 break;
         }
+        GameManager.instance.achievementManager.UpdateCount(7);
     }
 
     void UpgradeHealth()
@@ -136,7 +141,7 @@ public class UpgradeManager : MonoBehaviour
             speedCost *= costMod;
             GameManager.instance.playerScript.speed += speedUpgrade;
             UpdateCosts();
-            GameManager.instance.achievementManager.UpdateCount(2);
+            GameManager.instance.achievementManager.UpdateCount(5);
         }
     }
     void UpgradeSprint()

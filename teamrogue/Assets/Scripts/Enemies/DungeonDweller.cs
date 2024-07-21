@@ -46,6 +46,7 @@ public class DungeonDweller : MeleeEnemy
         foreach(Collider col in colliders)
             col.enabled = false;
 
+        GameManager.instance.achievementManager.UpdateCount(3);
         return base.OnDeath();
     }
 }

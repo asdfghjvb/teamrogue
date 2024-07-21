@@ -68,7 +68,7 @@ public class BoonManager : MonoBehaviour
                 break;
             case 3:
                 GameManager.instance.playerScript.speed += 5;
-                GameManager.instance.achievementManager.UpdateCount(2);
+                GameManager.instance.achievementManager.UpdateCount(5);
                 break;
             case 4:
                 GameManager.instance.playerScript.jumpMax += 1;
@@ -92,6 +92,7 @@ public class BoonManager : MonoBehaviour
                 GameManager.instance.playerScript.meleeCooldown *= 0.8f;
                 break;
         }
+        GameManager.instance.achievementManager.UpdateCount(6);
     }
 
     public void boonOption1()

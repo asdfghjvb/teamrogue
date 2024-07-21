@@ -65,7 +65,7 @@ public class LichKing : RangedEnemy
 
     protected override IEnumerator OnDeath()
     {
-        GameManager.instance.achievementManager.UpdateCount(1);
+        GameManager.instance.achievementManager.UpdateCount(2);
         return base.OnDeath();
     }
 }

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 075ed9a125417bb4fa396c9e438da620, type: 3}
   m_Name: Gold trophy
   m_EditorClassIdentifier: 
-  trophyName: Rise up, champions of the Light!
-  trophyDescription: Kill the Lich King
+  trophyName: The only thing that can defeat power, is more power.
+  trophyDescription: Kill both bosses
   color: {r: 0, g: 0, b: 0, a: 0.8627451}
