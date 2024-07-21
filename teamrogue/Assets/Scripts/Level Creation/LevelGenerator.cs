@@ -371,8 +371,18 @@ public class LevelGenerator : MonoBehaviour
                     GameObject _player = Instantiate(player, new Vector3(node.pos.x, node.pos.y + (PathBuilder.nodeHalfDiagonal * 2), node.pos.z), Quaternion.identity);
                     Player playerScript = _player.GetComponent<Player>();
 
-                    //Get the weapons the player picked up in the hub
+                    //Get the stats that were saved off when loading up the dungeon
                     playerScript.staffList = LoadDungeon.staffList;
+                    playerScript.health = LoadDungeon.health;
+                    playerScript.speed = LoadDungeon.speed;
+                    playerScript.sprintMod = LoadDungeon.sprintMod;
+                    playerScript.armorMod = LoadDungeon.armorMod;
+                    playerScript.jumpMax = LoadDungeon.jumpMax;
+                    playerScript.meleeDamage = LoadDungeon.meleeDamage;
+                    playerScript.shootDamage = LoadDungeon.shootDamage;
+                    playerScript.shootRate = LoadDungeon.shootRate;
+                    playerScript.shootDist = LoadDungeon.shootRange;
+                    playerScript.meleeCooldown = LoadDungeon.meleeCooldown;
                 }
 
                 if (node.spawnType == PathBuilder.NodeSpawnType.exit)

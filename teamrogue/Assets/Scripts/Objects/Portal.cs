@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -42,6 +43,8 @@ public class Portal : MonoBehaviour
         effect.transform.parent = GameManager.instance.player.transform;
 
         yield return new WaitForSeconds(teleportDelay);
+
+        LoadDungeon.gold = GameManager.instance.playerScript.currentGold; //save the players gold
 
         SceneManager.LoadScene("Hub");
 
