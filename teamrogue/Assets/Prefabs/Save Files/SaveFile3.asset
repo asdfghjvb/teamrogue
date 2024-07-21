@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SaveFile3
   m_EditorClassIdentifier: 
   health: 0
-  speed: 0
-  sprintMod: 0
+  speed: 10
+  sprintMod: 3
   armorMod: 0
   jumpMax: 0
   meleeDamage: 0
@@ -22,3 +22,10 @@ MonoBehaviour:
   shootRate: 0
   shootRange: 0
   meleeCooldown: 0
+  bronzeAch1: 0
+  bronzeAch2: 0
+  bronzeAch3: 0
+  bronzeAch4: 0
+  silverAch1: 0
+  silverAch2: 0
+  goldAch: 0

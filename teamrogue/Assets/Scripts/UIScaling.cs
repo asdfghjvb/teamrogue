@@ -39,12 +39,12 @@ public class UIScaling : MonoBehaviour
         foreach (Button button in buttons)
         {
             RectTransform rectTransform = button.GetComponent<RectTransform>();
-            rectTransform.sizeDelta = originalButtonSizes[button] / scaleFactor;
+            rectTransform.sizeDelta = originalButtonSizes[button] * scaleFactor;
         }
         foreach (Image image in images)
         {
             RectTransform rectTransform2 = image.GetComponent<RectTransform>();
-            rectTransform2.sizeDelta = originalImageSizes[image] / scaleFactor;
+            rectTransform2.sizeDelta = originalImageSizes[image] * scaleFactor;
         }
     }
 }
