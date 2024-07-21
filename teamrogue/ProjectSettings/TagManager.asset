@@ -12,6 +12,7 @@ TagManager:
   - Door
   - Light Source
   - Portal
+  - Enemy
   layers:
   - Default
   - TransparentFX

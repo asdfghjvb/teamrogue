@@ -2778,7 +2778,7 @@ GameObject:
   - component: {fileID: 514344784208694702}
   m_Layer: 7
   m_Name: Wraith
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2829,6 +2829,7 @@ MonoBehaviour:
   HP: 10
   attackRate: 1
   deathAnimationDuration: 5
+  deathActivatedObjects: []
   knockbackTarget: {x: 0, y: 0, z: 0}
   knockbackSpeed: 4
   weaponCol: {fileID: 2861857807224015446}

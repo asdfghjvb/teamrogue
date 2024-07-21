@@ -1827,7 +1827,7 @@ GameObject:
   - component: {fileID: 5025719675444855212}
   m_Layer: 7
   m_Name: Lich King
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1879,6 +1879,7 @@ MonoBehaviour:
   HP: 20
   attackRate: 5
   deathAnimationDuration: 8
+  deathActivatedObjects: []
   knockbackTarget: {x: 0, y: 0, z: 0}
   knockbackSpeed: 1.5
   projectile: {fileID: 6174925267386981003, guid: 64cabfcf81ad36540b68eef25ffbf846, type: 3}

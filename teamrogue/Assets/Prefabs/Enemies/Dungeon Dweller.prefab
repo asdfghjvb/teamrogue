@@ -2344,7 +2344,7 @@ GameObject:
   - component: {fileID: 6810562267414408249}
   m_Layer: 7
   m_Name: Dungeon Dweller
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2395,6 +2395,7 @@ MonoBehaviour:
   HP: 30
   attackRate: 2
   deathAnimationDuration: 15
+  deathActivatedObjects: []
   knockbackTarget: {x: 0, y: 0, z: 0}
   knockbackSpeed: 1
   weaponCol: {fileID: 6464161480235186299}

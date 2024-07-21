@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 4568043340137056878}
   m_Layer: 7
   m_Name: Monster Bat
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -260,6 +260,7 @@ MonoBehaviour:
   HP: 5
   attackRate: 1
   deathAnimationDuration: 0
+  deathActivatedObjects: []
   knockbackTarget: {x: 0, y: 0, z: 0}
   knockbackSpeed: 6
   projectile: {fileID: 6073588209328858228, guid: a19faa504cf8fad44b87351e2628050a, type: 3}
