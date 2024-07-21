@@ -270,6 +270,11 @@ public class Player : MonoBehaviour, IDamage
                 GameManager.instance.inputHint.SetActive(true);
                 return null;
             }
+            else if (hit.collider.CompareTag("Chest"))
+            {
+                GameManager.instance.inputHint.SetActive(true);
+                return hit.collider.GetComponent<Chest>().chestOb;
+            }
             else
             {
                 GameManager.instance.inputHint.SetActive(false);
