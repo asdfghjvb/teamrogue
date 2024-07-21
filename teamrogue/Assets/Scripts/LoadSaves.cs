@@ -18,7 +18,7 @@ public class LoadSaves : MonoBehaviour
         CopySave();
         Debug.Log("Save Copied");
         Debug.Log("Before Load");
-        changingSave.load();
+        //changingSave.load();
         Debug.Log("save loaded");
         
        
@@ -61,12 +61,22 @@ public class LoadSaves : MonoBehaviour
             GameManager.instance.bronze3Earned = changingSave.bronzeAch3;
             GameManager.instance.bronze4Earned = changingSave.bronzeAch4;
         }
+        if (!GameManager.instance.IsInScene("Main Menu"))
+        {
+            changingSave.load();
 
+        }
     }
 
     public void ClearSave()
     {
         saveFile.ClearSaveFile();
+    }
+
+    public void NewSave()
+    {
+        changingSave.ClearSaveFile();
+        changingSave.load();
     }
    
 }
