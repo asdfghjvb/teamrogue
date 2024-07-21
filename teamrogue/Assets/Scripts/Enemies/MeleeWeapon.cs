@@ -8,6 +8,11 @@ public class MeleeWeapon : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!other.CompareTag("Player") || !other.CompareTag("Enemy"))
+        {
+            GetComponent<Collider>().enabled = false;
+        }
+             
         IDamage dmg = other.GetComponent<IDamage>();
 
         if (dmg != null)
