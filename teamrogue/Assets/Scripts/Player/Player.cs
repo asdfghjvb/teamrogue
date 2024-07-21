@@ -79,6 +79,22 @@ public class Player : MonoBehaviour, IDamage
         {
             EquipStaff(0); // Equipar el primer staff por defecto
         }
+
+        if(GameManager.instance.IsInScene("Hub") && LoadDungeon.hasValue)
+        {
+            staffList = LoadDungeon.staffList;
+            health = LoadDungeon.health;
+            speed = LoadDungeon.speed;
+            sprintMod = LoadDungeon.sprintMod;
+            armorMod = LoadDungeon.armorMod;
+            jumpMax = LoadDungeon.jumpMax;
+            meleeDamage = LoadDungeon.meleeDamage;
+            shootDamage = LoadDungeon.shootDamage;
+            shootRate = LoadDungeon.shootRate;
+            shootDist = LoadDungeon.shootRange;
+            meleeCooldown = LoadDungeon.meleeCooldown;
+            currentGold = LoadDungeon.gold;
+        }
     }
 
     void Update()
@@ -178,7 +194,7 @@ public class Player : MonoBehaviour, IDamage
         yield return new WaitForSeconds(meleeRate);
         isMeleeAttacking = false;
         staff.Play("Idle", 0, 0f);
-        GameManager.instance.UpdateMeleeCooldownUI(meleeCooldown, lastMeleeTime); // Actualizar la UI desde GameManager
+        GameManager.instance.UpdateMeleeCooldownUI(meleeCooldown, lastMeleeTime); // Update the ui from the game manager (translated)
     }
 
     public void updatePlayerUI()

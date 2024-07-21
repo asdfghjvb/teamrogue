@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class LoadDungeon : MonoBehaviour
 {
     public static bool initialBoon;
+    public static bool hasValue;
 
     public static float health;
     public static float speed;
@@ -19,6 +20,7 @@ public class LoadDungeon : MonoBehaviour
     public static float shootRate;
     public static int shootRange;
     public static float meleeCooldown;
+    public static int gold;
 
     public static List<Staffs> staffList;
 
@@ -41,5 +43,8 @@ public class LoadDungeon : MonoBehaviour
         shootDamage = GameManager.instance.playerScript.innateShootDamage;
         shootRate = GameManager.instance.playerScript.innateShootRate;
         shootRange = GameManager.instance.playerScript.innateShootDist;
+        gold = GameManager.instance.playerScript.currentGold;
+
+        hasValue = true;
     }
 }
