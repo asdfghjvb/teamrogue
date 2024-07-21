@@ -2769,7 +2769,7 @@ MonoBehaviour:
   deathAnimationDuration: 5
   deathActivatedObjects: []
   knockbackTarget: {x: 0, y: 0, z: 0}
-  knockbackSpeed: 4
+  knockbackSpeed: 8
   weaponCol: {fileID: 2600022641414703949}
 --- !u!95 &863545328823764714
 Animator:

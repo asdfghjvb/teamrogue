@@ -168,6 +168,8 @@ public class Player : MonoBehaviour, IDamage
             IDamage dmg = hitCollider.GetComponent<IDamage>();
             if (dmg != null)
             {
+                mana += 2;
+                updatePlayerUI();
                 dmg.takeDamage(meleeDamage);
                 Vector3 knockbackDirection = (hitCollider.transform.position - transform.position).normalized;
                 dmg.knockback(knockbackDirection, knockbackForce);

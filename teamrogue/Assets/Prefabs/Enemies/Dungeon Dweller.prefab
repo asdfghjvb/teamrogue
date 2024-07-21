@@ -2397,7 +2397,7 @@ MonoBehaviour:
   deathAnimationDuration: 15
   deathActivatedObjects: []
   knockbackTarget: {x: 0, y: 0, z: 0}
-  knockbackSpeed: 1
+  knockbackSpeed: 5
   weaponCol: {fileID: 6464161480235186299}
   hornAttackRate: 5
 --- !u!95 &3754832990439201250

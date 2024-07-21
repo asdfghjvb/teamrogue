@@ -1881,7 +1881,7 @@ MonoBehaviour:
   deathAnimationDuration: 8
   deathActivatedObjects: []
   knockbackTarget: {x: 0, y: 0, z: 0}
-  knockbackSpeed: 1.5
+  knockbackSpeed: 7
   projectile: {fileID: 6174925267386981003, guid: 64cabfcf81ad36540b68eef25ffbf846, type: 3}
   shootPos: {fileID: 7331182653645490619}
   minion: {fileID: 7878885587272555556, guid: 7cc3bde90e7b27940b58621f203f0264, type: 3}

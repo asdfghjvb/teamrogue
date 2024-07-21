@@ -93,7 +93,7 @@ MonoBehaviour:
   jumpMax: 2
   jumpSpeed: 8
   gravity: 30
-  meleeDamage: 5
+  meleeDamage: 2
   meleeRange: 5
   meleeRate: 0.5
   meleeCooldown: 0.5
