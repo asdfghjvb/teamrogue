@@ -61,7 +61,7 @@ public class LoadSaves : MonoBehaviour
             GameManager.instance.bronze3Earned = changingSave.bronzeAch3;
             GameManager.instance.bronze4Earned = changingSave.bronzeAch4;
         }
-
+        changingSave.load();
     }
 
     public void ClearSave()
@@ -69,4 +69,8 @@ public class LoadSaves : MonoBehaviour
         saveFile.ClearSaveFile();
     }
    
+    public void NewGameSelected()
+    {
+        changingSave.ClearSaveFile();
+    }
 }

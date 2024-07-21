@@ -75,7 +75,7 @@ public class Saves : ScriptableObject
         GameManager.instance.bronze4.SetActive(bronzeAch4);
         GameManager.instance.bronze4Earned = bronzeAch4;
 
-        SceneManager.LoadScene("Hub");
+       // SceneManager.LoadScene("Hub");
 
     }
 
