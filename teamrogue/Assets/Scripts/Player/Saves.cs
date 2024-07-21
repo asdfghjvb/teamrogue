@@ -96,16 +96,16 @@ public class Saves : ScriptableObject
     }
     public void ClearSaveFile()
     {
-        health = 0;
-        speed = 0;
-        sprintMod = 0;
-        armorMod = 0;
-        jumpMax = 0; 
-        meleeDamage = 0;
-        shootDamage = 0;
-        shootRate = 0;
-        shootRange = 0;
-        meleeCooldown = 0;
+        health = 100;
+        speed = 10;
+        sprintMod = 3;
+        armorMod = 1;
+        jumpMax = 1; 
+        meleeDamage = 2;
+        shootDamage = 10;
+        shootRate = 0.5f;
+        shootRange = 10;
+        meleeCooldown = 0.5f;
 
         bronzeAch1 = false;
         bronzeAch2 = false;
