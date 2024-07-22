@@ -16,10 +16,9 @@ public class LoadSaves : MonoBehaviour
     public void LoadSave()
     {
         CopySave();
-        Debug.Log("Save Copied");
-        Debug.Log("Before Load");
+       
         changingSave.load();
-        Debug.Log("save loaded");
+       
         
        
         SceneManager.LoadScene("Hub");
