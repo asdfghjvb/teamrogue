@@ -186,7 +186,7 @@ public class PathBuilder
             else
                 return diagonalSearchCost * distX + orthogonalSearchCost * (distY - distX);
         }
-
+    /*
         public void DebugDrawGrid(int gridNumber)
         {
             if (gridNumber != 1 && gridNumber != 2)
@@ -255,6 +255,7 @@ public class PathBuilder
                 }
             }
         }
+    */
     }
 
     public PathBuilder(LevelGenerator gen)

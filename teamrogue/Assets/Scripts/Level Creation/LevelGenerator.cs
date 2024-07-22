@@ -267,12 +267,6 @@ public class LevelGenerator : MonoBehaviour
         SpawnEntities(entitiesParentObject);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        pathFinder.grid.DebugDrawGrid(gridNumber);
-    }
-
     private void OnDrawGizmos()
     {
         /*
