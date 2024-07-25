@@ -25,6 +25,7 @@ public class Settings : MonoBehaviour
     public AudioSource previewSource;
     public AudioClip sfxPreview;
 
+    private Coroutine previewCoroutine;
 
 
    
@@ -67,6 +68,17 @@ public class Settings : MonoBehaviour
         //set the volume in the mixer and save it as player preference
         audioMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("sfxVolume", volume);
+        
+        if (previewCoroutine != null)
+        {
+            StopCoroutine(previewCoroutine);
+        }
+        previewCoroutine = StartCoroutine(PreviewDelay());
+    }
+
+    private IEnumerator PreviewDelay()
+    {
+        yield return new WaitForSeconds(0.2f);
         previewSource.PlayOneShot(sfxPreview);
     }
     public void SetSens(float sens)
