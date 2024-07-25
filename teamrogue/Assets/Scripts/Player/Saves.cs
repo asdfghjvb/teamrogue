@@ -97,8 +97,8 @@ public class Saves : ScriptableObject
     public void ClearSaveFile()
     {
         health = 100;
-        speed = 10;
-        sprintMod = 3;
+        speed = 5;
+        sprintMod = 2;
         armorMod = 1;
         jumpMax = 1; 
         meleeDamage = 2;
