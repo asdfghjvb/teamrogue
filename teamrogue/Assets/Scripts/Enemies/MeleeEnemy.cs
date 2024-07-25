@@ -23,7 +23,8 @@ public class MeleeEnemy : EnemyAI, IDamage
     {
         base.Update();
 
-        if (agent.remainingDistance <= agent.stoppingDistance && !isAttacking && playerInView())
+        if ((agent.remainingDistance <= agent.stoppingDistance + 1 && agent.remainingDistance >= agent.stoppingDistance - 1)
+            && !isAttacking)
         {
             StartCoroutine(melee());
         }
