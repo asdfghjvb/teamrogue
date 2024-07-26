@@ -42,6 +42,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] Image meleeCooldownUI;
     [SerializeField] TMP_Text enemyCountText;
 
+    [SerializeField] TMP_Text currentMana;
+    [SerializeField] TMP_Text fullMana;
+    [SerializeField] TMP_Text currentHealth;
+    [SerializeField] TMP_Text fullHealth;
+
     [Header("Trophies")]
     [SerializeField] public GameObject gold;
     public bool goldEarned = false;
@@ -146,6 +151,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        updateBars();
       
     }
 
@@ -171,6 +177,14 @@ public class GameManager : MonoBehaviour
         enemyCount += amount;
         enemyCountText.text = enemyCount.ToString("F0");
 
+    }
+
+    public void updateBars()
+    {
+        currentMana.text = playerScript.mana.ToString("F0");
+        fullMana.text = playerScript.fullMana.ToString("F0");
+        currentHealth.text = playerScript.health.ToString("F0");
+        fullHealth.text = playerScript.fullHealth.ToString("F0");
     }
     public void youWin()
     {
