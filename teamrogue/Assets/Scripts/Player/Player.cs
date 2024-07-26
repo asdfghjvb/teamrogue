@@ -256,7 +256,7 @@ public class Player : MonoBehaviour, IDamage
         GameManager.instance.SetCurrentStaff(newStaff);
         
     }
-    public ScriptableObject objectView(float viewingRange = 10f)
+    public ScriptableObject objectView(float viewingRange = 30f)
     {
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, viewingRange))
