@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: -4116259038305353055}
   m_Layer: 0
   m_Name: ChestReward
-  m_TagString: Untagged
+  m_TagString: Chest
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b866d776a688f34185367b004eec999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chestOb: {fileID: 0}
 --- !u!95 &3926135726732603238
 Animator:
   serializedVersion: 5
