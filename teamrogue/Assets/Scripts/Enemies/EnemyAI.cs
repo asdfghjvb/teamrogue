@@ -104,6 +104,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         animator.SetTrigger("Death");
         GameManager.instance.updateGoal(-1);
         GameManager.instance.UpdatePlayerCurrency(goldAmount);
+        GameManager.instance.upgradeManager.UpdateGold();
 
         // Spawn either health or ammo drop based on their respective chances
         float dropRoll = Random.Range(0f,1f);

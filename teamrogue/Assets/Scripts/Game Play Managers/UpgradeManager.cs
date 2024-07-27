@@ -69,6 +69,11 @@ public class UpgradeManager : MonoBehaviour
         mDamageButton.SetText(mDamageCost.ToString());
         mRateButton.SetText(mRateCost.ToString());
 
+        UpdateGold();
+    }
+
+    public void UpdateGold()
+    {
         goldCount.SetText(GameManager.instance.playerScript.currentGold.ToString());
     }
 
