@@ -90,7 +90,7 @@ MonoBehaviour:
   speed: 8
   sprintMod: 2
   armorMod: 1
-  jumpMax: 2
+  jumpMax: 1
   jumpSpeed: 8
   gravity: 30
   meleeDamage: 2
@@ -137,7 +137,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 2
-  m_Radius: 0.5
+  m_Radius: 1.1
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -158,7 +158,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 718157165217108821}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -348,7 +348,7 @@ Transform:
   m_GameObject: {fileID: 4526845727168666183}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.033, z: 0.239}
+  m_LocalPosition: {x: 0, y: 1.033, z: 0.164}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -446,7 +446,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7282521134605100721
 Transform:
   m_ObjectHideFlags: 0
@@ -527,27 +527,27 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: f755d89eefba43d4e9ffcf8de0926ef4, type: 2}
     - target: {fileID: 1702491638107149981, guid: b9e9b9817b565da4c87dd7d4d36b234b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 4.3768353
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1702491638107149981, guid: b9e9b9817b565da4c87dd7d4d36b234b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 4.3768353
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1702491638107149981, guid: b9e9b9817b565da4c87dd7d4d36b234b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 4.3768353
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1702491638107149981, guid: b9e9b9817b565da4c87dd7d4d36b234b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.57
+      value: 0.236
       objectReference: {fileID: 0}
     - target: {fileID: 1702491638107149981, guid: b9e9b9817b565da4c87dd7d4d36b234b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.34
+      value: -0.233
       objectReference: {fileID: 0}
     - target: {fileID: 1702491638107149981, guid: b9e9b9817b565da4c87dd7d4d36b234b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.49
+      value: 0.449
       objectReference: {fileID: 0}
     - target: {fileID: 1702491638107149981, guid: b9e9b9817b565da4c87dd7d4d36b234b, type: 3}
       propertyPath: m_LocalRotation.w
