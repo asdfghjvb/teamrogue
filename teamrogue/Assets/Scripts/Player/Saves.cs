@@ -28,6 +28,14 @@ public class Saves : ScriptableObject
     public bool silverAch2;
     public bool goldAch;
 
+    public int bronzeProg1;
+    public int bronzeProg2;
+    public int bronzeProg3;
+    public int bronzeProg4;
+    public int silverProg1;
+    public int silverProg2;
+    public int goldProg;
+
     public void save()
     {
         health = GameManager.instance.playerScript.health;

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class AchievementManager : MonoBehaviour
 {
+    [SerializeField] Saves changingSave;
+
     int silver1Progress;
     int silver2Progress;
     int bronze1Progress;
@@ -55,61 +57,68 @@ public class AchievementManager : MonoBehaviour
         if (silver1Progress > 0 && silver2Progress > 0)
         {
             GameManager.instance.gold.SetActive(true);
+            changingSave.goldAch = true;
         }
         if (silver1Progress > 0)
         {
             GameManager.instance.silver1.SetActive(true);
+            changingSave.silverAch1 = true;
         }
         if (silver2Progress > 0)
         {
             GameManager.instance.silver2.SetActive(true);
+            changingSave.silverAch2 = true;
         }
         if (bronze1Progress >= 10)
         {
             GameManager.instance.bronze1.SetActive(true);
+            changingSave.bronzeAch1 = true;
         }
         if (bronze2Progress >= 40)
         {
             GameManager.instance.bronze2.SetActive(true);
+            changingSave.bronzeAch2 = true;
         }
         if (bronze3Progress >= 5)
         {
             GameManager.instance.bronze3.SetActive(true);
+            changingSave.bronzeAch3 = true;
         }
         if (bronze4Progress >= 5)
         {
             GameManager.instance.bronze4.SetActive(true);
+            changingSave.bronzeAch4 = true;
         }
     }
 
     void UpdateSilver1()
     {
-        silver1Progress++;
+        changingSave.silverProg1++;
         CheckCompletion();
     }
     void UpdateSilver2()
     {
-        silver2Progress++;
+        changingSave.silverProg2++;
         CheckCompletion();
     }
     void UpdateBronze1()
     {
-        bronze1Progress++;
+        changingSave.bronzeProg1++;
         CheckCompletion();
     }
     void UpdateBronze2()
     {
-        bronze2Progress = (int)GameManager.instance.playerScript.speed;
+        changingSave.bronzeProg2 = (int)GameManager.instance.playerScript.speed;
         CheckCompletion();
     }
     void UpdateBronze3()
     {
-        bronze3Progress++;
+        changingSave.bronzeProg3++;
         CheckCompletion();
     }
     void UpdateBronze4()
     {
-        bronze4Progress++;
+        changingSave.bronzeProg4++;
         CheckCompletion();
     }
 }

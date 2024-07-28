@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class UpgradeManager : MonoBehaviour
 {
+    [SerializeField] Saves changingSave;
+
     [SerializeField] GameObject upgradeMenu;
     [SerializeField] TMP_Text healthButton;
     [SerializeField] TMP_Text armorButton;
@@ -56,18 +58,50 @@ public class UpgradeManager : MonoBehaviour
         
     }
 
-    void UpdateCosts()
+    void UpdateCosts(int ID = 0)
     {
-        healthButton.SetText(healthCost.ToString());
-        armorButton.SetText(armorCost.ToString());
-        speedButton.SetText(speedCost.ToString());
-        sprintButton.SetText(sprintCost.ToString());
-        jumpButton.SetText(jumpCost.ToString());
-        rangeButton.SetText(rangeCost.ToString());
-        sDamageButton.SetText(sDamageCost.ToString());
-        sRateButton.SetText(sRateCost.ToString());
-        mDamageButton.SetText(mDamageCost.ToString());
-        mRateButton.SetText(mRateCost.ToString());
+        if (ID == 0 || ID == 1)
+        {
+            healthButton.SetText(healthCost.ToString());
+        }
+        if (ID == 0 || ID == 2)
+        {
+            armorButton.SetText(armorCost.ToString());
+        }
+        if (ID == 0 || ID == 3)
+        {
+            speedButton.SetText(speedCost.ToString());
+        }
+        if (ID == 0 || ID == 4)
+        {
+            sprintButton.SetText(sprintCost.ToString());
+        }
+        if (ID == 0 || ID == 5)
+        {
+            jumpButton.SetText(jumpCost.ToString());
+        }
+        if (ID == 0 || ID == 6)
+        {
+            rangeButton.SetText(rangeCost.ToString());
+        }
+        if (ID == 0 || ID == 7)
+        {
+            sDamageButton.SetText(sDamageCost.ToString());
+        }
+        if (ID == 0 || ID == 8)
+        {
+            sRateButton.SetText(sRateCost.ToString());
+        }
+        if (ID == 0 || ID == 9)
+        {
+            mDamageButton.SetText(mDamageCost.ToString());
+        }
+        if (ID == 0 || ID == 10)
+        {
+            mRateButton.SetText(mRateCost.ToString());
+        }
+
+        UpdateGold();
     }
 
     public void UpdateGold()
@@ -123,7 +157,8 @@ public class UpgradeManager : MonoBehaviour
             healthCost *= costMod;
             GameManager.instance.playerScript.fullHealth += healthUpgrade;
             GameManager.instance.playerScript.health += healthUpgrade;
-            UpdateCosts();
+            changingSave.health += healthUpgrade;
+            UpdateCosts(1);
         }
     }
     void UpgradeArmor()
@@ -133,7 +168,8 @@ public class UpgradeManager : MonoBehaviour
             GameManager.instance.playerScript.currentGold -= armorCost;
             armorCost *= costMod;
             GameManager.instance.playerScript.armorMod *= armorUpgrade;
-            UpdateCosts();
+            changingSave.armorMod *= armorUpgrade;
+            UpdateCosts(2);
         }
     }
     void UpgradeSpeed()
@@ -143,7 +179,8 @@ public class UpgradeManager : MonoBehaviour
             GameManager.instance.playerScript.currentGold -= speedCost;
             speedCost *= costMod;
             GameManager.instance.playerScript.speed += speedUpgrade;
-            UpdateCosts();
+            changingSave.speed += speedUpgrade;
+            UpdateCosts(3);
             GameManager.instance.achievementManager.UpdateCount(5);
         }
     }
@@ -154,7 +191,8 @@ public class UpgradeManager : MonoBehaviour
             GameManager.instance.playerScript.currentGold -= sprintCost;
             sprintCost *= costMod;
             GameManager.instance.playerScript.sprintMod *= sprintUpgrade;
-            UpdateCosts();
+            changingSave.sprintMod *= sprintUpgrade;
+            UpdateCosts(4);
         }
     }
     void UpgradeJump()
@@ -164,7 +202,8 @@ public class UpgradeManager : MonoBehaviour
             GameManager.instance.playerScript.currentGold -= jumpCost;
             jumpCost *= costMod;
             GameManager.instance.playerScript.jumpMax += jumpUpgrade;
-            UpdateCosts();
+            changingSave.jumpMax += jumpUpgrade;
+            UpdateCosts(5);
         }
     }
     void UpgradeRange()
@@ -174,7 +213,8 @@ public class UpgradeManager : MonoBehaviour
             GameManager.instance.playerScript.currentGold -= rangeCost;
             rangeCost *= costMod;
             GameManager.instance.playerScript.innateShootDist += rangeUpgrade;
-            UpdateCosts();
+            changingSave.shootRange += rangeUpgrade;
+            UpdateCosts(6);
         }
     }
     void UpgradeShootDamage()
@@ -183,8 +223,9 @@ public class UpgradeManager : MonoBehaviour
         {
             GameManager.instance.playerScript.currentGold -= sDamageCost;
             sDamageCost *= costMod;
-            GameManager.instance.playerScript.jumpMax += sDamageUpgrade;
-            UpdateCosts();
+            GameManager.instance.playerScript.innateShootDamage += sDamageUpgrade;
+            changingSave.shootDamage += sDamageUpgrade;
+            UpdateCosts(7);
         }
     }
     void UpgradeShootRate()
@@ -194,7 +235,8 @@ public class UpgradeManager : MonoBehaviour
             GameManager.instance.playerScript.currentGold -= sRateCost;
             sRateCost *= costMod;
             GameManager.instance.playerScript.innateShootRate *= sRateUpgrade;
-            UpdateCosts();
+            changingSave.shootRate *= sRateUpgrade;
+            UpdateCosts(8);
         }
     }
     void UpgradeMeleeDamage()
@@ -204,7 +246,8 @@ public class UpgradeManager : MonoBehaviour
             GameManager.instance.playerScript.currentGold -= mDamageCost;
             mDamageCost *= costMod;
             GameManager.instance.playerScript.meleeDamage += mDamageUpgrade;
-            UpdateCosts();
+            changingSave.meleeDamage += mDamageUpgrade;
+            UpdateCosts(9);
         }
     }
     void UpgradeMeleeRate()
@@ -214,7 +257,8 @@ public class UpgradeManager : MonoBehaviour
             GameManager.instance.playerScript.currentGold -= mRateCost;
             mRateCost *= costMod;
             GameManager.instance.playerScript.meleeCooldown *= mRateUpgrade;
-            UpdateCosts();
+            changingSave.meleeCooldown *= mRateUpgrade;
+            UpdateCosts(10);
         }
     }
 }
