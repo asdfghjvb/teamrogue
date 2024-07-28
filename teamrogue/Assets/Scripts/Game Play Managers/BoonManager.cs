@@ -19,6 +19,8 @@ public class BoonManager : MonoBehaviour
     [SerializeField] TMP_Text option2;
     [SerializeField] TMP_Text option3;
 
+    [SerializeField] Saves changingSave;
+
     List<(int, string)> newList;
 
 
@@ -62,34 +64,44 @@ public class BoonManager : MonoBehaviour
             case 1:
                 GameManager.instance.playerScript.fullHealth += 5;
                 GameManager.instance.playerScript.health += 5;
+                changingSave.health += 5;
                 break;
             case 2:
                 GameManager.instance.playerScript.innateShootRate *= 0.75f;
+                changingSave.shootRate *= 0.75f;
                 break;
             case 3:
                 GameManager.instance.playerScript.speed += 5;
                 GameManager.instance.achievementManager.UpdateCount(5);
+                changingSave.speed += 5;
                 break;
             case 4:
                 GameManager.instance.playerScript.jumpMax += 1;
+                changingSave.jumpMax += 1;
                 break;
             case 5:
                 GameManager.instance.playerScript.innateShootDamage += 3;
+                changingSave.shootDamage += 3;
                 break;
             case 6:
                 GameManager.instance.playerScript.armorMod *= 0.9f;
+                changingSave.armorMod *= 0.9f;
                 break;
             case 7:
                 GameManager.instance.playerScript.sprintMod *= 1.2f;
+                changingSave.sprintMod *= 1.2f;
                 break;
             case 8:
                 GameManager.instance.playerScript.innateShootDist += 10;
+                changingSave.shootRange += 10;
                 break;
             case 9:
                 GameManager.instance.playerScript.meleeDamage += 3;
+                changingSave.meleeDamage += 3;
                 break;
             case 10:
                 GameManager.instance.playerScript.meleeCooldown *= 0.8f;
+                changingSave.meleeCooldown *= 0.8f;
                 break;
         }
         GameManager.instance.achievementManager.UpdateCount(6);

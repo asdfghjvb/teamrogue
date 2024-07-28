@@ -17,6 +17,7 @@ public class Saves : ScriptableObject
     [SerializeField] public float shootRate;
     [SerializeField] public int shootRange;
     [SerializeField] public float meleeCooldown;
+    [SerializeField] public int gold;
 
     [Header("Achievements")]
     public bool bronzeAch1;
@@ -39,6 +40,7 @@ public class Saves : ScriptableObject
         shootDamage = GameManager.instance.playerScript.innateShootDamage;
         shootRate = GameManager.instance.playerScript.innateShootRate;
         shootRange = GameManager.instance.playerScript.innateShootDist;
+        gold = GameManager.instance.playerScript.currentGold;
 
         goldAch = GameManager.instance.gold.activeSelf;
         silverAch1 = GameManager.instance.silver1.activeSelf;
@@ -59,6 +61,7 @@ public class Saves : ScriptableObject
         GameManager.instance.playerScript.innateShootDamage = shootDamage;
         GameManager.instance.playerScript.innateShootDist = shootRange;
         GameManager.instance.playerScript.innateShootRate = shootRate;
+        GameManager.instance.playerScript.currentGold = gold;
 
         GameManager.instance.gold.SetActive(goldAch);
         GameManager.instance.goldEarned = goldAch;
@@ -106,6 +109,7 @@ public class Saves : ScriptableObject
         shootRate = 0.5f;
         shootRange = 10;
         meleeCooldown = 0.5f;
+        gold = 0;
 
         bronzeAch1 = false;
         bronzeAch2 = false;

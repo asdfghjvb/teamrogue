@@ -36,6 +36,7 @@ public class LoadSaves : MonoBehaviour
         changingSave.shootRange = saveFile.shootRange;
         changingSave.shootDamage = saveFile.shootDamage;
         changingSave.shootRate = saveFile.shootRate;
+        changingSave.gold = saveFile.gold;
         
         changingSave.bronzeAch1 = saveFile.bronzeAch1;
         changingSave.bronzeAch2 = saveFile.bronzeAch2;
@@ -60,7 +61,11 @@ public class LoadSaves : MonoBehaviour
             GameManager.instance.bronze3Earned = changingSave.bronzeAch3;
             GameManager.instance.bronze4Earned = changingSave.bronzeAch4;
         }
-        changingSave.load();
+        if (!IsInScene("Dungeon"))
+        {
+            changingSave.load();
+        }
+        
     }
 
     public void ClearSave()
@@ -71,5 +76,9 @@ public class LoadSaves : MonoBehaviour
     public void NewGameSelected()
     {
         changingSave.ClearSaveFile();
+    }
+    public bool IsInScene(string sceneName)
+    {
+        return SceneManager.GetActiveScene().name == sceneName;
     }
 }

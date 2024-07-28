@@ -74,6 +74,8 @@ public class LevelGenerator : MonoBehaviour
 
     PathBuilder pathFinder;
 
+    [SerializeField] Saves changingSave;
+
     public class Room
     {
         public RectInt rect;
@@ -366,17 +368,17 @@ public class LevelGenerator : MonoBehaviour
                     Player playerScript = _player.GetComponent<Player>();
 
                     //Get the stats that were saved off when loading up the dungeon
-                    playerScript.staffList = LoadDungeon.staffList;
-                    playerScript.health = LoadDungeon.health;
-                    playerScript.speed = LoadDungeon.speed;
-                    playerScript.sprintMod = LoadDungeon.sprintMod;
-                    playerScript.armorMod = LoadDungeon.armorMod;
-                    playerScript.jumpMax = LoadDungeon.jumpMax;
-                    playerScript.meleeDamage = LoadDungeon.meleeDamage;
-                    playerScript.shootDamage = LoadDungeon.shootDamage;
-                    playerScript.shootRate = LoadDungeon.shootRate;
-                    playerScript.shootDist = LoadDungeon.shootRange;
-                    playerScript.meleeCooldown = LoadDungeon.meleeCooldown;
+                    //playerScript.staffList = LoadDungeon.staffList;
+                    playerScript.health = changingSave.health;
+                    playerScript.speed = changingSave.speed;
+                    playerScript.sprintMod = changingSave.sprintMod;
+                    playerScript.armorMod = changingSave.armorMod;
+                    playerScript.jumpMax = changingSave.jumpMax;
+                    playerScript.meleeDamage = changingSave.meleeDamage;
+                    playerScript.shootDamage = changingSave.shootDamage;
+                    playerScript.shootRate = changingSave.shootRate;
+                    playerScript.shootDist = changingSave.shootRange;
+                    playerScript.meleeCooldown = changingSave.meleeCooldown;
                 }
 
                 if (node.spawnType == PathBuilder.NodeSpawnType.exit)

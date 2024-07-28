@@ -24,6 +24,9 @@ public class LoadDungeon : MonoBehaviour
 
     public static List<Staffs> staffList;
 
+
+    [SerializeField] Saves changingSave;
+
     private void OnTriggerEnter(Collider other)
     {
         GameManager.instance.boonSelection();
@@ -33,17 +36,17 @@ public class LoadDungeon : MonoBehaviour
         staffList = GameManager.instance.playerScript.staffList;
 
         //save preboon values, reset in
-        health = GameManager.instance.playerScript.health;
-        speed = GameManager.instance.playerScript.speed;
-        sprintMod = GameManager.instance.playerScript.sprintMod;
-        armorMod = GameManager.instance.playerScript.armorMod;
-        jumpMax = GameManager.instance.playerScript.jumpMax;
-        meleeDamage = GameManager.instance.playerScript.meleeDamage;
-        meleeCooldown = GameManager.instance.playerScript.meleeCooldown;
-        shootDamage = GameManager.instance.playerScript.innateShootDamage;
-        shootRate = GameManager.instance.playerScript.innateShootRate;
-        shootRange = GameManager.instance.playerScript.innateShootDist;
-        gold = GameManager.instance.playerScript.currentGold;
+        health = changingSave.health;
+        speed = changingSave.speed; 
+        sprintMod = changingSave.sprintMod;
+        armorMod = changingSave.armorMod;
+        jumpMax = changingSave.jumpMax;
+        meleeDamage = changingSave.meleeDamage;
+        meleeCooldown = changingSave.meleeCooldown;
+        shootDamage = changingSave.shootDamage;
+        shootRate = changingSave.shootRate;
+        shootRange = changingSave.shootRange;
+        gold = changingSave.gold;
 
         hasValue = true;
     }
