@@ -2392,7 +2392,7 @@ MonoBehaviour:
   healthDropChance: 0
   ammoDropChance: 0
   chestDropChance: 1
-  HP: 30
+  HP: 50
   attackRate: 2
   deathAnimationDuration: 15
   deathActivatedObjects: []

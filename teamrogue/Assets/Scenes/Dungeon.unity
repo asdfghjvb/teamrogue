@@ -155,6 +155,10 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
+      propertyPath: lowLvlSpawnChance
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 2271455056812713875, guid: 9e01fe769cf1076478c6ae5b052a24b7, type: 3}
       propertyPath: doorways.Array.size
       value: 1
       objectReference: {fileID: 0}
