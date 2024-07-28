@@ -75,6 +75,8 @@ public class Player : MonoBehaviour, IDamage
         fullMana = mana;
         updatePlayerUI();
 
+        GameManager.instance.upgradeManager.UpdateGold(); //tells the upgrade manager how much gold player has
+
         if (staffList.Count > 0)
         {
             EquipStaff(0); // Equipar el primer staff por defecto

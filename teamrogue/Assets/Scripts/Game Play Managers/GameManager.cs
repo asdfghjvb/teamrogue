@@ -112,6 +112,8 @@ public class GameManager : MonoBehaviour
         boonManager = GetComponent<BoonManager>();
         achievementManager = GetComponent<AchievementManager>();
         cameraController = GetComponent<cameraController>();
+        upgradeManager = GetComponent<UpgradeManager>();
+
         foreach (Staffs staffs in allStaffs)
         {
             staffs.InitializeStaffValues();

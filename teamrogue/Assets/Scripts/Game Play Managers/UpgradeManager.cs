@@ -68,8 +68,6 @@ public class UpgradeManager : MonoBehaviour
         sRateButton.SetText(sRateCost.ToString());
         mDamageButton.SetText(mDamageCost.ToString());
         mRateButton.SetText(mRateCost.ToString());
-
-        UpdateGold();
     }
 
     public void UpdateGold()
