@@ -77,6 +77,7 @@ public class GameManager : MonoBehaviour
     public List<Staffs> allStaffs = new List<Staffs>();
 
     public Image playerHealthBar;
+    public Image playerHealthBarBack;
     public Image playerManaBar;
 
 

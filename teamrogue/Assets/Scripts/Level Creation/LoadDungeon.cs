@@ -21,6 +21,8 @@ public class LoadDungeon : MonoBehaviour
     public static int shootRange;
     public static float meleeCooldown;
     public static int gold;
+    public static Vector2 size;
+    public static Vector2 size2;
 
     public static List<Staffs> staffList;
 
@@ -36,6 +38,8 @@ public class LoadDungeon : MonoBehaviour
         staffList = GameManager.instance.playerScript.staffList;
 
         //save preboon values, reset in
+        size = GameManager.instance.playerHealthBar.rectTransform.sizeDelta;
+        size2 = GameManager.instance.playerHealthBarBack.rectTransform.sizeDelta;
         health = changingSave.health;
         speed = changingSave.speed; 
         sprintMod = changingSave.sprintMod;

@@ -2407,6 +2407,7 @@ MonoBehaviour:
   option1: {fileID: 5393607518296676282}
   option2: {fileID: 2671056219535804381}
   option3: {fileID: 2234753207600171527}
+  changingSave: {fileID: 0}
 --- !u!1 &743914330732095815
 GameObject:
   m_ObjectHideFlags: 0
@@ -12202,12 +12203,16 @@ MonoBehaviour:
   bronze4: {fileID: 7840973318835850626, guid: 48a8827756dd258468201b463de55710, type: 3}
   bronze4Earned: 0
   upgradeManager: {fileID: 0}
+  staffFire: {fileID: 0}
+  staffIce: {fileID: 0}
+  staffLightning: {fileID: 0}
   currentStaff: {fileID: 0}
   allStaffs:
   - {fileID: 11400000, guid: 44827d6d5743ad64fb72bba7979c2a80, type: 2}
   - {fileID: 11400000, guid: 348d0d688ff32354f9852417027e3410, type: 2}
   - {fileID: 11400000, guid: 1fc7fbbff6a93a348b0737545f86a176, type: 2}
   playerHealthBar: {fileID: 8684377991976454447}
+  playerHealthBarBack: {fileID: 8825723495276625353}
   playerManaBar: {fileID: 7860306948872742896}
   player: {fileID: 0}
   playerScript: {fileID: 0}
@@ -12231,14 +12236,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasScaler: {fileID: 1875137294113053640}
-  buttons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  images:
-  - {fileID: 0}
+  buttons: []
+  images: []
   referenceResolution: {x: 1920, y: 1080}
 --- !u!114 &1424397666552049461
 MonoBehaviour:
@@ -12298,6 +12297,7 @@ MonoBehaviour:
   option1: {fileID: 5393607518296676282}
   option2: {fileID: 2671056219535804381}
   option3: {fileID: 2234753207600171527}
+  changingSave: {fileID: 11400000, guid: 8e1b98a37eb73f3439af3aed7f22360c, type: 2}
 --- !u!114 &6806245683284811113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12325,7 +12325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99dccaaa7ae5b8d4e8a06fa38e1afa40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  saveFile: {fileID: 0}
+  saveFile: {fileID: 11400000, guid: 8e1b98a37eb73f3439af3aed7f22360c, type: 2}
   changingSave: {fileID: 11400000, guid: 8e1b98a37eb73f3439af3aed7f22360c, type: 2}
 --- !u!114 &4156273943418899814
 MonoBehaviour:

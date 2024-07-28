@@ -59,6 +59,8 @@ public class ButtonFunctions : MonoBehaviour
             GameManager.instance.playerScript.innateShootDist = LoadDungeon.shootRange;
             GameManager.instance.playerScript.innateShootRate = LoadDungeon.shootRate;
             GameManager.instance.playerScript.staffList = LoadDungeon.staffList;
+            GameManager.instance.playerHealthBar.rectTransform.sizeDelta = LoadDungeon.size;
+            GameManager.instance.playerHealthBarBack.rectTransform.sizeDelta = LoadDungeon.size2;
             SceneManager.LoadScene("Hub");
         }
     }

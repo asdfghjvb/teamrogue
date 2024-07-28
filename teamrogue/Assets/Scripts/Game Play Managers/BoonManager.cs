@@ -62,6 +62,10 @@ public class BoonManager : MonoBehaviour
         switch (ID)
         {
             case 1:
+                Vector2 size = GameManager.instance.playerHealthBar.rectTransform.sizeDelta;
+                Vector2 size2 = GameManager.instance.playerHealthBarBack.rectTransform.sizeDelta;
+                size.x = size.x * (GameManager.instance.playerScript.fullHealth / (GameManager.instance.playerScript.fullHealth + 5));
+                size2.x = size2.x * (GameManager.instance.playerScript.fullHealth / (GameManager.instance.playerScript.fullHealth + 5));
                 GameManager.instance.playerScript.fullHealth += 5;
                 GameManager.instance.playerScript.health += 5;
                 changingSave.health += 5;

@@ -714,14 +714,6 @@ PrefabInstance:
       propertyPath: staffLightning
       value: 
       objectReference: {fileID: 982825780}
-    - target: {fileID: 1271413381022301681, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
-      propertyPath: images.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1271413381022301681, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
-      propertyPath: buttons.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1424397666552049461, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
       propertyPath: sfxSource
       value: 
@@ -818,18 +810,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2575361223397594551, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
-      propertyPath: saveFile
-      value: 
-      objectReference: {fileID: 11400000, guid: 8e1b98a37eb73f3439af3aed7f22360c, type: 2}
     - target: {fileID: 3017691478760648635, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 2072929996}
-    - target: {fileID: 8521855938797696674, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
-      propertyPath: changingSave
-      value: 
-      objectReference: {fileID: 11400000, guid: 8e1b98a37eb73f3439af3aed7f22360c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
