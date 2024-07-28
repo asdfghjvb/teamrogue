@@ -104,7 +104,7 @@ public class Player : MonoBehaviour, IDamage
             Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
             Movement();
             Sprint();
-            if (Input.GetButton("Fire1") && !isShooting && mana > manaCost && staffList.Count > 0)
+            if (Input.GetButton("Fire1") && !isShooting && mana >= manaCost && staffList.Count > 0)
             {
                 StartCoroutine(shoot());
                 updatePlayerUI();

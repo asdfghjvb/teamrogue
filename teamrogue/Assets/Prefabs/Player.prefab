@@ -84,8 +84,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 1137285651123666733}
-  health: 20
-  mana: 20
+  health: 100
+  mana: 30
   manaCost: 10
   speed: 8
   sprintMod: 2
