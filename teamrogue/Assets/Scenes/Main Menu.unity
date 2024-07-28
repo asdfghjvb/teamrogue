@@ -741,6 +741,10 @@ PrefabInstance:
       propertyPath: playerScript
       value: 
       objectReference: {fileID: 1967661728}
+    - target: {fileID: 977079480886377471, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
+      propertyPath: m_MinValue
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1271413381022301681, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
       propertyPath: images.Array.data[0]
       value: 
@@ -887,6 +891,10 @@ PrefabInstance:
       objectReference: {fileID: 1757470938}
     - target: {fileID: 3254461248610258605, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3275796168499881721, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
+      propertyPath: m_MinValue
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3439820220636426360, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
