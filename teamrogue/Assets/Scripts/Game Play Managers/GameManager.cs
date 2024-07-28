@@ -65,6 +65,9 @@ public class GameManager : MonoBehaviour
 
     [Header("Misc")]
     [SerializeField] public UpgradeManager upgradeManager;
+    [SerializeField] public GameObject staffFire;
+    [SerializeField] public GameObject staffIce;
+    [SerializeField] public GameObject staffLightning;
 
 
     public Staffs currentStaff;
@@ -126,6 +129,15 @@ public class GameManager : MonoBehaviour
             if (goldEarned && silver1Earned && silver2Earned && bronze1Earned && bronze2Earned && bronze3Earned && bronze4Earned)
             {
                 StartCoroutine(winMenuDelay());
+            }
+
+            if (playerScript.staffList.Count > 0)
+            {
+                Debug.Log("staffList > 0");
+                staffFire.SetActive(false);
+                staffIce.SetActive(false);
+                staffLightning.SetActive(false);
+                //currentStaff = playerScript.staffList[0];
             }
         }
     }

@@ -702,6 +702,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 502074285968201060, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
+      propertyPath: staffIce
+      value: 
+      objectReference: {fileID: 1316497752}
+    - target: {fileID: 502074285968201060, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
+      propertyPath: staffFire
+      value: 
+      objectReference: {fileID: 730956959}
+    - target: {fileID: 502074285968201060, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
+      propertyPath: staffLightning
+      value: 
+      objectReference: {fileID: 982825780}
     - target: {fileID: 1424397666552049461, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
       propertyPath: sfxSource
       value: 
@@ -3003,6 +3015,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8604760475336745281, guid: 9771364a93407634ca9494e29613c4ff, type: 3}
+--- !u!1 &730956959 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2728378846662829073, guid: 13549726d2e7ee141bc2b3a7086d1983, type: 3}
+  m_PrefabInstance: {fileID: 1569666571}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &731506261
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3219,6 +3236,10 @@ PrefabInstance:
     - target: {fileID: 2850924479427758215, guid: 958ce0c1a206b8a40957edf17ecbdeff, type: 3}
       propertyPath: m_Name
       value: Staff Ice
+      objectReference: {fileID: 0}
+    - target: {fileID: 2850924479427758215, guid: 958ce0c1a206b8a40957edf17ecbdeff, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4761,6 +4782,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ea5bc0d0820abf4da3a9d8be2571751, type: 3}
+--- !u!1 &982825780 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 199238981997001112, guid: 3e3dd7cdc7405e14e8814a360324f12c, type: 3}
+  m_PrefabInstance: {fileID: 1870072782}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1023939623
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6035,6 +6061,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd844d87f30f65b4ab78332034fd9bf0, type: 3}
+--- !u!1 &1316497752 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2850924479427758215, guid: 958ce0c1a206b8a40957edf17ecbdeff, type: 3}
+  m_PrefabInstance: {fileID: 752828262}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1327216935
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7226,6 +7257,10 @@ PrefabInstance:
     - target: {fileID: 2728378846662829073, guid: 13549726d2e7ee141bc2b3a7086d1983, type: 3}
       propertyPath: m_Name
       value: Staff Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728378846662829073, guid: 13549726d2e7ee141bc2b3a7086d1983, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3976675829136155419, guid: 13549726d2e7ee141bc2b3a7086d1983, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8798,6 +8833,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Staff Lightning
       objectReference: {fileID: 0}
+    - target: {fileID: 199238981997001112, guid: 3e3dd7cdc7405e14e8814a360324f12c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6080295577462552258, guid: 3e3dd7cdc7405e14e8814a360324f12c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.4092941
@@ -9637,18 +9676,6 @@ PrefabInstance:
     - target: {fileID: 4214323867826671164, guid: d553f9dcf1c99684e9ecd7f3aec2db1a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7204752389964481461, guid: d553f9dcf1c99684e9ecd7f3aec2db1a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.081
-      objectReference: {fileID: 0}
-    - target: {fileID: 7204752389964481461, guid: d553f9dcf1c99684e9ecd7f3aec2db1a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.001
-      objectReference: {fileID: 0}
-    - target: {fileID: 7204752389964481461, guid: d553f9dcf1c99684e9ecd7f3aec2db1a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.002
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

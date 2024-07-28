@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 138787014307363401}
   serializedVersion: 2
   m_LocalRotation: {x: -0.4999517, y: 0.006950533, z: 0.012038676, w: 0.8659417}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.081, y: -0.001, z: 0.002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -114,7 +114,10 @@ MonoBehaviour:
   bullet: {fileID: 6174925267386981003, guid: 64b94fc7344c3b84c99024b33f2ffaa4, type: 3}
   shootPos: {fileID: 7204752389964481461}
   staffModel: {fileID: 8327735243043364126}
-  staffList: []
+  staffList:
+  - {fileID: 11400000, guid: 1fc7fbbff6a93a348b0737545f86a176, type: 2}
+  - {fileID: 11400000, guid: 348d0d688ff32354f9852417027e3410, type: 2}
+  - {fileID: 11400000, guid: 44827d6d5743ad64fb72bba7979c2a80, type: 2}
   fullHealth: 20
   fullMana: 0
 --- !u!143 &1137285651123666733
