@@ -559,7 +559,6 @@ GameObject:
   - component: {fileID: 6584163867310740279}
   - component: {fileID: 6970570089956884880}
   - component: {fileID: 801399472667153324}
-  - component: {fileID: 592534223348404586}
   m_Layer: 0
   m_Name: staff camera
   m_TagString: MainCamera
@@ -590,7 +589,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8914780072204729100}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e359fb58ecc2d774093a2d334d4d84bb, type: 3}
   m_Name: 
@@ -650,14 +649,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &592534223348404586
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8914780072204729100}
-  m_Enabled: 1
 --- !u!1001 &3472937121634285616
 PrefabInstance:
   m_ObjectHideFlags: 0
