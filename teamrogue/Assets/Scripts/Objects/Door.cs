@@ -29,11 +29,17 @@ public class Door : MonoBehaviour
         if (Camera.main == null)
             return;
 
+        if (Vector3.Distance(gameObject.transform.position, GameManager.instance.player.transform.position) > usableDist)
+            return;
+
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, usableDist))
         {
             if (hit.collider.CompareTag("Door") && Input.GetKey("e") && (hit.collider == doorway || hit.collider == doorSlab))
             {
+
+                doorSlab.enabled = false; //turn off collider so it goes thru player while opening
+
                 if (isOpen)
                 {
                     animator.SetTrigger("Close");
@@ -54,15 +60,10 @@ public class Door : MonoBehaviour
     IEnumerator Cooldown()
     {
         isCooldown = true;
-        yield return new WaitForSeconds(cooldownTime);
 
-        UpdateNavMesh();
+        yield return new WaitForSeconds(cooldownTime);
+        doorSlab.enabled = true;
 
         isCooldown = false;
-    }
-
-    void UpdateNavMesh()
-    {
-        //navMeshSurface.UpdateNavMesh(navMeshSurface.navMeshData);
     }
 }
