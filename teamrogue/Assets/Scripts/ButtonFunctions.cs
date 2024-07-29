@@ -8,8 +8,12 @@ public class ButtonFunctions : MonoBehaviour
 {
     public AudioSource audioSource;
     public AudioClip buttonClick;
+    public static ButtonFunctions instance;
 
-
+    private void Start()
+    {
+        instance = this;
+    }
     public void resume()
     {
         GameManager.instance.stateUnpaused();
@@ -89,13 +93,7 @@ public class ButtonFunctions : MonoBehaviour
         GameManager.instance.healButton.SetActive(false);
         GameManager.instance.boonButton.SetActive(true);
     }
-    public void boonReward()
-    {
-        playClickSound();
-        GameManager.instance.stateUnpaused();
-        GameManager.instance.boonManager.randomizeList();
-        GameManager.instance.boonSelection();
-    }
+
 
     public void playClickSound()
     {
