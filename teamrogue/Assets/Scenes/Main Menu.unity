@@ -745,6 +745,14 @@ PrefabInstance:
       propertyPath: playerScript
       value: 
       objectReference: {fileID: 1967661728}
+    - target: {fileID: 962425081078858840, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
+      propertyPath: armorUpgrade
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 962425081078858840, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
+      propertyPath: changingSave
+      value: 
+      objectReference: {fileID: 11400000, guid: 8e1b98a37eb73f3439af3aed7f22360c, type: 2}
     - target: {fileID: 977079480886377471, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
       propertyPath: m_MinValue
       value: 0
@@ -925,6 +933,10 @@ PrefabInstance:
       propertyPath: previewSource
       value: 
       objectReference: {fileID: 1757470938}
+    - target: {fileID: 4156273943418899814, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
+      propertyPath: changingSave
+      value: 
+      objectReference: {fileID: 11400000, guid: 8e1b98a37eb73f3439af3aed7f22360c, type: 2}
     - target: {fileID: 5434498660250907091, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

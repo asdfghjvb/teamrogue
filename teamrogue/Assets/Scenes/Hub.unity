@@ -715,6 +715,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 982825780}
     - target: {fileID: 962425081078858840, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
+      propertyPath: armorUpgrade
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 962425081078858840, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
       propertyPath: changingSave
       value: 
       objectReference: {fileID: 11400000, guid: 8e1b98a37eb73f3439af3aed7f22360c, type: 2}
