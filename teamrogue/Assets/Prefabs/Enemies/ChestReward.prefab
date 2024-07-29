@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b866d776a688f34185367b004eec999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chestOb: {fileID: 0}
+  chestOb: {fileID: 11400000, guid: eb7ed8b9fa7962d4593e9923daee9168, type: 2}
 --- !u!95 &3926135726732603238
 Animator:
   serializedVersion: 5
