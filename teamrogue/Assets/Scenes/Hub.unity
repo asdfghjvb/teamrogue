@@ -714,6 +714,10 @@ PrefabInstance:
       propertyPath: staffLightning
       value: 
       objectReference: {fileID: 982825780}
+    - target: {fileID: 962425081078858840, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
+      propertyPath: changingSave
+      value: 
+      objectReference: {fileID: 11400000, guid: 8e1b98a37eb73f3439af3aed7f22360c, type: 2}
     - target: {fileID: 1424397666552049461, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
       propertyPath: sfxSource
       value: 
@@ -814,6 +818,10 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 2072929996}
+    - target: {fileID: 4156273943418899814, guid: 80b2066f46ca0554f8c25cec0d49b84e, type: 3}
+      propertyPath: changingSave
+      value: 
+      objectReference: {fileID: 11400000, guid: 8e1b98a37eb73f3439af3aed7f22360c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9678,7 +9686,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 592534223348404586, guid: d553f9dcf1c99684e9ecd7f3aec2db1a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
